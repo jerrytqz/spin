@@ -1,0 +1,42 @@
+.prize {
+    position: absolute; 
+    left: 50%; 
+    top: 900px; 
+    width: 700px;
+    margin-left: -350px; 
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 5px 25px;
+    box-sizing: border-box; 
+    background: white; 
+    color: #616161;
+    border-radius: 10px;  
+    opacity: 0; 
+}
+
+.prizeOpen {
+    animation: openPrize 0.2s ease-out forwards; 
+}
+
+@keyframes openPrize {
+    0% {
+        opacity: 0;
+        transform: scale(2); 
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1; 
+    }
+}
+
+.RarityText {
+    animation: changingColor 1s linear infinite; 
+}
+
+@keyframes changingColor {
+    33.33% {color: red;}
+    66.66% {color: green;}
+    100% {color: blue;}
+}

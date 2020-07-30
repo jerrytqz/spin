@@ -1,0 +1,118 @@
+.spinner {
+    position: absolute; 
+    left: 50%;
+    top: 200px; 
+    margin-left: -250px; 
+    height: 500px;
+    width: 500px;
+    padding: 0; 
+    background-color: #e33d3d; 
+    border: none; 
+    border-radius: 50%;
+    display: block;
+    transform: rotate(0deg);
+    box-shadow: 0 0 20px black; 
+    transition: transform 0.7s cubic-bezier(0, 0, 0.001, 1);   
+}
+
+.spinner:hover,
+.spinner:focus,
+.spinner:active {
+    background-color: rgb(225, 79, 79); 
+    cursor: pointer; 
+    outline: 0; 
+}
+
+.spinner:disabled {
+    background-color: #e33d3d; 
+    cursor: not-allowed; 
+}
+
+.pointer {
+    position: absolute; 
+    top: -30px;
+    left: 230px; 
+    border-color: transparent transparent black transparent;
+    border-style: solid;
+    border-width: 0px 20px 30px 20px;
+    height: 0px;
+    width: 0px;
+    transform: rotate(0deg);
+    transition: transform 0.7s cubic-bezier(0, 0, 0.001, 1);  
+}
+
+.rarityCircle {
+    position: absolute; 
+    left: 50%;
+    top: 100px; 
+    margin-left: -350px; 
+    height: 700px;
+    width: 700px;
+    padding: 0; 
+    margin-top: 0; 
+    margin-bottom: 0;  
+    background-color: #ccc; 
+    border: none; 
+    border-radius: 50%;
+    display: block; 
+    z-index: -1;  
+    list-style: none;
+    overflow: hidden; 
+}
+
+.liCustom {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    transform-origin: 0% 100%;
+}
+
+.liCustom:first-child {
+    transform: rotate(0deg); /* common */
+    background: brown;   
+} 
+.liCustom:nth-child(2) {
+    transform: rotate(90deg); /* common */
+    background: brown; 
+}
+.liCustom:nth-child(3) {
+    transform: rotate(180deg); /* common */
+    background: brown;  
+}
+.liCustom:nth-child(4) {
+    transform: rotate(187.2deg); /* uncommon */
+    background: cyan; 
+}
+.liCustom:nth-child(5) {
+    transform: rotate(259.2deg); /* rare */
+    background: red;  
+}
+.liCustom:nth-child(6) {
+    transform: rotate(313.2deg); /* epic */
+    background: purple;
+}
+.liCustom:nth-child(7) {
+    transform: rotate(349.2deg); /* holy */ 
+    background: orange;
+}
+.liCustom:nth-child(8) {
+    transform: rotate(356.4deg); /* godly */ 
+    background: yellow; 
+}
+.liCustom:nth-child(9) {
+    transform: rotate(359.964deg); /* ??? */
+    animation: changingColor 1s linear infinite; 
+}  
+.liCustom:nth-child(10) {
+    transform: rotate(360deg); /* common */
+    background: brown; 
+}
+
+@keyframes changingColor {
+    33.33% {background: red;}
+    66.66% {background: green;}
+    100% {background: blue;}
+}
