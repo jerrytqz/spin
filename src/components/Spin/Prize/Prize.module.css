@@ -31,11 +31,11 @@
     }
 }
 
-.RarityText {
-    animation: changingColor 0.5s linear infinite; 
+.RarityTypeText {
+    animation: rainbow 0.5s linear infinite; 
 }
 
-@keyframes changingColor {
+@keyframes rainbow {
     0%, 100% {color: green;}
     20% {color: cyan;}
     40% {color: yellow;}

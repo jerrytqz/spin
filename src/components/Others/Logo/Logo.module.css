@@ -11,9 +11,12 @@
 }
 
 .Text {
-    font-size: 23px; 
     padding-left: 8px; 
     display: flex; 
+}
+
+.Name {
+    font-size: 23px; 
 }
 
 .Version {

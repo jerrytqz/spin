@@ -1,0 +1,27 @@
+.DefaultButton {
+    width: 100px;  
+    background-color: gray; 
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px; 
+    outline: none; 
+}
+
+.DefaultButton:hover,
+.DefaultButton:active {
+    box-shadow: 0 6px 16px 0 #e7e7e7; 
+    background-color: darkgray; 
+    cursor: pointer; 
+    outline: none; 
+}
+
+.DefaultButton:disabled {
+    opacity: 0.3; 
+    cursor: not-allowed; 
+    box-shadow: none; 
+    background-color: gray; 
+}

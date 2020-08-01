@@ -18,7 +18,7 @@
 .Spinner:hover,
 .Spinner:focus,
 .Spinner:active {
-    background-color: rgb(225, 79, 79); 
+    background-color: #e14f4f; 
     cursor: pointer; 
     outline: 0; 
 }
@@ -104,17 +104,28 @@
 }
 .liCustom:nth-child(9) {
     transform: rotate(359.964deg); /* ??? */
-    animation: changingColor 0.5s linear infinite; 
+    animation: rainbow 0.5s linear infinite; 
 }  
 .liCustom:nth-child(10) {
     transform: rotate(360deg); /* common */
     background: brown; 
 }
 
-@keyframes changingColor {
+@keyframes rainbow {
     0%, 100% {background: green;}
     20% {background: cyan;}
     40% {background: yellow;}
     60% {background: red;}
     80% {background: blue;}
+}
+
+.SpinnerText1 {
+    font-size: 90px; 
+    font-weight: bold;
+    color: white;  
+}
+
+.SpinnerText2 {
+    font-size: 30px; 
+    color: #dedcdc; 
 }

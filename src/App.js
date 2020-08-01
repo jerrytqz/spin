@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from './components/Layout/Layout.js'; 
+import Layout from './components/Others/Layout/Layout.js'; 
 import Spin from './containers/Spin/Spin'; 
 
 function App() {
