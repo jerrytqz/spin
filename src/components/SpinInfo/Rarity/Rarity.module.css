@@ -15,11 +15,13 @@
     left: 170px; 
     width: 20px;
     height: 20px; 
-    animation: changingColor 1s linear infinite; 
+    animation: changingColor 0.5s linear infinite; 
 }
 
 @keyframes changingColor {
-    33.33% {background: red;}
-    66.66% {background: green;}
-    100% {background: blue;}
+    0%, 100% {background: green;}
+    20% {background: cyan;}
+    40% {background: yellow;}
+    60% {background: red;}
+    80% {background: blue;}
 }

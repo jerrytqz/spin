@@ -38,14 +38,14 @@ const prize = (props) => {
         animation = 'changingColor 1s linear infinite;'; 
     } 
 
-    let prizeClasses = [classes.prize];
+    let prizeClasses = [classes.Prize];
     if (props.showPrize) {
-        prizeClasses.push(classes.prizeOpen); 
+        prizeClasses.push(classes.PrizeOpen); 
     }
     
     return (
-        <div className = {prizeClasses.join(' ')}>
-            You unboxed {article} <strong className = {classes.RarityText} style = {{color: rarityColor, animation: animation}}>{rarity}</strong> item! 
+        <div className={prizeClasses.join(' ')}>
+            You unboxed {article} <strong className={classes.RarityText} style={{color: rarityColor, animation: animation}}>{rarity}</strong> item! 
         </div>
     )
 }

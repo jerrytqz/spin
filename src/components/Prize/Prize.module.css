@@ -1,4 +1,4 @@
-.prize {
+.Prize {
     position: absolute; 
     left: 50%; 
     top: 900px; 
@@ -14,7 +14,7 @@
     opacity: 0; 
 }
 
-.prizeOpen {
+.PrizeOpen {
     animation: openPrize 0.2s ease-out forwards; 
 }
 
@@ -32,11 +32,13 @@
 }
 
 .RarityText {
-    animation: changingColor 1s linear infinite; 
+    animation: changingColor 0.5s linear infinite; 
 }
 
 @keyframes changingColor {
-    33.33% {color: red;}
-    66.66% {color: green;}
-    100% {color: blue;}
+    0%, 100% {color: green;}
+    20% {color: cyan;}
+    40% {color: yellow;}
+    60% {color: red;}
+    80% {color: blue;}
 }

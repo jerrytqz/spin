@@ -1,4 +1,4 @@
-.spinner {
+.Spinner {
     position: absolute; 
     left: 50%;
     top: 200px; 
@@ -15,20 +15,20 @@
     transition: transform 0.7s cubic-bezier(0, 0, 0.001, 1);   
 }
 
-.spinner:hover,
-.spinner:focus,
-.spinner:active {
+.Spinner:hover,
+.Spinner:focus,
+.Spinner:active {
     background-color: rgb(225, 79, 79); 
     cursor: pointer; 
     outline: 0; 
 }
 
-.spinner:disabled {
+.Spinner:disabled {
     background-color: #e33d3d; 
     cursor: not-allowed; 
 }
 
-.pointer {
+.Pointer {
     position: absolute; 
     top: -30px;
     left: 230px; 
@@ -41,7 +41,7 @@
     transition: transform 0.7s cubic-bezier(0, 0, 0.001, 1);  
 }
 
-.rarityCircle {
+.RarityCircle {
     position: absolute; 
     left: 50%;
     top: 100px; 
@@ -104,7 +104,7 @@
 }
 .liCustom:nth-child(9) {
     transform: rotate(359.964deg); /* ??? */
-    animation: changingColor 1s linear infinite; 
+    animation: changingColor 0.5s linear infinite; 
 }  
 .liCustom:nth-child(10) {
     transform: rotate(360deg); /* common */
@@ -112,7 +112,9 @@
 }
 
 @keyframes changingColor {
-    33.33% {background: red;}
-    66.66% {background: green;}
-    100% {background: blue;}
+    0%, 100% {background: green;}
+    20% {background: cyan;}
+    40% {background: yellow;}
+    60% {background: red;}
+    80% {background: blue;}
 }
