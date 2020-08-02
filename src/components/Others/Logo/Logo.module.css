@@ -17,6 +17,7 @@
 
 .Name {
     font-size: 23px; 
+    letter-spacing: 0.01em; 
 }
 
 .Version {

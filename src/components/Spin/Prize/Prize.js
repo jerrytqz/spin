@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Prize.module.css'; 
+import Modal from '../../../shared/UI/Modal/Modal'; 
 
 const prize = (props) => {
     let rarityType = null;
@@ -38,14 +39,18 @@ const prize = (props) => {
         animation = 'rainbow 1s linear infinite;'; 
     } 
 
-    let prizeClasses = [classes.Prize];
+    let prizeClasses = [classes.Position];
     if (props.showPrize) {
         prizeClasses.push(classes.PrizeOpen); 
     }
     
     return (
         <div className={prizeClasses.join(' ')}>
-            You unboxed {article} <strong className={classes.RarityTypeText} style={{color: rarityColor, animation: animation}}>{rarityType}</strong> item! 
+            <Modal width="700px">
+                <div className={classes.Prize}>
+                    You unboxed {article} <strong className={classes.RarityTypeText} style={{color: rarityColor, animation: animation}}>{rarityType}</strong> item! 
+                </div>
+            </Modal>
         </div>
     )
 }

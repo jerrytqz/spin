@@ -1,18 +1,15 @@
 .Rarity { 
-    margin: auto; 
     display: flex; 
     height: 100%;
     align-items: center;
+    justify-content: space-between;
 }
 
 .RarityText {
-    margin-left: 10px; 
-    line-height: 0; 
+    line-height: 5px; 
 }
 
 .RaritySquare {
-    position: absolute;
-    left: 170px; 
     width: 20px;
     height: 20px; 
     animation: rainbow 0.5s linear infinite; 

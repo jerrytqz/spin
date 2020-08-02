@@ -4,8 +4,8 @@ import classes from './Spinner.module.css';
 const spinner = (props) => { 
     let spinnerText = 
         <div>
-            <div className = {classes.SpinnerText1}>SPIN</div>
-            <div className = {classes.SpinnerText2}>-500 SP</div>
+            <div className={classes.SpinnerText1}>SPIN</div>
+            <div className={classes.SpinnerText2}>-500 SP</div>
         </div>
 
     return(

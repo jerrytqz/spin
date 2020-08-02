@@ -6,7 +6,8 @@ const spinButtons = (props) => (
     <div className={classes.SpinButtons}>
         <DefaultButton 
             onClick={props.onClickReset}
-            disabled={props.disabled}>Reset
+            width="100px"
+            disabled={props.disabledReset}>Reset
         </DefaultButton> 
         <div className={classes.InfoButton}>
             <DefaultButton 

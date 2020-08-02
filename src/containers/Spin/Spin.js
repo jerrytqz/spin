@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import Prize from '../../components/Spin/Prize/Prize';  
 import Spinner from '../../components/Spin/Spinner/Spinner'; 
-import SpinInfo from '../../components/Spin/Info/SpinInfo'; 
-import SpinButtons from '../../components/Spin/Buttons/SpinButtons'; 
+import SpinInfo from '../../components/Spin/SpinInfo/SpinInfo'; 
+import SpinButtons from '../../components/Spin/SpinButtons/SpinButtons'; 
 
 class Spin extends Component {
     state = {
@@ -44,7 +44,7 @@ class Spin extends Component {
                 <SpinButtons 
                     onClickReset={this.resetSpin}
                     onClickInfo={this.showSpinInfoHandler}
-                    disabled={!this.state.spinNeedsReset || this.state.resetButtonPressed}/>
+                    disabledReset={!this.state.spinNeedsReset || this.state.resetButtonPressed}/>
                 {this.state.spinEnded ? <Prize angle={this.state.realDegree} showPrize={this.state.spinEnded}/> : null}
                 {this.state.showSpinInfo ? <SpinInfo/> : null}
             </div>   

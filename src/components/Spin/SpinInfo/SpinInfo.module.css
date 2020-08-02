@@ -1,0 +1,11 @@
+.SpinInfo {
+    margin: 0; 
+    padding: 0;
+}
+
+.Position {
+    position: absolute;
+    top: 100px; 
+    left: 50%; 
+    margin-left: 400px; 
+}
