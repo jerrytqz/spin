@@ -7,26 +7,23 @@ import SpinButtons from '../../components/Spin/SpinButtons/SpinButtons';
 class Spin extends Component {
     state = {
         spinDegree: 0,
-        realDegree: -1,
-        spinNeedsReset: false,
+        trueDegree: 0,
         startButtonPressed: false,
-        resetButtonPressed: false,
-        spinEnded: false,
-        showSpinInfo: false 
+        resetButtonPressed: true,     
+        resetting: false,
+        showSpinInfo: false,
     }
 
-    startSpin = () => {
-        this.setState({startButtonPressed: true}); 
+    startSpinHandler = () => {
         let spinDegree = 1800 + Math.random()*360; 
-        let realDegree = spinDegree - 1800; 
-        this.setState(previous => ({spinDegree: previous.spinDegree + spinDegree, realDegree: realDegree})); 
-        setTimeout(() => this.setState({spinNeedsReset: true, resetButtonPressed: false, spinEnded: true}), 700);
+        let trueDegree = spinDegree - 1800; 
+        this.setState({startButtonPressed: true, spinDegree: spinDegree, trueDegree: trueDegree}); 
+        setTimeout(() => this.setState({resetButtonPressed: false}), 700);
     }
 
-    resetSpin = () => { 
-        this.setState({resetButtonPressed: true, spinEnded: false}); 
-        this.setState(previous => ({spinDegree: previous.spinDegree - previous.realDegree})); 
-        setTimeout(() => this.setState({spinNeedsReset: false, startButtonPressed: false}), 700);
+    resetSpinHandler = () => { 
+        this.setState({resetButtonPressed: true, spinDegree: 0, resetting: true}); 
+        setTimeout(() => this.setState({startButtonPressed: false, resetting: false}), 700);
     }
 
     showSpinInfoHandler = () => {
@@ -34,18 +31,19 @@ class Spin extends Component {
     }
 
     render() {
+        // console.log('spinDegree: ' + this.state.spinDegree);
         return (
             <div>
                 <Spinner 
-                    startSpin={this.startSpin}
-                    spinNeedsReset={this.state.spinNeedsReset}
+                    startSpinHandler={this.startSpinHandler}
                     startButtonPressed={this.state.startButtonPressed}
-                    spinDegree={this.state.spinDegree}/>
+                    spinDegree={this.state.spinDegree}
+                    resetting={this.state.resetting}/>
                 <SpinButtons 
-                    onClickReset={this.resetSpin}
+                    onClickReset={this.resetSpinHandler}
                     onClickInfo={this.showSpinInfoHandler}
-                    disabledReset={!this.state.spinNeedsReset || this.state.resetButtonPressed}/>
-                {this.state.spinEnded ? <Prize angle={this.state.realDegree} showPrize={this.state.spinEnded}/> : null}
+                    disabledReset={this.state.resetButtonPressed}/>
+                {!this.state.resetButtonPressed ? <Prize angle={this.state.trueDegree} showPrize={!this.state.resetButtonPressed}/> : null}
                 {this.state.showSpinInfo ? <SpinInfo/> : null}
             </div>   
         ); 

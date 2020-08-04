@@ -39,7 +39,7 @@ const prize = (props) => {
         animation = 'rainbow 1s linear infinite;'; 
     } 
 
-    let prizeClasses = [classes.Position];
+    let prizeClasses = [classes.Container];
     if (props.showPrize) {
         prizeClasses.push(classes.PrizeOpen); 
     }

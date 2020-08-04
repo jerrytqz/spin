@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-.Position {
+.Container {
     position: absolute;
     top: 100px; 
     left: 50%; 

@@ -4,7 +4,7 @@ import classes from './SpinInfo.module.css';
 import Modal from '../../../shared/UI/Modal/Modal'; 
 
 const spinInfo = () => (
-    <div className={classes.Position}>
+    <div className={classes.Container}>
         <Modal width="200px">
             <ul className={classes.SpinInfo}>
                 <Rarity rarityType="Common" rarityChance="52%" rarityColor="brown" animation="none"/>
