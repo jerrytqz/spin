@@ -1,9 +1,4 @@
 .SpinInfo {
-    margin: 0; 
-    padding: 0;
-}
-
-.Container {
     position: absolute;
     top: 100px; 
     left: 50%; 

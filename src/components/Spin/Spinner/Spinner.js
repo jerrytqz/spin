@@ -19,10 +19,11 @@ const spinner = (props) => {
         transition = 'transform 0s cubic-bezier(0, 0, 0.001, 1)'; 
         spinDegree = 0; 
     }
-    return(
-        <div>
+
+    return (
+        <div className={classes.Spinner}>
             <button 
-                className={classes.Spinner}
+                className={classes.SpinnerButton}
                 onClick={props.startSpinHandler} 
                 disabled={props.startButtonPressed}
                 style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}> 

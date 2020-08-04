@@ -39,7 +39,7 @@ const prize = (props) => {
         animation = 'rainbow 1s linear infinite;'; 
     } 
 
-    let prizeClasses = [classes.Container];
+    let prizeClasses = [classes.Prize];
     if (props.showPrize) {
         prizeClasses.push(classes.PrizeOpen); 
     }
@@ -47,7 +47,7 @@ const prize = (props) => {
     return (
         <div className={prizeClasses.join(' ')}>
             <Modal width="700px">
-                <div className={classes.Prize}>
+                <div className={classes.Text}>
                     You unboxed {article} <strong className={classes.RarityTypeText} style={{color: rarityColor, animation: animation}}>{rarityType}</strong> item! 
                 </div>
             </Modal>

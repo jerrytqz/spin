@@ -1,4 +1,11 @@
 .Prize {
+    position: absolute; 
+    left: 50%; 
+    top: 900px; 
+    margin-left: -350px; 
+}
+
+.Text {
     width: 700px; 
 }
 
@@ -13,13 +20,6 @@
     }
     50% {opacity: 0.5;}
     100% {opacity: 1;}
-}
-
-.Container {
-    position: absolute; 
-    left: 50%; 
-    top: 900px; 
-    margin-left: -350px; 
 }
 
 .RarityTypeText {
