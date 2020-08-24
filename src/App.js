@@ -1,11 +1,15 @@
 import React from 'react';
-import Layout from './components/Others/Layout/Layout.js'; 
+import {Route} from 'react-router-dom'; 
+
+import Layout from './components/Others/Layout/Layout'; 
 import Spin from './containers/Spin/Spin'; 
+import Authentication from './containers/Authentication/Authentication'; 
 
 function App() {
   return (
     <Layout>
-      <Spin/>
+      <Route path="/" exact component={Spin}/>
+      <Route path="/authentication" component={Authentication}/>
     </Layout>
   );
 }

@@ -28,7 +28,7 @@ const spinner = (props) => {
                 disabled={props.startButtonPressed}
                 style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}> 
                     {!props.startButtonPressed ? spinnerText : null}
-                    <span 
+                    <div 
                         className={classes.Pointer} 
                         style={{transform: `rotate(0 - ${spinDegree}deg)`, transition: transition}}/>
             </button>

@@ -1,0 +1,31 @@
+.YesNoButton {
+    background-color: white;
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.YesNoButton:hover,
+.YesNoButton:active {
+    background-color: #6aa913;
+    cursor: pointer; 
+}
+
+.YesNoButton:disabled {
+    opacity: 0.3; 
+    cursor: not-allowed; 
+    background-color: #5C9210;
+}
+
+.Yes {
+    background-color: #5C9210;
+}
+
+.No {
+    background-color: #944317;
+}
