@@ -1,4 +1,5 @@
 export {
     auth,
-    switchAuthMode
+    switchAuthMode,
+    logOut
 } from './authentication'

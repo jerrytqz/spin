@@ -2,6 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/Functions/utility'; 
 
 const initialState = {
+    isAuthenticated: false,
     token: null,
     authError: null,
     serverError: null,
@@ -18,9 +19,11 @@ const authStart = (state) => {
 
 const authSuccess = (state, action) => {
     return updateObject(state, {
+        isAuthenticated: true, 
         token: action.token,
         loading: false,
-        authError: null
+        authError: null,
+        serverError: null 
     })
 }
 
@@ -45,6 +48,13 @@ const switchAuthMode = (state) => {
     })
 }
 
+const logOutClient = (state) => {
+    return updateObject(state, {
+        isAuthenticated: false,
+        token: null 
+    })
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START:
@@ -57,6 +67,8 @@ const reducer = (state = initialState, action) => {
             return authFailServer(state, action); 
         case actionTypes.SWITCH_AUTH_MODE:
             return switchAuthMode(state); 
+        case actionTypes.LOG_OUT_CLIENT:
+            return logOutClient(state); 
         default:
             return state;
     }

@@ -1,14 +1,25 @@
-import React from 'react'; 
+import React, {Component} from 'react'; 
 import classes from './Layout.module.css'; 
 import Toolbar from '../Navigation/Toolbar/Toolbar'; 
+import {connect} from 'react-redux'; 
 
-const layout = (props) => (
-    <div>
-        <Toolbar/>
-        <main className={classes.Content}>
-            {props.children}
-        </main>
-    </div>
-)
+class Layout extends Component {
+    render() {
+        return (
+            <div>
+                <Toolbar isAuthenticated={this.props.isAuthenticated}/>
+                <main className={classes.Content}>
+                    {this.props.children}
+                </main>
+            </div>
+        )
+    }
+}
 
-export default layout; 
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.authentication.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps)(Layout); 

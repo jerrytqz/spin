@@ -6,6 +6,7 @@ import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton';
 import TextButton from '../../shared/UI/Buttons/TextButton/TextButton'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
 import {connect} from 'react-redux'; 
+import {Redirect} from 'react-router-dom'; 
 import * as actions from '../../store/actions/index'; 
 
 class Authentication extends Component {
@@ -20,7 +21,8 @@ class Authentication extends Component {
                 value: '',
                 validation: {
                     required: true,
-                    minLength: 1 
+                    minLength: 1,
+                    maxLength: 16 
                 },
                 valid: false,
                 touched: false
@@ -139,24 +141,6 @@ class Authentication extends Component {
         this.props.onSwitchAuthMode(); 
     }
 
-    testHandler = () => {
-        this.setState({loading: true})
-        let data = new FormData();
-        data.append('token', this.state.token); 
-        fetch('http://127.0.0.1:8000/test/', {
-            method: 'POST',
-            body: data
-        })
-            .then(response => response.json())
-            .then(result => {
-                this.setState({loading: false});
-            })
-            .catch(error => {
-                this.setState({loading: false});
-                console.log(error);
-            })
-    }
-
     render() {
         const formElementsArray = [];
         for (let key in this.state.controls) {
@@ -183,7 +167,6 @@ class Authentication extends Component {
             form.splice(1,1);
             form.splice(2,1);
         }
-        
         let isLogInFormIsValid = (
             this.state.isLogIn &&
             this.state.controls.username.valid &&
@@ -191,13 +174,16 @@ class Authentication extends Component {
         )
 
         let errorMessage = null
-
         if (this.props.authError !== null) {
             errorMessage = <p style = {{color: 'red'}}>{this.props.authError}</p>
         }
-
         if (this.props.serverError !== null) {
-            errorMessage = <p style = {{color: 'red'}}>{this.props.serverError}</p>
+            errorMessage = <p style = {{color: 'red'}}>{this.props.serverError.message}</p>
+        }
+
+        let authRedirect = null; 
+        if (this.props.isAuthenticated) {
+            authRedirect = <Redirect to="/"/>
         }
         
         return (  
@@ -215,11 +201,9 @@ class Authentication extends Component {
                     <TextButton onClick={this.switchAuthModeHandler}>
                         {this.state.isLogIn ? 'Register ' : 'Log in '} instead
                     </TextButton>
-                    <TextButton onClick={this.testHandler}>
-                        Test
-                    </TextButton>   
                 </div>
                 }
+                {authRedirect}
             </div>
         )
     }
@@ -230,7 +214,8 @@ const mapStateToProps = state => {
         token: state.authentication.token,
         authError: state.authentication.authError,
         serverError: state.authentication.serverError,
-        loading: state.authentication.loading
+        loading: state.authentication.loading,
+        isAuthenticated: state.authentication.isAuthenticated
     }
 }
 

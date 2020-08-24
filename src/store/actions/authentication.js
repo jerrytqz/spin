@@ -33,9 +33,37 @@ export const switchAuthMode = () => {
     }
 }
 
+export const logOutClient = () => {
+    return {
+        type: actionTypes.LOG_OUT_CLIENT
+    }
+}
+
+export const logOut = (token) => {
+    return async dispatch => {
+        dispatch(logOutClient()); 
+        let data = new FormData();
+        data.append('token', token); 
+        try {
+            let response = await fetch('http://127.0.0.1:8000/logout/', {
+                method: 'POST',
+                body: data 
+            });
+            if (response.status === 200) {
+                console.log('Log out successful!'); 
+            } else {
+                console.log('Log out error'); 
+            } 
+        }
+        catch(serverError) {
+            console.log(serverError); 
+        }
+    }
+}
+
 export const auth = (username, email, password, confirmPassword, isLogIn) => {
-    return dispatch => {
-        dispatch(authStart())
+    return async dispatch => {
+        dispatch(authStart());
         let data = new FormData();
         data.append('username', username);  
         data.append('password', password);  
@@ -45,23 +73,20 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
             data.append('email', email);
             data.append('confirmPassword', confirmPassword);
         }
-        (async () => {
-            try {
-                let response = await fetch(path, {
-                    method: 'POST',
-                    body: data
-                });
-                let result = await response.json(); 
-                if (response.status === 200) {
-                    dispatch(authSuccess(result['token']));
-                } 
-                else {
-                    dispatch(authFail(result['authError']));
-                }
+        try {
+            let response = await fetch(path, {
+                method: 'POST',
+                body: data
+            });
+            let result = await response.json(); 
+            if (response.status === 200) {
+                dispatch(authSuccess(result['token']));
+            } else {
+                dispatch(authFail(result['authError']));
             }
-            catch(serverError) {
-                dispatch(authFailServer(serverError));
-            }
-        })(); 
+        }
+        catch(serverError) {
+            dispatch(authFailServer(serverError));
+        }
     }
 }
