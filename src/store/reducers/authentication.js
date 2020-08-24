@@ -38,6 +38,13 @@ const authFailServer = (state, action) => {
     })
 }
 
+const switchAuthMode = (state) => {
+    return updateObject(state, {
+        authError: null,
+        serverError: null 
+    })
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START:
@@ -48,6 +55,8 @@ const reducer = (state = initialState, action) => {
             return authFail(state, action); 
         case actionTypes.AUTH_FAIL_SERVER:
             return authFailServer(state, action); 
+        case actionTypes.SWITCH_AUTH_MODE:
+            return switchAuthMode(state); 
         default:
             return state;
     }

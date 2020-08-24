@@ -5,6 +5,8 @@ import classes from './Authentication.module.css';
 import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton'; 
 import TextButton from '../../shared/UI/Buttons/TextButton/TextButton'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
+import {connect} from 'react-redux'; 
+import * as actions from '../../store/actions/index'; 
 
 class Authentication extends Component {
     state = {
@@ -66,11 +68,7 @@ class Authentication extends Component {
             }
         },
         isLogIn: true,
-        formIsValid: false,
-        token: null,
-        authError: null,
-        serverError: null,
-        loading: false  
+        formIsValid: false
     }
 
     inputChangedHandler = (event, controlName) => {
@@ -90,34 +88,11 @@ class Authentication extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();  
-        this.setState({loading: true});   
-        let data = new FormData();
-        data.append('username', this.state.controls.username.value);  
-        data.append('password', this.state.controls.password.value);  
-        let path = 'http://127.0.0.1:8000/login/';  
-        if (!this.state.isLogIn) {
-            path = 'http://127.0.0.1:8000/register/';
-            data.append('email', this.state.controls.email.value);
-            data.append('confirmPassword', this.state.controls.confirmPassword.value);
-        }
-        (async () => {
-            try {
-                let response = await fetch(path, {
-                    method: 'POST',
-                    body: data
-                });
-                let result = await response.json(); 
-                if (response.status === 200) {
-                    this.setState({token: result['token'], loading: false, authError: null});
-                } 
-                else {
-                    this.setState({authError: result['authError'], loading: false});
-                }
-            }
-            catch(serverError) {
-                this.setState({serverError: serverError, loading: false});  
-            }
-        })(); 
+        this.props.onAuth(this.state.controls.username.value, 
+                this.state.controls.email.value, 
+                this.state.controls.password.value, 
+                this.state.controls.confirmPassword.value, 
+                this.state.isLogIn); 
     }
 
     switchAuthModeHandler = () => {
@@ -159,11 +134,9 @@ class Authentication extends Component {
                 }
             },
             isLogIn: !prev.isLogIn,
-            formIsValid: false,
-            authError: null,
-            serverError: null,
-            loading: false   
+            formIsValid: false
         }))
+        this.props.onSwitchAuthMode(); 
     }
 
     testHandler = () => {
@@ -219,17 +192,17 @@ class Authentication extends Component {
 
         let errorMessage = null
 
-        if (this.state.authError !== null) {
-            errorMessage = <p style = {{color: 'red'}}>{this.state.authError}</p>
+        if (this.props.authError !== null) {
+            errorMessage = <p style = {{color: 'red'}}>{this.props.authError}</p>
         }
 
-        if (this.state.serverError !== null) {
-            errorMessage = <p style = {{color: 'red'}}>{this.state.serverError}</p>
+        if (this.props.serverError !== null) {
+            errorMessage = <p style = {{color: 'red'}}>{this.props.serverError}</p>
         }
         
         return (  
             <div className={classes.Authentication}>
-                {this.state.loading ? <LoadingSpinner/> :
+                {this.props.loading ? <LoadingSpinner/> :
                 <div>
                     {errorMessage}
                     <form onSubmit={this.submitHandler}>
@@ -252,4 +225,21 @@ class Authentication extends Component {
     }
 }
 
-export default Authentication; 
+const mapStateToProps = state => {
+    return {
+        token: state.authentication.token,
+        authError: state.authentication.authError,
+        serverError: state.authentication.serverError,
+        loading: state.authentication.loading
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (username, email, password, confirmPassword, isLogIn) => 
+            dispatch(actions.auth(username, email, password, confirmPassword, isLogIn)),
+        onSwitchAuthMode: () => dispatch(actions.switchAuthMode())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authentication); 

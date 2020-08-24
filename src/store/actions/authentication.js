@@ -27,6 +27,12 @@ export const authFailServer = (serverError) => {
     }
 }
 
+export const switchAuthMode = () => {
+    return {
+        type: actionTypes.SWITCH_AUTH_MODE
+    }
+}
+
 export const auth = (username, email, password, confirmPassword, isLogIn) => {
     return dispatch => {
         dispatch(authStart())
