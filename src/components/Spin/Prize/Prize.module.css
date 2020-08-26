@@ -1,28 +1,9 @@
-.Prize {
-    position: absolute; 
-    left: 50%; 
-    top: 900px; 
-    margin-left: -350px; 
-}
-
 .Text {
-    width: 700px; 
+    width: 100%; 
+    text-align: center;
 }
 
-.PrizeOpen {
-    animation: openPrize 0.2s ease-out forwards; 
-}
-
-@keyframes openPrize {
-    0% {
-        opacity: 0;
-        transform: scale(2); 
-    }
-    50% {opacity: 0.5;}
-    100% {opacity: 1;}
-}
-
-.RarityTypeText {
+.Rainbow {
     animation: rainbow 0.5s linear infinite; 
 }
 

@@ -12,6 +12,9 @@
 .RaritySquare {
     width: 20px;
     height: 20px; 
+}
+
+.Rainbow {
     animation: rainbow 0.5s linear infinite; 
 }
 

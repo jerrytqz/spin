@@ -1,8 +1,33 @@
 .Modal {
-    z-index: 1;
+    position: fixed;
+    z-index: 100;
     background-color: white;
-    color: #616161;
-    padding: 16px 16px 16px 16px; 
+    width: 70%;
     border: 1px solid #ccc;
     box-shadow: 2px 2px 2px #ccc;
+    padding: 16px;
+    left: 15%;
+    top: 50%; 
+    transform: translateY(-50%); 
+    box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+    .Modal {
+        width: 400px;
+        left: calc(50% - 200px);
+    }
+}
+
+.OpenPrize {
+    animation: openPrize 0.2s; 
+}
+
+@keyframes openPrize {
+    0% {
+        opacity: 0;
+        transform: scale(2); 
+    }
+    50% {opacity: 0.5;}
+    100% {opacity: 1;}
 }

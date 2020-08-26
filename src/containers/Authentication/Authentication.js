@@ -174,20 +174,22 @@ class Authentication extends Component {
         )
 
         let errorMessage = null
-        if (this.props.authError !== null) {
+        if (this.props.authError) {
             errorMessage = <p style = {{color: 'red'}}>{this.props.authError}</p>
         }
-        if (this.props.serverError !== null) {
-            errorMessage = <p style = {{color: 'red'}}>{this.props.serverError.message}</p>
-        }
-
+        
         let authRedirect = null; 
         if (this.props.isAuthenticated) {
             authRedirect = <Redirect to="/"/>
         }
         
+        let authClasses = [classes.Authentication]; 
+        if (this.props.authError) {
+            authClasses.push(classes.Shake);
+        }
+
         return (  
-            <div className={classes.Authentication}>
+            <div className={authClasses.join(' ')}>
                 {this.props.loading ? <LoadingSpinner/> :
                 <div>
                     {errorMessage}
@@ -213,7 +215,6 @@ const mapStateToProps = state => {
     return {
         token: state.authentication.token,
         authError: state.authentication.authError,
-        serverError: state.authentication.serverError,
         loading: state.authentication.loading,
         isAuthenticated: state.authentication.isAuthenticated
     }

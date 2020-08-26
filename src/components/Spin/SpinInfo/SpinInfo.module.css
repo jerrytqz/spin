@@ -3,4 +3,11 @@
     top: 100px; 
     left: 50%; 
     margin-left: 400px; 
+    z-index: 1;
+    background-color: white;
+    color: #616161;
+    padding: 16px 16px 16px 16px; 
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px #ccc;
+    width: 200px; 
 }

@@ -20,13 +20,6 @@ export const authFail = (authError) => {
     }
 }
 
-export const authFailServer = (serverError) => {
-    return {
-        type: actionTypes.AUTH_FAIL_SERVER,
-        serverError: serverError
-    }
-}
-
 export const switchAuthMode = () => {
     return {
         type: actionTypes.SWITCH_AUTH_MODE
@@ -39,24 +32,31 @@ export const logOutClient = () => {
     }
 }
 
+export const logOutFail = (authError) => {
+    return {
+        type: actionTypes.LOG_OUT_FAIL,
+        authError: authError 
+    }
+}
+
 export const logOut = (token) => {
     return async dispatch => {
-        dispatch(logOutClient()); 
-        let data = new FormData();
+        const data = new FormData();
         data.append('token', token); 
         try {
             let response = await fetch('http://127.0.0.1:8000/logout/', {
                 method: 'POST',
                 body: data 
             });
+            let result = await response.json(); 
             if (response.status === 200) {
-                console.log('Log out successful!'); 
+                dispatch(logOutClient()); 
             } else {
-                console.log('Log out error'); 
+                dispatch(logOutFail(result['authError'])); 
             } 
         }
-        catch(serverError) {
-            console.log(serverError); 
+        catch {
+            dispatch(logOutFail('Unexpected error')); 
         }
     }
 }
@@ -64,7 +64,7 @@ export const logOut = (token) => {
 export const auth = (username, email, password, confirmPassword, isLogIn) => {
     return async dispatch => {
         dispatch(authStart());
-        let data = new FormData();
+        const data = new FormData();
         data.append('username', username);  
         data.append('password', password);  
         let path = 'http://127.0.0.1:8000/login/';  
@@ -85,8 +85,8 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
                 dispatch(authFail(result['authError']));
             }
         }
-        catch(serverError) {
-            dispatch(authFailServer(serverError));
+        catch {
+            dispatch(authFail('Unexpected error'));
         }
     }
 }

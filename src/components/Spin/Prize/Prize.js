@@ -6,7 +6,7 @@ const prize = (props) => {
     let rarityType = null;
     let rarityColor = null; 
     let article = 'a'; 
-    let animation = 'none'; 
+    let prizeClasses = []; 
     
     if ((0 <= props.angle && props.angle < 187.2) || props.angle === 360) { //not going to hit 360, but just in case
         rarityType = 'common';
@@ -36,22 +36,15 @@ const prize = (props) => {
     }
     else if (359.964 <= props.angle && props.angle < 360) {
         rarityType = '???'; 
-        animation = 'rainbow 1s linear infinite;'; 
+        prizeClasses.push(classes.Rainbow); 
     } 
 
-    let prizeClasses = [classes.Prize];
-    if (props.showPrize) {
-        prizeClasses.push(classes.PrizeOpen); 
-    }
-    
     return (
-        <div className={prizeClasses.join(' ')}>
-            <Modal width="700px">
-                <div className={classes.Text}>
-                    You unboxed {article} <strong className={classes.RarityTypeText} style={{color: rarityColor, animation: animation}}>{rarityType}</strong> item! 
-                </div>
-            </Modal>
-        </div>
+        <Modal show clicked={props.clicked} animation="openPrize">
+            <div className={classes.Text}>
+                You unboxed {article} <strong style={{color: rarityColor}} className={prizeClasses.join(' ')}>{rarityType}</strong> item! 
+            </div>
+        </Modal>  
     )
 }
 

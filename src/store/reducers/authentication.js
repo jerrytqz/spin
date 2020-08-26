@@ -5,14 +5,12 @@ const initialState = {
     isAuthenticated: false,
     token: null,
     authError: null,
-    serverError: null,
     loading: false  
 }
 
 const authStart = (state) => {
     return updateObject(state, {
         authError: null,
-        serverError: null, 
         loading: true
     })
 }
@@ -22,8 +20,7 @@ const authSuccess = (state, action) => {
         isAuthenticated: true, 
         token: action.token,
         loading: false,
-        authError: null,
-        serverError: null 
+        authError: null
     })
 }
 
@@ -34,24 +31,23 @@ const authFail = (state, action) => {
     })
 }
 
-const authFailServer = (state, action) => {
-    return updateObject(state, {
-        serverError: action.serverError,
-        loading: false,
-    })
-}
-
 const switchAuthMode = (state) => {
     return updateObject(state, {
-        authError: null,
-        serverError: null 
+        authError: null
     })
 }
 
 const logOutClient = (state) => {
     return updateObject(state, {
         isAuthenticated: false,
-        token: null 
+        token: null,
+        authError: null  
+    })
+}
+
+const logOutFail = (state, action) => {
+    return updateObject(state, {
+        authError: action.authError
     })
 }
 
@@ -63,12 +59,12 @@ const reducer = (state = initialState, action) => {
             return authSuccess(state, action);
         case actionTypes.AUTH_FAIL:
             return authFail(state, action); 
-        case actionTypes.AUTH_FAIL_SERVER:
-            return authFailServer(state, action); 
         case actionTypes.SWITCH_AUTH_MODE:
             return switchAuthMode(state); 
         case actionTypes.LOG_OUT_CLIENT:
             return logOutClient(state); 
+        case actionTypes.LOG_OUT_FAIL:
+            return logOutFail(state, action); 
         default:
             return state;
     }
