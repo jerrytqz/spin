@@ -6,7 +6,6 @@ import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton';
 import TextButton from '../../shared/UI/Buttons/TextButton/TextButton'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
 import {connect} from 'react-redux'; 
-import {Redirect} from 'react-router-dom'; 
 import * as actions from '../../store/actions/index'; 
 
 class Authentication extends Component {
@@ -178,11 +177,6 @@ class Authentication extends Component {
             errorMessage = <p style = {{color: 'red'}}>{this.props.authError}</p>
         }
         
-        let authRedirect = null; 
-        if (this.props.isAuthenticated) {
-            authRedirect = <Redirect to="/"/>
-        }
-        
         let authClasses = [classes.Authentication]; 
         if (this.props.authError) {
             authClasses.push(classes.Shake);
@@ -205,7 +199,6 @@ class Authentication extends Component {
                     </TextButton>
                 </div>
                 }
-                {authRedirect}
             </div>
         )
     }
@@ -215,8 +208,7 @@ const mapStateToProps = state => {
     return {
         token: state.authentication.token,
         authError: state.authentication.authError,
-        loading: state.authentication.loading,
-        isAuthenticated: state.authentication.isAuthenticated
+        loading: state.authentication.loading
     }
 }
 

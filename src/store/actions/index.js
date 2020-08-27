@@ -5,5 +5,7 @@ export {
 } from './authentication'
 
 export {
-    purchaseSpin
+    fetchSP,
+    purchaseSpin,
+    resetPurchaseError
 } from './spin'

@@ -8,6 +8,17 @@ const spinner = (props) => {
             <div className={classes.SpinnerText2}>-500 SP</div>
         </div>
     );
+    let disabled = false; 
+
+    if (props.fetchErrorMessage) {
+        spinnerText = (
+            <div>
+                <div className={classes.SpinnerText3}>{props.fetchErrorMessage}</div>
+            </div>   
+        )
+        disabled = true; 
+    }
+
     let spinDegree = props.spinDegree; 
     let transition = 'transform 0.7s cubic-bezier(0, 0, 0.001, 1)';  
     
@@ -25,7 +36,7 @@ const spinner = (props) => {
             <button 
                 className={classes.SpinnerButton}
                 onClick={props.startSpinHandler} 
-                disabled={props.startButtonPressed}
+                disabled={disabled ? disabled : props.startButtonPressed}
                 style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}> 
                     {!props.startButtonPressed ? spinnerText : null}
                     <div 

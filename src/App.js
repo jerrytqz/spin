@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, withRouter} from 'react-router-dom'; 
+import {Route, withRouter, Redirect} from 'react-router-dom'; 
 import {connect} from 'react-redux'; 
 
 import Layout from './components/Others/Layout/Layout'; 
@@ -12,8 +12,8 @@ class App extends Component {
     return (
       <Layout>
         <Route path="/" exact component={Spin}/>
-        <Route path="/authentication" component={Authentication}/>
-        {this.props.isAuthenticated ? <Route path="/logout" component={LogOut}/> : null}
+        {!this.props.isAuthenticated ? <Route path="/authentication" component={Authentication}/> : <Redirect to="/"/>}
+        {this.props.isAuthenticated ? <Route path="/logout" component={LogOut}/> : <Redirect to="/"/>}
       </Layout>
     );
   }

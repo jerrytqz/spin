@@ -131,6 +131,18 @@
     color: #dedcdc; 
 }
 
+.SpinnerText3 {
+    color: white; 
+    font-weight: bold; 
+    animation: sizeChange 1s ease-in-out infinite; 
+}
+
+@keyframes sizeChange {
+    0% {font-size: 45px}
+    50% {font-size: 50px}
+    100% {font-size: 45px}
+}
+
 /* WIP @media (max-width: 750px) {   
     .Spinner {
         margin-left: -245px; 

@@ -4,6 +4,7 @@ import Spinner from '../../components/Spin/Spinner/Spinner';
 import SpinInfo from '../../components/Spin/SpinInfo/SpinInfo'; 
 import {connect} from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
+import Modal from '../../shared/UI/Modal/Modal'; 
 
 class Spin extends Component {
     state = {
@@ -11,14 +12,19 @@ class Spin extends Component {
         trueDegree: 0,
         startButtonPressed: false, 
         resetting: false,
-        showPrize: false 
+        showPrize: false,
+        showErrorModal: true 
+    }
+
+    componentDidMount() {
+        this.props.onFetchSP(this.props.token); 
     }
 
     startSpinHandler = () => {
         this.props.onPurchaseSpin(this.props.token); 
         let spinDegree = 1800 + Math.random()*360; 
         let trueDegree = spinDegree - 1800; 
-        this.setState({startButtonPressed: true, spinDegree: spinDegree, trueDegree: trueDegree}); 
+        this.setState({startButtonPressed: true, spinDegree: spinDegree, trueDegree: trueDegree, showErrorModal: true}); 
         setTimeout(() => this.setState({showPrize: true}), 700);
     }
 
@@ -27,19 +33,33 @@ class Spin extends Component {
         setTimeout(() => this.setState({startButtonPressed: false, resetting: false}), 700);
     }
 
+    errorModalClickedHandler = () => {
+        this.setState({showErrorModal: false}); 
+        this.props.onResetPurchaseError(); 
+    }
+
     render() {
-        // console.log(this.props.SP);
-        // console.log(this.props.token); 
-        // console.log('spinDegree: ' + this.state.spinDegree);
+        let errorMessage = null; 
+        if (this.props.purchaseError) {
+            errorMessage = (
+                <Modal show={this.state.showErrorModal} clicked={this.errorModalClickedHandler}>
+                    <div style={{color: "red"}}>{this.props.purchaseError}</div>
+                </Modal>    
+            )
+        }
+
         return (
             <div>
+                {errorMessage}
                 <Spinner 
                     startSpinHandler={this.startSpinHandler}
                     startButtonPressed={this.state.startButtonPressed}
                     spinDegree={this.state.spinDegree}
-                    resetting={this.state.resetting}/>
+                    resetting={this.state.resetting}
+                    fetchErrorMessage={this.props.fetchError}/>
                 {this.state.showPrize ? <Prize angle={this.state.trueDegree} clicked={this.resetSpinHandler}/> : null}
                 <SpinInfo/>
+                <div>{this.props.SP}</div>
             </div>   
         ); 
     }
@@ -48,13 +68,17 @@ class Spin extends Component {
 const mapStateToProps = state => {
     return {
         token: state.authentication.token,
-        SP: state.spin.SP
+        SP: state.spin.SP,
+        fetchError: state.spin.fetchError,
+        purchaseError: state.spin.purchaseError
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onPurchaseSpin: (token) => dispatch(actions.purchaseSpin(token))
+        onPurchaseSpin: (token) => dispatch(actions.purchaseSpin(token)),
+        onFetchSP: (token) => dispatch(actions.fetchSP(token)),
+        onResetPurchaseError: () => dispatch(actions.resetPurchaseError())
     }
 }
 

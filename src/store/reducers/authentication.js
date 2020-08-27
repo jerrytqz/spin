@@ -5,7 +5,8 @@ const initialState = {
     isAuthenticated: false,
     token: null,
     authError: null,
-    loading: false  
+    logOutAttemptFinished: false,
+    loading: false
 }
 
 const authStart = (state) => {
@@ -20,7 +21,8 @@ const authSuccess = (state, action) => {
         isAuthenticated: true, 
         token: action.token,
         loading: false,
-        authError: null
+        authError: null,
+        logOutAttemptFinished: false
     })
 }
 
@@ -41,13 +43,15 @@ const logOutClient = (state) => {
     return updateObject(state, {
         isAuthenticated: false,
         token: null,
-        authError: null  
+        authError: null,
+        logOutAttemptFinished: true
     })
 }
 
 const logOutFail = (state, action) => {
     return updateObject(state, {
-        authError: action.authError
+        authError: action.authError,
+        logOutAttemptFinished: true
     })
 }
 
