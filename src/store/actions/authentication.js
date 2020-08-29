@@ -20,9 +20,9 @@ export const authFail = (authError) => {
     }
 }
 
-export const switchAuthMode = () => {
+export const resetAuthError = () => {
     return {
-        type: actionTypes.SWITCH_AUTH_MODE
+        type: actionTypes.RESET_AUTH_ERROR
     }
 }
 

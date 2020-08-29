@@ -3,40 +3,66 @@ import {updateObject} from '../../shared/Functions/utility';
 
 const initialState = {
     SP: 0,
+    degree: 0, 
+    fetchSPLoading: false,  
+    purchaseSpinLoading: false,
     fetchError: null,
-    purchaseError: null  
+    purchaseError: null
+}
+
+const fetchSPStart = (state) => {
+    return updateObject(state, {
+        fetchSPLoading: true 
+    })
 }
 
 const setSP = (state, action) => {
     return updateObject(state, {
         SP: action.SP,
-        fetchError: null 
+        fetchError: null,
+        fetchSPLoading: false  
     })
 }
 
 const setSPFail = (state, action) => {
     return updateObject(state, {
         fetchError: action.fetchError,
-        SP: 0  
+        SP: 0,
+        fetchSPLoading: false  
     })
 }
 
 const purchaseSpinClient = (state, action) => {
     return updateObject(state, {
         SP: action.SP,
-        purchaseError: null 
+        degree: action.degree,
+        purchaseError: null,
+        purchaseSpinLoading: false
     })
 }
 
 const purchaseSpinFail = (state, action) => {
     return updateObject(state, {
-        purchaseError: action.purchaseError
+        purchaseError: action.purchaseError,
+        purchaseSpinLoading: false 
     })
 }
 
 const resetPurchaseError = (state) => {
     return updateObject(state, {
         purchaseError: null 
+    })
+}
+
+const resetDegree = (state) => {
+    return updateObject(state, {
+        degree: 0
+    })
+}
+
+const startPurchaseSpin = (state) => {
+    return updateObject(state, {
+        purchaseSpinLoading: true
     })
 }
 
@@ -52,6 +78,12 @@ const reducer = (state = initialState, action) => {
             return purchaseSpinFail(state, action); 
         case actionTypes.RESET_PURCHASE_ERROR:
             return resetPurchaseError(state); 
+        case actionTypes.RESET_DEGREE: 
+            return resetDegree(state); 
+        case actionTypes.START_PURCHASE_SPIN: 
+            return startPurchaseSpin(state); 
+        case actionTypes.FETCH_SP_START: 
+            return fetchSPStart(state); 
         default:
             return state;
     }

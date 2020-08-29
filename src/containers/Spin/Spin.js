@@ -5,36 +5,39 @@ import SpinInfo from '../../components/Spin/SpinInfo/SpinInfo';
 import {connect} from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import Modal from '../../shared/UI/Modal/Modal'; 
+import Backdrop from '../../shared/UI/Backdrop/Backdrop'; 
+import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
+import classes from './Spin.module.css'; 
 
 class Spin extends Component {
     state = {
-        spinDegree: 0,
-        trueDegree: 0,
         startButtonPressed: false, 
         resetting: false,
         showPrize: false,
-        showErrorModal: true 
+        showErrorModal: true,
+        showSpinnerText: true 
     }
 
     componentDidMount() {
         this.props.onFetchSP(this.props.token); 
     }
 
-    startSpinHandler = () => {
-        this.props.onPurchaseSpin(this.props.token); 
-        let spinDegree = 1800 + Math.random()*360; 
-        let trueDegree = spinDegree - 1800; 
-        this.setState({startButtonPressed: true, spinDegree: spinDegree, trueDegree: trueDegree, showErrorModal: true}); 
-        setTimeout(() => this.setState({showPrize: true}), 700);
+    startSpinHandler = async () => {
+        this.setState({startButtonPressed: true, showErrorModal: true}); 
+        await this.props.onPurchaseSpin(this.props.token);  
+        if (this.props.degree !== 0) {
+            setTimeout(() => this.setState({showPrize: true}), 700);
+        }
     }
 
-    resetSpinHandler = () => { 
-        this.setState({spinDegree: 0, resetting: true, showPrize: false}); 
-        setTimeout(() => this.setState({startButtonPressed: false, resetting: false}), 700);
+    resetSpinHandler = () => {
+        this.props.onResetDegree();  
+        this.setState({resetting: true, showPrize: false, showSpinnerText: false}); 
+        setTimeout(() => this.setState({startButtonPressed: false, resetting: false, showSpinnerText: true}), 700);
     }
 
     errorModalClickedHandler = () => {
-        this.setState({showErrorModal: false}); 
+        this.setState({showErrorModal: false, startButtonPressed: false}); 
         this.props.onResetPurchaseError(); 
     }
 
@@ -49,17 +52,21 @@ class Spin extends Component {
         }
 
         return (
+            this.props.fetchSPLoading ? <LoadingSpinner/> : 
             <div>
+                {this.state.startButtonPressed ? <Backdrop show opacity="0"/> : null}
                 {errorMessage}
                 <Spinner 
                     startSpinHandler={this.startSpinHandler}
                     startButtonPressed={this.state.startButtonPressed}
-                    spinDegree={this.state.spinDegree}
+                    degree={this.props.degree}
                     resetting={this.state.resetting}
-                    fetchErrorMessage={this.props.fetchError}/>
-                {this.state.showPrize ? <Prize angle={this.state.trueDegree} clicked={this.resetSpinHandler}/> : null}
+                    fetchErrorMessage={this.props.fetchError}
+                    purchaseSpinLoading={this.props.purchaseSpinLoading}
+                    showSpinnerText={this.state.showSpinnerText}/>
+                {this.state.showPrize ? <Prize degree={this.props.degree} clicked={this.resetSpinHandler}/> : null}
                 <SpinInfo/>
-                <div>{this.props.SP}</div>
+                <div className={classes.SP}><strong className={classes.SPNumber}>{this.props.SP}</strong> SP</div>
             </div>   
         ); 
     }
@@ -70,7 +77,10 @@ const mapStateToProps = state => {
         token: state.authentication.token,
         SP: state.spin.SP,
         fetchError: state.spin.fetchError,
-        purchaseError: state.spin.purchaseError
+        purchaseError: state.spin.purchaseError,
+        degree: state.spin.degree,
+        purchaseSpinLoading: state.spin.purchaseSpinLoading,
+        fetchSPLoading: state.spin.fetchSPLoading
     }
 }
 
@@ -78,7 +88,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onPurchaseSpin: (token) => dispatch(actions.purchaseSpin(token)),
         onFetchSP: (token) => dispatch(actions.fetchSP(token)),
-        onResetPurchaseError: () => dispatch(actions.resetPurchaseError())
+        onResetPurchaseError: () => dispatch(actions.resetPurchaseError()),
+        onResetDegree: () => dispatch(actions.resetDegree())
     }
 }
 

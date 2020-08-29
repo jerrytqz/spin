@@ -72,6 +72,10 @@ class Authentication extends Component {
         formIsValid: false
     }
 
+    componentDidMount() {
+        this.props.onResetAuthError(); 
+    }
+
     inputChangedHandler = (event, controlName) => {
         const updatedControls = updateObject(this.state.controls, {
             [controlName]: updateObject(this.state.controls[controlName], {
@@ -137,7 +141,7 @@ class Authentication extends Component {
             isLogIn: !prev.isLogIn,
             formIsValid: false
         }))
-        this.props.onSwitchAuthMode(); 
+        this.props.onResetAuthError(); 
     }
 
     render() {
@@ -216,7 +220,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onAuth: (username, email, password, confirmPassword, isLogIn) => 
             dispatch(actions.auth(username, email, password, confirmPassword, isLogIn)),
-        onSwitchAuthMode: () => dispatch(actions.switchAuthMode())
+        onResetAuthError: () => dispatch(actions.resetAuthError())
     }
 }
 

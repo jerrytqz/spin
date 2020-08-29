@@ -33,7 +33,7 @@ const authFail = (state, action) => {
     })
 }
 
-const switchAuthMode = (state) => {
+const resetAuthError = (state) => {
     return updateObject(state, {
         authError: null
     })
@@ -63,8 +63,8 @@ const reducer = (state = initialState, action) => {
             return authSuccess(state, action);
         case actionTypes.AUTH_FAIL:
             return authFail(state, action); 
-        case actionTypes.SWITCH_AUTH_MODE:
-            return switchAuthMode(state); 
+        case actionTypes.RESET_AUTH_ERROR:
+            return resetAuthError(state); 
         case actionTypes.LOG_OUT_CLIENT:
             return logOutClient(state); 
         case actionTypes.LOG_OUT_FAIL:

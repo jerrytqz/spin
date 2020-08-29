@@ -10,22 +10,28 @@ const spinner = (props) => {
     );
     let disabled = false; 
 
+    if (props.purchaseSpinLoading) {
+        spinnerText = (
+            <div className={classes.SpinnerText4}>PURCHASING...</div>
+        )
+    }
+
     if (props.fetchErrorMessage) {
         spinnerText = (
-            <div>
-                <div className={classes.SpinnerText3}>{props.fetchErrorMessage}</div>
-            </div>   
+            <div className={classes.SpinnerText3}>{props.fetchErrorMessage}</div>
         )
         disabled = true; 
     }
 
-    let spinDegree = props.spinDegree; 
+    let spinDegree = props.degree + 1800; 
     let transition = 'transform 0.7s cubic-bezier(0, 0, 0.001, 1)';  
     
+    if (props.degree === 0) {
+        spinDegree = 0; 
+    } 
     if (props.resetting) {
         spinDegree = 1800;
-    }
-
+    } 
     if (!props.startButtonPressed) {
         transition = 'transform 0s cubic-bezier(0, 0, 0.001, 1)'; 
         spinDegree = 0; 
@@ -38,12 +44,11 @@ const spinner = (props) => {
                 onClick={props.startSpinHandler} 
                 disabled={disabled ? disabled : props.startButtonPressed}
                 style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}> 
-                    {!props.startButtonPressed ? spinnerText : null}
-                    <div 
-                        className={classes.Pointer} 
-                        style={{transform: `rotate(0 - ${spinDegree}deg)`, transition: transition}}/>
+                    {(props.degree === 0 && props.showSpinnerText) ? spinnerText : null}
+                    <div className={classes.Pointer}/>
             </button>
             <ul className={classes.RarityCircle}>
+                <li className={classes.liCustom}/>
                 <li className={classes.liCustom}/>
                 <li className={classes.liCustom}/>
                 <li className={classes.liCustom}/>

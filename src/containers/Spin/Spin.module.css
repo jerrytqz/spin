@@ -1,0 +1,16 @@
+.SP {
+    position: relative; 
+    top: 800px; 
+    text-align: center; 
+    font-size: 25px;
+    width: 100%; 
+    margin: 0px auto;
+    margin-bottom: 0; 
+}
+
+.SPNumber {
+    border: 1px solid black;
+    color: #616161;  
+    padding: 10px; 
+    border-radius: 5px;
+}
