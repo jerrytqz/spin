@@ -6,8 +6,14 @@ import Layout from './components/Others/Layout/Layout';
 import Spin from './containers/Spin/Spin'; 
 import Authentication from './containers/Authentication/Authentication'; 
 import LogOut from './containers/Authentication/LogOut/LogOut'; 
+import * as actions from './store/actions/index'; 
 
 class App extends Component {
+  componentDidMount() {
+    this.props.onTryAutoLogIn();
+    this.props.onFetchSP(localStorage.getItem('token'));  
+  }
+
   render() {
     return (
       <Layout>
@@ -25,4 +31,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(App));
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoLogIn: () => dispatch(actions.tryAutoLogIn()),
+    onFetchSP: (token) => dispatch(actions.fetchSP(token))
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

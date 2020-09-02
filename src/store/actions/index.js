@@ -1,12 +1,13 @@
 export {
     auth,
     resetAuthError,
-    logOut
+    logOut,
+    tryAutoLogIn
 } from './authentication'
 
 export {
     fetchSP,
     purchaseSpin,
     resetPurchaseError,
-    resetDegree 
+    resetDegree
 } from './spin'

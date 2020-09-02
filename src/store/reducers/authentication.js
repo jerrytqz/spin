@@ -6,7 +6,8 @@ const initialState = {
     token: null,
     authError: null,
     logOutAttemptFinished: false,
-    loading: false
+    loading: false,
+    autoLogInLoading: true  
 }
 
 const authStart = (state) => {
@@ -17,12 +18,16 @@ const authStart = (state) => {
 }
 
 const authSuccess = (state, action) => {
+    if (localStorage.getItem('token') === null) {
+        localStorage.setItem('token', action.token); 
+    }
     return updateObject(state, {
         isAuthenticated: true, 
         token: action.token,
         loading: false,
         authError: null,
-        logOutAttemptFinished: false
+        logOutAttemptFinished: false,
+        autoLogInLoading: false 
     })
 }
 
@@ -40,11 +45,13 @@ const resetAuthError = (state) => {
 }
 
 const logOutClient = (state) => {
+    localStorage.removeItem('token'); 
     return updateObject(state, {
         isAuthenticated: false,
         token: null,
         authError: null,
-        logOutAttemptFinished: true
+        logOutAttemptFinished: true,
+        autoLogInLoading: false 
     })
 }
 

@@ -41,12 +41,10 @@ export const logOutFail = (authError) => {
 
 export const logOut = (token) => {
     return async dispatch => {
-        const data = new FormData();
-        data.append('token', token); 
         try {
             let response = await fetch('http://127.0.0.1:8000/logout/', {
                 method: 'POST',
-                body: data 
+                headers: new Headers({'Authorization': token})
             });
             let result = await response.json(); 
             if (response.status === 200) {
@@ -87,6 +85,26 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
         }
         catch {
             dispatch(authFail('Unexpected error'));
+        }
+    }
+}
+
+export const tryAutoLogIn = () => {
+    return async dispatch => {
+        try {
+            let response = await fetch('http://127.0.0.1:8000/auto-log-in/', {
+                method: 'POST',
+                headers: new Headers({'Authorization': localStorage.getItem('token')})
+            });
+            await response.json(); 
+            if (response.status === 200) {
+                dispatch(authSuccess(localStorage.getItem('token')));
+            } else {
+                dispatch(logOutClient()); 
+            }
+        }
+        catch {
+            console.log('Unexpected error in logging in'); 
         }
     }
 }

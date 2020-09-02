@@ -64,7 +64,7 @@ export const purchaseSpin = (token) => {
         dispatch(startPurchaseSpin()); 
         try {
             let response = await fetch('http://127.0.0.1:8000/purchase-spin/', {
-                method: 'GET',
+                method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
             let result = await response.json(); 

@@ -80,7 +80,8 @@ const mapStateToProps = state => {
         purchaseError: state.spin.purchaseError,
         degree: state.spin.degree,
         purchaseSpinLoading: state.spin.purchaseSpinLoading,
-        fetchSPLoading: state.spin.fetchSPLoading
+        fetchSPLoading: state.spin.fetchSPLoading,
+        autoLogInLoading: state.authentication.autoLogInLoading
     }
 }
 
