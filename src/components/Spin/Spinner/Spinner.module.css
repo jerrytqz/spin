@@ -153,19 +153,3 @@
     50% {font-size: 50px}
     100% {font-size: 45px}
 }
-
-/* WIP @media (max-width: 750px) {   
-    .Spinner {
-        margin-left: -245px; 
-    }
-    .SpinnerButton {
-        height: 350px;
-        width: 350px;
-        top: 70px;
-        left: 70px; 
-    }
-    .RarityCircle {
-        height: 490px;
-        width: 490px;
-    }
-} */

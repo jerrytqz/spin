@@ -26,9 +26,9 @@ export const resetAuthError = () => {
     }
 }
 
-export const logOutClient = () => {
+export const logOutSuccess = () => {
     return {
-        type: actionTypes.LOG_OUT_CLIENT
+        type: actionTypes.LOG_OUT_SUCCESS
     }
 }
 
@@ -48,7 +48,7 @@ export const logOut = (token) => {
             });
             let result = await response.json(); 
             if (response.status === 200) {
-                dispatch(logOutClient()); 
+                dispatch(logOutSuccess()); 
             } else {
                 dispatch(logOutFail(result['authError'])); 
             } 
@@ -100,7 +100,7 @@ export const tryAutoLogIn = () => {
             if (response.status === 200) {
                 dispatch(authSuccess(localStorage.getItem('token')));
             } else {
-                dispatch(logOutClient()); 
+                dispatch(logOutSuccess()); 
             }
         }
         catch {

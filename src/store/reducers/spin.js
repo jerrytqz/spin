@@ -16,7 +16,7 @@ const fetchSPStart = (state) => {
     })
 }
 
-const setSP = (state, action) => {
+const fetchSPSuccess = (state, action) => {
     return updateObject(state, {
         SP: action.SP,
         fetchError: null,
@@ -24,7 +24,7 @@ const setSP = (state, action) => {
     })
 }
 
-const setSPFail = (state, action) => {
+const fetchSPFail = (state, action) => {
     return updateObject(state, {
         fetchError: action.fetchError,
         SP: 0,
@@ -32,7 +32,13 @@ const setSPFail = (state, action) => {
     })
 }
 
-const purchaseSpinClient = (state, action) => {
+const purchaseSpinStart = (state) => {
+    return updateObject(state, {
+        purchaseSpinLoading: true
+    })
+}
+
+const purchaseSpinSuccess = (state, action) => {
     return updateObject(state, {
         SP: action.SP,
         degree: action.degree,
@@ -60,30 +66,24 @@ const resetDegree = (state) => {
     })
 }
 
-const startPurchaseSpin = (state) => {
-    return updateObject(state, {
-        purchaseSpinLoading: true
-    })
-}
-
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.SET_SP:
-            return setSP(state, action); 
-        case actionTypes.SET_SP_FAIL:
-            return setSPFail(state, action); 
-        case actionTypes.PURCHASE_SPIN_CLIENT:
-            return purchaseSpinClient(state, action); 
+        case actionTypes.FETCH_SP_START: 
+        return fetchSPStart(state); 
+        case actionTypes.FETCH_SP_SUCCESS:
+            return fetchSPSuccess(state, action); 
+        case actionTypes.FETCH_SP_FAIL:
+            return fetchSPFail(state, action); 
+        case actionTypes.PURCHASE_SPIN_SUCCESS:
+            return purchaseSpinSuccess(state, action); 
         case actionTypes.PURCHASE_SPIN_FAIL:
             return purchaseSpinFail(state, action); 
         case actionTypes.RESET_PURCHASE_ERROR:
             return resetPurchaseError(state); 
         case actionTypes.RESET_DEGREE: 
             return resetDegree(state); 
-        case actionTypes.START_PURCHASE_SPIN: 
-            return startPurchaseSpin(state); 
-        case actionTypes.FETCH_SP_START: 
-            return fetchSPStart(state); 
+        case actionTypes.PURCHASE_SPIN_START: 
+            return purchaseSpinStart(state); 
         default:
             return state;
     }

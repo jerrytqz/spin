@@ -19,7 +19,9 @@ class Spin extends Component {
     }
 
     componentDidMount() {
-        this.props.onFetchSP(this.props.token); 
+        if (this.props.autoLogInAttemptFinished) {
+            this.props.onFetchSP(this.props.token); 
+        }
     }
 
     startSpinHandler = async () => {
@@ -50,7 +52,7 @@ class Spin extends Component {
                 </Modal>    
             )
         }
-
+        
         return (
             this.props.fetchSPLoading ? <LoadingSpinner/> : 
             <div>
@@ -81,7 +83,7 @@ const mapStateToProps = state => {
         degree: state.spin.degree,
         purchaseSpinLoading: state.spin.purchaseSpinLoading,
         fetchSPLoading: state.spin.fetchSPLoading,
-        autoLogInLoading: state.authentication.autoLogInLoading
+        autoLogInAttemptFinished: state.authentication.autoLogInAttemptFinished
     }
 }
 

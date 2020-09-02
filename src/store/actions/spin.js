@@ -4,22 +4,22 @@ export const fetchSPStart = () => ({
     type: actionTypes.FETCH_SP_START 
 })
 
-export const setSP = (SP) => ({
-    type: actionTypes.SET_SP,
+export const fetchSPSuccess = (SP) => ({
+    type: actionTypes.FETCH_SP_SUCCESS,
     SP: SP
 })
 
-export const setSPFail = (fetchError) => ({
-    type: actionTypes.SET_SP_FAIL,
+export const fetchSPFail = (fetchError) => ({
+    type: actionTypes.FETCH_SP_FAIL,
     fetchError: fetchError 
 })
 
-export const startPurchaseSpin = () => ({
-    type: actionTypes.START_PURCHASE_SPIN
+export const purchaseSpinStart = () => ({
+    type: actionTypes.PURCHASE_SPIN_START
 })
 
-export const purchaseSpinClient = (SP, degree) => ({
-    type: actionTypes.PURCHASE_SPIN_CLIENT,
+export const purchaseSpinSuccess = (SP, degree) => ({
+    type: actionTypes.PURCHASE_SPIN_SUCCESS,
     SP: SP,
     degree: degree  
 })
@@ -47,21 +47,21 @@ export const fetchSP = (token) => {
             });
             let result = await response.json(); 
             if (response.status === 200) {
-                dispatch(setSP(result['SP'])); 
+                dispatch(fetchSPSuccess(result['SP'])); 
             }
             else {
-                dispatch(setSPFail(result['fetchError']));  
+                dispatch(fetchSPFail(result['fetchError']));  
             }
         }
         catch {
-            dispatch(setSPFail('UNEXPECTED ERROR')); 
+            dispatch(fetchSPFail('UNEXPECTED ERROR')); 
         }
     }
 }
 
 export const purchaseSpin = (token) => {
     return async dispatch => {
-        dispatch(startPurchaseSpin()); 
+        dispatch(purchaseSpinStart()); 
         try {
             let response = await fetch('http://127.0.0.1:8000/purchase-spin/', {
                 method: 'POST',
@@ -69,7 +69,7 @@ export const purchaseSpin = (token) => {
             });
             let result = await response.json(); 
             if (response.status === 200) {
-                dispatch(purchaseSpinClient(result['SP'], result['degree'])); 
+                dispatch(purchaseSpinSuccess(result['SP'], result['degree'])); 
             } else {
                 dispatch(purchaseSpinFail(result['purchaseError'])); 
             }

@@ -11,3 +11,7 @@ export {
     resetPurchaseError,
     resetDegree
 } from './spin'
+
+export {
+    fetchInventory
+} from './inventory'

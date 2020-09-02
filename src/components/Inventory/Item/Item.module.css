@@ -1,0 +1,54 @@
+.Item {
+    height: 200px;
+    width: 200px;
+    border-radius: 15px; 
+    border: 5px solid;  
+    background-color: white;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ItemRainbow {
+    animation: rainbowBorder 0.5s linear infinite;
+}
+
+.ItemNameRainbow {
+    animation: rainbow 0.5s linear infinite;
+}
+
+.ItemImage {
+    padding: 5px; 
+    text-align: center; 
+    color: #616161; 
+}
+
+.ItemName {
+    font-size: 1.25em; 
+    padding: 5px; 
+    text-align: center; 
+    font-weight: bold;
+}
+
+.ItemQuantity {
+    padding: 5px; 
+    text-align: right; 
+    color: #616161; 
+}
+
+
+@keyframes rainbowBorder {
+    0%, 100% {border-color: green;}
+    20% {border-color: cyan;}
+    40% {border-color: yellow;}
+    60% {border-color: red;}
+    80% {border-color: blue;}
+}
+
+@keyframes rainbow {
+    0%, 100% {color: green;}
+    20% {color: cyan;}
+    40% {color: yellow;}
+    60% {color: red;}
+    80% {color: blue;}
+}

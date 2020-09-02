@@ -7,7 +7,7 @@ const initialState = {
     authError: null,
     logOutAttemptFinished: false,
     loading: false,
-    autoLogInLoading: true  
+    autoLogInAttemptFinished: false 
 }
 
 const authStart = (state) => {
@@ -27,7 +27,7 @@ const authSuccess = (state, action) => {
         loading: false,
         authError: null,
         logOutAttemptFinished: false,
-        autoLogInLoading: false 
+        autoLogInAttemptFinished: true 
     })
 }
 
@@ -44,14 +44,14 @@ const resetAuthError = (state) => {
     })
 }
 
-const logOutClient = (state) => {
+const logOutSuccess = (state) => {
     localStorage.removeItem('token'); 
     return updateObject(state, {
         isAuthenticated: false,
         token: null,
         authError: null,
         logOutAttemptFinished: true,
-        autoLogInLoading: false 
+        autoLogInAttemptFinished: true 
     })
 }
 
@@ -72,8 +72,8 @@ const reducer = (state = initialState, action) => {
             return authFail(state, action); 
         case actionTypes.RESET_AUTH_ERROR:
             return resetAuthError(state); 
-        case actionTypes.LOG_OUT_CLIENT:
-            return logOutClient(state); 
+        case actionTypes.LOG_OUT_SUCCESS:
+            return logOutSuccess(state); 
         case actionTypes.LOG_OUT_FAIL:
             return logOutFail(state, action); 
         default:

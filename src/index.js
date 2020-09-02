@@ -9,12 +9,14 @@ import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import thunk from 'redux-thunk'; 
 import authenticationReducer from './store/reducers/authentication'; 
 import spinReducer from './store/reducers/spin';
+import inventoryReducer from './store/reducers/inventory'; 
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose; 
 
 const rootReducer = combineReducers({
     spin: spinReducer,
-    authentication: authenticationReducer
+    authentication: authenticationReducer,
+    inventory: inventoryReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(
