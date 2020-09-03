@@ -4,7 +4,7 @@ import Item from '../../components/Inventory/Item/Item';
 import {connect} from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import {mapRarityToColor} from '../../shared/Functions/utility'; 
+import {mapRarityToValue} from '../../shared/Functions/utility'; 
 
 class Inventory extends Component {
     componentDidMount() {
@@ -22,10 +22,12 @@ class Inventory extends Component {
                     key={info.id} 
                     name={item} 
                     quantity={info.quantity}
-                    color={mapRarityToColor(info.rarity)}/>)
+                    rarity={info.rarity}/>)
             }
+            inventory.sort((a, b) => mapRarityToValue(a.props.rarity) - mapRarityToValue(b.props.rarity));
+            inventory.reverse(); 
         }
-        return (this.props.fetchInventoryLoading ? <LoadingSpinner/> :
+        return (this.props.fetchInventoryLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> :
             this.props.fetchError ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> :
             <div className={classes.Inventory}>
                 {inventory}

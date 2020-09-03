@@ -18,10 +18,11 @@ export const purchaseSpinStart = () => ({
     type: actionTypes.PURCHASE_SPIN_START
 })
 
-export const purchaseSpinSuccess = (SP, degree) => ({
+export const purchaseSpinSuccess = (SP, degree, item) => ({
     type: actionTypes.PURCHASE_SPIN_SUCCESS,
     SP: SP,
-    degree: degree  
+    degree: degree,
+    item: item   
 })
 
 export const purchaseSpinFail = (purchaseError) => ({
@@ -69,7 +70,7 @@ export const purchaseSpin = (token) => {
             });
             let result = await response.json(); 
             if (response.status === 200) {
-                dispatch(purchaseSpinSuccess(result['SP'], result['degree'])); 
+                dispatch(purchaseSpinSuccess(result['SP'], result['degree'], result['item'])); 
             } else {
                 dispatch(purchaseSpinFail(result['purchaseError'])); 
             }

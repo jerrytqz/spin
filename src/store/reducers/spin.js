@@ -4,6 +4,7 @@ import {updateObject} from '../../shared/Functions/utility';
 const initialState = {
     SP: 0,
     degree: 0, 
+    item: null, 
     fetchSPLoading: false,  
     purchaseSpinLoading: false,
     fetchError: null,
@@ -42,6 +43,7 @@ const purchaseSpinSuccess = (state, action) => {
     return updateObject(state, {
         SP: action.SP,
         degree: action.degree,
+        item: action.item, 
         purchaseError: null,
         purchaseSpinLoading: false
     })

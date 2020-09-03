@@ -3,6 +3,7 @@ import * as actions from '../../../store/actions/index';
 import {connect} from 'react-redux'; 
 import Modal from '../../../shared/UI/Modal/Modal'; 
 import LoadingSpinner from '../../../shared/UI/LoadingSpinner/LoadingSpinner'; 
+import classes from './LogOut.module.css'; 
 
 class LogOut extends Component {
     state = {
@@ -18,7 +19,7 @@ class LogOut extends Component {
     }
 
     render() {
-        let logOutResult = <LoadingSpinner/>
+        let logOutResult = <div className={classes.LoadingSpinner}><LoadingSpinner/></div>
         if (this.props.logOutAttemptFinished && this.props.authError) {
             logOutResult = (
                 <Modal show={this.state.showModal} clicked={this.clickedHandler}>

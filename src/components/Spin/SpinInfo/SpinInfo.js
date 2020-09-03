@@ -8,8 +8,8 @@ const spinInfo = () => (
         <Rarity rarityType="Uncommon" rarityChance="20%" rarityColor="cyan"/>
         <Rarity rarityType="Rare" rarityChance="15%" rarityColor="red"/>
         <Rarity rarityType="Epic" rarityChance="10%" rarityColor="purple"/>
-        <Rarity rarityType="Holy" rarityChance="2%" rarityColor="orange"/>
-        <Rarity rarityType="Godly" rarityChance="0.99%" rarityColor="yellow"/>
+        <Rarity rarityType="Holy" rarityChance="2.5%" rarityColor="orange"/>
+        <Rarity rarityType="Godly" rarityChance="0.49%" rarityColor="yellow"/>
         <Rarity rarityType="???" rarityChance="0.01%" animation="rainbow"/>
     </div>
 )

@@ -54,7 +54,7 @@ class Spin extends Component {
         }
         
         return (
-            this.props.fetchSPLoading ? <LoadingSpinner/> : 
+            this.props.fetchSPLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> : 
             <div>
                 {this.state.startButtonPressed ? <Backdrop show opacity="0"/> : null}
                 {errorMessage}
@@ -66,7 +66,7 @@ class Spin extends Component {
                     fetchErrorMessage={this.props.fetchError}
                     purchaseSpinLoading={this.props.purchaseSpinLoading}
                     showSpinnerText={this.state.showSpinnerText}/>
-                {this.state.showPrize ? <Prize degree={this.props.degree} clicked={this.resetSpinHandler}/> : null}
+                {this.state.showPrize ? <Prize degree={this.props.degree} clicked={this.resetSpinHandler} item={this.props.item}/> : null}
                 <SpinInfo/>
                 <div className={classes.SP}><strong className={classes.SPNumber}>{this.props.SP}</strong> SP</div>
             </div>   
@@ -78,9 +78,10 @@ const mapStateToProps = state => {
     return {
         token: state.authentication.token,
         SP: state.spin.SP,
+        degree: state.spin.degree,
+        item: state.spin.item, 
         fetchError: state.spin.fetchError,
         purchaseError: state.spin.purchaseError,
-        degree: state.spin.degree,
         purchaseSpinLoading: state.spin.purchaseSpinLoading,
         fetchSPLoading: state.spin.fetchSPLoading,
         autoLogInAttemptFinished: state.authentication.autoLogInAttemptFinished

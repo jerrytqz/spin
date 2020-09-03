@@ -1,20 +1,21 @@
 .Item {
     height: 200px;
     width: 200px;
-    border-radius: 15px; 
+    border-radius: 10px; 
     border: 5px solid;  
     background-color: white;
     display: flex; 
     flex-direction: column;
     justify-content: space-between;
+    animation: spin linear 0.1s 
 }
 
 .ItemRainbow {
-    animation: rainbowBorder 0.5s linear infinite;
+    animation: spin linear 0.1s, rainbowBorder 0.5s linear infinite;
 }
 
 .ItemNameRainbow {
-    animation: rainbow 0.5s linear infinite;
+    animation: spin linear 0.1s, rainbow 0.5s linear infinite;
 }
 
 .ItemImage {
@@ -52,3 +53,12 @@
     60% {color: red;}
     80% {color: blue;}
 }
+
+@keyframes spin {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(-360deg);
+    }
+  }
