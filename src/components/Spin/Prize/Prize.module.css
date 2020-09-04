@@ -8,6 +8,23 @@
     padding-right: 16px; 
 }
 
+.Stats {
+    position: absolute;
+    bottom: 16px; 
+}
+
+.Stat {
+    text-align: left;
+    font-size: 0.8em; 
+}
+
+.Description {
+    text-align: justify;
+    font-size: 0.9em; 
+    font-style: italic; 
+    color: #616161; 
+}
+
 .Item {
     flex-shrink: 0;
     flex-grow: 0; 
