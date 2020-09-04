@@ -1,0 +1,72 @@
+.Profile {
+    width: 90%; 
+    margin: 100px auto;  
+    margin-bottom: 0; 
+}
+
+.Header {
+    font-size: 3.5em; 
+    font-weight: bold; 
+    background-color: white;
+    padding: 16px 16px 16px 16px; 
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px #ccc;
+    border-radius: 10px;
+    margin-bottom: 15px;  
+}
+
+.Body {
+    display: flex; 
+}
+
+.Stats {
+    display: flex; 
+    flex-direction: column; 
+    color: #616161;
+    padding: 16px 16px 16px 16px; 
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 2px 2px 2px #ccc;
+    border-radius: 0 10px 0 10px; 
+    width: 25%; 
+    margin-right: 15px; 
+}
+
+.StatsHeader {
+    font-size: 1.25em; 
+    color: black; 
+    font-weight: bold;
+    text-decoration: underline; 
+    margin-bottom: 16px; 
+}
+
+.Display {
+    color: #616161;
+    padding: 16px 16px 16px 16px; 
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 2px 2px 2px #ccc;
+    border-radius: 10px 0 10px 0; 
+    flex: 1 0 auto; 
+}
+
+.FetchErrorMessage {
+    text-align: center; 
+    font-weight: bold; 
+    color: #616161; 
+    margin-top: 100px; 
+    animation: sizeChange 1s ease-in-out infinite; 
+}
+
+.LoadingSpinner {
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+@keyframes sizeChange {
+    0% {font-size: 2.5em}
+    50% {font-size: 2.55em}
+    100% {font-size: 2.5em}
+}

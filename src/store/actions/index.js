@@ -15,3 +15,7 @@ export {
 export {
     fetchInventory
 } from './inventory'
+
+export {
+    fetchProfile
+} from './profile'

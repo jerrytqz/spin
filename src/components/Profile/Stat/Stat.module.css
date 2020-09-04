@@ -1,0 +1,10 @@
+.Stat {
+    display: flex; 
+    margin: 5px 0 5px 0; 
+    justify-content: space-between;
+}
+
+.StatName {
+    font-style: italic; 
+    color: black; 
+}
