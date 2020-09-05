@@ -6,6 +6,8 @@ const display = (props) => {
     return (
         <div className={classes.Display}>
             <Showcase showcaseItems={props.showcaseItems}/>
+            <hr className={classes.Separator}/>
+            <div className={classes.Circle}/>
         </div>
     )
 }

@@ -18,3 +18,9 @@
     text-decoration: underline; 
     margin-bottom: 16px; 
 }
+
+.Separator {
+    width: 100%; 
+    color: #616161;
+    margin: 12px auto 12px auto; 
+}

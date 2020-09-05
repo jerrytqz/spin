@@ -8,3 +8,18 @@
     display: flex; 
     flex-direction: column;
 }
+
+.Separator {
+    width: 100%; 
+    color: #616161; 
+    margin: 16px 0 0 0; 
+}
+
+.Circle {
+    height: 400px; 
+    width: 400px; 
+    margin: 16px auto; 
+    margin-bottom: 0; 
+    border: 1px solid #ccc; 
+    border-radius: 50%; 
+}

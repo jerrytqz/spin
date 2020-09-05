@@ -2,9 +2,34 @@
     display: flex; 
     margin: 5px 0 5px 0; 
     justify-content: space-between;
+    align-items: center; 
 }
 
 .StatName {
-    font-style: italic; 
     color: black; 
+}
+
+.RarityCircle {
+    width: 17.5px;
+    height: 17.5px; 
+    margin-right: 16px; 
+    border: 1px solid black; 
+    border-radius: 50%; 
+}
+
+.Rainbow {
+    animation: rainbow 0.5s linear infinite; 
+}
+
+.StatLeft {
+    display: flex; 
+    align-items: center;
+}
+
+@keyframes rainbow {
+    0%, 100% {background: green;}
+    20% {background: cyan;}
+    40% {background: yellow;}
+    60% {background: red;}
+    80% {background: blue;}
 }
