@@ -1,5 +1,5 @@
 .Profile {
-    width: 90%; 
+    width: 1000px; 
     margin: 100px auto;  
     margin-bottom: 0; 
 }
@@ -11,43 +11,12 @@
     padding: 16px 16px 16px 16px; 
     border: 1px solid #ccc;
     box-shadow: 2px 2px 2px #ccc;
-    border-radius: 10px;
-    margin-bottom: 15px;  
+    margin-bottom: 16px;  
+    border-radius: 10px 10px 0 0;
 }
 
 .Body {
     display: flex; 
-}
-
-.Stats {
-    display: flex; 
-    flex-direction: column; 
-    color: #616161;
-    padding: 16px 16px 16px 16px; 
-    border: 1px solid #ccc;
-    background-color: white;
-    box-shadow: 2px 2px 2px #ccc;
-    border-radius: 0 10px 0 10px; 
-    width: 25%; 
-    margin-right: 15px; 
-}
-
-.StatsHeader {
-    font-size: 1.25em; 
-    color: black; 
-    font-weight: bold;
-    text-decoration: underline; 
-    margin-bottom: 16px; 
-}
-
-.Display {
-    color: #616161;
-    padding: 16px 16px 16px 16px; 
-    border: 1px solid #ccc;
-    background-color: white;
-    box-shadow: 2px 2px 2px #ccc;
-    border-radius: 10px 0 10px 0; 
-    flex: 1 0 auto; 
 }
 
 .FetchErrorMessage {

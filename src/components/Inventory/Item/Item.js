@@ -11,6 +11,10 @@ const item = (props) => {
         itemClasses.push(classes.ItemRainbow); 
         itemNameClasses.push(classes.ItemNameRainbow); 
     }
+
+    if (props.showcase) {
+        itemClasses.push(classes.ItemShowcase);
+    }
     
     return (
         <div className={itemClasses.join(' ')} style={{borderColor: color}}>

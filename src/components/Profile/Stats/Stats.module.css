@@ -1,0 +1,20 @@
+.Stats {
+    display: flex; 
+    flex-direction: column; 
+    color: #616161;
+    padding: 16px 16px 16px 16px; 
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 2px 2px 2px #ccc;
+    border-radius: 0 10px 0 10px; 
+    flex: 1 0 auto; 
+    margin-right: 16px; 
+}
+
+.StatsHeader {
+    font-size: 1.25em; 
+    color: black; 
+    font-weight: bold;
+    text-decoration: underline; 
+    margin-bottom: 16px; 
+}

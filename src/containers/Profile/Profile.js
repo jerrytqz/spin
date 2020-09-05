@@ -1,9 +1,10 @@
 import React, {Component} from 'react'; 
 import classes from './Profile.module.css'; 
-import Stat from '../../components/Profile/Stat/Stat'; 
 import {connect} from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
+import Stats from '../../components/Profile/Stats/Stats'; 
+import Display from '../../components/Profile/Display/Display'; 
 
 class Profile extends Component {
     componentDidMount() {
@@ -19,14 +20,8 @@ class Profile extends Component {
                 <div className={classes.Profile}>
                     <div className={classes.Header}>{this.props.profile.username}</div>
                     <div className={classes.Body}>
-                        <div className={classes.Stats}>
-                            <div className={classes.StatsHeader}>STATS</div>
-                            <Stat statName="SP" statValue={this.props.profile.stats.SP}/>
-                            <Stat statName="SPINS" statValue={this.props.profile.stats.totalSpins}/>
-                        </div>
-                        <div className={classes.Display}>
-                            {/* WIP */}
-                        </div>
+                        <Stats stats={this.props.profile.stats}/>
+                        <Display showcaseItems={this.props.profile.showcaseItems}/>
                     </div>
                 </div>
             )
