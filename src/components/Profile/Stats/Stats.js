@@ -6,18 +6,28 @@ import {capitalize, mapRarityToColor} from '../../../shared/Functions/utility';
 const stats = (props) => {
     let rarityStats = []; 
     if (props.stats.rarityStats) {
-        const rawRarityStats = Object.entries(props.stats.rarityStats);
-        for (const [rarity, value] of rawRarityStats) {
-            const percent = (value/props.stats.totalSpins)*100
-            console.log(percent)
-            rarityStats.push(<Stat 
-                key={rarity}
-                statName={capitalize(rarity)}
-                statValue={percent.toFixed(2)+"%"}
-                rarityColor={mapRarityToColor(capitalize(rarity))}/>)
+        if (props.stats.totalSpins === 0) {
+            const rawRarityStats = Object.keys(props.stats.rarityStats);
+            for (const rarity of rawRarityStats) {
+                rarityStats.push(<Stat 
+                    key={rarity}
+                    statName={capitalize(rarity)}
+                    statValue="0%"
+                    rarityColor={mapRarityToColor(capitalize(rarity))}/>)
+            }
+        } else {
+            const rawRarityStats = Object.entries(props.stats.rarityStats);
+            for (const [rarity, value] of rawRarityStats) {
+                const percent = (value/props.stats.totalSpins)*100
+                rarityStats.push(<Stat 
+                    key={rarity}
+                    statName={capitalize(rarity)}
+                    statValue={percent.toFixed(2)+"%"}
+                    rarityColor={mapRarityToColor(capitalize(rarity))}/>)
+            }
         }
     }
-
+    
     return (
         <div className={classes.Stats}>
             <div className={classes.StatsHeader}>STATS</div>

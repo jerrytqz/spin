@@ -3,15 +3,30 @@ import classes from './Showcase.module.css';
 import Item from '../../../Inventory/Item/Item'; 
 
 const showcase = (props) => {
-    const first = props.showcaseItems.first; 
-    const second = props.showcaseItems.second; 
-    const third = props.showcaseItems.third; 
+    const one = props.showcaseItems.one; 
+    const two = props.showcaseItems.two; 
+    const three = props.showcaseItems.three; 
 
     return (
         <div className={classes.Showcase}>
-            <Item rarity={first.rarity} quantity={first.quantity} name={first.name} showcase/>
-            <Item rarity={second.rarity} quantity={second.quantity} name={second.name} showcase/>
-            <Item rarity={third.rarity} quantity={third.quantity} name={third.name} showcase/>
+            {one !== 'nothing' ? <Item 
+                rarity={one.rarity} 
+                quantity={one.quantity} 
+                name={one.name} 
+                showcase/> : 
+                <Item nullItem showcase/>}
+            {two !== 'nothing' ? <Item 
+                rarity={two.rarity} 
+                quantity={two.quantity} 
+                name={two.name} 
+                showcase/> :
+                <Item nullItem showcase/>} 
+            {three !== 'nothing' ? <Item 
+                rarity={three.rarity} 
+                quantity={three.quantity} 
+                name={three.name} 
+                showcase/> :
+                <Item nullItem showcase/>}
         </div>
     )
 }
