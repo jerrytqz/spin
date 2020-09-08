@@ -4,7 +4,6 @@ import Spinner from '../../components/Spin/Spinner/Spinner';
 import SpinInfo from '../../components/Spin/SpinInfo/SpinInfo'; 
 import {connect} from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
-import Modal from '../../shared/UI/Modal/Modal'; 
 import Backdrop from '../../shared/UI/Backdrop/Backdrop'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import classes from './Spin.module.css'; 
@@ -15,7 +14,6 @@ class Spin extends Component {
         startButtonPressed: false, 
         resetting: false,
         showPrize: false,
-        showErrorModal: true,
         showSpinnerText: true
     }
 
@@ -40,7 +38,7 @@ class Spin extends Component {
     }
 
     purchaseErrorClickedHandler = () => {
-        this.setState({showErrorModal: false, startButtonPressed: false}); 
+        this.setState({startButtonPressed: false}); 
         this.props.onResetPurchaseError(); 
     }
 
@@ -53,29 +51,25 @@ class Spin extends Component {
     }
 
     render() {
-        let errorMessage = null; 
-        if (this.props.purchaseError) {
-            errorMessage = (
-                <Modal show={this.state.showErrorModal} clicked={this.purchaseErrorClickedHandler}>
-                    <div style={{color: "red"}}>{this.props.purchaseError}</div>
-                </Modal>    
-            )
-        }
-
         return (
             this.props.fetchSPLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> : 
             <div>
                 {this.state.startButtonPressed ? <Backdrop show opacity="0"/> : null}
-                {errorMessage}
                 <Spinner 
                     startSpinHandler={this.startSpinHandler}
                     startButtonPressed={this.state.startButtonPressed}
                     degree={this.props.degree}
                     resetting={this.state.resetting}
-                    fetchErrorMessage={this.props.fetchError}
+                    fetchError={this.props.fetchError}
+                    purchaseError={this.props.purchaseError}
                     purchaseSpinLoading={this.props.purchaseSpinLoading}
-                    showSpinnerText={this.state.showSpinnerText}/>
-                {this.state.showPrize ? <Prize degree={this.props.degree} clicked={this.resetSpinHandler} item={this.props.item}/> : null}
+                    showSpinnerText={this.state.showSpinnerText}
+                    onClickBackdrop={this.purchaseErrorClickedHandler}/>
+                {this.state.showPrize ? 
+                <Prize 
+                    degree={this.props.degree} 
+                    clicked={this.resetSpinHandler} 
+                    item={this.props.item}/> : null}
                 <SpinInfo/>
                 <SP 
                     SP={this.props.SP} 

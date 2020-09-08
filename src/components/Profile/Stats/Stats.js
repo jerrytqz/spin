@@ -32,7 +32,7 @@ const stats = (props) => {
         <div className={classes.Stats}>
             <div className={classes.StatsHeader}>STATS</div>
             <Stat statName="SP" statValue={props.stats.SP}/>
-            {/* <Stat statName="Net SP" statValue={props.stats.netSP}/> WIP */}
+            <Stat statName="Net SP" statValue={props.stats.netSP}/>
             <Stat statName="Total Spins" statValue={props.stats.totalSpins}/>
             <Stat statName="Items Found" statValue={`${props.stats.itemsFound}/${props.stats.totalSpinItems}`}/>
             <Stat statName="??? Unboxed" statValue={props.stats.rarityStats["???"]}/>

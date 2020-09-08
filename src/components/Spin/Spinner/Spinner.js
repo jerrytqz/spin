@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Spinner.module.css'; 
+import Modal from '../../../shared/UI/Modal/Modal'; 
 
 const spinner = (props) => { 
     let spinnerText = (
@@ -16,9 +17,9 @@ const spinner = (props) => {
         )
     }
 
-    if (props.fetchErrorMessage) {
+    if (props.fetchError) {
         spinnerText = (
-            <div className={classes.SpinnerText3}>{props.fetchErrorMessage}</div>
+            <div className={classes.SpinnerText3}>{props.fetchError}</div>
         )
         disabled = true; 
     }
@@ -60,6 +61,10 @@ const spinner = (props) => {
                 <li className={classes.liCustom}/>
                 <li className={classes.liCustom}/>
             </ul>
+            {props.purchaseError ? 
+            <Modal show clicked={props.onClickBackdrop}>
+                    <div style={{color: "red"}}>{props.purchaseError}</div>
+            </Modal> : null}
         </div>
     )
 }
