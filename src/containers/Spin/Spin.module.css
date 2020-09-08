@@ -1,18 +1,3 @@
-.SP {
-    position: absolute; 
-    top: 850px; 
-    text-align: center; 
-    font-size: 25px;
-    width: 100%; 
-}
-
-.SPNumber {
-    border: 1px solid black;
-    color: #616161;  
-    padding: 10px; 
-    border-radius: 5px;
-}
-
 .LoadingSpinner {
     position: absolute;
     left: 50%; 

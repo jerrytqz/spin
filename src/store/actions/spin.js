@@ -80,3 +80,37 @@ export const purchaseSpin = (token) => {
         }
     }
 }
+
+export const getFreeSPSuccess = (SP) => ({
+    type: actionTypes.GET_FREE_SP_SUCCESS,
+    SP: SP
+})
+
+export const getFreeSPFail = (freeSPError) => ({
+    type: actionTypes.GET_FREE_SP_FAIL,
+    freeSPError: freeSPError
+})
+
+export const resetFreeSPError = () => ({
+    type: actionTypes.RESET_FREE_SP_ERROR
+})
+
+export const getFreeSP = (token) => {
+    return async dispatch => {
+        try {
+            let response = await fetch('http://127.0.0.1:8000/free-sp/', {
+                method: 'GET',
+                headers: new Headers({'Authorization': token})
+            });
+            let result = await response.json(); 
+            if (response.status === 200) {
+                dispatch(getFreeSPSuccess(result['SP'])); 
+            } else {
+                dispatch(getFreeSPFail(result['freeSPError'])); 
+            }
+        }
+        catch {
+            dispatch(getFreeSPFail('Unexpected error')); 
+        }
+    }
+}

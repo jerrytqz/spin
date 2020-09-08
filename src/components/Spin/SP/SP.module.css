@@ -1,0 +1,43 @@
+.SP {
+    text-align: center; 
+    font-size: 25px;
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+    margin-top: 850px; 
+    align-items: center; 
+}
+
+.SPNumber {
+    border: 1px solid black;
+    color: #616161;  
+    padding: 10px; 
+    border-radius: 5px;
+}
+
+.FreeSPButton {
+    height: 20px;
+    width: 20px; 
+    margin-left: 5px;
+    color: white;
+    background: green;
+    border: 0; 
+    border-radius: 50%; 
+}
+
+.FreeSPError {
+    color: #616161; 
+}
+
+.FreeSPButton:hover,
+.FreeSPButton:focus,
+.FreeSPButton:active {
+    background-color: #4fba4f; 
+    cursor: pointer; 
+    outline: 0; 
+}
+
+.FreeSPButton:disabled {
+    background-color: #a2d2a2;
+    cursor: not-allowed; 
+}

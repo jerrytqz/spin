@@ -8,6 +8,7 @@ import Modal from '../../shared/UI/Modal/Modal';
 import Backdrop from '../../shared/UI/Backdrop/Backdrop'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import classes from './Spin.module.css'; 
+import SP from '../../components/Spin/SP/SP'; 
 
 class Spin extends Component {
     state = {
@@ -15,7 +16,7 @@ class Spin extends Component {
         resetting: false,
         showPrize: false,
         showErrorModal: true,
-        showSpinnerText: true 
+        showSpinnerText: true
     }
 
     componentDidMount() {
@@ -38,21 +39,29 @@ class Spin extends Component {
         setTimeout(() => this.setState({startButtonPressed: false, resetting: false, showSpinnerText: true}), 700);
     }
 
-    errorModalClickedHandler = () => {
+    purchaseErrorClickedHandler = () => {
         this.setState({showErrorModal: false, startButtonPressed: false}); 
         this.props.onResetPurchaseError(); 
+    }
+
+    clickFreeSPHandler = () => {
+        this.props.onGetFreeSP(this.props.token); 
+    }
+
+    freeSPErrorClickedHandler = () => {
+        this.props.onResetFreeSPError(); 
     }
 
     render() {
         let errorMessage = null; 
         if (this.props.purchaseError) {
             errorMessage = (
-                <Modal show={this.state.showErrorModal} clicked={this.errorModalClickedHandler}>
+                <Modal show={this.state.showErrorModal} clicked={this.purchaseErrorClickedHandler}>
                     <div style={{color: "red"}}>{this.props.purchaseError}</div>
                 </Modal>    
             )
         }
-        
+
         return (
             this.props.fetchSPLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> : 
             <div>
@@ -68,7 +77,12 @@ class Spin extends Component {
                     showSpinnerText={this.state.showSpinnerText}/>
                 {this.state.showPrize ? <Prize degree={this.props.degree} clicked={this.resetSpinHandler} item={this.props.item}/> : null}
                 <SpinInfo/>
-                <div className={classes.SP}><strong className={classes.SPNumber}>{this.props.SP}</strong> SP</div>
+                <SP 
+                    SP={this.props.SP} 
+                    onClickFreeSP={this.clickFreeSPHandler}
+                    onClickBackdrop={this.freeSPErrorClickedHandler}
+                    freeSPError={this.props.freeSPError}
+                    disabledFreeSP={!this.props.isAuthenticated}/>
             </div>   
         ); 
     }
@@ -77,6 +91,7 @@ class Spin extends Component {
 const mapStateToProps = state => {
     return {
         token: state.authentication.token,
+        isAuthenticated: state.authentication.isAuthenticated,
         SP: state.spin.SP,
         degree: state.spin.degree,
         item: state.spin.item, 
@@ -84,7 +99,8 @@ const mapStateToProps = state => {
         purchaseError: state.spin.purchaseError,
         purchaseSpinLoading: state.spin.purchaseSpinLoading,
         fetchSPLoading: state.spin.fetchSPLoading,
-        autoLogInAttemptFinished: state.authentication.autoLogInAttemptFinished
+        autoLogInAttemptFinished: state.authentication.autoLogInAttemptFinished,
+        freeSPError: state.spin.freeSPError
     }
 }
 
@@ -93,7 +109,9 @@ const mapDispatchToProps = dispatch => {
         onPurchaseSpin: (token) => dispatch(actions.purchaseSpin(token)),
         onFetchSP: (token) => dispatch(actions.fetchSP(token)),
         onResetPurchaseError: () => dispatch(actions.resetPurchaseError()),
-        onResetDegree: () => dispatch(actions.resetDegree())
+        onResetDegree: () => dispatch(actions.resetDegree()),
+        onGetFreeSP: (token) => dispatch(actions.getFreeSP(token)),
+        onResetFreeSPError: () => dispatch(actions.resetFreeSPError()) 
     }
 }
 

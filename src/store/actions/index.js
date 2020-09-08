@@ -9,7 +9,9 @@ export {
     fetchSP,
     purchaseSpin,
     resetPurchaseError,
-    resetDegree
+    resetDegree,
+    getFreeSP,
+    resetFreeSPError
 } from './spin'
 
 export {

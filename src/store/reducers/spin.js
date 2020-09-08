@@ -8,7 +8,8 @@ const initialState = {
     fetchSPLoading: false,  
     purchaseSpinLoading: false,
     fetchError: null,
-    purchaseError: null
+    purchaseError: null,
+    freeSPError: null 
 }
 
 const fetchSPStart = (state) => {
@@ -68,6 +69,27 @@ const resetDegree = (state) => {
     })
 }
 
+
+const getFreeSPSuccess = (state, action) => {
+    return updateObject(state, {
+        SP: action.SP,
+        freeSPError: null 
+    })
+}
+
+
+const getFreeSPFail = (state, action) => {
+    return updateObject(state, {
+        freeSPError: action.freeSPError
+    })
+}
+
+const resetFreeSPError = (state) => {
+    return updateObject(state, {
+        freeSPError: null 
+    })
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_SP_START: 
@@ -86,6 +108,12 @@ const reducer = (state = initialState, action) => {
             return resetDegree(state); 
         case actionTypes.PURCHASE_SPIN_START: 
             return purchaseSpinStart(state); 
+        case actionTypes.GET_FREE_SP_SUCCESS: 
+            return getFreeSPSuccess(state, action); 
+        case actionTypes.GET_FREE_SP_FAIL: 
+            return getFreeSPFail(state, action); 
+        case actionTypes.RESET_FREE_SP_ERROR: 
+            return resetFreeSPError(state); 
         default:
             return state;
     }
