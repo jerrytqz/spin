@@ -21,7 +21,10 @@ class Profile extends Component {
                     <div className={classes.Header}>{this.props.profile.username}</div>
                     <div className={classes.Body}>
                         <Stats stats={this.props.profile.stats}/>
-                        <Display showcaseItems={this.props.profile.showcaseItems}/>
+                        <Display 
+                            showcaseItems={this.props.profile.showcaseItems} 
+                            rarityStats={this.props.profile.stats.rarityStats}
+                            totalSpins={this.props.profile.stats.totalSpins}/>
                     </div>
                 </div>
             )

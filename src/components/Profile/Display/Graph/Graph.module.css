@@ -1,0 +1,11 @@
+.Graph {
+    margin: 16px auto; 
+    margin-bottom: 0; 
+}
+
+.GraphNullText {
+    height: 400px;
+    margin: auto;
+    line-height: 400px; 
+    color: #616161; 
+}

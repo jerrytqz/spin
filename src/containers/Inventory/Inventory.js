@@ -29,8 +29,11 @@ class Inventory extends Component {
         }
         return (this.props.fetchInventoryLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> :
             this.props.fetchError ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> :
-            <div className={classes.Inventory}>
+            inventory.length !== 0 ? <div className={classes.Inventory}>
                 {inventory}
+            </div> :
+            <div className={classes.InventoryNullText}>
+                Nothing to show! 
             </div>
         )
     }
