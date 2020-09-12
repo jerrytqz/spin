@@ -18,14 +18,9 @@ class Inventory extends Component {
         if (this.props.inventory) {
             const rawInventory = Object.entries(this.props.inventory);
             for (const [item, info] of rawInventory) {
-                inventory.push(<Item 
-                    key={info.id} 
-                    name={item} 
-                    quantity={info.quantity}
-                    rarity={info.rarity}/>)
+                inventory.push(<Item key={info.id} name={item} quantity={info.quantity} rarity={info.rarity}/>)
             }
-            inventory.sort((a, b) => mapRarityToValue(a.props.rarity) - mapRarityToValue(b.props.rarity));
-            inventory.reverse(); 
+            inventory.sort((a, b) => -(mapRarityToValue(a.props.rarity) - mapRarityToValue(b.props.rarity)));
         }
         return (this.props.fetchInventoryLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> :
             this.props.fetchError ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> :

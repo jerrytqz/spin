@@ -41,7 +41,7 @@ const prize = (props) => {
                 <div className={classes.Info}>
                     You unboxed {article} <strong style={{color: mapRarityToColor(rarityType)}} className={prizeClasses.join(' ')}>{rarityType.toLowerCase()}</strong> item! 
                     <hr/>
-                    <div className={classes.Description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</div>
+                    <div className={classes.Description}>{props.item.description}</div>
                     <div className={classes.Stats}>
                         <div className={classes.Stat}>Owned: {props.item.quantity}</div>
                         <div className={classes.Stat}>In circulation: {props.item.circulationNum}</div>
