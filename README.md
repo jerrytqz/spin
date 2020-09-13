@@ -1,3 +1,5 @@
+# Spin
+
 A React game where players can spin a wheel to unbox items, view an inventory of their items, and check up on their profile and stats 
 
 ## Features
