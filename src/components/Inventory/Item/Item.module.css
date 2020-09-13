@@ -28,6 +28,10 @@
     padding: 5px; 
     text-align: center; 
     color: #616161; 
+    object-fit: contain;
+    height: 60%;
+    width: 60%; 
+    margin: auto;
 }
 
 .ItemNullText {

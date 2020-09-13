@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {updateObject, checkValidity} from '../../shared/Functions/utility';
+import {updateObject, checkValidity} from '../../shared/utility';
 import Input from '../../shared/UI/Input/Input';
 import classes from './Authentication.module.css'; 
 import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton'; 

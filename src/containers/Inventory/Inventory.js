@@ -4,7 +4,7 @@ import Item from '../../components/Inventory/Item/Item';
 import {connect} from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import {mapRarityToValue} from '../../shared/Functions/utility'; 
+import {mapRarityToValue} from '../../shared/utility'; 
 
 class Inventory extends Component {
     componentDidMount() {

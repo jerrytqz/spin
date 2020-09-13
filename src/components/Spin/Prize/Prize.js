@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Prize.module.css'; 
 import Modal from '../../../shared/UI/Modal/Modal'; 
-import {mapRarityToColor} from '../../../shared/Functions/utility'; 
+import {mapRarityToColor} from '../../../shared/utility'; 
 import Item from '../../Inventory/Item/Item'; 
 
 // Rarity is calculated on backend, this is just so that not as much info has to be sent from the backend to the frontend
