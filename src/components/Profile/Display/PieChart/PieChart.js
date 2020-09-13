@@ -1,8 +1,8 @@
 import React from 'react'; 
-import classes from './Graph.module.css';
+import classes from './PieChart.module.css';
 import {Pie} from 'react-chartjs-2'; 
 
-const graph = (props) => {
+const pieChart = (props) => {
     const data = {
         labels: ['Common', 'Uncommon', 'Rare', 'Epic', 'Holy', 'Godly', '???'],
         datasets: [{
@@ -35,15 +35,15 @@ const graph = (props) => {
     }
 
     return (props.totalSpins !== 0 ? 
-        <div className={classes.Graph}>
+        <div className={classes.PieChart}>
             <Pie
                 data={data}
                 width={400}
                 height={400}
                 options={options}/>
         </div> :
-        <div className={classes.GraphNullText}>Nothing to show!</div>
+        <div className={classes.PieChartNullText}>Nothing to show!</div>
     )
 }
 
-export default graph; 
+export default pieChart; 

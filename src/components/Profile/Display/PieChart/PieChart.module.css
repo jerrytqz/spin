@@ -1,9 +1,9 @@
-.Graph {
+.PieChart {
     margin: 16px auto; 
     margin-bottom: 0; 
 }
 
-.GraphNullText {
+.PieChartNullText {
     height: 400px;
     margin: auto;
     line-height: 400px; 
