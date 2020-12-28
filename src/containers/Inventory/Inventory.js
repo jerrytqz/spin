@@ -139,7 +139,7 @@ class Inventory extends Component {
                         disabled={!this.state.formIsValid}
                         onClick={this.submitHandler}
                     >
-                        List
+                        List (-{Math.floor(Number(this.state.controls.price.value)/20)} SP)
                     </YesNoButton>
                     <div style={{textAlign: "center", color: "red"}}>{this.props.listError}</div>
                 </SellForm>

@@ -18,8 +18,9 @@ export const listItemStart = () => ({
     type: actionTypes.LIST_ITEM_START
 })
 
-export const listItemSuccess = () => ({
-    type: actionTypes.LIST_ITEM_SUCCESS
+export const listItemSuccess = (itemID) => ({
+    type: actionTypes.LIST_ITEM_SUCCESS,
+    itemID: itemID
 })
 
 export const listItemFail = (listError) => ({
@@ -67,7 +68,7 @@ export const listItem = (token, price, itemID) => {
             });
             let result = await response.json(); 
             if (response.status === 200) {
-                dispatch(listItemSuccess()); 
+                dispatch(listItemSuccess(itemID)); 
             }
             else {
                 dispatch(listItemFail(result['listError'])); 

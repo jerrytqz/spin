@@ -37,10 +37,21 @@ const listItemStart = (state) => {
     })
 }
 
-const listItemSuccess = (state) => {
+const listItemSuccess = (state, action) => {
+    let newInventory = state.inventory; 
+    const rawInventory = Object.entries(state.inventory);
+    for (const [item, info] of rawInventory) {
+        if (info.itemID === action.itemID) {
+            if (info.quantity > 1) {
+                newInventory[item].quantity -= 1; 
+            }
+            else delete newInventory[item]; 
+        }
+    }
     return updateObject(state, {
         listItemLoading: false,
-        listError: null 
+        listError: null,
+        inventory: newInventory
     })
 }
 
@@ -68,7 +79,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.LIST_ITEM_START: 
             return listItemStart(state); 
         case actionTypes.LIST_ITEM_SUCCESS: 
-            return listItemSuccess(state); 
+            return listItemSuccess(state, action); 
         case actionTypes.LIST_ITEM_FAIL: 
             return listItemFail(state, action);
         case actionTypes.CLEAR_LIST_ERROR: 
