@@ -2,36 +2,12 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility'; 
 
 const initialState = {
-    SP: 0,
+    freeSP: 0,
     degree: 0, 
     item: null, 
-    fetchSPLoading: false,  
     purchaseSpinLoading: false,
-    fetchError: null,
     purchaseError: null,
     freeSPError: null 
-}
-
-const fetchSPStart = (state) => {
-    return updateObject(state, {
-        fetchSPLoading: true 
-    })
-}
-
-const fetchSPSuccess = (state, action) => {
-    return updateObject(state, {
-        SP: action.SP,
-        fetchError: null,
-        fetchSPLoading: false  
-    })
-}
-
-const fetchSPFail = (state, action) => {
-    return updateObject(state, {
-        fetchError: action.fetchError,
-        SP: 0,
-        fetchSPLoading: false  
-    })
 }
 
 const purchaseSpinStart = (state) => {
@@ -42,7 +18,6 @@ const purchaseSpinStart = (state) => {
 
 const purchaseSpinSuccess = (state, action) => {
     return updateObject(state, {
-        SP: action.SP,
         degree: action.degree,
         item: action.item, 
         purchaseError: null,
@@ -69,14 +44,12 @@ const resetDegree = (state) => {
     })
 }
 
-
 const getFreeSPSuccess = (state, action) => {
     return updateObject(state, {
-        SP: action.SP,
+        freeSP: action.freeSP,
         freeSPError: null 
     })
 }
-
 
 const getFreeSPFail = (state, action) => {
     return updateObject(state, {
@@ -92,12 +65,6 @@ const resetFreeSPError = (state) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.FETCH_SP_START: 
-        return fetchSPStart(state); 
-        case actionTypes.FETCH_SP_SUCCESS:
-            return fetchSPSuccess(state, action); 
-        case actionTypes.FETCH_SP_FAIL:
-            return fetchSPFail(state, action); 
         case actionTypes.PURCHASE_SPIN_SUCCESS:
             return purchaseSpinSuccess(state, action); 
         case actionTypes.PURCHASE_SPIN_FAIL:

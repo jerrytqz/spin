@@ -1,5 +1,4 @@
 export {
-    fetchSP,
     purchaseSpin,
     resetPurchaseError,
     resetDegree,
@@ -25,5 +24,6 @@ export {
     auth,
     resetAuthError,
     logOut,
-    tryAutoLogIn
+    tryAutoLogIn,
+    changeSP
 } from './authentication'

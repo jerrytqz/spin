@@ -80,9 +80,11 @@ class Inventory extends Component {
     }
 
     submitHandler = async() => {
+        const price = this.state.controls.price.value; 
         await this.props.onListItem(this.props.token, this.state.controls.price.value, this.state.currentItemID);
         if (this.props.listError === null) {
             this.backdropClickedHandler(); 
+            this.props.onChangeSP(-Math.floor(Number(price)/20));
         }
     }
     
@@ -168,7 +170,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchInventory: (token) => dispatch(actions.fetchInventory(token)),
         onListItem: (token, price, itemID) => dispatch(actions.listItem(token, price, itemID)),
-        onClearListError: () => dispatch(actions.clearListError())
+        onClearListError: () => dispatch(actions.clearListError()),
+        onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount))
     }
 }
 

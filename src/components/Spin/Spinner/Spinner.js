@@ -17,9 +17,9 @@ const spinner = (props) => {
         )
     }
 
-    if (props.fetchError) {
+    if (!props.authenticated) {
         spinnerText = (
-            <div className={classes.SpinnerText3}>{props.fetchError}</div>
+            <div className={classes.SpinnerText3}>LOG IN TO SPIN</div>
         )
         disabled = true; 
     }
@@ -44,9 +44,10 @@ const spinner = (props) => {
                 className={classes.SpinnerButton}
                 onClick={props.startSpinHandler} 
                 disabled={disabled ? disabled : props.startButtonPressed}
-                style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}> 
-                    {(props.degree === 0 && props.showSpinnerText) ? spinnerText : null}
-                    <div className={classes.Pointer}/>
+                style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}
+            > 
+                {(props.degree === 0 && props.showSpinnerText) ? spinnerText : null}
+                <div className={classes.Pointer}/>
             </button>
             <ul className={classes.RarityCircle}>
                 <li className={classes.liCustom}/>

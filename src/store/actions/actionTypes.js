@@ -1,6 +1,3 @@
-export const FETCH_SP_START = 'FETCH_SP_START'; 
-export const FETCH_SP_SUCCESS = 'FETCH_SP_SUCCESS'; 
-export const FETCH_SP_FAIL = 'FETCH_SP_FAIL'; 
 export const PURCHASE_SPIN_START = 'PURCHASE_SPIN_START'; 
 export const PURCHASE_SPIN_SUCCESS = 'PURCHASE_SPIN_SUCCESS'; 
 export const PURCHASE_SPIN_FAIL = 'PURCHASE_SPIN_FAIL'; 
@@ -33,3 +30,4 @@ export const RESET_AUTH_ERROR = 'RESET_AUTH_ERROR';
 export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS'; 
 export const LOG_OUT_FAIL = 'LOG_OUT_FAIL'; 
 export const AUTO_LOG_IN = 'AUTO_LOG_IN'; 
+export const CHANGE_SP = 'CHANGE_SP'; 

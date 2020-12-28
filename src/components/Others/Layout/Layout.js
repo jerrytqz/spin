@@ -7,7 +7,11 @@ class Layout extends Component {
     render() {
         return (
             <div>
-                <Toolbar isAuthenticated={this.props.isAuthenticated} username={this.props.username}/>
+                <Toolbar 
+                    isAuthenticated={this.props.isAuthenticated} 
+                    username={this.props.username}
+                    SP={this.props.SP}
+                />
                 <main className={classes.Content}>
                     {this.props.children}
                 </main>
@@ -19,7 +23,8 @@ class Layout extends Component {
 const mapStateToProps = state => {
     return {
         username: state.authentication.user, 
-        isAuthenticated: state.authentication.isAuthenticated
+        isAuthenticated: state.authentication.isAuthenticated,
+        SP: state.authentication.SP
     }
 }
 

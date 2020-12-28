@@ -4,6 +4,7 @@ import {updateObject} from '../../shared/utility';
 const initialState = {
     isAuthenticated: false,
     user: null,
+    SP: 0,
     token: null,
     authError: null,
     logOutAttemptFinished: false,
@@ -28,6 +29,7 @@ const authSuccess = (state, action) => {
     return updateObject(state, {
         isAuthenticated: true, 
         user: action.user, 
+        SP: action.SP, 
         token: action.token,
         loading: false,
         authError: null,
@@ -55,6 +57,7 @@ const logOutSuccess = (state) => {
     return updateObject(state, {
         isAuthenticated: false,
         user: null, 
+        SP: 0,
         token: null,
         authError: null,
         logOutAttemptFinished: true,
@@ -66,6 +69,14 @@ const logOutFail = (state, action) => {
     return updateObject(state, {
         authError: action.authError,
         logOutAttemptFinished: true
+    })
+}
+
+const changeSP = (state, action) => {
+    let newSP = state.SP;
+    newSP += action.changeAmount; 
+    return updateObject(state, {
+        SP: newSP 
     })
 }
 
@@ -83,6 +94,8 @@ const reducer = (state = initialState, action) => {
             return logOutSuccess(state); 
         case actionTypes.LOG_OUT_FAIL:
             return logOutFail(state, action); 
+        case actionTypes.CHANGE_SP:
+            return changeSP(state, action); 
         default:
             return state;
     }

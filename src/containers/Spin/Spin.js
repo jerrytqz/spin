@@ -5,8 +5,6 @@ import SpinInfo from '../../components/Spin/SpinInfo/SpinInfo';
 import {connect} from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import Backdrop from '../../shared/UI/Backdrop/Backdrop'; 
-import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import classes from './Spin.module.css'; 
 import SP from '../../components/Spin/SP/SP'; 
 
 class Spin extends Component {
@@ -17,15 +15,12 @@ class Spin extends Component {
         showSpinnerText: true
     }
 
-    componentDidMount() {
-        this.props.onFetchSP(this.props.token); 
-    }
-
     startSpinHandler = async () => {
         this.setState({startButtonPressed: true, showErrorModal: true}); 
         await this.props.onPurchaseSpin(this.props.token);  
         if (this.props.degree !== 0) {
             setTimeout(() => this.setState({showPrize: true}), 700);
+            this.props.onChangeSP(-500); 
         }
     }
 
@@ -40,8 +35,11 @@ class Spin extends Component {
         this.props.onResetPurchaseError(); 
     }
 
-    clickFreeSPHandler = () => {
-        this.props.onGetFreeSP(this.props.token); 
+    clickFreeSPHandler = async() => {
+        await this.props.onGetFreeSP(this.props.token); 
+        if (this.props.freeSPError === null) {
+            this.props.onChangeSP(this.props.freeSP);
+        }
     }
 
     freeSPErrorClickedHandler = () => {
@@ -50,7 +48,6 @@ class Spin extends Component {
 
     render() {
         return (
-            this.props.fetchSPLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> : 
             <div>
                 {this.state.startButtonPressed ? <Backdrop show opacity="0"/> : null}
                 <Spinner 
@@ -58,7 +55,7 @@ class Spin extends Component {
                     startButtonPressed={this.state.startButtonPressed}
                     degree={this.props.degree}
                     resetting={this.state.resetting}
-                    fetchError={this.props.fetchError}
+                    authenticated={this.props.isAuthenticated}
                     purchaseError={this.props.purchaseError}
                     purchaseSpinLoading={this.props.purchaseSpinLoading}
                     showSpinnerText={this.state.showSpinnerText}
@@ -83,15 +80,14 @@ class Spin extends Component {
 
 const mapStateToProps = state => {
     return {
+        freeSP: state.spin.freeSP,
         token: state.authentication.token,
         isAuthenticated: state.authentication.isAuthenticated,
-        SP: state.spin.SP,
+        SP: state.authentication.SP,
         degree: state.spin.degree,
         item: state.spin.item, 
-        fetchError: state.spin.fetchError,
         purchaseError: state.spin.purchaseError,
         purchaseSpinLoading: state.spin.purchaseSpinLoading,
-        fetchSPLoading: state.spin.fetchSPLoading,
         freeSPError: state.spin.freeSPError
     }
 }
@@ -99,11 +95,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onPurchaseSpin: (token) => dispatch(actions.purchaseSpin(token)),
-        onFetchSP: (token) => dispatch(actions.fetchSP(token)),
         onResetPurchaseError: () => dispatch(actions.resetPurchaseError()),
         onResetDegree: () => dispatch(actions.resetDegree()),
         onGetFreeSP: (token) => dispatch(actions.getFreeSP(token)),
-        onResetFreeSPError: () => dispatch(actions.resetFreeSPError()) 
+        onResetFreeSPError: () => dispatch(actions.resetFreeSPError()),
+        onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount))
     }
 }
 

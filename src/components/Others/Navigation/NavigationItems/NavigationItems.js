@@ -22,9 +22,11 @@ const navigationItems = (props) => {
             <NavigationItem link="/market">Market</NavigationItem>
             <NavigationItem link="/inventory">Inventory</NavigationItem>
             <NavigationItem link={profileLink} isActive={(match, location) => isActive(match, location)}>Profile</NavigationItem>
-            {props.isAuthenticated 
+            {
+                props.isAuthenticated 
                 ? <NavigationItem link="/logout">Log Out</NavigationItem>
-                : <NavigationItem link="/authentication">Log In</NavigationItem>}
+                : <NavigationItem link="/authentication">Log In</NavigationItem>
+            }
         </ul>
     )
 }
