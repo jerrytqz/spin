@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, withRouter, Redirect} from 'react-router-dom'; 
+import {Route, withRouter} from 'react-router-dom'; 
 import {connect} from 'react-redux'; 
 
 import * as actions from './store/actions/index'; 
@@ -9,37 +9,35 @@ import Inventory from './containers/Inventory/Inventory';
 import Profile from './containers/Profile/Profile'; 
 import LogOut from './containers/Authentication/LogOut/LogOut'; 
 import Authentication from './containers/Authentication/Authentication'; 
-
+import Spinner from './shared/UI/LoadingSpinner/LoadingSpinner';
 
 class App extends Component {
-  async componentDidMount() {
-    await this.props.onTryAutoLogIn();
-    this.props.onFetchSP(localStorage.getItem('token'));  
+  componentDidMount() {
+    this.props.onTryAutoLogIn();
   }
 
   render() {
-    return (
+    return (this.props.autoAttemptFinished ? 
       <Layout>
-        <Route path="/" exact component={Spin}/>
-        <Route path="/inventory" component={Inventory}/>
-        <Route path="/profile" component={Profile}/>
-        {!this.props.isAuthenticated ? <Route path="/authentication" component={Authentication}/> : <Redirect to="/"/>}
-        {this.props.isAuthenticated ? <Route path="/logout" component={LogOut}/> : <Redirect to="/"/>}
-      </Layout>
+          <Route path="/" exact component={Spin}/>
+          <Route path="/inventory" exact component={Inventory}/>
+          <Route path="/profile/:username" component={Profile}/>
+          <Route path="/authentication" component={Authentication}/> 
+          <Route path="/logout" component={LogOut}/>
+      </Layout> : <Spinner/>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.authentication.isAuthenticated
+    autoAttemptFinished: state.authentication.autoAttemptFinished
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onTryAutoLogIn: () => dispatch(actions.tryAutoLogIn()),
-    onFetchSP: (token) => dispatch(actions.fetchSP(token))
   }
 }
 

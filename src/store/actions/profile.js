@@ -14,13 +14,17 @@ export const fetchProfileFail = (fetchError) => ({
     fetchError: fetchError 
 })
 
-export const fetchProfile = (token) => {
+export const fetchProfile = (username) => {
     return async dispatch => {
         dispatch(fetchProfileStart()); 
+
+        const data = new FormData();
+        data.append('username', username); 
+
         try {
             let response = await fetch('http://127.0.0.1:8000/fetch-profile/', {
-                method: 'GET',
-                headers: new Headers({'Authorization': token})
+                method: 'POST',
+                body: data
             });
             let result = await response.json(); 
             if (response.status === 200) {

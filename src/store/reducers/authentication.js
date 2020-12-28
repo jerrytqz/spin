@@ -3,11 +3,12 @@ import {updateObject} from '../../shared/utility';
 
 const initialState = {
     isAuthenticated: false,
+    user: null,
     token: null,
     authError: null,
     logOutAttemptFinished: false,
+    autoAttemptFinished: false, 
     loading: false,
-    autoLogInAttemptFinished: false 
 }
 
 const authStart = (state) => {
@@ -21,13 +22,17 @@ const authSuccess = (state, action) => {
     if (localStorage.getItem('token') === null) {
         localStorage.setItem('token', action.token); 
     }
+    if (localStorage.getItem('user') === null) {
+        localStorage.setItem('user', action.user); 
+    }
     return updateObject(state, {
         isAuthenticated: true, 
+        user: action.user, 
         token: action.token,
         loading: false,
         authError: null,
         logOutAttemptFinished: false,
-        autoLogInAttemptFinished: true 
+        autoAttemptFinished: true
     })
 }
 
@@ -46,12 +51,14 @@ const resetAuthError = (state) => {
 
 const logOutSuccess = (state) => {
     localStorage.removeItem('token'); 
+    localStorage.removeItem('user'); 
     return updateObject(state, {
         isAuthenticated: false,
+        user: null, 
         token: null,
         authError: null,
         logOutAttemptFinished: true,
-        autoLogInAttemptFinished: true 
+        autoAttemptFinished: true
     })
 }
 

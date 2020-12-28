@@ -73,7 +73,10 @@ class Authentication extends Component {
     }
 
     componentDidMount() {
-        this.props.onResetAuthError(); 
+        if (this.props.isAuthenticated) {
+            this.props.history.push('/');
+        }
+        else this.props.onResetAuthError(); 
     }
 
     inputChangedHandler = (event, controlName) => {
@@ -91,13 +94,16 @@ class Authentication extends Component {
         this.setState({controls: updatedControls, formIsValid: formIsValid});
     }
 
-    submitHandler = (event) => {
+    submitHandler = async(event) => {
         event.preventDefault();  
-        this.props.onAuth(this.state.controls.username.value, 
-                this.state.controls.email.value, 
-                this.state.controls.password.value, 
-                this.state.controls.confirmPassword.value, 
-                this.state.isLogIn); 
+        await this.props.onAuth(this.state.controls.username.value, 
+            this.state.controls.email.value, 
+            this.state.controls.password.value, 
+            this.state.controls.confirmPassword.value, 
+            this.state.isLogIn); 
+        if (this.props.isAuthenticated) {
+            this.props.history.push('/');
+        }
     }
 
     switchAuthModeHandler = () => {
@@ -186,7 +192,7 @@ class Authentication extends Component {
             authClasses.push(classes.Shake);
         }
 
-        return (  
+        return ( 
             <div className={authClasses.join(' ')}>
                 {this.props.loading ? <LoadingSpinner/> :
                 <div>
@@ -203,14 +209,14 @@ class Authentication extends Component {
                     </TextButton>
                 </div>
                 }
-            </div>
+            </div> 
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-        token: state.authentication.token,
+        isAuthenticated: state.authentication.isAuthenticated,
         authError: state.authentication.authError,
         loading: state.authentication.loading
     }

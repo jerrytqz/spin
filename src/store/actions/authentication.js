@@ -6,10 +6,11 @@ export const authStart = () => {
     }
 }
 
-export const authSuccess = (token) => {
+export const authSuccess = (token, user) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        token: token
+        token: token,
+        user: user 
     }
 }
 
@@ -78,7 +79,8 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
             });
             let result = await response.json(); 
             if (response.status === 200) {
-                dispatch(authSuccess(result['token']));
+                dispatch(authSuccess(result['token'], result['user']));
+                dispatch(checkExpiration(result['expirationTime']));
             } else {
                 dispatch(authFail(result['authError']));
             }
@@ -96,9 +98,10 @@ export const tryAutoLogIn = () => {
                 method: 'POST',
                 headers: new Headers({'Authorization': localStorage.getItem('token')})
             });
-            await response.json(); 
+            let result = await response.json(); 
             if (response.status === 200) {
-                dispatch(authSuccess(localStorage.getItem('token')));
+                dispatch(authSuccess(localStorage.getItem('token'), localStorage.getItem('user')));
+                dispatch(checkExpiration((result['expirationDate'] - new Date().getTime())/1000)); 
             } else {
                 dispatch(logOutSuccess()); 
             }
@@ -106,5 +109,13 @@ export const tryAutoLogIn = () => {
         catch {
             console.log('Unexpected error in logging in'); 
         }
+    }
+}
+
+export const checkExpiration = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(logOutSuccess()); 
+        }, expirationTime * 1000)
     }
 }

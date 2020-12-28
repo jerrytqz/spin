@@ -18,5 +18,6 @@
 .NavigationItem a.active {
     background-color: #616161;
     color: white;
+    transition: 0.25s; 
 }
  

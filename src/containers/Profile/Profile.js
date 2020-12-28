@@ -8,9 +8,7 @@ import Display from '../../components/Profile/Display/Display';
 
 class Profile extends Component {
     componentDidMount() {
-        if (this.props.autoLogInAttemptFinished) {
-            this.props.onFetchProfile(this.props.token); 
-        }
+        this.props.onFetchProfile(this.props.match.params.username); 
     }
     
     render() {
@@ -39,17 +37,15 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
     return {
-        token: state.authentication.token,
         profile: state.profile.profile,
         fetchProfileLoading: state.profile.fetchProfileLoading,
         fetchError: state.profile.fetchError,
-        autoLogInAttemptFinished: state.authentication.autoLogInAttemptFinished
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchProfile: (token) => dispatch(actions.fetchProfile(token))
+        onFetchProfile: (username) => dispatch(actions.fetchProfile(username))
     }
 }
 

@@ -8,9 +8,7 @@ import {mapRarityToValue} from '../../shared/utility';
 
 class Inventory extends Component {
     componentDidMount() {
-        if (this.props.autoLogInAttemptFinished) {
-            this.props.onFetchInventory(this.props.token); 
-        }
+        this.props.onFetchInventory(this.props.token); 
     }
     
     render() {
@@ -36,11 +34,11 @@ class Inventory extends Component {
 
 const mapStateToProps = state => {
     return {
+        isAuthenticated: state.authentication.isAuthenticated,
         token: state.authentication.token,
         inventory: state.inventory.inventory,
         fetchInventoryLoading: state.inventory.fetchInventoryLoading,
         fetchError: state.inventory.fetchError,
-        autoLogInAttemptFinished: state.authentication.autoLogInAttemptFinished
     }
 }
 

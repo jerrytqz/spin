@@ -18,9 +18,7 @@ class Spin extends Component {
     }
 
     componentDidMount() {
-        if (this.props.autoLogInAttemptFinished) {
-            this.props.onFetchSP(this.props.token); 
-        }
+        this.props.onFetchSP(this.props.token); 
     }
 
     startSpinHandler = async () => {
@@ -64,19 +62,20 @@ class Spin extends Component {
                     purchaseError={this.props.purchaseError}
                     purchaseSpinLoading={this.props.purchaseSpinLoading}
                     showSpinnerText={this.state.showSpinnerText}
-                    onClickBackdrop={this.purchaseErrorClickedHandler}/>
-                {this.state.showPrize ? 
-                <Prize 
-                    degree={this.props.degree} 
-                    clicked={this.resetSpinHandler} 
-                    item={this.props.item}/> : null}
+                    onClickBackdrop={this.purchaseErrorClickedHandler}
+                />
+                {this.state.showPrize 
+                    ? <Prize degree={this.props.degree} clicked={this.resetSpinHandler} item={this.props.item}/> 
+                    : null
+                }
                 <SpinInfo/>
                 <SP 
                     SP={this.props.SP} 
                     onClickFreeSP={this.clickFreeSPHandler}
                     onClickBackdrop={this.freeSPErrorClickedHandler}
                     freeSPError={this.props.freeSPError}
-                    disabledFreeSP={!this.props.isAuthenticated}/>
+                    disabledFreeSP={!this.props.isAuthenticated}
+                />
             </div>   
         ); 
     }
@@ -93,7 +92,6 @@ const mapStateToProps = state => {
         purchaseError: state.spin.purchaseError,
         purchaseSpinLoading: state.spin.purchaseSpinLoading,
         fetchSPLoading: state.spin.fetchSPLoading,
-        autoLogInAttemptFinished: state.authentication.autoLogInAttemptFinished,
         freeSPError: state.spin.freeSPError
     }
 }
