@@ -4,7 +4,9 @@ import {updateObject} from '../../shared/utility';
 const initialState = {
     inventory: null,
     fetchInventoryLoading: false,
-    fetchError: null 
+    fetchError: null,
+    listItemLoading: false, 
+    listError: null 
 }
 
 const fetchInventoryStart = (state) => {
@@ -29,6 +31,32 @@ const fetchInventoryFail = (state, action) => {
     })
 }
 
+const listItemStart = (state) => {
+    return updateObject(state, {
+        listItemLoading: true
+    })
+}
+
+const listItemSuccess = (state) => {
+    return updateObject(state, {
+        listItemLoading: false,
+        listError: null 
+    })
+}
+
+const listItemFail = (state, action) => {
+    return updateObject(state, {
+        listItemLoading: false,
+        listError: action.listError
+    })
+}
+
+const clearListError = (state) => {
+    return updateObject(state, {
+        listError: null 
+    })
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_INVENTORY_START:
@@ -37,6 +65,14 @@ const reducer = (state = initialState, action) => {
             return fetchInventorySuccess(state, action); 
         case actionTypes.FETCH_INVENTORY_FAIL:
             return fetchInventoryFail(state, action); 
+        case actionTypes.LIST_ITEM_START: 
+            return listItemStart(state); 
+        case actionTypes.LIST_ITEM_SUCCESS: 
+            return listItemSuccess(state); 
+        case actionTypes.LIST_ITEM_FAIL: 
+            return listItemFail(state, action);
+        case actionTypes.CLEAR_LIST_ERROR: 
+            return clearListError(state); 
         default:
             return state;
     }

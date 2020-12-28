@@ -10,6 +10,10 @@
     animation: spin linear 0.1s 
 }
 
+.Item:hover {
+    cursor: pointer; 
+}
+
 .ItemShowcase {
     height: 185px;
     width: 185px;

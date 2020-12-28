@@ -22,11 +22,23 @@ export const checkValidity = (value, rules) => {
     }
 
     if (rules.minLength) {
-        isValid = value.length >= rules.minLength && isValid
+        isValid = value.length >= rules.minLength && isValid;
     }
 
     if (rules.maxLength) {
-        isValid = value.length <= rules.maxLength && isValid
+        isValid = value.length <= rules.maxLength && isValid;
+    }
+
+    if (rules.minValue) {
+        isValid = Number(value) >= rules.minValue && isValid;
+    }
+
+    if (rules.maxValue) {
+        isValid = Number(value) <= rules.maxValue && isValid;
+    }
+
+    if (rules.isNumber) {
+        isValid = !isNaN(value) && isValid;
     }
 
     return isValid; 

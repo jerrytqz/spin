@@ -15,7 +15,9 @@ export {
 } from './spin'
 
 export {
-    fetchInventory
+    fetchInventory,
+    listItem,
+    clearListError
 } from './inventory'
 
 export {
