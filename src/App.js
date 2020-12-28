@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as actions from './store/actions/index'; 
 import Layout from './components/Others/Layout/Layout'; 
 import Spin from './containers/Spin/Spin'; 
+import Market from './containers/Market/Market'; 
 import Inventory from './containers/Inventory/Inventory';
 import Profile from './containers/Profile/Profile'; 
 import LogOut from './containers/Authentication/LogOut/LogOut'; 
@@ -20,6 +21,7 @@ class App extends Component {
     return (this.props.autoAttemptFinished ? 
       <Layout>
           <Route path="/" exact component={Spin}/>
+          <Route path="/market" component={Market}/>
           <Route path="/inventory" exact component={Inventory}/>
           <Route path={["/profile/:username", "/profile"]} component={Profile}/>
           <Route path="/authentication" component={Authentication}/> 

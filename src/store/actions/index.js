@@ -1,11 +1,4 @@
 export {
-    auth,
-    resetAuthError,
-    logOut,
-    tryAutoLogIn
-} from './authentication'
-
-export {
     fetchSP,
     purchaseSpin,
     resetPurchaseError,
@@ -13,6 +6,10 @@ export {
     getFreeSP,
     resetFreeSPError
 } from './spin'
+
+export {
+    fetchMarket
+} from './market'
 
 export {
     fetchInventory,
@@ -23,3 +20,10 @@ export {
 export {
     fetchProfile
 } from './profile'
+
+export {
+    auth,
+    resetAuthError,
+    logOut,
+    tryAutoLogIn
+} from './authentication'

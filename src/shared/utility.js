@@ -92,4 +92,8 @@ export const mapRarityToValue = (rarity) => {
     }
 }
 
+export const numberWithCommas = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 export const capitalize = (string) => (string.charAt(0).toUpperCase() + string.slice(1)) 

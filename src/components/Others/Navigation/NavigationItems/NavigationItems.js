@@ -19,6 +19,7 @@ const navigationItems = (props) => {
     return (
         <ul className={classes.NavigationItems}>
             <NavigationItem link="/" exact>Spin</NavigationItem>
+            <NavigationItem link="/market">Market</NavigationItem>
             <NavigationItem link="/inventory">Inventory</NavigationItem>
             <NavigationItem link={profileLink} isActive={(match, location) => isActive(match, location)}>Profile</NavigationItem>
             {props.isAuthenticated 

@@ -7,18 +7,21 @@ import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux'; 
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux'; 
 import thunk from 'redux-thunk'; 
-import authenticationReducer from './store/reducers/authentication'; 
+
 import spinReducer from './store/reducers/spin';
+import marketReducer from './store/reducers/market'; 
 import inventoryReducer from './store/reducers/inventory'; 
 import profileReducer from './store/reducers/profile'; 
+import authenticationReducer from './store/reducers/authentication'; 
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose; 
 
 const rootReducer = combineReducers({
     spin: spinReducer,
-    authentication: authenticationReducer,
+    market: marketReducer,
     inventory: inventoryReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    authentication: authenticationReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(

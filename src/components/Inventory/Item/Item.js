@@ -25,7 +25,8 @@ const item = (props) => {
         <div className={itemClasses.join(' ')} style={{borderColor: color}} onClick={props.onClick}>
             <div className={itemNameClasses.join(' ')} style={{color: color}}>{props.name}</div>
             {/* <img src={require(`../../../assets/images/${imagePathName}.jpeg`)} className={classes.ItemImage} alt={props.name}/> */}
-            <div className={classes.ItemQuantity}>x{props.quantity}</div>
+            {props.quantity ? <div className={classes.ItemBottomText}>x{props.quantity}</div> : null}
+            {props.price ? <div className={classes.ItemBottomText}>{props.price} SP</div> : null} 
         </div> : 
         <div className={itemClasses.join(' ')} style={{animation: "none"}}>
             <div className={classes.ItemName}/>
