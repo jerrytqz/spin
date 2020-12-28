@@ -22,11 +22,12 @@ class Profile extends Component {
                         <Display 
                             showcaseItems={this.props.profile.showcaseItems} 
                             rarityStats={this.props.profile.stats.rarityStats}
-                            totalSpins={this.props.profile.stats.totalSpins}/>
+                            totalSpins={this.props.profile.stats.totalSpins}
+                        />
                     </div>
                 </div>
             )
-        }
+        } 
 
         return (this.props.fetchProfileLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> : 
             this.props.fetchError ?  <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> :

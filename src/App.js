@@ -21,7 +21,7 @@ class App extends Component {
       <Layout>
           <Route path="/" exact component={Spin}/>
           <Route path="/inventory" exact component={Inventory}/>
-          <Route path="/profile/:username" component={Profile}/>
+          <Route path={["/profile/:username", "/profile"]} component={Profile}/>
           <Route path="/authentication" component={Authentication}/> 
           <Route path="/logout" component={LogOut}/>
       </Layout> : <Spinner/>
