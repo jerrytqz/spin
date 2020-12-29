@@ -10,7 +10,7 @@ const socket = io('https://spin-web-socket.jerryzheng5.repl.co');
 
 
 
-console.log('running')
+console.log('running');
 
   
-socket.emit("sell", 60)
+socket.emit('sell', 60);

@@ -13,34 +13,34 @@ import Authentication from './containers/Authentication/Authentication';
 import Spinner from './shared/UI/LoadingSpinner/LoadingSpinner';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.onTryAutoLogIn();
-  }
+	componentDidMount() {
+		this.props.onTryAutoLogIn();
+	}
 
-  render() {
-    return (this.props.autoAttemptFinished ? 
-      <Layout>
-          <Route path="/" exact component={Spin}/>
-          <Route path="/market" component={Market}/>
-          <Route path="/inventory" exact component={Inventory}/>
-          <Route path={["/profile/:username", "/profile"]} component={Profile}/>
-          <Route path="/authentication" component={Authentication}/> 
-          <Route path="/logout" component={LogOut}/>
-      </Layout> : <Spinner/>
-    );
-  }
+	render() {
+		return (this.props.autoAttemptFinished ? 
+			<Layout>
+				<Route path="/" exact component={Spin}/>
+				<Route path="/market" component={Market}/>
+				<Route path="/inventory" exact component={Inventory}/>
+				<Route path={['/profile/:username', '/profile']} component={Profile}/>
+				<Route path="/authentication" component={Authentication}/> 
+				<Route path="/logout" component={LogOut}/>
+			</Layout> : <Spinner/>
+		);
+	}
 }
 
 const mapStateToProps = state => {
-  return {
-    autoAttemptFinished: state.authentication.autoAttemptFinished
-  }
-}
+	return {
+		autoAttemptFinished: state.authentication.autoAttemptFinished
+	};
+};
 
 const mapDispatchToProps = dispatch => {
-  return {
-    onTryAutoLogIn: () => dispatch(actions.tryAutoLogIn()),
-  }
-}
+	return {
+		onTryAutoLogIn: () => dispatch(actions.tryAutoLogIn()),
+	};
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

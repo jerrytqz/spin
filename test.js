@@ -10,12 +10,12 @@ const socket = io('https://spin-web-socket.jerryzheng5.repl.co');
 
 
 
-console.log('running')
+console.log('running');
 
 
-socket.on("user sold stuff", (x) => {
-    console.log('someone sold this thing')
-    console.log(x);
+socket.on('user sold stuff', (x) => {
+	console.log('someone sold this thing');
+	console.log(x);
 
-  });
+});
   
