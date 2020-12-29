@@ -23,6 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eslint": "npx eslint .",
+    "fix": "npx eslint . --fix",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
