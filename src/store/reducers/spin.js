@@ -1,5 +1,5 @@
-import * as actionTypes from '../actions/actionTypes';
-import {updateObject} from '../../shared/utility'; 
+import * as actionTypes from '../actions/actionTypes'
+import { updateObject } from '../../shared/utility'
 
 const initialState = {
     freeSP: 0,
@@ -80,7 +80,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.GET_FREE_SP_FAIL: 
             return getFreeSPFail(state, action); 
         case actionTypes.RESET_FREE_SP_ERROR: 
-            return resetFreeSPError(state); 
+            return resetFreeSPError(state);
         default:
             return state;
     }

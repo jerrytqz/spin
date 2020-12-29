@@ -18,9 +18,9 @@ const buyItemStart = (state) => {
 const buyItemSuccess = (state, action) => {
     let newMarket = state.market;
     const rawMarket = Object.entries(state.market);
-    for (const [item, info] of rawMarket) {
-        if (item.split('|')[1] === action.marketID) {
-            delete newMarket[item]; 
+    for (const item of rawMarket) {
+        if (item[0].split('|')[1] === action.marketID) {
+            delete newMarket[item[0]];
         }
     }
     return updateObject(state, {
