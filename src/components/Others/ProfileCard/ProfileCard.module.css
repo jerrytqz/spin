@@ -2,8 +2,17 @@
     padding: 10px; 
     height: 75%;
     display: flex; 
+}
+
+.ProfileCard img {
+    height: 100%; 
+}
+
+.Text {
+    display: flex; 
     flex-direction: column; 
     justify-content: space-between; 
+    margin-left: 8px; 
 }
 
 .Username {

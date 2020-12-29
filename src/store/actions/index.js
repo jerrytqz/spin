@@ -7,7 +7,9 @@ export {
 } from './spin'
 
 export {
-    fetchMarket
+    fetchMarket,
+    buyItem,
+    clearBuyError
 } from './market'
 
 export {

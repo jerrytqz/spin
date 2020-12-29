@@ -5,8 +5,10 @@ const yesNoButton = (props) => (
     <button 
         disabled={props.disabled}
         className={[classes.YesNoButton, classes[props.btnType]].join(' ')}
-        onClick={props.onClick}>
-    {props.children}
+        onClick={props.onClick}
+        style={props.style}
+    >
+        {props.children}
     </button>
 ); 
 

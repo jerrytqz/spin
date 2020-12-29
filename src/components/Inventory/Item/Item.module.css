@@ -10,22 +10,40 @@
     animation: spin linear 0.1s 
 }
 
-.Item:hover {
-    cursor: pointer; 
-}
-
-.ItemShowcase {
-    height: 185px;
-    width: 185px;
-    margin: 0 16px 0 0; 
-}
-
 .ItemRainbow {
     animation: spin linear 0.1s, rainbowBorder 0.5s linear infinite;
 }
 
 .ItemNameRainbow {
     animation: spin linear 0.1s, rainbow 0.5s linear infinite;
+}
+
+.Item:hover {
+    cursor: pointer; 
+    border: dashed; 
+    transition: 0.01s; 
+}
+
+.DisableHover {
+    pointer-events: none;
+}
+
+.DisableSpin {
+    animation: none; 
+}
+
+.DisableSpinRainbow {
+    animation: rainbowBorder 0.5s linear infinite; 
+}
+
+.DisableSpinRainbowName {
+    animation: rainbow 0.5s linear infinite; 
+}
+
+.ItemShowcase {
+    height: 185px;
+    width: 185px;
+    margin: 0 16px 0 0; 
 }
 
 .ItemImage {
@@ -56,7 +74,6 @@
     text-align: right; 
     color: #616161; 
 }
-
 
 @keyframes rainbowBorder {
     0%, 100% {border-color: green;}

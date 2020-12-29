@@ -4,11 +4,9 @@ import Item from '../../components/Inventory/Item/Item';
 import {connect} from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import {mapRarityToValue} from '../../shared/utility'; 
-import {updateObject, checkValidity} from '../../shared/utility';
+import {mapRarityToValue, updateObject, checkValidity, numberWithCommas} from '../../shared/utility';
 import SellForm from '../../components/Inventory/SellForm/SellForm'; 
 import Input from '../../shared/UI/Input/Input'; 
-import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton';
 
 class Inventory extends Component {
     state = {
@@ -112,7 +110,7 @@ class Inventory extends Component {
             })
         }
 
-        let form = formElementsArray.map(formElement => (
+        let inputs = formElementsArray.map(formElement => (
             <Input
                 key = {formElement.id}
                 elementType = {formElement.config.elementType}
@@ -126,6 +124,11 @@ class Inventory extends Component {
             />
         ))
 
+        let buttonText = `List (-${numberWithCommas(Math.floor(Number(this.state.controls.price.value)/20))} SP)`;
+        if (!this.state.formIsValid) {
+            buttonText = "Max list price is 10,000,000 SP";
+        }
+                       
         return (this.props.fetchInventoryLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> :
             this.props.fetchError ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> :
             inventory.length !== 0 ? 
@@ -133,17 +136,17 @@ class Inventory extends Component {
                 <div className={classes.Inventory}>
                     {inventory}
                 </div> 
-                <SellForm show={this.state.showSellForm} clicked={this.backdropClickedHandler}>
-                    <div style={{textAlign: "center", fontSize: "1.4em"}}>{this.state.currentItemName}</div>
-                    {form}
-                    <YesNoButton 
-                        btnType="Yes" 
-                        disabled={!this.state.formIsValid}
-                        onClick={this.submitHandler}
-                    >
-                        List (-{Math.floor(Number(this.state.controls.price.value)/20)} SP)
-                    </YesNoButton>
-                    <div style={{textAlign: "center", color: "red"}}>{this.props.listError}</div>
+                <SellForm 
+                    show={this.state.showSellForm} 
+                    clicked={this.backdropClickedHandler}
+                    currentItemName={this.state.currentItemName}
+                    formIsValid={this.state.formIsValid}
+                    submitHandler={this.submitHandler}
+                    listError={this.props.listError}
+                    buttonText={buttonText}
+                    listItemLoading={this.props.listItemLoading}
+                >
+                   {inputs}
                 </SellForm>
             </>
             :

@@ -1,7 +1,7 @@
 import React from 'react'; 
 import classes from './Stats.module.css';
 import Stat from './Stat/Stat';  
-import {capitalize, mapRarityToColor} from '../../../shared/utility'; 
+import {capitalize, mapRarityToColor, numberWithCommas} from '../../../shared/utility'; 
 
 const stats = (props) => {
     let rarityStats = []; 
@@ -31,11 +31,11 @@ const stats = (props) => {
     return (
         <div className={classes.Stats}>
             <div className={classes.StatsHeader}>STATS</div>
-            <Stat statName="SP" statValue={props.stats.SP}/>
-            <Stat statName="Net SP" statValue={props.stats.netSP}/>
-            <Stat statName="Total Spins" statValue={props.stats.totalSpins}/>
+            <Stat statName="SP" statValue={numberWithCommas(props.stats.SP)}/>
+            <Stat statName="Net SP" statValue={numberWithCommas(props.stats.netSP)}/>
+            <Stat statName="Total Spins" statValue={numberWithCommas(props.stats.totalSpins)}/>
             <Stat statName="Items Found" statValue={`${props.stats.itemsFound}/${props.stats.totalSpinItems}`}/>
-            <Stat statName="??? Unboxed" statValue={props.stats.rarityStats["???"]}/>
+            <Stat statName="??? Unboxed" statValue={numberWithCommas(props.stats.rarityStats["???"])}/>
             <hr className={classes.Separator}/>
             {rarityStats}
         </div>

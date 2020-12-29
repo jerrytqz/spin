@@ -2,7 +2,7 @@ import React from 'react';
 import logoImg from '../../../assets/images/icon.jpeg'; 
 import classes from './Logo.module.css';
 
-const logo = (props) => (
+const logo = () => (
     <div className={classes.Logo}>
         <img src={logoImg} alt="Spin"/>
         <h2 className={classes.Text}>

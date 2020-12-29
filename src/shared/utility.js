@@ -97,3 +97,30 @@ export const numberWithCommas = (num) => {
 }
 
 export const capitalize = (string) => (string.charAt(0).toUpperCase() + string.slice(1)) 
+
+export const dhm = (ms) => {
+    const days = Math.floor(ms/(24 * 60 * 60 * 1000));
+    const daysMS = ms % (24 * 60 * 60 * 1000);
+    const hours = Math.floor((daysMS)/(60 * 60 * 1000));
+    const hoursMS = ms % (60 * 60 * 1000);
+    const minutes = Math.floor((hoursMS)/(60 * 1000));
+    const minutesMS = ms % (60 * 1000);
+    const seconds = Math.floor((minutesMS)/(1000));
+
+    const words = [" days", " hours", " minutes", " seconds"];
+
+    if (days === 1) {
+        words[0] = words[0].substring(0, words[0].length - 1);
+    }
+    if (hours === 1) {
+        words[1] = words[1].substring(0, words[1].length - 1);
+    }
+    if (minutes === 1) {
+        words[2] = words[2].substring(0, words[2].length - 1);
+    }
+    if (seconds === 1) {
+        words[3] = words[3].substring(0, words[3].length - 1);
+    }
+
+    return days + words[0] + " " + hours + words[1] + " " + minutes + words[2] + " " + seconds + words[3];
+}

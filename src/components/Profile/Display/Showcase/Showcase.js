@@ -13,19 +13,22 @@ const showcase = (props) => {
                 rarity={one.rarity} 
                 quantity={one.quantity} 
                 name={one.name} 
-                showcase/> : 
+                showcase
+                disableHover/> : 
                 <Item nullItem showcase/>}
             {two !== 'nothing' ? <Item 
                 rarity={two.rarity} 
                 quantity={two.quantity} 
                 name={two.name} 
-                showcase/> :
+                showcase
+                disableHover/> :
                 <Item nullItem showcase/>} 
             {three !== 'nothing' ? <Item 
                 rarity={three.rarity} 
                 quantity={three.quantity} 
                 name={three.name} 
-                showcase/> :
+                showcase
+                disableHover/> :
                 <Item nullItem showcase/>}
         </div>
     )

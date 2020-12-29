@@ -4,7 +4,6 @@ import Modal from '../../../shared/UI/Modal/Modal';
 import {mapRarityToColor} from '../../../shared/utility'; 
 import Item from '../../Inventory/Item/Item'; 
 
-// Rarity is calculated on backend, this is just so that not as much info has to be sent from the backend to the frontend
 const prize = (props) => {
     let rarityType = null;
     let article = 'a'; 
@@ -47,8 +46,14 @@ const prize = (props) => {
                         <div className={classes.Stat}>In circulation: {props.item.circulationNum}</div>
                     </div>
                 </div>
-                <div className={classes.Item}>
-                    <Item name={props.item.name} quantity={1} rarity={props.item.rarity}/>
+                <div>
+                    <Item 
+                        name={props.item.name} 
+                        quantity={1} 
+                        rarity={props.item.rarity} 
+                        disableHover
+                        disableSpin
+                    />
                 </div>
             </div>
         </Modal>  
