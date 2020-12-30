@@ -46,7 +46,6 @@ class Inventory extends Component {
         this.setState(prev => ({
             ...prev,
             controls: {
-                ...prev.controls,
                 price: {
                     ...prev.controls.price,
                     ...prev.controls.price.elementConfig,

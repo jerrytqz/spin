@@ -109,7 +109,6 @@ class Authentication extends Component {
         this.setState(prev => ({
             ...prev, 
             controls: {
-                ...prev.controls,
                 username: {
                     ...prev.controls.username,
                     ...prev.controls.username.elementConfig,
