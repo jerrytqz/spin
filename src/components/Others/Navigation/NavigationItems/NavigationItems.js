@@ -12,8 +12,7 @@ const navigationItems = (props) => {
 	const isActive = (match, location) => {
 		if (location['pathname'].substring(1, 8) === 'profile') {
 			return true; 
-		}
-		else return false; 
+		} else return false; 
 	};
 
 	return (

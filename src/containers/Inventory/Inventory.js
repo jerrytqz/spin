@@ -10,7 +10,7 @@ import Input from '../../shared/UI/Input/Input';
 
 class Inventory extends Component {
     state = {
-    	controls: {
+        controls: {
     		price: {
     			elementType: 'input',
     			elementConfig: {
@@ -139,7 +139,7 @@ class Inventory extends Component {
 					: inventory.length !== 0 
 						? 
 							<div className={classes.Inventory}>
-								{inventory}
+                                {inventory}
 								<SellForm 
 									show={this.state.showSellForm} 
 									clicked={this.backdropClickedHandler}

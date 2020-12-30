@@ -29,8 +29,7 @@ export const fetchProfile = (username) => {
 			let result = await response.json(); 
 			if (response.status === 200) {
 				dispatch(fetchProfileSuccess(result)); 
-			}
-			else {
+			} else {
 				dispatch(fetchProfileFail(result['fetchError'])); 
 			}
 		}

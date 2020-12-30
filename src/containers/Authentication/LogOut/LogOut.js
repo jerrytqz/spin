@@ -14,8 +14,7 @@ class LogOut extends Component {
     componentDidMount() {
     	if (!this.props.isAuthenticated) {
     		this.props.history.push('/');
-    	}
-    	else this.props.onLogOut(this.props.token); 
+    	} else this.props.onLogOut(this.props.token); 
     }
     
     clickedHandler = () => {

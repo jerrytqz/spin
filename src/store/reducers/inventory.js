@@ -44,8 +44,7 @@ const listItemSuccess = (state, action) => {
 		if (info.itemID === action.itemID) {
 			if (info.quantity > 1) {
 				newInventory[item].quantity -= 1; 
-			}
-			else delete newInventory[item]; 
+			} else delete newInventory[item]; 
 		}
 	}
 	return updateObject(state, {

@@ -43,8 +43,7 @@ export const fetchInventory = (token) => {
 			let result = await response.json(); 
 			if (response.status === 200) {
 				dispatch(fetchInventorySuccess(result)); 
-			}
-			else {
+			} else {
 				dispatch(fetchInventoryFail(result['fetchError'])); 
 			}
 		}
@@ -69,8 +68,7 @@ export const listItem = (token, price, itemID) => {
 			let result = await response.json(); 
 			if (response.status === 200) {
 				dispatch(listItemSuccess(itemID)); 
-			}
-			else {
+			} else {
 				dispatch(listItemFail(result['listError'])); 
 			}
 		}

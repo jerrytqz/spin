@@ -43,8 +43,7 @@ export const fetchMarket = (token) => {
 			let result = await response.json(); 
 			if (response.status === 200) {
 				dispatch(fetchMarketSuccess(result)); 
-			}
-			else {
+			} else {
 				dispatch(fetchMarketFail(result['fetchError'])); 
 			}
 		}
@@ -69,8 +68,7 @@ export const buyItem = (token, marketID) => {
 			let result = await response.json(); 
 			if (response.status === 200) {
 				dispatch(buyItemSuccess(marketID)); 
-			}
-			else {
+			} else {
 				dispatch(buyItemFail(result['buyError'])); 
 			}
 		}
