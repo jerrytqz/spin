@@ -98,6 +98,7 @@ class Market extends Component {
                                     error={this.props.buyError}
                                     onClickBuy={this.buyClickedHandler}
                                     user={this.props.user}
+                                    SP={this.props.SP}
                                 />
                             </div> 
                         :
@@ -113,6 +114,7 @@ const mapStateToProps = state => {
         isAuthenticated: state.authentication.isAuthenticated,
         token: state.authentication.token,
         user: state.authentication.user, 
+        SP: state.authentication.SP,
         market: state.market.market,
         fetchMarketLoading: state.market.fetchMarketLoading,
         fetchError: state.market.fetchError,

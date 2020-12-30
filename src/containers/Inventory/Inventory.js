@@ -125,9 +125,18 @@ class Inventory extends Component {
             />
         ));
 
-        let buttonText = `List (-${numberWithCommas(Math.floor(Number(this.state.controls.price.value)/20))} SP)`;
+        const tax = Math.floor(Number(this.state.controls.price.value)/20); 
+        let buttonText = `List (-${numberWithCommas(tax)} SP)`;
+        let disabled = false; 
+
+        if (this.props.SP < tax) {
+            buttonText = 'Not enough SP to list'; 
+            disabled = true; 
+        }
+
         if (!this.state.formIsValid) {
             buttonText = 'Max list price is 10,000,000 SP';
+            disabled = true; 
         }
                        
         return (
@@ -143,7 +152,7 @@ class Inventory extends Component {
                                     show={this.state.showSellForm} 
                                     clicked={this.backdropClickedHandler}
                                     currentItemName={this.state.currentItemName}
-                                    formIsValid={this.state.formIsValid}
+                                    disabled={disabled}
                                     submitHandler={this.submitHandler}
                                     listError={this.props.listError}
                                     buttonText={buttonText}
@@ -164,6 +173,7 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.authentication.isAuthenticated,
         token: state.authentication.token,
+        SP: state.authentication.SP, 
         inventory: state.inventory.inventory,
         fetchInventoryLoading: state.inventory.fetchInventoryLoading,
         fetchError: state.inventory.fetchError,

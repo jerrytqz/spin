@@ -9,10 +9,14 @@ import Modal from '../../shared/UI/Modal/Modal';
 const buyForm = (props) => {
 
     let buttonText = 'Log in to buy';
-    let ownItem = props.user === props.seller;
+    let disabled = !props.isAuthenticated || props.user === props.seller || props.SP < props.price; 
+
     if (props.isAuthenticated) {
         buttonText = 'Buy';
-        if (ownItem) {
+        if (props.SP < props.price) {
+            buttonText = 'Not enough SP'; 
+        }
+        if (props.user === props.seller) {
             buttonText = 'Cannot buy own item'; 
         }
     }
@@ -47,7 +51,7 @@ const buyForm = (props) => {
                             <YesNoButton 
                                 btnType="Yes" 
                                 onClick={props.onClickBuy} 
-                                disabled={!props.isAuthenticated || ownItem}
+                                disabled={disabled}
                                 style={{margin: '0'}}
                             >
                                 {buttonText}

@@ -18,7 +18,7 @@ const sellForm = (props) => (
                     {props.children}
                     <YesNoButton 
                         btnType="Yes" 
-                        disabled={!props.formIsValid}
+                        disabled={props.disabled}
                         onClick={props.submitHandler}
                         style={{width: '100%'}}
                     >

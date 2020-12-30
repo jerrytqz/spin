@@ -60,6 +60,7 @@ class Spin extends Component {
                     purchaseSpinLoading={this.props.purchaseSpinLoading}
                     showSpinnerText={this.state.showSpinnerText}
                     onClickBackdrop={this.purchaseErrorClickedHandler}
+                    SP={this.props.SP}
                 />
                 {this.state.showPrize 
                     ? <Prize clicked={this.resetSpinHandler} item={this.props.item}/> 

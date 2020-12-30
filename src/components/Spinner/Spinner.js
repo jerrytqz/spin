@@ -22,6 +22,11 @@ const spinner = (props) => {
             <div className={classes.SpinnerText3}>LOG IN TO SPIN</div>
         );
         disabled = true; 
+    } else if (props.SP < 500) {
+        spinnerText = (
+            <div className={classes.SpinnerText3}>NOT ENOUGH SP</div>
+        ); 
+        disabled = true; 
     }
 
     let spinDegree = props.degree + 1800; 
