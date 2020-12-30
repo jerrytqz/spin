@@ -14,8 +14,8 @@ console.log('running');
 
 
 socket.on('user sold stuff', (x) => {
-	console.log('someone sold this thing');
-	console.log(x);
+    console.log('someone sold this thing');
+    console.log(x);
 
 });
   

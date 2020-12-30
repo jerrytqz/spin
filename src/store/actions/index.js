@@ -1,31 +1,31 @@
 export {
-	purchaseSpin,
-	resetPurchaseError,
-	resetDegree,
-	getFreeSP,
-	resetFreeSPError
+    purchaseSpin,
+    resetPurchaseError,
+    resetDegree,
+    getFreeSP,
+    resetFreeSPError
 } from './spin';
 
 export {
-	fetchMarket,
-	buyItem,
-	clearBuyError
+    fetchMarket,
+    buyItem,
+    clearBuyError
 } from './market';
 
 export {
-	fetchInventory,
-	listItem,
-	clearListError
+    fetchInventory,
+    listItem,
+    clearListError
 } from './inventory';
 
 export {
-	fetchProfile
+    fetchProfile
 } from './profile';
 
 export {
-	auth,
-	resetAuthError,
-	logOut,
-	tryAutoLogIn,
-	changeSP
+    auth,
+    resetAuthError,
+    logOut,
+    tryAutoLogIn,
+    changeSP
 } from './authentication';
