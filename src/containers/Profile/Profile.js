@@ -3,8 +3,8 @@ import classes from './Profile.module.css';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import Stats from '../../components/Stats/Stats'; 
-import Display from '../../components/Display/Display'; 
+import ProfileStats from '../../components/ProfileStats/ProfileStats'; 
+import ProfileDisplay from '../../components/ProfileDisplay/ProfileDisplay'; 
 
 class Profile extends Component {
     componentDidMount() {
@@ -18,8 +18,8 @@ class Profile extends Component {
                 <div className={classes.Profile}>
                     <div className={classes.Header}>{this.props.profile.username}</div>
                     <div className={classes.Body}>
-                        <Stats stats={this.props.profile.stats}/>
-                        <Display 
+                        <ProfileStats stats={this.props.profile.stats}/>
+                        <ProfileDisplay 
                             showcaseItems={this.props.profile.showcaseItems} 
                             rarityStats={this.props.profile.stats.rarityStats}
                             totalSpins={this.props.profile.stats.totalSpins}

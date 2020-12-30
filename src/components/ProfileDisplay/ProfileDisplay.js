@@ -1,9 +1,9 @@
 import React from 'react'; 
-import classes from './Display.module.css';
+import classes from './ProfileDisplay.module.css';
 import Showcase from './Showcase/Showcase'; 
 import PieChart from './PieChart/PieChart'; 
 
-const display = (props) => {
+const profileDisplay = (props) => {
     return (
         <div className={classes.Display}>
             <Showcase showcaseItems={props.showcaseItems}/>
@@ -13,4 +13,4 @@ const display = (props) => {
     );
 };
 
-export default display; 
+export default profileDisplay; 
