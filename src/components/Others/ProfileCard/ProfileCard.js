@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './ProfileCard.module.css';
 import logoImg from '../../../assets/images/icon.jpeg'; 
-import {numberWithCommas} from '../../../shared/utility'; 
+import { numberWithCommas } from '../../../shared/utility'; 
 
 const profileCard = (props) => (
 	<div className={classes.ProfileCard}>

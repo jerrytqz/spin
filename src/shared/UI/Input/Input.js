@@ -11,19 +11,25 @@ const input = (props) => {
     
 	switch (props.elementType) {
 	case ('input'):
-		inputElement = <input 
-			className = {inputClasses.join(' ')} 
-			{...props.elementConfig}
-			value = {props.value}
-			onChange = {props.changed} />; 
+		inputElement = (
+			<input 
+				className = {inputClasses.join(' ')} 
+				{...props.elementConfig}
+				value = {props.value}
+				onChange = {props.changed}
+			/> 
+		);
 		break;
 
 	case ('textarea'):
-		inputElement = <textarea 
-			className = {inputClasses.join(' ')} 
-			{...props.elementConfig} 
-			value = {props.value}
-			onChange = {props.changed} />;
+		inputElement = (
+			<textarea 
+				className = {inputClasses.join(' ')} 
+				{...props.elementConfig} 
+				value = {props.value}
+				onChange = {props.changed}
+			/>
+		);
 		break;
 
 	case ('select'):
@@ -32,7 +38,8 @@ const input = (props) => {
 				className = {inputClasses.join(' ')} 
 				{...props.elementConfig}
 				value = {props.value}
-				onChange = {props.changed}>      
+				onChange = {props.changed}
+			>      
 				{props.elementConfig.options.map(option => (
 					<option key = {option.value} value = {option.value}>
 						{option.displayValue}
@@ -43,10 +50,13 @@ const input = (props) => {
 		break;
 
 	default:
-		inputElement = <input 
-			className = {inputClasses.join(' ')} 
-			{...props.elementConfig}
-			value = {props.value}/>;  
+		inputElement = (
+			<input 
+				className = {inputClasses.join(' ')} 
+				{...props.elementConfig}
+				value = {props.value}
+			/>
+		);
 	}
 
 	let validationError = null;
@@ -56,7 +66,6 @@ const input = (props) => {
 
 	return(
 		<div className={classes.Input}>
-			<label className={classes.Label}>{props.label}</label>
 			{inputElement}
 			{validationError}
 		</div>

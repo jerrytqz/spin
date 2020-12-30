@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import {updateObject} from '../../shared/utility'; 
+import { updateObject } from '../../shared/utility'; 
 
 const initialState = {
 	profile: null,
@@ -31,14 +31,14 @@ const fetchProfileFail = (state, action) => {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-	case actionTypes.FETCH_PROFILE_START:
-		return fetchProfileStart(state); 
-	case actionTypes.FETCH_PROFILE_SUCCESS:
-		return fetchProfileSuccess(state, action); 
-	case actionTypes.FETCH_PROFILE_FAIL:
-		return fetchProfileFail(state, action); 
-	default:
-		return state;
+		case actionTypes.FETCH_PROFILE_START:
+			return fetchProfileStart(state); 
+		case actionTypes.FETCH_PROFILE_SUCCESS:
+			return fetchProfileSuccess(state, action); 
+		case actionTypes.FETCH_PROFILE_FAIL:
+			return fetchProfileFail(state, action); 
+		default:
+			return state;
 	}
 };
 

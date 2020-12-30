@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Route, withRouter} from 'react-router-dom'; 
-import {connect} from 'react-redux'; 
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom'; 
+import { connect } from 'react-redux'; 
 
 import * as actions from './store/actions/index'; 
 import Layout from './components/Others/Layout/Layout'; 
@@ -18,15 +18,18 @@ class App extends Component {
 	}
 
 	render() {
-		return (this.props.autoAttemptFinished ? 
-			<Layout>
-				<Route path="/" exact component={Spin}/>
-				<Route path="/market" component={Market}/>
-				<Route path="/inventory" exact component={Inventory}/>
-				<Route path={['/profile/:username', '/profile']} component={Profile}/>
-				<Route path="/authentication" component={Authentication}/> 
-				<Route path="/logout" component={LogOut}/>
-			</Layout> : <Spinner/>
+		return (
+			this.props.autoAttemptFinished 
+				? 
+					<Layout>
+						<Route path="/" exact component={Spin}/>
+						<Route path="/market" component={Market}/>
+						<Route path="/inventory" exact component={Inventory}/>
+						<Route path={['/profile/:username', '/profile']} component={Profile}/>
+						<Route path="/authentication" component={Authentication}/> 
+						<Route path="/logout" component={LogOut}/>
+					</Layout> 
+				: <Spinner/>
 		);
 	}
 }

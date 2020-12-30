@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './SP.module.css';
 import Modal from '../../../shared/UI/Modal/Modal'; 
-import {numberWithCommas} from '../../../shared/utility'; 
+import { numberWithCommas } from '../../../shared/utility'; 
  
 const SP = (props) => {
 	return (
@@ -13,19 +13,19 @@ const SP = (props) => {
 				<button 
 					className={classes.FreeSPButton} 
 					onClick={props.onClickFreeSP}
-					disabled={props.disabledFreeSP}>+
+					disabled={props.disabledFreeSP}
+				>
+					+
 				</button>
 			</div> 
-			{
-				props.freeSPError 
-					? (
-						<Modal show clicked={props.onClickBackdrop}>
-							<div className={classes.FreeSPError}>
-								{props.freeSPError}
-							</div>
-						</Modal> 
-					)
-					: null
+			{props.freeSPError 
+				? 
+					<Modal show clicked={props.onClickBackdrop}>
+						<div className={classes.FreeSPError}>
+							{props.freeSPError}
+						</div>
+					</Modal> 
+				: null
 			}
 		</>
 	);

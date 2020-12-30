@@ -1,10 +1,10 @@
-import React, {Component} from 'react'; 
+import React, { Component } from 'react'; 
 import classes from './Inventory.module.css'; 
 import Item from '../../components/Inventory/Item/Item'; 
-import {connect} from 'react-redux'; 
+import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import {mapRarityToValue, updateObject, checkValidity, numberWithCommas} from '../../shared/utility';
+import { mapRarityToValue, updateObject, checkValidity, numberWithCommas } from '../../shared/utility';
 import SellForm from '../../components/Inventory/SellForm/SellForm'; 
 import Input from '../../shared/UI/Input/Input'; 
 
@@ -91,13 +91,15 @@ class Inventory extends Component {
     	if (this.props.inventory) {
     		const rawInventory = Object.entries(this.props.inventory);
     		for (const [item, info] of rawInventory) {
-    			inventory.push(<Item 
-    				key={info.inventoryID} 
-    				name={item} 
-    				quantity={info.quantity} 
-    				rarity={info.rarity} 
-    				onClick={() => this.inventoryItemClickedHandler(info.itemID, item)}
-    			/>);
+    			inventory.push(
+					<Item 
+						key={info.inventoryID} 
+						name={item} 
+						quantity={info.quantity} 
+						rarity={info.rarity} 
+						onClick={() => this.inventoryItemClickedHandler(info.itemID, item)}
+					/>
+				);
     		}
     		inventory.sort((a, b) => -(mapRarityToValue(a.props.rarity) - mapRarityToValue(b.props.rarity)));
     	}
@@ -129,30 +131,32 @@ class Inventory extends Component {
     		buttonText = 'Max list price is 10,000,000 SP';
     	}
                        
-    	return (this.props.fetchInventoryLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> :
-    		this.props.fetchError ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> :
-    			inventory.length !== 0 ? 
-    				<>
-    					<div className={classes.Inventory}>
-    						{inventory}
-    					</div> 
-    					<SellForm 
-    						show={this.state.showSellForm} 
-    						clicked={this.backdropClickedHandler}
-    						currentItemName={this.state.currentItemName}
-    						formIsValid={this.state.formIsValid}
-    						submitHandler={this.submitHandler}
-    						listError={this.props.listError}
-    						buttonText={buttonText}
-    						listItemLoading={this.props.listItemLoading}
-    					>
-    						{inputs}
-    					</SellForm>
-    				</>
-    				:
-    				<div className={classes.InventoryNullText}>
-                        Nothing to show! 
-    				</div>
+    	return (
+			this.props.fetchInventoryLoading 
+				? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
+				: this.props.fetchError 
+					? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> 
+					: inventory.length !== 0 
+						? 
+							<div className={classes.Inventory}>
+								{inventory}
+								<SellForm 
+									show={this.state.showSellForm} 
+									clicked={this.backdropClickedHandler}
+									currentItemName={this.state.currentItemName}
+									formIsValid={this.state.formIsValid}
+									submitHandler={this.submitHandler}
+									listError={this.props.listError}
+									buttonText={buttonText}
+									listItemLoading={this.props.listItemLoading}
+								>
+									{inputs}
+								</SellForm>
+							</div> 
+						:
+							<div className={classes.InventoryNullText}>
+								Nothing to show! 
+							</div>
     	);
     }
 }

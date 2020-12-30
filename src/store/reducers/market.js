@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import {updateObject} from '../../shared/utility'; 
+import { updateObject } from '../../shared/utility'; 
 
 const initialState = {
 	market: null,
@@ -67,22 +67,22 @@ const clearBuyError = (state) => {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-	case actionTypes.FETCH_MARKET_START:
-		return fetchMarketStart(state); 
-	case actionTypes.FETCH_MARKET_SUCCESS:
-		return fetchMarketSuccess(state, action); 
-	case actionTypes.FETCH_MARKET_FAIL:
-		return fetchMarketFail(state, action); 
-	case actionTypes.BUY_ITEM_START:
-		return buyItemStart(state); 
-	case actionTypes.BUY_ITEM_SUCCESS:
-		return buyItemSuccess(state, action); 
-	case actionTypes.BUY_ITEM_FAIL:
-		return buyItemFail(state, action);
-	case actionTypes.CLEAR_BUY_ERROR:
-		return clearBuyError(state);  
-	default:
-		return state;
+        case actionTypes.FETCH_MARKET_START:
+            return fetchMarketStart(state); 
+        case actionTypes.FETCH_MARKET_SUCCESS:
+            return fetchMarketSuccess(state, action); 
+        case actionTypes.FETCH_MARKET_FAIL:
+            return fetchMarketFail(state, action); 
+        case actionTypes.BUY_ITEM_START:
+            return buyItemStart(state); 
+        case actionTypes.BUY_ITEM_SUCCESS:
+            return buyItemSuccess(state, action); 
+        case actionTypes.BUY_ITEM_FAIL:
+            return buyItemFail(state, action);
+        case actionTypes.CLEAR_BUY_ERROR:
+            return clearBuyError(state);  
+        default:
+            return state;
 	}
 };
 

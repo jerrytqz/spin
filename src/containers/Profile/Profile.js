@@ -1,6 +1,6 @@
-import React, {Component} from 'react'; 
+import React, { Component } from 'react'; 
 import classes from './Profile.module.css'; 
-import {connect} from 'react-redux'; 
+import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import Stats from '../../components/Profile/Stats/Stats'; 
@@ -29,9 +29,12 @@ class Profile extends Component {
 			);
 		} 
 
-		return (this.props.fetchProfileLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> : 
-			this.props.fetchError ?  <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> :
-				profile
+		return (
+			this.props.fetchProfileLoading 
+				? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
+				: this.props.fetchError 
+					? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> 
+					: profile
 		);
 	}
 }

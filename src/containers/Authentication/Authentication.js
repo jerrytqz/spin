@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {updateObject, checkValidity} from '../../shared/utility';
+import React, { Component } from 'react';
+import { updateObject, checkValidity} from '../../shared/utility';
 import Input from '../../shared/UI/Input/Input';
 import classes from './Authentication.module.css'; 
 import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton'; 
 import TextButton from '../../shared/UI/Buttons/TextButton/TextButton'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
-import {connect} from 'react-redux'; 
+import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 
 class Authentication extends Component {
@@ -169,7 +169,8 @@ class Authentication extends Component {
     			shouldValidate = {formElement.config.validation}
     			touched = {formElement.config.touched}
     			changed = {(event) => this.inputChangedHandler(event, formElement.id)}
-    			valueType = {formElement.config.elementConfig.placeholder}/>
+    			valueType = {formElement.config.elementConfig.placeholder}
+			/>
     	));
 
     	if (this.state.isLogIn) {
@@ -201,10 +202,12 @@ class Authentication extends Component {
     						{form}
     						<YesNoButton 
     							btnType="Yes" 
-    							disabled={!this.state.formIsValid && !isLogInFormIsValid}>{this.state.isLogIn ? 'Log In' : 'Register'}
+								disabled={!this.state.formIsValid && !isLogInFormIsValid}
+							>
+								{this.state.isLogIn ? 'Log In' : 'Register'}
     						</YesNoButton>
     					</form>
-    					<TextButton onClick={this.switchAuthModeHandler}>
+    					<TextButton onClick={this.switchAuthModeHandler} style={{marginTop: '20px'}}>
     						{this.state.isLogIn ? 'Register ' : 'Log in '} instead
     					</TextButton>
     				</div>

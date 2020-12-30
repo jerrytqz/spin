@@ -65,24 +65,24 @@ const resetFreeSPError = (state) => {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-	case actionTypes.PURCHASE_SPIN_SUCCESS:
-		return purchaseSpinSuccess(state, action); 
-	case actionTypes.PURCHASE_SPIN_FAIL:
-		return purchaseSpinFail(state, action); 
-	case actionTypes.RESET_PURCHASE_ERROR:
-		return resetPurchaseError(state); 
-	case actionTypes.RESET_DEGREE: 
-		return resetDegree(state); 
-	case actionTypes.PURCHASE_SPIN_START: 
-		return purchaseSpinStart(state); 
-	case actionTypes.GET_FREE_SP_SUCCESS: 
-		return getFreeSPSuccess(state, action); 
-	case actionTypes.GET_FREE_SP_FAIL: 
-		return getFreeSPFail(state, action); 
-	case actionTypes.RESET_FREE_SP_ERROR: 
-		return resetFreeSPError(state);
-	default:
-		return state;
+        case actionTypes.PURCHASE_SPIN_SUCCESS:
+            return purchaseSpinSuccess(state, action); 
+        case actionTypes.PURCHASE_SPIN_FAIL:
+            return purchaseSpinFail(state, action); 
+        case actionTypes.RESET_PURCHASE_ERROR:
+            return resetPurchaseError(state); 
+        case actionTypes.RESET_DEGREE: 
+            return resetDegree(state); 
+        case actionTypes.PURCHASE_SPIN_START: 
+            return purchaseSpinStart(state); 
+        case actionTypes.GET_FREE_SP_SUCCESS: 
+            return getFreeSPSuccess(state, action); 
+        case actionTypes.GET_FREE_SP_FAIL: 
+            return getFreeSPFail(state, action); 
+        case actionTypes.RESET_FREE_SP_ERROR: 
+            return resetFreeSPError(state);
+        default:
+            return state;
 	}
 };
 

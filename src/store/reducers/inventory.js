@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import {updateObject} from '../../shared/utility'; 
+import { updateObject } from '../../shared/utility'; 
 
 const initialState = {
 	inventory: null,
@@ -70,22 +70,22 @@ const clearListError = (state) => {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-	case actionTypes.FETCH_INVENTORY_START:
-		return fetchInventoryStart(state); 
-	case actionTypes.FETCH_INVENTORY_SUCCESS:
-		return fetchInventorySuccess(state, action); 
-	case actionTypes.FETCH_INVENTORY_FAIL:
-		return fetchInventoryFail(state, action); 
-	case actionTypes.LIST_ITEM_START: 
-		return listItemStart(state); 
-	case actionTypes.LIST_ITEM_SUCCESS: 
-		return listItemSuccess(state, action); 
-	case actionTypes.LIST_ITEM_FAIL: 
-		return listItemFail(state, action);
-	case actionTypes.CLEAR_LIST_ERROR: 
-		return clearListError(state); 
-	default:
-		return state;
+        case actionTypes.FETCH_INVENTORY_START:
+            return fetchInventoryStart(state); 
+        case actionTypes.FETCH_INVENTORY_SUCCESS:
+            return fetchInventorySuccess(state, action); 
+        case actionTypes.FETCH_INVENTORY_FAIL:
+            return fetchInventoryFail(state, action); 
+        case actionTypes.LIST_ITEM_START: 
+            return listItemStart(state); 
+        case actionTypes.LIST_ITEM_SUCCESS: 
+            return listItemSuccess(state, action); 
+        case actionTypes.LIST_ITEM_FAIL: 
+            return listItemFail(state, action);
+        case actionTypes.CLEAR_LIST_ERROR: 
+            return clearListError(state); 
+        default:
+            return state;
 	}
 };
 

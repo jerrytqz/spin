@@ -122,5 +122,5 @@ export const dhm = (ms) => {
 		words[3] = words[3].substring(0, words[3].length - 1);
 	}
 
-	return days + words[0] + ' ' + hours + words[1] + ' ' + minutes + words[2] + ' ' + seconds + words[3];
+	return `${days} ${words[0]} ${hours} ${words[1]} ${minutes} ${words[2]} ${seconds} ${words[3]}`;
 };

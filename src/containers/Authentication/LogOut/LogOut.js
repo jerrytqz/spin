@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import * as actions from '../../../store/actions/index'; 
-import {connect} from 'react-redux'; 
+import { connect } from 'react-redux'; 
 import Modal from '../../../shared/UI/Modal/Modal'; 
 import LoadingSpinner from '../../../shared/UI/LoadingSpinner/LoadingSpinner'; 
 import classes from './LogOut.module.css'; 
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class LogOut extends Component {
     state = {

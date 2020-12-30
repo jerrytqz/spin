@@ -5,9 +5,8 @@
     outline: none;
     cursor: pointer;
     font: inherit;
-    padding: 10px;
-    margin: 10px;
-    font-weight: bold;
+	padding: 10px;
+	width: 100%; 
 }
 
 .YesNoButton:hover,

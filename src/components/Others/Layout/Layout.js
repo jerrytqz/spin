@@ -1,7 +1,7 @@
-import React, {Component} from 'react'; 
+import React, { Component } from 'react'; 
 import classes from './Layout.module.css'; 
 import Toolbar from '../Navigation/Toolbar/Toolbar'; 
-import {connect} from 'react-redux'; 
+import { connect } from 'react-redux'; 
 
 class Layout extends Component {
 	render() {

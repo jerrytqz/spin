@@ -6,7 +6,8 @@ const defaultButton = (props) => (
 		className={classes.DefaultButton}
 		onClick={props.onClick} 
 		disabled={props.disabled}
-		style={{width: props.width}}>{props.children}
+	>
+		{props.children}
 	</button>
 );
 

@@ -3,18 +3,18 @@
     z-index: 150;
     background-color: white;
     width: 70%;
-    padding: 16px;
+    padding: 20px;
     left: 15%;
     top: 50%; 
     transform: translateY(-50%); 
-    box-sizing: border-box;
-    border-radius: 10px;
+	border-radius: 10px;
+	box-sizing: border-box; 
 }
 
 @media (min-width: 600px) {
     .Modal {
-        width: 400px;
-        left: calc(50% - 200px);
+        width: 450px;
+        left: calc(50% - 225px);
     }
 }
 

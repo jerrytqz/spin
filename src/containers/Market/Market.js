@@ -1,10 +1,10 @@
-import React, {Component} from 'react'; 
+import React, { Component } from 'react'; 
 import classes from './Market.module.css'; 
 import Item from '../../components/Inventory/Item/Item'; 
-import {connect} from 'react-redux'; 
+import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import {mapRarityToValue, numberWithCommas} from '../../shared/utility'; 
+import { mapRarityToValue, numberWithCommas } from '../../shared/utility'; 
 import BuyForm from '../../components/Market/BuyForm/BuyForm'; 
 
 class Market extends Component {
@@ -52,13 +52,15 @@ class Market extends Component {
     	if (this.props.market) {
     		const rawmarket = Object.entries(this.props.market);
     		for (const [item, info] of rawmarket) {
-    			market.push(<Item 
-    				key={item.split('|')[1]} 
-    				name={item.split('|')[0]} 
-    				price={numberWithCommas(info.price)} 
-    				rarity={info.rarity} 
-    				onClick={() => this.marketItemClickedHandler(item, info)}
-    			/>);
+    			market.push(
+					<Item 
+						key={item.split('|')[1]} 
+						name={item.split('|')[0]} 
+						price={numberWithCommas(info.price)} 
+						rarity={info.rarity} 
+						onClick={() => this.marketItemClickedHandler(item, info)}
+					/>
+				);
     		}
     		market.sort((a, b) => {
     			const priceA = parseInt(a.props.price.replace(/,/g, ''));
@@ -74,30 +76,34 @@ class Market extends Component {
     		}); 
     	}
 
-    	return (this.props.fetchMarketLoading ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> :
-    		this.props.fetchError ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> :
-    			market.length !== 0 ? 
-    				<div className={classes.Market}>
-    					{market}
-    					<BuyForm 
-    						show={this.state.showBuyForm} 
-    						clicked={this.backdropClickedHandler}
-    						name={this.state.currentItemName}
-    						rarity={this.state.currentItemRarity}
-    						listTime={this.state.currentListTime}
-    						seller={this.state.currentSeller}
-    						price={this.state.currentItemPrice}
-    						isAuthenticated={this.props.isAuthenticated}
-    						loading={this.props.buyItemLoading}
-    						error={this.props.buyError}
-    						onClickBuy={this.buyClickedHandler}
-    						user={this.props.user}
-    					/>
-    				</div> 
-    				:
-    				<div className={classes.MarketNullText}>
-                Nothing to show! 
-    				</div>
+    	return (
+			this.props.fetchMarketLoading 
+				? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
+				: this.props.fetchError 
+					? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> 
+					: market.length !== 0 
+						? 
+							<div className={classes.Market}>
+								{market}
+								<BuyForm 
+									show={this.state.showBuyForm} 
+									clicked={this.backdropClickedHandler}
+									name={this.state.currentItemName}
+									rarity={this.state.currentItemRarity}
+									listTime={this.state.currentListTime}
+									seller={this.state.currentSeller}
+									price={this.state.currentItemPrice}
+									isAuthenticated={this.props.isAuthenticated}
+									loading={this.props.buyItemLoading}
+									error={this.props.buyError}
+									onClickBuy={this.buyClickedHandler}
+									user={this.props.user}
+								/>
+							</div> 
+    					:
+							<div className={classes.MarketNullText}>
+								Nothing to show! 
+							</div>
     	);
     }
 }
