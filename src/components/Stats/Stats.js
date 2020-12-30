@@ -1,7 +1,7 @@
 import React from 'react'; 
 import classes from './Stats.module.css';
 import Stat from './Stat/Stat';  
-import { capitalize, mapRarityToColor, numberWithCommas } from '../../../shared/utility'; 
+import { capitalize, mapRarityToColor, numberWithCommas } from '../../shared/utility'; 
 
 const stats = (props) => {
     let rarityStats = []; 

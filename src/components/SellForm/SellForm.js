@@ -1,7 +1,7 @@
 import React from 'react';
-import YesNoButton from '../../../shared/UI/Buttons/YesNoButton/YesNoButton'; 
-import LoadingSpinner from '../../../shared/UI/LoadingSpinner/LoadingSpinner'; 
-import Modal from '../../../shared/UI/Modal/Modal'; 
+import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton'; 
+import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
+import Modal from '../../shared/UI/Modal/Modal'; 
 
 const sellForm = (props) => (
     <Modal 

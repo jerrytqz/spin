@@ -3,7 +3,7 @@ import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'; 
 
 import * as actions from './store/actions/index'; 
-import Layout from './components/Others/Layout/Layout'; 
+import Layout from './components/Layout/Layout'; 
 import Spin from './containers/Spin/Spin'; 
 import Market from './containers/Market/Market'; 
 import Inventory from './containers/Inventory/Inventory';

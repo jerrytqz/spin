@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Spinner.module.css'; 
-import Modal from '../../../shared/UI/Modal/Modal'; 
+import Modal from '../../shared/UI/Modal/Modal'; 
 
 const spinner = (props) => { 
     let spinnerText = (

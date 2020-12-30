@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Item.module.css';
-import { mapRarityToColor } from '../../../shared/utility'; 
+import { mapRarityToColor } from '../../shared/utility'; 
 
 const item = (props) => {
     // let imagePathName = ''; 

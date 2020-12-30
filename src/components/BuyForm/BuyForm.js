@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './BuyForm.module.css'; 
-import Item from '../../Inventory/Item/Item';
-import YesNoButton from '../../../shared/UI/Buttons/YesNoButton/YesNoButton';
-import { dhm, numberWithCommas } from '../../../shared/utility'; 
-import LoadingSpinner from '../../../shared/UI/LoadingSpinner/LoadingSpinner'; 
-import Modal from '../../../shared/UI/Modal/Modal'; 
+import Item from '../Item/Item';
+import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton';
+import { dhm, numberWithCommas } from '../../shared/utility'; 
+import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
+import Modal from '../../shared/UI/Modal/Modal'; 
 
 const buyForm = (props) => {
 

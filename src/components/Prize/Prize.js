@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './Prize.module.css'; 
-import Modal from '../../../shared/UI/Modal/Modal'; 
-import { mapRarityToColor } from '../../../shared/utility'; 
-import Item from '../../Inventory/Item/Item'; 
+import Modal from '../../shared/UI/Modal/Modal'; 
+import { mapRarityToColor } from '../../shared/utility'; 
+import Item from '../Item/Item'; 
 
 const prize = (props) => {
     let rarityType = null;

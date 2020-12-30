@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Prize from '../../components/Spin/Prize/Prize';  
-import Spinner from '../../components/Spin/Spinner/Spinner'; 
-import SpinInfo from '../../components/Spin/SpinInfo/SpinInfo'; 
+import Prize from '../../components/Prize/Prize';  
+import Spinner from '../../components/Spinner/Spinner'; 
+import SpinInfo from '../../components/SpinInfo/SpinInfo'; 
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import Backdrop from '../../shared/UI/Backdrop/Backdrop'; 
-import SP from '../../components/Spin/SP/SP'; 
+import SP from '../../components/SP/SP'; 
 
 class Spin extends Component {
     state = {

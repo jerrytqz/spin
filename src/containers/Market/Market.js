@@ -1,11 +1,11 @@
 import React, { Component } from 'react'; 
 import classes from './Market.module.css'; 
-import Item from '../../components/Inventory/Item/Item'; 
+import Item from '../../components/Item/Item'; 
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import { mapRarityToValue, numberWithCommas } from '../../shared/utility'; 
-import BuyForm from '../../components/Market/BuyForm/BuyForm'; 
+import BuyForm from '../../components/BuyForm/BuyForm'; 
 
 class Market extends Component {
     state = {

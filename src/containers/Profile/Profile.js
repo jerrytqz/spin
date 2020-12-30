@@ -3,8 +3,8 @@ import classes from './Profile.module.css';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import Stats from '../../components/Profile/Stats/Stats'; 
-import Display from '../../components/Profile/Display/Display'; 
+import Stats from '../../components/Stats/Stats'; 
+import Display from '../../components/Display/Display'; 
 
 class Profile extends Component {
     componentDidMount() {

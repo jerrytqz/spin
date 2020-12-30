@@ -1,6 +1,6 @@
 import React from 'react'; 
 import classes from './Showcase.module.css';
-import Item from '../../../Inventory/Item/Item'; 
+import Item from '../../Item/Item'; 
 
 const showcase = (props) => {
     const one = props.showcaseItems.one; 

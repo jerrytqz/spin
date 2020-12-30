@@ -1,11 +1,11 @@
 import React, { Component } from 'react'; 
 import classes from './Inventory.module.css'; 
-import Item from '../../components/Inventory/Item/Item'; 
+import Item from '../../components/Item/Item'; 
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import { mapRarityToValue, updateObject, checkValidity, numberWithCommas } from '../../shared/utility';
-import SellForm from '../../components/Inventory/SellForm/SellForm'; 
+import SellForm from '../../components/SellForm/SellForm'; 
 import Input from '../../shared/UI/Input/Input'; 
 
 class Inventory extends Component {

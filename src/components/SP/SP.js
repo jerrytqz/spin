@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './SP.module.css';
-import Modal from '../../../shared/UI/Modal/Modal'; 
-import { numberWithCommas } from '../../../shared/utility'; 
+import Modal from '../../shared/UI/Modal/Modal'; 
+import { numberWithCommas } from '../../shared/utility'; 
  
 const SP = (props) => {
     return (
