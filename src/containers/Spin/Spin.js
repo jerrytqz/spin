@@ -62,7 +62,7 @@ class Spin extends Component {
                     onClickBackdrop={this.purchaseErrorClickedHandler}
                 />
                 {this.state.showPrize 
-                    ? <Prize degree={this.props.degree} clicked={this.resetSpinHandler} item={this.props.item}/> 
+                    ? <Prize clicked={this.resetSpinHandler} item={this.props.item}/> 
                     : null
                 }
                 <SpinInfo/>

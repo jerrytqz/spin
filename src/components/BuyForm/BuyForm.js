@@ -39,10 +39,10 @@ const buyForm = (props) => {
                         </div>
                         <div className={classes.Right}>
                             <div>
-                                <div style={{fontWeight: 'bold', fontSize: '1.25em'}}>{props.seller}</div>
+                                <div className={classes.Seller}>{props.seller}</div>
                                 <div style={{marginTop: '16px'}}>{numberWithCommas(props.price)} SP</div>
-                                <div style={{fontSize: '0.65em', fontStyle: 'italic', marginTop: '16px', color: '#616161'}}>{dhm(new Date().getTime() - props.listTime)}</div>
-                                {props.error ? <div style={{color: 'red', textAlign: 'center', marginTop: '42px'}}>{props.error}</div> : null}
+                                <div className={classes.ListTime}>{dhm(new Date().getTime() - props.listTime)}</div>
+                                {props.error ? <div className={classes.Error}>{props.error}</div> : null}
                             </div>
                             <YesNoButton 
                                 btnType="Yes" 

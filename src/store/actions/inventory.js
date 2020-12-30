@@ -63,13 +63,13 @@ export const listItem = (token, price, itemID) => {
             let response = await fetch('http://127.0.0.1:8000/list-item/', {
                 method: 'POST',
                 headers: new Headers({'Authorization': token}),
-                body: data 
+                body: data
             });
-            let result = await response.json(); 
+            let result = await response.json();
             if (response.status === 200) {
-                dispatch(listItemSuccess(itemID)); 
+                dispatch(listItemSuccess(itemID));
             } else {
-                dispatch(listItemFail(result['listError'])); 
+                dispatch(listItemFail(result['listError']));
             }
         }
         catch {

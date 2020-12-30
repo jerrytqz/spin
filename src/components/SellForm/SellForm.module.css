@@ -1,0 +1,11 @@
+.Title {
+    text-align: center;
+    font-size: 1.4em; 
+    margin-bottom: 20px;
+}
+
+.Error {
+    text-align: center; 
+    color: red; 
+    margin-top: 20px; 
+}
