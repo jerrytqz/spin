@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes'; 
+import { BACKEND_BASE_DIR } from '../../shared/utility'; 
 
 export const buyItemStart = () => ({
     type: actionTypes.BUY_ITEM_START
@@ -36,7 +37,7 @@ export const fetchMarket = (token) => {
     return async dispatch => {
         dispatch(fetchMarketStart()); 
         try {
-            let response = await fetch('http://127.0.0.1:8000/fetch-market/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}fetch-market/`, {
                 method: 'GET',
                 headers: new Headers({'Authorization': token})
             });
@@ -59,7 +60,7 @@ export const buyItem = (token, marketID) => {
         data.append('marketID', marketID); 
 
         try {
-            let response = await fetch('http://127.0.0.1:8000/buy-item/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}buy-item/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token}),
                 body: data 
@@ -75,3 +76,8 @@ export const buyItem = (token, marketID) => {
         }
     };
 };
+
+export const itemListed = (item) => ({
+    type: actionTypes.ITEM_LISTED,
+    item: item 
+});

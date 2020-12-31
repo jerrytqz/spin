@@ -14,10 +14,18 @@ import Spinner from './shared/UI/LoadingSpinner/LoadingSpinner';
 import io from 'socket.io-client'; 
 
 class App extends Component {
-    componentDidMount() {
-        this.props.onTryAutoLogIn();
+    async componentDidMount() {
+        await this.props.onTryAutoLogIn();
         const socket = io('https://spin-web-socket.jerryzheng5.repl.co');
-        socket.on('item bought', (marketID) => this.props.onBuyItemSuccess(marketID)); 
+        socket.on('item bought', (marketID, seller, price) => {
+            this.props.onBuyItemSuccess(marketID);
+            if (seller === this.props.user) {
+                this.props.onChangeSP(price); 
+            }
+        }); 
+        socket.on('item listed', (item) => {
+            this.props.onItemListed(item); 
+        }); 
     }
 
     render() {
@@ -39,14 +47,17 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        autoAttemptFinished: state.authentication.autoAttemptFinished
+        autoAttemptFinished: state.authentication.autoAttemptFinished,
+        user: state.authentication.user 
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onTryAutoLogIn: () => dispatch(actions.tryAutoLogIn()),
-        onBuyItemSuccess: (marketID) => dispatch(actions.buyItemSuccess(marketID))
+        onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount)),
+        onBuyItemSuccess: (marketID) => dispatch(actions.buyItemSuccess(marketID)),
+        onItemListed: (item) => dispatch(actions.itemListed(item))
     };
 };
 

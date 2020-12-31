@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes'; 
+import { BACKEND_BASE_DIR } from '../../shared/utility'; 
 
 export const fetchInventoryStart = () => ({
     type: actionTypes.FETCH_INVENTORY_START
@@ -36,7 +37,7 @@ export const fetchInventory = (token) => {
     return async dispatch => {
         dispatch(fetchInventoryStart()); 
         try {
-            let response = await fetch('http://127.0.0.1:8000/fetch-inventory/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}fetch-inventory/`, {
                 method: 'GET',
                 headers: new Headers({'Authorization': token})
             });
@@ -59,7 +60,7 @@ export const listItem = (token, price, itemID) => {
         data.append('price', price);  
         data.append('itemID', itemID);  
         try {
-            let response = await fetch('http://127.0.0.1:8000/list-item/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}list-item/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token}),
                 body: data

@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes'; 
+import { BACKEND_BASE_DIR } from '../../shared/utility'; 
 
 export const authStart = () => {
     return {
@@ -44,7 +45,7 @@ export const logOutFail = (authError) => {
 export const logOut = (token) => {
     return async dispatch => {
         try {
-            let response = await fetch('http://127.0.0.1:8000/logout/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}log-out/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
@@ -66,9 +67,9 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
         const data = new FormData();
         data.append('username', username);  
         data.append('password', password);  
-        let path = 'http://127.0.0.1:8000/login/';  
+        let path = `${BACKEND_BASE_DIR}log-in/`;  
         if (!isLogIn) {
-            path = 'http://127.0.0.1:8000/register/';
+            path = `${BACKEND_BASE_DIR}register/`;
             data.append('email', email);
             data.append('confirmPassword', confirmPassword);
         }
@@ -93,7 +94,7 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
 export const tryAutoLogIn = () => {
     return async dispatch => {
         try {
-            let response = await fetch('http://127.0.0.1:8000/auto-log-in/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}auto-log-in/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': localStorage.getItem('token')})
             });
@@ -105,7 +106,7 @@ export const tryAutoLogIn = () => {
                 dispatch(logOutSuccess()); 
             }
         } catch {
-            console.log('Unexpected error in logging in'); 
+            console.log('Unexpected error logging in'); 
         }
     };
 };

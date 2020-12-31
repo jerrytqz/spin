@@ -64,6 +64,15 @@ const clearBuyError = (state) => {
     });
 };
 
+const itemListed = (state, action) => {
+    const marketID = Object.keys(action.item)[0];
+    const newMarket = { ...state.market }; 
+    newMarket[marketID] = action.item[marketID]; 
+    return updateObject(state, {
+        market: newMarket
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_MARKET_START:
@@ -80,6 +89,8 @@ const reducer = (state = initialState, action) => {
             return buyItemFail(state, action);
         case actionTypes.CLEAR_BUY_ERROR:
             return clearBuyError(state);  
+        case actionTypes.ITEM_LISTED:
+            return itemListed(state, action);  
         default:
             return state;
     }

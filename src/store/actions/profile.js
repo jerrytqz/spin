@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes'; 
+import { BACKEND_BASE_DIR } from '../../shared/utility'; 
 
 export const fetchProfileStart = () => ({
     type: actionTypes.FETCH_PROFILE_START
@@ -22,7 +23,7 @@ export const fetchProfile = (username) => {
         data.append('username', username); 
 
         try {
-            let response = await fetch('http://127.0.0.1:8000/fetch-profile/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}fetch-profile/`, {
                 method: 'POST',
                 body: data
             });

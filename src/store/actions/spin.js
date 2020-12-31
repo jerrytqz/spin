@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes'; 
+import { BACKEND_BASE_DIR } from '../../shared/utility'; 
 
 export const purchaseSpinStart = () => ({
     type: actionTypes.PURCHASE_SPIN_START
@@ -27,7 +28,7 @@ export const purchaseSpin = (token) => {
     return async dispatch => {
         dispatch(purchaseSpinStart()); 
         try {
-            let response = await fetch('http://127.0.0.1:8000/purchase-spin/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}purchase-spin/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
@@ -60,7 +61,7 @@ export const resetFreeSPError = () => ({
 export const getFreeSP = (token) => {
     return async dispatch => {
         try {
-            let response = await fetch('http://127.0.0.1:8000/free-sp/', {
+            let response = await fetch(`${BACKEND_BASE_DIR}free-sp/`, {
                 method: 'GET',
                 headers: new Headers({'Authorization': token})
             });

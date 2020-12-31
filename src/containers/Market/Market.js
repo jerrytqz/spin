@@ -22,6 +22,15 @@ class Market extends Component {
         this.props.onFetchMarket(); 
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.market && this.props.market !== prevProps.market && this.state.showBuyForm) {
+            for (const key of Object.keys(this.props.market)) {
+                if (this.state.currentMarketID === Number(key)) return; 
+            }
+            this.setState({showBuyForm: false});
+        }
+    }
+
     backdropClickedHandler = () => {
         this.setState({showBuyForm: false});
         this.props.onClearBuyError(); 
@@ -35,7 +44,7 @@ class Market extends Component {
             currentListTime: info.listTime,
             currentSeller: info.seller,
             currentItemPrice: info.price,
-            currentMarketID: item
+            currentMarketID: Number(item)
         }); 
     }
 

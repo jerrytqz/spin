@@ -10,7 +10,8 @@ export {
     fetchMarket,
     buyItem,
     clearBuyError,
-    buyItemSuccess
+    buyItemSuccess,
+    itemListed
 } from './market';
 
 export {
