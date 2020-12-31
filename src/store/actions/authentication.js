@@ -54,8 +54,7 @@ export const logOut = (token) => {
             } else {
                 dispatch(logOutFail(result['authError'])); 
             } 
-        }
-        catch {
+        } catch {
             dispatch(logOutFail('Unexpected error')); 
         }
     };
@@ -85,8 +84,7 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
             } else {
                 dispatch(authFail(result['authError']));
             }
-        }
-        catch {
+        } catch {
             dispatch(authFail('Unexpected error'));
         }
     };
@@ -106,8 +104,7 @@ export const tryAutoLogIn = () => {
             } else {
                 dispatch(logOutSuccess()); 
             }
-        }
-        catch {
+        } catch {
             console.log('Unexpected error in logging in'); 
         }
     };

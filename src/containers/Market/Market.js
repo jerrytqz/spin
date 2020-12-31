@@ -15,7 +15,7 @@ class Market extends Component {
         currentListTime: '',
         currentSeller: '',
         currentItemPrice: 0,
-        currentMarketID: ''
+        currentMarketID: 0
     }
 
     componentDidMount() {
@@ -30,12 +30,12 @@ class Market extends Component {
     marketItemClickedHandler = (item, info) => {
         this.setState({
             showBuyForm: true,
-            currentItemName: item.split('|')[0],
+            currentItemName: info.item,
             currentItemRarity: info.rarity,
             currentListTime: info.listTime,
             currentSeller: info.seller,
             currentItemPrice: info.price,
-            currentMarketID: item.split('|')[1]
+            currentMarketID: item
         }); 
     }
 
@@ -50,12 +50,12 @@ class Market extends Component {
     render() {
         let market = []; 
         if (this.props.market) {
-            const rawmarket = Object.entries(this.props.market);
-            for (const [item, info] of rawmarket) {
+            const rawMarket = Object.entries(this.props.market);
+            for (const [item, info] of rawMarket) {
                 market.push(
                     <Item 
-                        key={item.split('|')[1]} 
-                        name={item.split('|')[0]} 
+                        key={item} 
+                        name={info.item}
                         price={numberWithCommas(info.price)} 
                         rarity={info.rarity} 
                         onClick={() => this.marketItemClickedHandler(item, info)}

@@ -183,7 +183,7 @@ class Authentication extends Component {
 
         let errorMessage = null;
         if (this.props.authError) {
-            errorMessage = <p style = {{color: 'red'}}>{this.props.authError}</p>;
+            errorMessage = <div className={classes.Error}>{this.props.authError}</div>;
         }
         
         let authClasses = [classes.Authentication]; 

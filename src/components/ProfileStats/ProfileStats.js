@@ -40,7 +40,7 @@ const profileStats = (props) => {
             <Stat statName="SP" statValue={numberWithCommas(props.stats.SP)}/>
             <Stat statName="Net SP" statValue={numberWithCommas(props.stats.netSP)}/>
             <Stat statName="Total Spins" statValue={numberWithCommas(props.stats.totalSpins)}/>
-            <Stat statName="Items Found (Unboxings)" statValue={`${props.stats.itemsFound}/${props.stats.totalSpinItems}`}/>
+            <Stat statName="Items Found (Unboxings)" statValue={`${numberWithCommas(props.stats.itemsFound)}/${numberWithCommas(props.stats.totalSpinItems)}`}/>
             <Stat statName="??? Unboxed" statValue={numberWithCommas(props.stats.rarityStats['???'])}/>
             <hr className={classes.Separator}/>
             {rarityStats}

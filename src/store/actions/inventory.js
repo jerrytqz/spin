@@ -46,8 +46,7 @@ export const fetchInventory = (token) => {
             } else {
                 dispatch(fetchInventoryFail(result['fetchError'])); 
             }
-        }
-        catch {
+        } catch {
             dispatch(fetchInventoryFail('Unexpected error')); 
         }
     };
@@ -71,8 +70,7 @@ export const listItem = (token, price, itemID) => {
             } else {
                 dispatch(listItemFail(result['listError']));
             }
-        }
-        catch {
+        } catch {
             dispatch(listItemFail('Unexpected error')); 
         }
     };

@@ -30,7 +30,7 @@ class Inventory extends Component {
         },
         formIsValid: false, 
         showSellForm: false,
-        currentItemID: '',
+        currentItemID: 0,
         currentItemName: ''
     }
 

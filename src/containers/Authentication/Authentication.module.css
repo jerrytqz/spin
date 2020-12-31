@@ -12,6 +12,11 @@
     animation: shake 0.5s; 
 }
 
+.Error {
+    color: red; 
+    margin-bottom: 20px; 
+}
+
 @media (min-width: 800px) {
     .Authentication {
         width: 500px; 

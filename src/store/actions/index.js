@@ -9,7 +9,8 @@ export {
 export {
     fetchMarket,
     buyItem,
-    clearBuyError
+    clearBuyError,
+    buyItemSuccess
 } from './market';
 
 export {

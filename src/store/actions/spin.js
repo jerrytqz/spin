@@ -37,8 +37,7 @@ export const purchaseSpin = (token) => {
             } else {
                 dispatch(purchaseSpinFail(result['purchaseError'])); 
             }
-        }
-        catch {
+        } catch {
             dispatch(purchaseSpinFail('Unexpected error')); 
         }
     };
@@ -71,8 +70,7 @@ export const getFreeSP = (token) => {
             } else {
                 dispatch(getFreeSPFail(result['freeSPError'])); 
             }
-        }
-        catch {
+        } catch {
             dispatch(getFreeSPFail('Unexpected error')); 
         }
     };

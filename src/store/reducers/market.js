@@ -16,17 +16,16 @@ const buyItemStart = (state) => {
 };
 
 const buyItemSuccess = (state, action) => {
-    let newMarket = state.market;
-    const rawMarket = Object.entries(state.market);
-    for (const item of rawMarket) {
-        if (item[0].split('|')[1] === action.marketID) {
-            delete newMarket[item[0]];
+    const newMarket = {};
+    for (const [key, value] of Object.entries(state.market)) {
+        if (Number(key) !== Number(action.marketID)) {
+            newMarket[key] = { ...value };
         }
     }
     return updateObject(state, {
         buyItemLoading: false,
         buyError: null,
-        market: newMarket 
+        market: newMarket
     });
 };
 

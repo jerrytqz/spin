@@ -46,8 +46,7 @@ export const fetchMarket = (token) => {
             } else {
                 dispatch(fetchMarketFail(result['fetchError'])); 
             }
-        }
-        catch {
+        } catch {
             dispatch(fetchMarketFail('Unexpected error')); 
         }
     };
@@ -57,7 +56,7 @@ export const buyItem = (token, marketID) => {
     return async dispatch => {
         dispatch(buyItemStart()); 
         const data = new FormData();
-        data.append('marketID', marketID);  
+        data.append('marketID', marketID); 
 
         try {
             let response = await fetch('http://127.0.0.1:8000/buy-item/', {
@@ -71,8 +70,7 @@ export const buyItem = (token, marketID) => {
             } else {
                 dispatch(buyItemFail(result['buyError'])); 
             }
-        }
-        catch {
+        } catch {
             dispatch(buyItemFail('Unexpected error')); 
         }
     };

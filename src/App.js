@@ -11,10 +11,13 @@ import Profile from './containers/Profile/Profile';
 import LogOut from './containers/Authentication/LogOut/LogOut'; 
 import Authentication from './containers/Authentication/Authentication'; 
 import Spinner from './shared/UI/LoadingSpinner/LoadingSpinner';
+import io from 'socket.io-client'; 
 
 class App extends Component {
     componentDidMount() {
         this.props.onTryAutoLogIn();
+        const socket = io('https://spin-web-socket.jerryzheng5.repl.co');
+        socket.on('item bought', (marketID) => this.props.onBuyItemSuccess(marketID)); 
     }
 
     render() {
@@ -43,6 +46,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onTryAutoLogIn: () => dispatch(actions.tryAutoLogIn()),
+        onBuyItemSuccess: (marketID) => dispatch(actions.buyItemSuccess(marketID))
     };
 };
 
