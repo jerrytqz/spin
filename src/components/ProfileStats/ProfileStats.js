@@ -4,7 +4,7 @@ import Stat from './Stat/Stat';
 import { capitalize, mapRarityToColor, numberWithCommas } from '../../shared/utility'; 
 
 const profileStats = (props) => {
-    let rarityStats = []; 
+    const rarityStats = []; 
     if (props.stats.rarityStats) {
         if (props.stats.totalSpins === 0) {
             const rawRarityStats = Object.keys(props.stats.rarityStats);

@@ -6,7 +6,7 @@ import Item from '../Item/Item';
 
 const prize = (props) => {
     let article = 'a'; 
-    let prizeClasses = []; 
+    const prizeClasses = []; 
     
     if (props.item.rarity === 'Uncommon' || props.item.rarity === 'Epic')
         article = 'an'; 

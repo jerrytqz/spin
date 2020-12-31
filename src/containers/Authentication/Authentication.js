@@ -87,7 +87,7 @@ class Authentication extends Component {
             })
         });   
         let formIsValid = true;
-        for (let inputIdentifier in updatedControls) {
+        for (const inputIdentifier in updatedControls) {
             formIsValid = updatedControls[inputIdentifier].valid && formIsValid; 
         }
         this.setState({controls: updatedControls, formIsValid: formIsValid});
@@ -150,14 +150,14 @@ class Authentication extends Component {
 
     render() {
         const formElementsArray = [];
-        for (let key in this.state.controls) {
+        for (const key in this.state.controls) {
             formElementsArray.push({
                 id: key,
                 config: this.state.controls[key]
             }); 
         }
 
-        let form = formElementsArray.map(formElement => (
+        const form = formElementsArray.map(formElement => (
             <Input
                 key = {formElement.id}
                 elementType = {formElement.config.elementType}
@@ -175,7 +175,7 @@ class Authentication extends Component {
             form.splice(1,1);
             form.splice(2,1);
         }
-        let isLogInFormIsValid = (
+        const isLogInFormIsValid = (
             this.state.isLogIn &&
             this.state.controls.username.valid &&
             this.state.controls.password.valid
@@ -186,7 +186,7 @@ class Authentication extends Component {
             errorMessage = <div className={classes.Error}>{this.props.authError}</div>;
         }
         
-        let authClasses = [classes.Authentication]; 
+        const authClasses = [classes.Authentication]; 
         if (this.props.authError) {
             authClasses.push(classes.Shake);
         }

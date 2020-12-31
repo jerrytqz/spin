@@ -57,7 +57,7 @@ class Market extends Component {
     }
     
     render() {
-        let market = []; 
+        const market = []; 
         if (this.props.market) {
             const rawMarket = Object.entries(this.props.market);
             for (const [item, info] of rawMarket) {

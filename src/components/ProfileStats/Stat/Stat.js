@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Stat.module.css'; 
 
 const stat = (props) => {
-    let rarityCircleClasses = [classes.RarityCircle];
+    const rarityCircleClasses = [classes.RarityCircle];
     if (props.rarityColor === 'rainbow') {
         rarityCircleClasses.push(classes.Rainbow); 
     }

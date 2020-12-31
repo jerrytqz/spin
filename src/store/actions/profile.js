@@ -23,11 +23,11 @@ export const fetchProfile = (username) => {
         data.append('username', username); 
 
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}fetch-profile/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}fetch-profile/`, {
                 method: 'POST',
                 body: data
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(fetchProfileSuccess(result)); 
             } else {

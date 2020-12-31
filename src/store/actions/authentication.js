@@ -45,11 +45,11 @@ export const logOutFail = (authError) => {
 export const logOut = (token) => {
     return async dispatch => {
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}log-out/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}log-out/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(logOutSuccess()); 
             } else {
@@ -74,11 +74,11 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
             data.append('confirmPassword', confirmPassword);
         }
         try {
-            let response = await fetch(path, {
+            const response = await fetch(path, {
                 method: 'POST',
                 body: data
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(authSuccess(result['token'], result['user'], result['SP']));
                 dispatch(checkExpiration(result['expirationTime']));
@@ -94,11 +94,11 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
 export const tryAutoLogIn = () => {
     return async dispatch => {
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}auto-log-in/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}auto-log-in/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': localStorage.getItem('token')})
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(authSuccess(localStorage.getItem('token'), localStorage.getItem('user'), result['SP']));
                 dispatch(checkExpiration((result['expirationDate'] - new Date().getTime())/1000)); 

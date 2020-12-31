@@ -37,11 +37,11 @@ export const fetchInventory = (token) => {
     return async dispatch => {
         dispatch(fetchInventoryStart()); 
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}fetch-inventory/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}fetch-inventory/`, {
                 method: 'GET',
                 headers: new Headers({'Authorization': token})
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(fetchInventorySuccess(result)); 
             } else {
@@ -60,12 +60,12 @@ export const listItem = (token, price, itemID) => {
         data.append('price', price);  
         data.append('itemID', itemID);  
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}list-item/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}list-item/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token}),
                 body: data
             });
-            let result = await response.json();
+            const result = await response.json();
             if (response.status === 200) {
                 dispatch(listItemSuccess(itemID));
             } else {

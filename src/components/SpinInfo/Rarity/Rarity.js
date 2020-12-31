@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Rarity.module.css';
 
 const rarity = (props) => {
-    let rarityClasses = [classes.RaritySquare];  
+    const rarityClasses = [classes.RaritySquare];  
     if (props.animation === 'rainbow') {
         rarityClasses.push(classes.Rainbow); 
     }

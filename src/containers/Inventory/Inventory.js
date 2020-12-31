@@ -70,7 +70,7 @@ class Inventory extends Component {
             })
         });   
         let formIsValid = true;
-        for (let inputIdentifier in updatedControls) {
+        for (const inputIdentifier in updatedControls) {
             formIsValid = updatedControls[inputIdentifier].valid && formIsValid; 
         }
         this.setState({controls: updatedControls, formIsValid: formIsValid});
@@ -86,7 +86,7 @@ class Inventory extends Component {
     }
     
     render() {
-        let inventory = []; 
+        const inventory = []; 
         if (this.props.inventory) {
             const rawInventory = Object.entries(this.props.inventory);
             for (const [item, info] of rawInventory) {
@@ -104,14 +104,14 @@ class Inventory extends Component {
         }
 
         const formElementsArray = [];
-        for (let key in this.state.controls) {
+        for (const key in this.state.controls) {
             formElementsArray.push({
                 id: key,
                 config: this.state.controls[key]
             });
         }
 
-        let inputs = formElementsArray.map(formElement => (
+        const inputs = formElementsArray.map(formElement => (
             <Input
                 key = {formElement.id}
                 elementType = {formElement.config.elementType}

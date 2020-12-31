@@ -4,7 +4,7 @@ import Backdrop from '../Backdrop/Backdrop';
 import fireworkClasses from './Fireworks.module.css'; 
 
 const modal = (props) => {
-    let modalClasses = [classes.Modal];
+    const modalClasses = [classes.Modal];
     if (props.animation === 'openPrize') {
         modalClasses.push(classes.OpenPrize);
     }

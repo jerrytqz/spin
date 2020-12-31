@@ -37,11 +37,11 @@ export const fetchMarket = (token) => {
     return async dispatch => {
         dispatch(fetchMarketStart()); 
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}fetch-market/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}fetch-market/`, {
                 method: 'GET',
                 headers: new Headers({'Authorization': token})
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(fetchMarketSuccess(result)); 
             } else {
@@ -60,12 +60,12 @@ export const buyItem = (token, marketID) => {
         data.append('marketID', marketID); 
 
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}buy-item/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}buy-item/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token}),
                 body: data 
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(buyItemSuccess(marketID)); 
             } else {

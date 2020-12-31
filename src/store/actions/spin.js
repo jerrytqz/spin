@@ -28,11 +28,11 @@ export const purchaseSpin = (token) => {
     return async dispatch => {
         dispatch(purchaseSpinStart()); 
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}purchase-spin/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}purchase-spin/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(purchaseSpinSuccess(result['degree'], result['item'])); 
             } else {
@@ -61,11 +61,11 @@ export const resetFreeSPError = () => ({
 export const getFreeSP = (token) => {
     return async dispatch => {
         try {
-            let response = await fetch(`${BACKEND_BASE_DIR}free-sp/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}free-sp/`, {
                 method: 'GET',
                 headers: new Headers({'Authorization': token})
             });
-            let result = await response.json(); 
+            const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(getFreeSPSuccess(result['freeSP'])); 
             } else {

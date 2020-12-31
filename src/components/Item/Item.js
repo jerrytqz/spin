@@ -9,8 +9,8 @@ const item = (props) => {
     // }
 
     const color = mapRarityToColor(props.rarity); 
-    let itemClasses = [classes.Item]; 
-    let itemNameClasses = [classes.ItemName];  
+    const itemClasses = [classes.Item]; 
+    const itemNameClasses = [classes.ItemName];  
 
     if (color === 'rainbow') {
         itemClasses.push(classes.ItemRainbow); 
