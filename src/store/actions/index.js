@@ -3,7 +3,8 @@ export {
     resetPurchaseError,
     resetDegree,
     getFreeSP,
-    resetFreeSPError
+    resetFreeSPError,
+    itemUnboxed
 } from './spin';
 
 export {

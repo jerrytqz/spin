@@ -1,0 +1,28 @@
+.Unboxings {
+    background-color: white;
+    padding: 16px 16px 16px 16px; 
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px #ccc;
+    width: 150%; 
+    margin-top: 16px; 
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Placeholder {
+    z-index: -1; 
+}
+
+.Rainbow {
+    animation: rainbow 0.5s linear infinite; 
+}
+
+@keyframes rainbow {
+    0%, 100% {color: green;}
+    20% {color: cyan;}
+    40% {color: yellow;}
+    60% {color: red;}
+    80% {color: blue;}
+}

@@ -50,6 +50,7 @@ const spinner = (props) => {
                 onClick={props.startSpinHandler} 
                 disabled={disabled ? disabled : props.startButtonPressed}
                 style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}
+                onTransitionEnd={(event) => props.onSpinFinish(event)}
             > 
                 {(props.degree === 0 && props.showSpinnerText) ? spinnerText : null}
                 <div className={classes.Pointer}/>

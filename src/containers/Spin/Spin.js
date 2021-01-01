@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index'; 
 import Backdrop from '../../shared/UI/Backdrop/Backdrop'; 
 import SP from '../../components/SP/SP'; 
+import Unboxings from '../../components/Unboxings/Unboxings'; 
+import classes from './Spin.module.css'; 
 
 class Spin extends Component {
     state = {
@@ -19,7 +21,6 @@ class Spin extends Component {
         this.setState({startButtonPressed: true, showErrorModal: true}); 
         await this.props.onPurchaseSpin(this.props.token);  
         if (this.props.degree !== 0) {
-            setTimeout(() => this.setState({showPrize: true}), 700);
             this.props.onChangeSP(-500); 
         }
     }
@@ -46,6 +47,10 @@ class Spin extends Component {
         this.props.onResetFreeSPError(); 
     }
 
+    spinFinishedHandler = (event) => {
+        this.setState({showPrize: true}); 
+    }
+
     render() {
         return (
             <div>
@@ -60,13 +65,17 @@ class Spin extends Component {
                     purchaseSpinLoading={this.props.purchaseSpinLoading}
                     showSpinnerText={this.state.showSpinnerText}
                     onClickBackdrop={this.purchaseErrorClickedHandler}
+                    onSpinFinish={(event) => this.spinFinishedHandler(event)}
                     SP={this.props.SP}
                 />
                 {this.state.showPrize 
                     ? <Prize clicked={this.resetSpinHandler} item={this.props.item}/> 
                     : null
                 }
-                <SpinInfo/>
+                <div className={classes.Right}>
+                    <SpinInfo/>
+                    <Unboxings unboxings={this.props.unboxings}/>
+                </div>
                 <SP 
                     SP={this.props.SP} 
                     onClickFreeSP={this.clickFreeSPHandler}
@@ -89,7 +98,8 @@ const mapStateToProps = state => {
         item: state.spin.item, 
         purchaseError: state.spin.purchaseError,
         purchaseSpinLoading: state.spin.purchaseSpinLoading,
-        freeSPError: state.spin.freeSPError
+        freeSPError: state.spin.freeSPError,
+        unboxings: state.spin.unboxings 
     };
 };
 

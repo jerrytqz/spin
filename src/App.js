@@ -17,15 +17,21 @@ class App extends Component {
     async componentDidMount() {
         await this.props.onTryAutoLogIn();
         const socket = io('https://spin-web-socket.jerryzheng5.repl.co');
+
+        socket.on('item unboxed', (item, rarity, unboxer) => {
+            this.props.onItemUnboxed(item, rarity, unboxer); 
+        }); 
+
         socket.on('item bought', (marketID, seller, price) => {
             this.props.onBuyItemSuccess(marketID);
             if (seller === this.props.user) {
                 this.props.onChangeSP(price); 
             }
         }); 
+
         socket.on('item listed', (item) => {
             this.props.onItemListed(item); 
-        }); 
+        });
     }
 
     render() {
@@ -57,7 +63,8 @@ const mapDispatchToProps = dispatch => {
         onTryAutoLogIn: () => dispatch(actions.tryAutoLogIn()),
         onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount)),
         onBuyItemSuccess: (marketID) => dispatch(actions.buyItemSuccess(marketID)),
-        onItemListed: (item) => dispatch(actions.itemListed(item))
+        onItemListed: (item) => dispatch(actions.itemListed(item)),
+        onItemUnboxed: (item, rarity, unboxer) => dispatch(actions.itemUnboxed(item, rarity, unboxer))
     };
 };
 
