@@ -9,10 +9,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: auto; 
 }
 
 .Placeholder {
     z-index: -1; 
+    opacity: 0; 
+}
+
+.Message {
+    text-align: center; 
+    font-weight: bold; 
 }
 
 .Rainbow {

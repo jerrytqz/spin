@@ -1,6 +1,6 @@
 export {
-    purchaseSpin,
-    resetPurchaseError,
+    buySpin,
+    resetBuyError,
     resetDegree,
     getFreeSP,
     resetFreeSPError,

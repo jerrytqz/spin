@@ -19,9 +19,9 @@ export const listItemStart = () => ({
     type: actionTypes.LIST_ITEM_START
 });
 
-export const listItemSuccess = (itemID) => ({
+export const listItemSuccess = (inventoryID) => ({
     type: actionTypes.LIST_ITEM_SUCCESS,
-    itemID: itemID
+    inventoryID: inventoryID
 });
 
 export const listItemFail = (listError) => ({
@@ -53,12 +53,12 @@ export const fetchInventory = (token) => {
     };
 };
 
-export const listItem = (token, price, itemID) => {
+export const listItem = (token, price, inventoryID) => {
     return async dispatch => {
         dispatch(listItemStart()); 
         const data = new FormData();
         data.append('price', price);  
-        data.append('itemID', itemID);  
+        data.append('inventoryID', inventoryID);  
         try {
             const response = await fetch(`${BACKEND_BASE_DIR}list-item/`, {
                 method: 'POST',
@@ -67,7 +67,7 @@ export const listItem = (token, price, itemID) => {
             });
             const result = await response.json();
             if (response.status === 200) {
-                dispatch(listItemSuccess(itemID));
+                dispatch(listItemSuccess(inventoryID));
             } else {
                 dispatch(listItemFail(result['listError']));
             }

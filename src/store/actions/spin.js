@@ -1,22 +1,22 @@
 import * as actionTypes from './actionTypes'; 
 import { BACKEND_BASE_DIR } from '../../shared/utility'; 
 
-export const purchaseSpinStart = () => ({
+export const buySpinStart = () => ({
     type: actionTypes.PURCHASE_SPIN_START
 });
 
-export const purchaseSpinSuccess = (degree, item) => ({
+export const buySpinSuccess = (degree, item) => ({
     type: actionTypes.PURCHASE_SPIN_SUCCESS,
     degree: degree,
     item: item   
 });
 
-export const purchaseSpinFail = (purchaseError) => ({
+export const buySpinFail = (buyError) => ({
     type: actionTypes.PURCHASE_SPIN_FAIL,
-    purchaseError: purchaseError
+    buyError: buyError
 });
 
-export const resetPurchaseError = () => ({
+export const resetBuyError = () => ({
     type: actionTypes.RESET_PURCHASE_ERROR
 });
 
@@ -24,22 +24,22 @@ export const resetDegree = () => ({
     type: actionTypes.RESET_DEGREE
 });
 
-export const purchaseSpin = (token) => {
+export const buySpin = (token) => {
     return async dispatch => {
-        dispatch(purchaseSpinStart()); 
+        dispatch(buySpinStart()); 
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}purchase-spin/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}buy-spin/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
             const result = await response.json(); 
             if (response.status === 200) {
-                dispatch(purchaseSpinSuccess(result['degree'], result['item'])); 
+                dispatch(buySpinSuccess(result['degree'], result['item'])); 
             } else {
-                dispatch(purchaseSpinFail(result['purchaseError'])); 
+                dispatch(buySpinFail(result['buyError'])); 
             }
         } catch {
-            dispatch(purchaseSpinFail('Unexpected error')); 
+            dispatch(buySpinFail('Unexpected error')); 
         }
     };
 };

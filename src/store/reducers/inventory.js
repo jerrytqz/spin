@@ -41,7 +41,7 @@ const listItemSuccess = (state, action) => {
     const newInventory = { ...state.inventory }; 
     const rawInventory = Object.entries(state.inventory);
     for (const [item, info] of rawInventory) {
-        if (info.itemID === action.itemID) {
+        if (info.inventoryID === action.inventoryID) {
             if (info.quantity > 1) {
                 newInventory[item].quantity -= 1; 
             } else delete newInventory[item]; 

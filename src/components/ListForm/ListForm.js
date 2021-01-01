@@ -1,10 +1,10 @@
 import React from 'react';
 import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
-import classes from './SellForm.module.css'; 
+import classes from './ListForm.module.css'; 
 import Modal from '../../shared/UI/Modal/Modal'; 
 
-const sellForm = (props) => (
+const listForm = (props) => (
     <Modal 
         style={{borderRadius: '0'}} 
         show={props.show} 
@@ -31,4 +31,4 @@ const sellForm = (props) => (
     </Modal> 
 );
 
-export default sellForm; 
+export default listForm; 

@@ -11,7 +11,7 @@ const spinner = (props) => {
     );
     let disabled = false; 
 
-    if (props.purchaseSpinLoading) {
+    if (props.buySpinLoading) {
         spinnerText = (
             <div className={classes.SpinnerText4}>PURCHASING...</div>
         );
@@ -68,10 +68,10 @@ const spinner = (props) => {
                 <li className={classes.liCustom}/>
                 <li className={classes.liCustom}/>
             </ul>
-            {props.purchaseError 
+            {props.buyError 
                 ? 
                     <Modal show clicked={props.onClickBackdrop}>
-                        <div style={{color: 'red'}}>{props.purchaseError}</div>
+                        <div style={{color: 'red'}}>{props.buyError}</div>
                     </Modal> 
                 : null
             }

@@ -4,7 +4,7 @@ import { mapRarityToColor } from '../../shared/utility';
 
 const unboxings = (props) => {
     const unboxings = [
-        <div key={0} className={classes.Placeholder}>Placeholder</div>,
+        <div key={0} className={classes.Message}>Global unboxings show up here!</div>,
         <div key={1} className={classes.Placeholder}>Placeholder</div>,
         <div key={2} className={classes.Placeholder}>Placeholder</div>,
         <div key={3} className={classes.Placeholder}>Placeholder</div>,

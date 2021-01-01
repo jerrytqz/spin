@@ -19,7 +19,7 @@ class Spin extends Component {
 
     startSpinHandler = async () => {
         this.setState({startButtonPressed: true, showErrorModal: true}); 
-        await this.props.onPurchaseSpin(this.props.token);  
+        await this.props.onBuySpin(this.props.token);  
         if (this.props.degree !== 0) {
             this.props.onChangeSP(-500); 
         }
@@ -31,9 +31,9 @@ class Spin extends Component {
         setTimeout(() => this.setState({startButtonPressed: false, resetting: false, showSpinnerText: true}), 700);
     }
 
-    purchaseErrorClickedHandler = () => {
+    buyErrorClickedHandler = () => {
         this.setState({startButtonPressed: false}); 
-        this.props.onResetPurchaseError(); 
+        this.props.onResetBuyError(); 
     }
 
     clickFreeSPHandler = async() => {
@@ -61,10 +61,10 @@ class Spin extends Component {
                     degree={this.props.degree}
                     resetting={this.state.resetting}
                     authenticated={this.props.isAuthenticated}
-                    purchaseError={this.props.purchaseError}
-                    purchaseSpinLoading={this.props.purchaseSpinLoading}
+                    buyError={this.props.buyError}
+                    buySpinLoading={this.props.buySpinLoading}
                     showSpinnerText={this.state.showSpinnerText}
-                    onClickBackdrop={this.purchaseErrorClickedHandler}
+                    onClickBackdrop={this.buyErrorClickedHandler}
                     onSpinFinish={(event) => this.spinFinishedHandler(event)}
                     sp={this.props.sp}
                 />
@@ -96,8 +96,8 @@ const mapStateToProps = state => {
         sp: state.authentication.sp,
         degree: state.spin.degree,
         item: state.spin.item, 
-        purchaseError: state.spin.purchaseError,
-        purchaseSpinLoading: state.spin.purchaseSpinLoading,
+        buyError: state.spin.buyError,
+        buySpinLoading: state.spin.buySpinLoading,
         freeSPError: state.spin.freeSPError,
         unboxings: state.spin.unboxings 
     };
@@ -105,8 +105,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onPurchaseSpin: (token) => dispatch(actions.purchaseSpin(token)),
-        onResetPurchaseError: () => dispatch(actions.resetPurchaseError()),
+        onBuySpin: (token) => dispatch(actions.buySpin(token)),
+        onResetBuyError: () => dispatch(actions.resetBuyError()),
         onResetDegree: () => dispatch(actions.resetDegree()),
         onGetFreeSP: (token) => dispatch(actions.getFreeSP(token)),
         onResetFreeSPError: () => dispatch(actions.resetFreeSPError()),

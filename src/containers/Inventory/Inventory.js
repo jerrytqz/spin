@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import { mapRarityToValue, updateObject, checkValidity, numberWithCommas } from '../../shared/utility';
-import SellForm from '../../components/SellForm/SellForm'; 
+import ListForm from '../../components/ListForm/ListForm'; 
 import Input from '../../shared/UI/Input/Input'; 
 
 class Inventory extends Component {
@@ -29,8 +29,8 @@ class Inventory extends Component {
             }
         },
         formIsValid: false, 
-        showSellForm: false,
-        currentItemID: 0,
+        showListForm: false,
+        currentInventoryID: 0,
         currentItemName: ''
     }
 
@@ -38,8 +38,8 @@ class Inventory extends Component {
         this.props.onFetchInventory(this.props.token); 
     }
     
-    inventoryItemClickedHandler = (itemID, itemName) => {
-        this.setState({showSellForm: true, currentItemID: itemID, currentItemName: itemName}); 
+    inventoryItemClickedHandler = (inventoryID, itemName) => {
+        this.setState({showListForm: true, currentInventoryID: inventoryID, currentItemName: itemName}); 
     }
 
     backdropClickedHandler = () => {
@@ -56,7 +56,7 @@ class Inventory extends Component {
                 }
             },
             formIsValid: false, 
-            showSellForm: false,
+            showListForm: false,
         })); 
         this.props.onClearListError(); 
     }
@@ -78,7 +78,7 @@ class Inventory extends Component {
 
     submitHandler = async() => {
         const price = this.state.controls.price.value; 
-        await this.props.onListItem(this.props.token, this.state.controls.price.value, this.state.currentItemID);
+        await this.props.onListItem(this.props.token, this.state.controls.price.value, this.state.currentInventoryID);
         if (this.props.listError === null) {
             this.backdropClickedHandler(); 
             this.props.onChangeSP(-Math.floor(Number(price)/20));
@@ -96,7 +96,7 @@ class Inventory extends Component {
                         name={item} 
                         quantity={info.quantity} 
                         rarity={info.rarity} 
-                        onClick={() => this.inventoryItemClickedHandler(info.itemID, item)}
+                        onClick={() => this.inventoryItemClickedHandler(info.inventoryID, item)}
                     />
                 );
             }
@@ -148,8 +148,8 @@ class Inventory extends Component {
                         ? 
                             <div className={classes.Inventory}>
                                 {inventory}
-                                <SellForm 
-                                    show={this.state.showSellForm} 
+                                <ListForm 
+                                    show={this.state.showListForm} 
                                     clicked={this.backdropClickedHandler}
                                     currentItemName={this.state.currentItemName}
                                     disabled={disabled}
@@ -159,7 +159,7 @@ class Inventory extends Component {
                                     listItemLoading={this.props.listItemLoading}
                                 >
                                     {inputs}
-                                </SellForm>
+                                </ListForm>
                             </div> 
                         :
                             <div className={classes.InventoryNullText}>
@@ -185,7 +185,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchInventory: (token) => dispatch(actions.fetchInventory(token)),
-        onListItem: (token, price, itemID) => dispatch(actions.listItem(token, price, itemID)),
+        onListItem: (token, price, inventoryID) => dispatch(actions.listItem(token, price, inventoryID)),
         onClearListError: () => dispatch(actions.clearListError()),
         onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount))
     };

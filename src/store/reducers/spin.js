@@ -5,37 +5,37 @@ const initialState = {
     freeSP: 0,
     degree: 0, 
     item: null, 
-    purchaseSpinLoading: false,
-    purchaseError: null,
+    buySpinLoading: false,
+    buyError: null,
     freeSPError: null,
     unboxings: [] 
 };
 
-const purchaseSpinStart = (state) => {
+const buySpinStart = (state) => {
     return updateObject(state, {
-        purchaseSpinLoading: true
+        buySpinLoading: true
     });
 };
 
-const purchaseSpinSuccess = (state, action) => {
+const buySpinSuccess = (state, action) => {
     return updateObject(state, {
         degree: action.degree,
         item: action.item, 
-        purchaseError: null,
-        purchaseSpinLoading: false
+        buyError: null,
+        buySpinLoading: false
     });
 };
 
-const purchaseSpinFail = (state, action) => {
+const buySpinFail = (state, action) => {
     return updateObject(state, {
-        purchaseError: action.purchaseError,
-        purchaseSpinLoading: false 
+        buyError: action.buyError,
+        buySpinLoading: false 
     });
 };
 
-const resetPurchaseError = (state) => {
+const resetBuyError = (state) => {
     return updateObject(state, {
-        purchaseError: null 
+        buyError: null 
     });
 };
 
@@ -82,15 +82,15 @@ const itemUnboxed = (state, action) => {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.PURCHASE_SPIN_SUCCESS:
-            return purchaseSpinSuccess(state, action); 
+            return buySpinSuccess(state, action); 
         case actionTypes.PURCHASE_SPIN_FAIL:
-            return purchaseSpinFail(state, action); 
+            return buySpinFail(state, action); 
         case actionTypes.RESET_PURCHASE_ERROR:
-            return resetPurchaseError(state); 
+            return resetBuyError(state); 
         case actionTypes.RESET_DEGREE: 
             return resetDegree(state); 
         case actionTypes.PURCHASE_SPIN_START: 
-            return purchaseSpinStart(state); 
+            return buySpinStart(state); 
         case actionTypes.GET_FREE_SP_SUCCESS: 
             return getFreeSPSuccess(state, action); 
         case actionTypes.GET_FREE_SP_FAIL: 
