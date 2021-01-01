@@ -4,7 +4,7 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
     isAuthenticated: false,
     user: null,
-    SP: 0,
+    sp: 0,
     token: null,
     authError: null,
     logOutAttemptFinished: false,
@@ -29,7 +29,7 @@ const authSuccess = (state, action) => {
     return updateObject(state, {
         isAuthenticated: true, 
         user: action.user, 
-        SP: action.SP, 
+        sp: action.sp, 
         token: action.token,
         loading: false,
         authError: null,
@@ -57,7 +57,7 @@ const logOutSuccess = (state) => {
     return updateObject(state, {
         isAuthenticated: false,
         user: null, 
-        SP: 0,
+        sp: 0,
         token: null,
         authError: null,
         logOutAttemptFinished: true,
@@ -74,7 +74,7 @@ const logOutFail = (state, action) => {
 
 const changeSP = (state, action) => {
     return updateObject(state, {
-        SP: state.SP + action.changeAmount 
+        sp: state.sp + action.changeAmount 
     });
 };
 

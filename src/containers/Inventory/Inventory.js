@@ -129,7 +129,7 @@ class Inventory extends Component {
         let buttonText = `List (-${numberWithCommas(tax)} SP)`;
         let disabled = false; 
 
-        if (this.props.SP < tax) {
+        if (this.props.sp < tax) {
             buttonText = 'Not enough SP to list'; 
             disabled = true; 
         }
@@ -173,7 +173,7 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.authentication.isAuthenticated,
         token: state.authentication.token,
-        SP: state.authentication.SP, 
+        sp: state.authentication.sp, 
         inventory: state.inventory.inventory,
         fetchInventoryLoading: state.inventory.fetchInventoryLoading,
         fetchError: state.inventory.fetchError,

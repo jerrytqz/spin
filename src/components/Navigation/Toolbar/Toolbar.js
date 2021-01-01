@@ -6,7 +6,7 @@ import ProfileCard from '../../ProfileCard/ProfileCard';
 
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
-        {props.isAuthenticated ? <ProfileCard username={props.username} SP={props.SP}/> : <Logo/>}
+        {props.isAuthenticated ? <ProfileCard username={props.username} sp={props.sp}/> : <Logo/>}
         <nav>
             <NavigationItems isAuthenticated={props.isAuthenticated} username={props.username}/>
         </nav>

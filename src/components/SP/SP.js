@@ -13,7 +13,7 @@ const SP = (props) => {
         <>
             <div className={classes.SP}>
                 <div>
-                    <strong className={classes.SPNumber}>{numberWithCommas(props.SP)}</strong> SP
+                    <strong className={classes.SPNumber}>{numberWithCommas(props.sp)}</strong> SP
                 </div>
                 <button 
                     className={classes.FreeSPButton} 

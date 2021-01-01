@@ -9,11 +9,11 @@ import Modal from '../../shared/UI/Modal/Modal';
 const buyForm = (props) => {
 
     let buttonText = 'Log in to buy';
-    let disabled = !props.isAuthenticated || props.user === props.seller || props.SP < props.price; 
+    let disabled = !props.isAuthenticated || props.user === props.seller || props.sp < props.price; 
 
     if (props.isAuthenticated) {
         buttonText = 'Buy';
-        if (props.SP < props.price) {
+        if (props.sp < props.price) {
             buttonText = 'Not enough SP'; 
         }
         if (props.user === props.seller) {

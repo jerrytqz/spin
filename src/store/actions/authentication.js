@@ -7,12 +7,12 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (token, user, SP) => {
+export const authSuccess = (token, user, sp) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         token: token,
         user: user, 
-        SP: SP 
+        sp: sp
     };
 };
 
@@ -80,7 +80,7 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
             });
             const result = await response.json(); 
             if (response.status === 200) {
-                dispatch(authSuccess(result['token'], result['user'], result['SP']));
+                dispatch(authSuccess(result['token'], result['user'], result['sp']));
                 dispatch(checkExpiration(result['expirationTime']));
             } else {
                 dispatch(authFail(result['authError']));
@@ -100,7 +100,7 @@ export const tryAutoLogIn = () => {
             });
             const result = await response.json(); 
             if (response.status === 200) {
-                dispatch(authSuccess(localStorage.getItem('token'), localStorage.getItem('user'), result['SP']));
+                dispatch(authSuccess(localStorage.getItem('token'), localStorage.getItem('user'), result['sp']));
                 dispatch(checkExpiration((result['expirationDate'] - new Date().getTime())/1000)); 
             } else {
                 dispatch(logOutSuccess()); 

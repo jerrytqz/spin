@@ -66,7 +66,7 @@ class Spin extends Component {
                     showSpinnerText={this.state.showSpinnerText}
                     onClickBackdrop={this.purchaseErrorClickedHandler}
                     onSpinFinish={(event) => this.spinFinishedHandler(event)}
-                    SP={this.props.SP}
+                    sp={this.props.sp}
                 />
                 {this.state.showPrize 
                     ? <Prize clicked={this.resetSpinHandler} item={this.props.item}/> 
@@ -77,7 +77,7 @@ class Spin extends Component {
                     <Unboxings unboxings={this.props.unboxings}/>
                 </div>
                 <SP 
-                    SP={this.props.SP} 
+                    sp={this.props.sp} 
                     onClickFreeSP={this.clickFreeSPHandler}
                     onClickBackdrop={this.freeSPErrorClickedHandler}
                     freeSPError={this.props.freeSPError}
@@ -93,7 +93,7 @@ const mapStateToProps = state => {
         freeSP: state.spin.freeSP,
         token: state.authentication.token,
         isAuthenticated: state.authentication.isAuthenticated,
-        SP: state.authentication.SP,
+        sp: state.authentication.sp,
         degree: state.spin.degree,
         item: state.spin.item, 
         purchaseError: state.spin.purchaseError,

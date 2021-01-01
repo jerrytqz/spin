@@ -8,7 +8,7 @@ const profileCard = (props) => (
         <img src={logoImg} alt="Spin"/>
         <div className={classes.Text}>
             <div className={classes.Username}>{props.username}</div>
-            <div className={classes.SP}>{numberWithCommas(props.SP)} SP</div>
+            <div className={classes.SP}>{numberWithCommas(props.sp)} SP</div>
         </div>
     </div>
 );
