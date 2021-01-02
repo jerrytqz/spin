@@ -1,17 +1,26 @@
 # Spin
 
-A React game where players can spin a wheel to unbox items, view an inventory of their items, and check up on their profile and stats 
+An economy game where players unbox, buy, and list items. They can check their and other players' profile and stats. 
 
 ## Features
-- Spinner and prize display
-- Sorted inventory system
-- Profile with stats, a showcase of the best items owned, and a pie chart of the player's rarity percentages 
-- JWT authentication
-- 31 available items (each with an image and description) to collect 
+- Spinner to unbox items 
+- Prize display (with fireworks!)
+- Inventory system
+- Marketplace 
+- Ability to buy items from other players and list items for sale 
+- Profile with stats, a showcase of best owned items, and a pie chart of rarity percentages 
+- 31 available items to collect (each with an image and description) 
+- Real-time UI updating with WebSocket
 
+## Upcoming Features 
+- Leaderboard 
+- Market info for each item (recent sale price, units sold, etc.)
+- Profile customization 
+
+## Images (Old, will be updated) 
 ![Spin](project_images/Spin.png "Spin")
 ![Prize](project_images/Prize.png "Prize")
 ![Inventory](project_images/Inventory.png "Inventory")
 ![Profile](project_images/Profile.png "Profile")
 
-*All item images and descriptions were made from scratch.*
+*All item images and descriptions are made from scratch.*
