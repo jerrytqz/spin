@@ -19,7 +19,9 @@ class App extends Component {
         const socket = io('https://spin-web-socket.jerryzheng5.repl.co');
 
         socket.on('item unboxed', (item, rarity, unboxer) => {
-            this.props.onItemUnboxed(item, rarity, unboxer); 
+            if (unboxer !== this.props.user) {
+                this.props.onItemUnboxed(item, rarity, unboxer); 
+            }
         }); 
 
         socket.on('item bought', (marketID, seller, price) => {

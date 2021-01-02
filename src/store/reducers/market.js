@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/utility'; 
 
 const initialState = {
-    market: null,
+    market: {},
     fetchMarketLoading: false,
     fetchError: null,
     buyItemLoading: false,

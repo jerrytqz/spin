@@ -17,16 +17,16 @@ const unboxings = (props) => {
     ];
 
     for (let i = 0; i < props.unboxings.length; i++) {
-        let colorClass = null;
-        const color = mapRarityToColor(props.unboxings[i].rarity); 
-        if (color === 'rainbow') {
-            colorClass = classes.Rainbow; 
-        }
-        unboxings.splice(i, 1, 
-            <div key={i}>
-                <strong>{props.unboxings[i].unboxer}</strong> unboxed <div className={colorClass} style={{display: 'inline', color: color}}>{props.unboxings[i].item}</div>
-            </div>
-        );
+            let colorClass = null;
+            const color = mapRarityToColor(props.unboxings[i].rarity); 
+            if (color === 'rainbow') {
+                colorClass = classes.Rainbow; 
+            }
+            unboxings.splice(i, 1, 
+                <div key={i}>
+                    <strong>{props.unboxings[i].unboxer}</strong> unboxed <div className={colorClass} style={{display: 'inline', color: color}}>{props.unboxings[i].item}</div>
+                </div>
+            );
     }
 
     return (
