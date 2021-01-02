@@ -10,7 +10,7 @@ An economy game where players can unbox, buy, and list items. They can also chec
 - Ability to buy items from other players and list items for sale 
 - Profile with stats, a showcase of best owned items, and a pie chart of rarity percentages 
 - 31 available items to collect (each with an image and description) 
-- Real-time UI updating with WebSocket
+- Real-time UI updating
 
 ## Upcoming Features 
 - Leaderboard 
