@@ -7,7 +7,7 @@
     justify-content: center;
 }
 
-.FetchErrorMessage {
+.FetchError {
     text-align: center; 
     font-weight: bold; 
     color: #616161; 

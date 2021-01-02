@@ -143,7 +143,7 @@ class Inventory extends Component {
             this.props.fetchInventoryLoading 
                 ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
                 : this.props.fetchError 
-                    ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> 
+                    ? <div className={classes.FetchError}>{this.props.fetchError}</div> 
                     : inventory.length !== 0 
                         ? 
                             <div className={classes.Inventory}>
@@ -154,7 +154,7 @@ class Inventory extends Component {
                                     currentItemName={this.state.currentItemName}
                                     disabled={disabled}
                                     submitHandler={this.submitHandler}
-                                    listError={this.props.listError}
+                                    error={this.props.error}
                                     buttonText={buttonText}
                                     listItemLoading={this.props.listItemLoading}
                                 >

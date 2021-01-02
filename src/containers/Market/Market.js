@@ -89,7 +89,7 @@ class Market extends Component {
             this.props.fetchMarketLoading 
                 ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
                 : this.props.fetchError 
-                    ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> 
+                    ? <div className={classes.FetchError}>{this.props.fetchError}</div> 
                     : market.length !== 0 
                         ? 
                             <div className={classes.Market}>

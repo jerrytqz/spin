@@ -33,7 +33,7 @@ class Profile extends Component {
             this.props.fetchProfileLoading 
                 ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
                 : this.props.fetchError 
-                    ? <div className={classes.FetchErrorMessage}>{this.props.fetchError}</div> 
+                    ? <div className={classes.FetchError}>{this.props.fetchError}</div> 
                     : profile
         );
     }

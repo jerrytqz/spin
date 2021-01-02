@@ -24,7 +24,7 @@ const listForm = (props) => (
                     >
                         {props.buttonText}
                     </YesNoButton>
-                    {props.listError ? <div className={classes.Error}>{props.listError}</div> : null}
+                    {props.error ? <div className={classes.Error}>{props.error}</div> : null}
                 </>
             : <LoadingSpinner/>
         }

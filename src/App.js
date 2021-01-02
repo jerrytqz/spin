@@ -66,7 +66,7 @@ const mapDispatchToProps = dispatch => {
         onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount)),
         onBuyItemSuccess: (marketID) => dispatch(actions.buyItemSuccess(marketID)),
         onItemListed: (item) => dispatch(actions.itemListed(item)),
-        onItemUnboxed: (item, rarity, unboxer) => dispatch(actions.itemUnboxed(item, rarity, unboxer))
+        onItemUnboxed: (itemName, rarity, unboxer) => dispatch(actions.itemUnboxed(itemName, rarity, unboxer))
     };
 };
 

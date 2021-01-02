@@ -181,9 +181,9 @@ class Authentication extends Component {
             this.state.controls.password.valid
         );
 
-        let errorMessage = null;
+        let error = null;
         if (this.props.authError) {
-            errorMessage = <div className={classes.Error}>{this.props.authError}</div>;
+            error = <div className={classes.Error}>{this.props.authError}</div>;
         }
         
         const authClasses = [classes.Authentication]; 
@@ -195,7 +195,7 @@ class Authentication extends Component {
             <div className={authClasses.join(' ')}>
                 {this.props.loading ? <LoadingSpinner/> :
                     <div>
-                        {errorMessage}
+                        {error}
                         <form onSubmit={this.submitHandler}>
                             {form}
                             <YesNoButton 

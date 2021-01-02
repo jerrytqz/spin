@@ -3,9 +3,8 @@ import NavigationItem from '../NavigationItem/NavigationItem';
 import classes from './NavigationItems.module.css';
 
 const navigationItems = (props) => {
-    
-    let profileLink = `/profile/${props.username}`; 
-    if (!props.username) {
+    let profileLink = `/profile/${props.user}`; 
+    if (!props.user) {
         profileLink = '/profile';       
     }
 
