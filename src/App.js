@@ -18,9 +18,9 @@ class App extends Component {
         await this.props.onTryAutoLogIn();
         const socket = io('https://spin-web-socket.jerryzheng5.repl.co');
 
-        socket.on('item unboxed', (item, rarity, unboxer) => {
+        socket.on('item unboxed', (itemName, rarity, unboxer) => {
             if (unboxer !== this.props.user) {
-                this.props.onItemUnboxed(item, rarity, unboxer); 
+                this.props.onItemUnboxed(itemName, rarity, unboxer); 
             }
         }); 
 

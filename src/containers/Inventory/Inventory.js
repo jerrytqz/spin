@@ -89,14 +89,14 @@ class Inventory extends Component {
         const inventory = []; 
         if (this.props.inventory) {
             const rawInventory = Object.entries(this.props.inventory);
-            for (const [item, info] of rawInventory) {
+            for (const [itemName, info] of rawInventory) {
                 inventory.push(
                     <Item 
                         key={info.inventoryID} 
-                        name={item} 
+                        name={itemName} 
                         quantity={info.quantity} 
                         rarity={info.rarity} 
-                        onClick={() => this.inventoryItemClickedHandler(info.inventoryID, item)}
+                        onClick={() => this.inventoryItemClickedHandler(info.inventoryID, itemName)}
                     />
                 );
             }

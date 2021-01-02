@@ -68,13 +68,9 @@ const spinner = (props) => {
                 <li className={classes.liCustom}/>
                 <li className={classes.liCustom}/>
             </ul>
-            {props.buyError 
-                ? 
-                    <Modal show clicked={props.onClickBackdrop}>
-                        <div style={{color: 'red'}}>{props.buyError}</div>
-                    </Modal> 
-                : null
-            }
+            <Modal show={props.buyError} clicked={props.onClickBackdrop}>
+                <div style={{color: 'red'}}>{props.buyError}</div>
+            </Modal> 
         </div>
     );
 };

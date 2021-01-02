@@ -36,15 +36,15 @@ class Market extends Component {
         this.props.onClearBuyError(); 
     }
 
-    marketItemClickedHandler = (item, info) => {
+    marketItemClickedHandler = (itemID, info) => {
         this.setState({
             showBuyForm: true,
-            currentItemName: info.item,
+            currentItemName: info.itemName,
             currentItemRarity: info.rarity,
             currentListTime: info.listTime,
             currentSeller: info.seller,
             currentItemPrice: info.price,
-            currentMarketID: Number(item)
+            currentMarketID: Number(itemID)
         }); 
     }
 
@@ -60,14 +60,14 @@ class Market extends Component {
         const market = []; 
         if (this.props.market) {
             const rawMarket = Object.entries(this.props.market);
-            for (const [item, info] of rawMarket) {
+            for (const [itemID, info] of rawMarket) {
                 market.push(
                     <Item 
-                        key={item} 
-                        name={info.item}
+                        key={itemID} 
+                        name={info.itemName}
                         price={numberWithCommas(info.price)} 
                         rarity={info.rarity} 
-                        onClick={() => this.marketItemClickedHandler(item, info)}
+                        onClick={() => this.marketItemClickedHandler(itemID, info)}
                     />
                 );
             }

@@ -24,7 +24,7 @@ const unboxings = (props) => {
             }
             unboxings.splice(i, 1, 
                 <div key={i}>
-                    <strong>{props.unboxings[i].unboxer}</strong> unboxed <div className={colorClass} style={{display: 'inline', color: color}}>{props.unboxings[i].item}</div>
+                    <strong>{props.unboxings[i].unboxer}</strong> unboxed <div className={colorClass} style={{display: 'inline', color: color}}>{props.unboxings[i].itemName}</div>
                 </div>
             );
     }

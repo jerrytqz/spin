@@ -52,6 +52,7 @@ export const logOut = (token) => {
             const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(logOutSuccess()); 
+                dispatch(checkExpiration(result['expirationTime'], true));
             } else {
                 dispatch(logOutFail(result['authError'])); 
             } 
@@ -81,7 +82,7 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
             const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(authSuccess(result['token'], result['user'], result['sp']));
-                dispatch(checkExpiration(result['expirationTime']));
+                dispatch(checkExpiration(result['expirationTime'], false));
             } else {
                 dispatch(authFail(result['authError']));
             }
@@ -111,12 +112,15 @@ export const tryAutoLogIn = () => {
     };
 };
 
-export const checkExpiration = (expirationTime) => {
-    return dispatch => {
-        setTimeout(() => {
-            dispatch(logOutSuccess()); 
-        }, expirationTime * 1000);
-    };
+let timeout = null; 
+export const checkExpiration = (expirationTime, clear) => {
+    if (!clear) {
+        return dispatch => {
+            timeout = setTimeout(() => {
+                dispatch(logOutSuccess()); 
+            }, expirationTime * 1000);
+        };
+    } else return clearTimeout(timeout)
 };
 
 export const changeSP = (changeAmount) => {

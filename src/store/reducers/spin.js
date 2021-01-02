@@ -67,7 +67,7 @@ const resetFreeSPError = (state) => {
 const itemUnboxed = (state, action) => {
     const newUnboxings = state.unboxings; 
     newUnboxings.push({
-        'item': action.item,
+        'itemName': action.itemName,
         'rarity': action.rarity,
         'unboxer': action.unboxer 
     });

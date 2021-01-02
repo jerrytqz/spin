@@ -18,7 +18,7 @@ class Spin extends Component {
     }
 
     startSpinHandler = async () => {
-        this.setState({startButtonPressed: true, showErrorModal: true}); 
+        this.setState({startButtonPressed: true}); 
         await this.props.onBuySpin(this.props.token);  
         if (this.props.degree !== 0) {
             this.props.onChangeSP(-500); 

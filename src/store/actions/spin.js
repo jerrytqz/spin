@@ -77,9 +77,9 @@ export const getFreeSP = (token) => {
     };
 };
 
-export const itemUnboxed = (item, rarity, unboxer) => ({
+export const itemUnboxed = (itemName, rarity, unboxer) => ({
     type: actionTypes.ITEM_UNBOXED,
-    item: item,
+    itemName: itemName,
     rarity: rarity,
     unboxer: unboxer 
 });
