@@ -1,7 +1,7 @@
 import React from 'react'; 
 import classes from './ProfileStats.module.css';
 import Stat from './Stat/Stat';  
-import { capitalize, mapRarityToColor, numberWithCommas } from '../../shared/utility'; 
+import { capitalize, rarityInfo, numberWithCommas } from '../../shared/utility'; 
 
 const profileStats = (props) => {
     const rarityStats = []; 
@@ -14,7 +14,7 @@ const profileStats = (props) => {
                         key={rarity}
                         statName={capitalize(rarity)}
                         statValue="0%"
-                        rarityColor={mapRarityToColor(capitalize(rarity))}
+                        rarityColor={rarityInfo[capitalize(rarity)][0]}
                     />
                 );
             }
@@ -27,7 +27,7 @@ const profileStats = (props) => {
                         key={rarity}
                         statName={capitalize(rarity)}
                         statValue={`${percent.toFixed(2)}%`}
-                        rarityColor={mapRarityToColor(capitalize(rarity))}
+                        rarityColor={rarityInfo[capitalize(rarity)][0]}
                     />
                 );
             }

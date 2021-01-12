@@ -4,7 +4,7 @@ import Item from '../../components/Item/Item';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import { mapRarityToValue, numberWithCommas } from '../../shared/utility'; 
+import { rarityInfo, numberWithCommas } from '../../shared/utility'; 
 import BuyForm from '../../components/BuyForm/BuyForm'; 
 
 class Market extends Component {
@@ -78,8 +78,8 @@ class Market extends Component {
                 if (priceA > priceB) return -1;
                 if (priceA < priceB) return 1; 
 
-                if (mapRarityToValue(a.props.rarity) > mapRarityToValue(b.props.rarity)) return -1;
-                if (mapRarityToValue(a.props.rarity) < mapRarityToValue(b.props.rarity)) return 1;
+                if (rarityInfo[a.props.rarity][1] > rarityInfo[b.props.rarity][1]) return -1;
+                if (rarityInfo[a.props.rarity][1] < rarityInfo[b.props.rarity][1]) return 1;
 
                 else return -1;
             }); 

@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Item.module.css';
-import { mapRarityToColor } from '../../shared/utility'; 
+import { rarityInfo } from '../../shared/utility'; 
 
 const item = (props) => {
     // let imagePathName = ''; 
@@ -8,7 +8,7 @@ const item = (props) => {
     //     imagePathName = props.name.replace(/\s+/g, '-').toLowerCase(); 
     // }
 
-    const color = mapRarityToColor(props.rarity); 
+    const color = rarityInfo[props.rarity][0]; 
     const itemClasses = [classes.Item]; 
     const itemNameClasses = [classes.ItemName];  
 

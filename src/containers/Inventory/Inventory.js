@@ -4,7 +4,7 @@ import Item from '../../components/Item/Item';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import { mapRarityToValue, updateObject, checkValidity, numberWithCommas } from '../../shared/utility';
+import { rarityInfo, updateObject, checkValidity, numberWithCommas } from '../../shared/utility';
 import ListForm from '../../components/ListForm/ListForm'; 
 import Input from '../../shared/UI/Input/Input'; 
 
@@ -100,7 +100,7 @@ class Inventory extends Component {
                     />
                 );
             }
-            inventory.sort((a, b) => -(mapRarityToValue(a.props.rarity) - mapRarityToValue(b.props.rarity)));
+            inventory.sort((a, b) => -(rarityInfo[a.props.rarity][1] - rarityInfo[b.props.rarity][1]));
         }
 
         const formElementsArray = [];

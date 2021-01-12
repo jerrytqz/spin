@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Unboxings.module.css';
-import { mapRarityToColor } from '../../shared/utility'; 
+import { rarityInfo } from '../../shared/utility'; 
 
 const unboxings = (props) => {
     const unboxings = [
@@ -18,7 +18,7 @@ const unboxings = (props) => {
 
     for (let i = 0; i < props.unboxings.length; i++) {
             let colorClass = null;
-            const color = mapRarityToColor(props.unboxings[i].rarity); 
+            const color = rarityInfo[props.unboxings[i].rarity][0]; 
             if (color === 'rainbow') {
                 colorClass = classes.Rainbow; 
             }
