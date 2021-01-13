@@ -5,12 +5,7 @@ import { rarityInfo } from '../../shared/utility';
 import Item from '../Item/Item'; 
 
 const prize = (props) => {
-    let article = 'a'; 
     const prizeClasses = []; 
-    
-    if (props.item.rarity === 'Uncommon' || props.item.rarity === 'Epic')
-        article = 'an'; 
-
     if (props.item.rarity === '???') {
         prizeClasses.push(classes.Rainbow); 
     } 
@@ -19,7 +14,7 @@ const prize = (props) => {
         <Modal show clicked={props.clicked} animation="openPrize">
             <div className={classes.Prize}>
                 <div className={classes.Info}>
-                    You unboxed {article} <strong style={{color: rarityInfo[props.item.rarity][0]}} className={prizeClasses.join(' ')}>{props.item.rarity.toLowerCase()}</strong> item! 
+                    You unboxed {rarityInfo[props.item.rarity][2]} <strong style={{color: rarityInfo[props.item.rarity][0]}} className={prizeClasses.join(' ')}>{props.item.rarity.toLowerCase()}</strong> item! 
                     <hr/>
                     <div className={classes.Description}>{props.item.description}</div>
                     <div className={classes.Stats}>

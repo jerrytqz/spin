@@ -3,7 +3,7 @@ import classes from './Rarity.module.css';
 
 const rarity = (props) => {
     const rarityClasses = [classes.RaritySquare];  
-    if (props.animation === 'rainbow') {
+    if (props.rarityColor === 'rainbow') {
         rarityClasses.push(classes.Rainbow); 
     }
 

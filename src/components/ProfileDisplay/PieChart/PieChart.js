@@ -1,20 +1,21 @@
 import React from 'react'; 
 import classes from './PieChart.module.css';
 import { Pie } from 'react-chartjs-2'; 
+import { rarityInfo } from '../../../shared/utility'; 
 
 const pieChart = (props) => {
+    const labels = [];
+    const backgroundColor = [];
+    for (const property in rarityInfo) {
+        labels.push(property); 
+        backgroundColor.push(rarityInfo[property][0]); 
+    }
+    backgroundColor[backgroundColor.length - 1] = 'black'; 
+
     const data = {
-        labels: ['Common', 'Uncommon', 'Rare', 'Epic', 'Holy', 'Godly', '???'],
+        labels: labels,
         datasets: [{
-            backgroundColor: [
-                'brown',
-                'cyan',
-                'red',
-                'purple',
-                'orange',
-                'yellow',
-                'black'
-            ],
+            backgroundColor: backgroundColor,
             data: [props.rarityStats.common, props.rarityStats.uncommon, props.rarityStats.rare, props.rarityStats.epic, props.rarityStats.holy, props.rarityStats.godly, props.rarityStats['???']]
         }]
     };

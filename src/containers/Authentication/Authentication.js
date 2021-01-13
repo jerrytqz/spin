@@ -172,8 +172,8 @@ class Authentication extends Component {
         ));
 
         if (this.state.isLogIn) {
-            form.splice(1,1);
-            form.splice(2,1);
+            form.splice(1, 1);
+            form.splice(2, 1);
         }
         const isLogInFormIsValid = (
             this.state.isLogIn &&

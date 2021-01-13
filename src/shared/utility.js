@@ -1,21 +1,14 @@
 export const BACKEND_BASE_DIR = 'http://127.0.0.1:8000/';
 
-const COMMON = 'Common';
-const UNCOMMON = 'Uncommon';
-const RARE = 'Rare';
-const EPIC = 'Epic';
-const HOLY = 'Holy';
-const GODLY = 'Godly';
-const TQ = '???';
 export const rarityInfo = {
-    [COMMON]: ['brown', 1],
-    [UNCOMMON]: ['cyan', 2],
-    [RARE]: ['red', 3],
-    [EPIC]: ['purple', 4],
-    [HOLY]: ['orange', 5],
-    [GODLY]: ['yellow', 6],
-    [TQ]: ['rainbow', 7]
-}
+    'Common': ['brown', 1, 'a', '52%'],
+    'Uncommon': ['cyan', 2, 'an', '20%'],
+    'Rare': ['red', 3, 'a', '15%'],
+    'Epic': ['purple', 4, 'an', '10%'],
+    'Holy': ['orange', 5, 'a', '2.5%'],
+    'Godly': ['yellow', 6, 'a', '0.49%'],
+    '???': ['rainbow', 7, 'a', '0.01%']
+};
 
 export const updateObject = (oldObject, updatedProperties) => {
     return {

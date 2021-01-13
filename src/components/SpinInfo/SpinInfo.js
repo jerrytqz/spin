@@ -1,17 +1,25 @@
 import React from 'react';
 import Rarity from './Rarity/Rarity'; 
 import classes from './SpinInfo.module.css';
+import { rarityInfo } from '../../shared/utility'; 
 
-const spinInfo = () => (
-    <div className={classes.SpinInfo}>
-        <Rarity rarityType="Common" rarityChance="52%" rarityColor="brown"/>
-        <Rarity rarityType="Uncommon" rarityChance="20%" rarityColor="cyan"/>
-        <Rarity rarityType="Rare" rarityChance="15%" rarityColor="red"/>
-        <Rarity rarityType="Epic" rarityChance="10%" rarityColor="purple"/>
-        <Rarity rarityType="Holy" rarityChance="2.5%" rarityColor="orange"/>
-        <Rarity rarityType="Godly" rarityChance="0.49%" rarityColor="yellow"/>
-        <Rarity rarityType="???" rarityChance="0.01%" animation="rainbow"/>
-    </div>
-);
+const spinInfo = () => {
+    const rarities = [];
+    for (const property in rarityInfo) {
+        rarities.push(
+            <Rarity
+                key={rarityInfo[property][1]}
+                rarityType={property}
+                rarityChance={rarityInfo[property][3]}
+                rarityColor={rarityInfo[property][0]}
+            />
+        )
+    }
+    return (
+        <div className={classes.SpinInfo}>
+            {rarities}
+        </div>
+    );
+};
 
 export default spinInfo; 
