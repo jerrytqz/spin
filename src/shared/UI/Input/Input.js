@@ -13,10 +13,10 @@ const input = (props) => {
     case ('input'):
         inputElement = (
             <input 
-                className = {inputClasses.join(' ')} 
+                className={inputClasses.join(' ')} 
                 {...props.elementConfig}
-                value = {props.value}
-                onChange = {props.changed}
+                value={props.value}
+                onChange={props.changed}
             /> 
         );
         break;
@@ -24,10 +24,10 @@ const input = (props) => {
     case ('textarea'):
         inputElement = (
             <textarea 
-                className = {inputClasses.join(' ')} 
+                className={inputClasses.join(' ')} 
                 {...props.elementConfig} 
-                value = {props.value}
-                onChange = {props.changed}
+                value={props.value}
+                onChange={props.changed}
             />
         );
         break;
@@ -35,13 +35,13 @@ const input = (props) => {
     case ('select'):
         inputElement = (
             <select 
-                className = {inputClasses.join(' ')} 
+                className={inputClasses.join(' ')} 
                 {...props.elementConfig}
-                value = {props.value}
-                onChange = {props.changed}
+                value={props.value}
+                onChange={props.changed}
             >      
                 {props.elementConfig.options.map(option => (
-                    <option key = {option.value} value = {option.value}>
+                    <option key={option.value} value={option.value}>
                         {option.displayValue}
                     </option>
                 ))}
@@ -52,9 +52,9 @@ const input = (props) => {
     default:
         inputElement = (
             <input 
-                className = {inputClasses.join(' ')} 
+                className={inputClasses.join(' ')} 
                 {...props.elementConfig}
-                value = {props.value}
+                value={props.value}
             />
         );
     }

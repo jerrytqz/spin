@@ -48,7 +48,7 @@ class Market extends Component {
         }); 
     }
 
-    buyClickedHandler = async() => {
+    submitHandler = async() => {
         await this.props.onBuyItem(this.props.token, this.state.currentMarketID); 
         if (this.props.buyError === null) {
             this.backdropClickedHandler(); 
@@ -105,7 +105,7 @@ class Market extends Component {
                                     isAuthenticated={this.props.isAuthenticated}
                                     loading={this.props.buyItemLoading}
                                     error={this.props.buyError}
-                                    onClickBuy={this.buyClickedHandler}
+                                    submitHandler={this.submitHandler}
                                     user={this.props.user}
                                     sp={this.props.sp}
                                 />

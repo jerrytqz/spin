@@ -151,12 +151,12 @@ class Inventory extends Component {
                                 <ListForm 
                                     show={this.state.showListForm} 
                                     clicked={this.backdropClickedHandler}
-                                    currentItemName={this.state.currentItemName}
+                                    name={this.state.currentItemName}
                                     disabled={disabled}
                                     submitHandler={this.submitHandler}
                                     error={this.props.error}
                                     buttonText={buttonText}
-                                    listItemLoading={this.props.listItemLoading}
+                                    loading={this.props.listItemLoading}
                                 >
                                     {inputs}
                                 </ListForm>

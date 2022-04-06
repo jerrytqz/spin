@@ -7,7 +7,6 @@ import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import Modal from '../../shared/UI/Modal/Modal'; 
 
 const buyForm = (props) => {
-
     let buttonText = 'Log in to buy';
     let disabled = !props.isAuthenticated || props.user === props.seller || props.sp < props.price; 
 
@@ -50,7 +49,7 @@ const buyForm = (props) => {
                             </div>
                             <YesNoButton 
                                 btnType="Yes" 
-                                onClick={props.onClickBuy} 
+                                onClick={props.submitHandler} 
                                 disabled={disabled}
                                 style={{margin: '0'}}
                             >

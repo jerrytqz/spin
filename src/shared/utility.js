@@ -1,7 +1,7 @@
 export const BACKEND_BASE_DIR = 'http://127.0.0.1:8000/';
 
 export const rarityInfo = {
-    'Common': ['brown', 1, 'a', '52%'],
+    'Common': ['brown', 1, 'a', '52%'], // NAME: [COLOR, VALUE, ARTICLE, CHANCE]
     'Uncommon': ['cyan', 2, 'an', '20%'],
     'Rare': ['red', 3, 'a', '15%'],
     'Epic': ['purple', 4, 'an', '10%'],

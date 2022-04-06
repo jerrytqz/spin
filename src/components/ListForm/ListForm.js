@@ -11,10 +11,10 @@ const listForm = (props) => (
         clicked={props.clicked} 
         backdropStyle={{opacity: '0.5'}}
     >
-        {!props.listItemLoading 
+        {!props.loading
             ? 
                 <>
-                    <div className={classes.Title}>{props.currentItemName}</div>
+                    <div className={classes.Title}>{props.name}</div>
                     {props.children}
                     <YesNoButton 
                         btnType="Yes" 

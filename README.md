@@ -16,6 +16,8 @@ An economy game where players can unbox, buy, and list items. They can also chec
 - Leaderboard 
 - Market info for each item (recent sale price, units sold, etc.)
 - Profile customization 
+- Market and inventory filtering 
+- More stats
 
 ## Images (Old, will be updated) 
 ![Spin](project_images/Spin.png "Spin")
