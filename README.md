@@ -13,16 +13,17 @@ An economy game where players can unbox, buy, and list items. They can also chec
 - Real-time UI updating
 
 ## Upcoming Features 
+- Deployment!
 - Leaderboard 
 - Market info for each item (recent sale price, units sold, etc.)
 - Profile customization 
 - Market and inventory filtering 
 - More stats
 
-## Images (Old, will be updated) 
+## Images 
 ![Spin](project_images/Spin.png "Spin")
 ![Prize](project_images/Prize.png "Prize")
 ![Inventory](project_images/Inventory.png "Inventory")
 ![Profile](project_images/Profile.png "Profile")
 
-*All item images and descriptions are made from scratch.*
+*All item images and descriptions were made from scratch.*
