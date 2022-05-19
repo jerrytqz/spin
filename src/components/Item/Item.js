@@ -8,7 +8,7 @@ const item = (props) => {
     //     imagePathName = props.name.replace(/\s+/g, '-').toLowerCase(); 
     // }
 
-    const color = rarityInfo[props.rarity][0]; 
+    const color = !props.nullItem ? rarityInfo[props.rarity][0] : null; 
     const itemClasses = [classes.Item]; 
     const itemNameClasses = [classes.ItemName];  
 
