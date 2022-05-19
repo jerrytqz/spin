@@ -16,7 +16,7 @@ import io from 'socket.io-client';
 class App extends Component {
     async componentDidMount() {
         await this.props.onTryAutoLogIn();
-        const socket = io('https://spin-web-socket.jerryzheng5.repl.co');
+        const socket = io('https://spin-socketio.jerryzheng5.repl.co');
 
         socket.on('item unboxed', (itemName, rarity, unboxer) => {
             if (unboxer !== this.props.user) {
