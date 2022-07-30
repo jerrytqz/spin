@@ -3,10 +3,18 @@ import classes from './Item.module.css';
 import { rarityInfo } from '../../shared/utility'; 
 
 const item = (props) => {
-    // let imagePathName = ''; 
-    // if (props.name) {
-    //     imagePathName = props.name.replace(/\s+/g, '-').toLowerCase(); 
-    // }
+    // Item names are converted to their corresponding image path names by changing every
+    // letter to lowercase and replacing spaces with '-'
+    let imagePathName = ''; 
+    let imagePath = '';
+    if (props.name) {
+        imagePathName = props.name.replace(/\s+/g, '-').toLowerCase(); 
+        try {
+            imagePath = require(`../../assets/images/items/${imagePathName}.jpeg`); 
+        } catch (e) {
+            console.log(props.name + "'s image is not currently available."); 
+        }
+    }
 
     const color = !props.nullItem ? rarityInfo[props.rarity][0] : null; 
     const itemClasses = [classes.Item]; 
@@ -37,7 +45,7 @@ const item = (props) => {
     return (!props.nullItem ? 
         <div className={itemClasses.join(' ')} style={{borderColor: color}} onClick={props.onClick}>
             <div className={itemNameClasses.join(' ')} style={{color: color}}>{props.name}</div>
-            {/* <img src={require(`../../../assets/images/${imagePathName}.jpeg`)} className={classes.ItemImage} alt={props.name}/> */}
+            <img src={imagePath} className={classes.ItemImage} alt={props.name}/>
             {props.quantity ? <div className={classes.ItemBottomText}>x{props.quantity}</div> : null}
             {props.price ? <div className={classes.ItemBottomText}>{props.price} SP</div> : null} 
         </div> : 
