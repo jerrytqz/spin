@@ -1,6 +1,6 @@
 # Spin
 
-An online economy game where players can unbox, buy, and list items. They can also check their and other players' profile and stats. 
+An online economy game where players can unbox, buy, and list items. They can also check the profile and stats of themselves and other players.
 
 ## Features
 - Spinner to unbox items 
