@@ -10,6 +10,10 @@ const prize = (props) => {
         prizeClasses.push(classes.Rainbow); 
     } 
 
+    if (!props.item.description) {
+        console.log(props.item.name + "'s description is not currently available.");
+    }
+
     return (
         <Modal show clicked={props.clicked} animation="openPrize">
             <div className={classes.Prize}>
