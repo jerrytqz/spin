@@ -1,4 +1,7 @@
-export const BACKEND_BASE_DIR = 'http://127.0.0.1:8000/';
+export let BACKEND_BASE_DIR = 'https://spin-backend-production.herokuapp.com/';
+if (process.env.NODE_ENV === 'development') {
+    BACKEND_BASE_DIR = 'http://127.0.0.1:8000/';
+} 
 
 export const rarityInfo = {
     'Common': ['brown', 1, 'a', '52%'], // NAME: [COLOR, VALUE, ARTICLE, CHANCE]
