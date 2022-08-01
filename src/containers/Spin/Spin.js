@@ -47,8 +47,10 @@ class Spin extends Component {
         this.props.onResetFreeSPError(); 
     }
 
-    spinFinishedHandler = (event) => {
+    spinFinishedHandler = () => {
         this.setState({showPrize: true}); 
+        // Add unboxing to global unboxings list
+        this.props.onItemUnboxed(this.props.item.name, this.props.item.rarity, this.props.user);
     }
 
     render() {
@@ -65,7 +67,7 @@ class Spin extends Component {
                     buySpinLoading={this.props.buySpinLoading}
                     showSpinnerText={this.state.showSpinnerText}
                     onClickBackdrop={this.buyErrorClickedHandler}
-                    onSpinFinish={(event) => this.spinFinishedHandler(event)}
+                    onSpinFinish={() => this.spinFinishedHandler()}
                     sp={this.props.sp}
                 />
                 {this.state.showPrize 
@@ -99,7 +101,8 @@ const mapStateToProps = state => {
         buyError: state.spin.buyError,
         buySpinLoading: state.spin.buySpinLoading,
         freeSPError: state.spin.freeSPError,
-        unboxings: state.spin.unboxings 
+        unboxings: state.spin.unboxings,
+        user: state.authentication.user
     };
 };
 
@@ -110,7 +113,8 @@ const mapDispatchToProps = dispatch => {
         onResetDegree: () => dispatch(actions.resetDegree()),
         onGetFreeSP: (token) => dispatch(actions.getFreeSP(token)),
         onResetFreeSPError: () => dispatch(actions.resetFreeSPError()),
-        onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount))
+        onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount)),
+        onItemUnboxed: (itemName, rarity, unboxer) => dispatch(actions.itemUnboxed(itemName, rarity, unboxer))
     };
 };
 
