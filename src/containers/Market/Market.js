@@ -32,8 +32,10 @@ class Market extends Component {
     }
 
     backdropClickedHandler = () => {
-        this.setState({showBuyForm: false});
-        this.props.onClearBuyError(); 
+        if (!this.props.buyItemLoading) {
+            this.setState({showBuyForm: false});
+            this.props.onClearBuyError(); 
+        }
     }
 
     marketItemClickedHandler = (itemID, info) => {

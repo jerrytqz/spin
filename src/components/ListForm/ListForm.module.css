@@ -8,5 +8,5 @@
 .Error {
     text-align: center; 
     color: red; 
-    margin-top: 20px; 
+    margin-top: -20px; 
 }

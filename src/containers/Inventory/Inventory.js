@@ -43,22 +43,24 @@ class Inventory extends Component {
     }
 
     backdropClickedHandler = () => {
-        this.setState(prev => ({
-            ...prev,
-            controls: {
-                price: {
-                    ...prev.controls.price,
-                    ...prev.controls.price.elementConfig,
-                    value: '',
-                    ...prev.controls.price.validation,
-                    valid: false,
-                    touched: false
-                }
-            },
-            formIsValid: false, 
-            showListForm: false,
-        })); 
-        this.props.onClearListError(); 
+        if (!this.props.listItemLoading) {
+            this.setState(prev => ({
+                ...prev,
+                controls: {
+                    price: {
+                        ...prev.controls.price,
+                        ...prev.controls.price.elementConfig,
+                        value: '',
+                        ...prev.controls.price.validation,
+                        valid: false,
+                        touched: false
+                    }
+                },
+                formIsValid: false, 
+                showListForm: false,
+            })); 
+            this.props.onClearListError(); 
+        }
     }
 
     inputChangedHandler = (event, controlName) => {
@@ -154,7 +156,7 @@ class Inventory extends Component {
                                     name={this.state.currentItemName}
                                     disabled={disabled}
                                     submitHandler={this.submitHandler}
-                                    error={this.props.error}
+                                    error={this.props.listError}
                                     buttonText={buttonText}
                                     loading={this.props.listItemLoading}
                                 >
