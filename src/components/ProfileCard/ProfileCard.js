@@ -3,7 +3,7 @@ import classes from './ProfileCard.module.css';
 import logoImg from '../../assets/images/icon.jpeg'; 
 import { numberWithCommas } from '../../shared/utility'; 
 
-const profileCard = (props) => (
+const ProfileCard = (props) => (
     <div className={classes.ProfileCard}>
         <img src={logoImg} alt="Spin"/>
         <div className={classes.Text}>
@@ -13,4 +13,4 @@ const profileCard = (props) => (
     </div>
 );
 
-export default profileCard; 
+export default ProfileCard; 

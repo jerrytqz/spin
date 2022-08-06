@@ -6,7 +6,7 @@ import { dhm, numberWithCommas } from '../../shared/utility';
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
 import Modal from '../../shared/UI/Modal/Modal'; 
 
-const buyForm = (props) => {
+const BuyForm = (props) => {
     let buttonText = 'Log in to buy';
     let disabled = !props.isAuthenticated || props.user === props.seller || props.sp < props.price; 
 
@@ -63,4 +63,4 @@ const buyForm = (props) => {
     );
 };
 
-export default buyForm; 
+export default BuyForm; 

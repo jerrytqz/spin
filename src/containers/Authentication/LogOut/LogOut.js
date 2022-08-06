@@ -22,7 +22,6 @@ class LogOut extends Component {
     }
 
     render() {
-
         let logOutResult = <div className={classes.LoadingSpinner}><LoadingSpinner/></div>;
         
         if (this.props.logOutAttemptFinished && this.props.authError) {

@@ -3,7 +3,7 @@ import classes from './Modal.module.css';
 import Backdrop from '../Backdrop/Backdrop'; 
 import fireworkClasses from './Fireworks.module.css'; 
 
-const modal = (props) => {
+const Modal = (props) => {
     const modalClasses = [classes.Modal];
     if (props.animation === 'openPrize') {
         modalClasses.push(classes.OpenPrize);
@@ -31,4 +31,4 @@ const modal = (props) => {
     );
 }; 
 
-export default modal; 
+export default Modal; 

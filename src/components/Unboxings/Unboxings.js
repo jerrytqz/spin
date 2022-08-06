@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Unboxings.module.css';
 import { rarityInfo } from '../../shared/utility'; 
 
-const unboxings = (props) => {
+const Unboxings = (props) => {
     const unboxings = [
         <div key={0} className={classes.Message}>Global unboxings show up here!</div>
     ];
@@ -17,7 +17,7 @@ const unboxings = (props) => {
             colorClass = classes.Rainbow; 
         }
         unboxings.splice(i, 1, 
-            <div key={i}>
+            <div key={i} style={{whiteSpace: 'nowrap'}}>
                 <strong>{props.unboxings[i].unboxer}</strong> unboxed <div className={colorClass} style={{display: 'inline', color: color}}>{props.unboxings[i].itemName}</div>
             </div>
         );
@@ -30,4 +30,4 @@ const unboxings = (props) => {
     );
 };
 
-export default unboxings; 
+export default Unboxings; 

@@ -2,7 +2,7 @@ import React from 'react';
 import logoImg from '../../assets/images/icon.jpeg'; 
 import classes from './Logo.module.css';
 
-const logo = () => (
+const Logo = () => (
     <div className={classes.Logo}>
         <img src={logoImg} alt="Spin"/>
         <div className={classes.Text}>
@@ -12,4 +12,4 @@ const logo = () => (
     </div>
 );
 
-export default logo; 
+export default Logo; 

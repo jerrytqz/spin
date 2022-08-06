@@ -4,7 +4,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import Logo from '../../Logo/Logo'; 
 import ProfileCard from '../../ProfileCard/ProfileCard'; 
 
-const toolbar = (props) => (
+const Toolbar = (props) => (
     <header className={classes.Toolbar}>
         {props.isAuthenticated ? <ProfileCard user={props.user} sp={props.sp}/> : <Logo/>}
         <nav>
@@ -13,4 +13,4 @@ const toolbar = (props) => (
     </header>
 );
 
-export default toolbar; 
+export default Toolbar; 

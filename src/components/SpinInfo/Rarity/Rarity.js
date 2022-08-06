@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Rarity.module.css';
 
-const rarity = (props) => {
+const Rarity = (props) => {
     const rarityClasses = [classes.RaritySquare];  
     if (props.rarityColor === 'rainbow') {
         rarityClasses.push(classes.Rainbow); 
@@ -15,4 +15,4 @@ const rarity = (props) => {
     );
 };
 
-export default rarity; 
+export default Rarity; 

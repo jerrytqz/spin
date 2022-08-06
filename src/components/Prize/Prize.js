@@ -4,7 +4,7 @@ import Modal from '../../shared/UI/Modal/Modal';
 import { rarityInfo } from '../../shared/utility'; 
 import Item from '../Item/Item'; 
 
-const prize = (props) => {
+const Prize = (props) => {
     const prizeClasses = []; 
     if (props.item.rarity === '???') {
         prizeClasses.push(classes.Rainbow); 
@@ -40,4 +40,4 @@ const prize = (props) => {
     );
 };
 
-export default prize; 
+export default Prize; 

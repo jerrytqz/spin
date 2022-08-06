@@ -32,6 +32,7 @@ export const checkValidity = (value, rules) => {
     }
 
     if (rules.isEmail) {
+        // Simple regex, backend does most of the validation
         const pattern = /\S+@\S+\.\S+/;
         isValid = pattern.test(value) && isValid;
     }

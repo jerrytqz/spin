@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './DefaultButton.module.css'; 
 
-const defaultButton = (props) => (
+const DefaultButton = (props) => (
     <button 
         className={classes.DefaultButton}
         onClick={props.onClick} 
@@ -11,4 +11,4 @@ const defaultButton = (props) => (
     </button>
 );
 
-export default defaultButton; 
+export default DefaultButton; 

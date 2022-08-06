@@ -8,7 +8,30 @@ import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 
+// Validations for registration, since log in doesn't need validation (except for required: true)
+const USERNAME_VALIDATION = {
+    required: true,
+    minLength: 1,
+    maxLength: 16 
+}
+
+const EMAIL_VALIDATION = {
+    required: true,
+    isEmail: true
+}
+
+const PASSWORD_VALIDATION = {
+    required: true,
+    minLength: 8,
+    maxLength: 64
+}
+
+const CONFIRM_PASSWORD_VALIDATION = {
+    required: true
+}
+
 class Authentication extends Component {
+    // Initial state is for log in
     state = {
         controls: {
             username: {
@@ -19,9 +42,7 @@ class Authentication extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
-                    minLength: 1,
-                    maxLength: 16 
+                    required: true
                 },
                 valid: false,
                 touched: false
@@ -33,11 +54,8 @@ class Authentication extends Component {
                     placeholder: 'Email'
                 },
                 value: '',
-                validation: {
-                    required: true,
-                    isEmail: true
-                },
-                valid: false,
+                validation: {},
+                valid: true,
                 touched: false
             },
             password: {
@@ -48,8 +66,7 @@ class Authentication extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
-                    minLength: 1 
+                    required: true
                 },
                 valid: false,
                 touched: false
@@ -61,11 +78,10 @@ class Authentication extends Component {
                     placeholder: 'Confirm Password'
                 },
                 value: '',
-                validation: {
-                    required: false 
-                },
-                valid: false,
-                touched: false
+                validation: {},
+                valid: true,
+                touched: false,
+                customErrMsg: "Please confirm your password."
             }
         },
         isLogIn: true,
@@ -85,12 +101,12 @@ class Authentication extends Component {
                 valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             })
-        });   
-        let formIsValid = true;
+        });
+        let updatedFormIsValid = true;
         for (const inputIdentifier in updatedControls) {
-            formIsValid = updatedControls[inputIdentifier].valid && formIsValid; 
+            updatedFormIsValid = updatedControls[inputIdentifier].valid && updatedFormIsValid; 
         }
-        this.setState({controls: updatedControls, formIsValid: formIsValid});
+        this.setState({controls: updatedControls, formIsValid: updatedFormIsValid});
     }
 
     submitHandler = async(event) => {
@@ -113,7 +129,11 @@ class Authentication extends Component {
                     ...prev.controls.username,
                     ...prev.controls.username.elementConfig,
                     value: '',
-                    ...prev.controls.username.validation,
+                    validation: prev.isLogIn ? {
+                        ...USERNAME_VALIDATION
+                    } : {
+                        required: true
+                    },
                     valid: false,
                     touched: false
                 },
@@ -121,15 +141,21 @@ class Authentication extends Component {
                     ...prev.controls.email,
                     ...prev.controls.email.elementConfig,
                     value: '',
-                    ...prev.controls.email.validation,
-                    valid: false,
+                    validation: prev.isLogIn ? {
+                        ...EMAIL_VALIDATION
+                    } : {},
+                    valid: prev.isLogIn ? false : true,
                     touched: false
                 },
                 password: {
                     ...prev.controls.password,
                     ...prev.controls.password.elementConfig,
                     value: '',
-                    ...prev.controls.password.validation,
+                    validation: prev.isLogIn ? {
+                        ...PASSWORD_VALIDATION
+                    } : {
+                        required: true
+                    },
                     valid: false,
                     touched: false
                 },
@@ -137,8 +163,10 @@ class Authentication extends Component {
                     ...prev.controls.confirmPassword,
                     ...prev.controls.confirmPassword.elementConfig,
                     value: '',
-                    ...prev.controls.confirmPassword.validation,
-                    valid: false,
+                    validation: prev.isLogIn ? {
+                        ...CONFIRM_PASSWORD_VALIDATION
+                    } : {},
+                    valid: prev.isLogIn ? false : true,
                     touched: false
                 }
             },
@@ -168,22 +196,23 @@ class Authentication extends Component {
                 touched={formElement.config.touched}
                 changed={(event) => this.inputChangedHandler(event, formElement.id)}
                 valueType={formElement.config.elementConfig.placeholder}
+                customErrMsg={formElement.config.customErrMsg}
             />
         ));
-
         if (this.state.isLogIn) {
             form.splice(1, 1);
             form.splice(2, 1);
         }
-        const isLogInFormIsValid = (
-            this.state.isLogIn &&
-            this.state.controls.username.valid &&
-            this.state.controls.password.valid
-        );
 
-        let error = null;
+        let errors = [];
         if (this.props.authError) {
-            error = <div className={classes.Error}>{this.props.authError}</div>;
+            if (this.props.authError.constructor === Array) {
+                for (let i = 0; i < this.props.authError.length; i++) {
+                    errors.push(<div key={i} className={classes.Error}>{this.props.authError[i]}</div>);
+                }
+            } else {
+                errors.push(<div key={0} className={classes.Error}>{this.props.authError}</div>);
+            }
         }
         
         const authClasses = [classes.Authentication]; 
@@ -195,12 +224,12 @@ class Authentication extends Component {
             <div className={authClasses.join(' ')}>
                 {this.props.loading ? <LoadingSpinner/> :
                     <div>
-                        {error}
-                        <form onSubmit={this.submitHandler}>
+                        {errors}
+                        <form onSubmit={this.submitHandler} style={{paddingTop: '5px'}}>
                             {form}
                             <YesNoButton 
                                 btnType="Yes" 
-                                disabled={!this.state.formIsValid && !isLogInFormIsValid}
+                                disabled={!this.state.formIsValid}
                             >
                                 {this.state.isLogIn ? 'Log In' : 'Register'}
                             </YesNoButton>

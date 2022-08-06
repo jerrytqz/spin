@@ -1,7 +1,7 @@
 import React from 'react'; 
 import classes from './Stat.module.css'; 
 
-const stat = (props) => {
+const Stat = (props) => {
     const rarityCircleClasses = [classes.RarityCircle];
     if (props.rarityColor === 'rainbow') {
         rarityCircleClasses.push(classes.Rainbow); 
@@ -18,4 +18,4 @@ const stat = (props) => {
     );
 };
 
-export default stat; 
+export default Stat; 

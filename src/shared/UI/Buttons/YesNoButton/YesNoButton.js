@@ -1,7 +1,7 @@
 import React from 'react'; 
 import classes from './YesNoButton.module.css';
 
-const yesNoButton = (props) => (
+const YesNoButton = (props) => (
     <button 
         disabled={props.disabled}
         className={[classes.YesNoButton, classes[props.btnType]].join(' ')}
@@ -12,4 +12,4 @@ const yesNoButton = (props) => (
     </button>
 ); 
 
-export default yesNoButton; 
+export default YesNoButton; 

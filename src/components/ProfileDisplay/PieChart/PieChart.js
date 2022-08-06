@@ -3,7 +3,7 @@ import classes from './PieChart.module.css';
 import { Pie } from 'react-chartjs-2'; 
 import { rarityInfo } from '../../../shared/utility'; 
 
-const pieChart = (props) => {
+const PieChart = (props) => {
     const labels = [];
     const backgroundColor = [];
     for (const property in rarityInfo) {
@@ -50,4 +50,4 @@ const pieChart = (props) => {
     );
 };
 
-export default pieChart; 
+export default PieChart; 

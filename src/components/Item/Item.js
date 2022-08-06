@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Item.module.css';
 import { rarityInfo } from '../../shared/utility'; 
 
-const item = (props) => {
+const Item = (props) => {
     // Item names are converted to their corresponding image path names by changing every
     // letter to lowercase and replacing spaces with '-'
     let imagePathName = ''; 
@@ -57,4 +57,4 @@ const item = (props) => {
     );
 };
 
-export default item; 
+export default Item; 

@@ -3,7 +3,7 @@ import Rarity from './Rarity/Rarity';
 import classes from './SpinInfo.module.css';
 import { rarityInfo } from '../../shared/utility'; 
 
-const spinInfo = () => {
+const SpinInfo = () => {
     const rarities = [];
     for (const property in rarityInfo) {
         rarities.push(
@@ -22,4 +22,4 @@ const spinInfo = () => {
     );
 };
 
-export default spinInfo; 
+export default SpinInfo; 

@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Showcase.module.css';
 import Item from '../../Item/Item'; 
 
-const showcase = (props) => {
+const Showcase = (props) => {
     const one = props.showcaseItems.one; 
     const two = props.showcaseItems.two; 
     const three = props.showcaseItems.three; 
@@ -46,4 +46,4 @@ const showcase = (props) => {
     );
 };
 
-export default showcase;
+export default Showcase;

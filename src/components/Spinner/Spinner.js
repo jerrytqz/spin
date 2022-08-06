@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Spinner.module.css'; 
 import Modal from '../../shared/UI/Modal/Modal'; 
 
-const spinner = (props) => { 
+const Spinner = (props) => { 
     let spinnerText = (
         <div>
             <div className={classes.SpinnerText1}>SPIN</div>
@@ -75,4 +75,4 @@ const spinner = (props) => {
     );
 };
 
-export default spinner; 
+export default Spinner; 

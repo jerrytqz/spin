@@ -4,7 +4,7 @@ import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
 import classes from './ListForm.module.css'; 
 import Modal from '../../shared/UI/Modal/Modal'; 
 
-const listForm = (props) => (
+const ListForm = (props) => (
     <Modal 
         style={{borderRadius: '0'}} 
         show={props.show} 
@@ -31,4 +31,4 @@ const listForm = (props) => (
     </Modal> 
 );
 
-export default listForm; 
+export default ListForm; 

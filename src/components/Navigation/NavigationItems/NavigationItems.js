@@ -2,7 +2,7 @@ import React from 'react';
 import NavigationItem from '../NavigationItem/NavigationItem'; 
 import classes from './NavigationItems.module.css';
 
-const navigationItems = (props) => {
+const NavigationItems = (props) => {
     let profileLink = `/profile/${props.user}`; 
     if (!props.user) {
         profileLink = '/profile';       
@@ -28,4 +28,4 @@ const navigationItems = (props) => {
     );
 };
 
-export default navigationItems; 
+export default NavigationItems; 

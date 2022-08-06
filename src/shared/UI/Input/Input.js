@@ -1,7 +1,7 @@
 import React from 'react'; 
 import classes from './Input.module.css';
 
-const input = (props) => {
+const Input = (props) => {
     let inputElement = null; 
     const inputClasses = [classes.InputElement]; 
 
@@ -61,7 +61,11 @@ const input = (props) => {
 
     let validationError = null;
     if (props.invalid && props.shouldValidate && props.touched) {
-        validationError = <p className = {classes.ValidationError}>Please enter a valid {props.valueType.toLowerCase()}.</p>;
+        validationError = (
+            <p className = {classes.ValidationError}>
+                {props.customErrMsg ? props.customErrMsg : "Please enter a valid " + props.valueType.toLowerCase() + "."}
+            </p>
+        );
     }
 
     return(
@@ -73,4 +77,4 @@ const input = (props) => {
     
 };
 
-export default input; 
+export default Input; 

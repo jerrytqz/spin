@@ -3,7 +3,7 @@ import classes from './ProfileStats.module.css';
 import Stat from './Stat/Stat';  
 import { capitalize, rarityInfo, numberWithCommas } from '../../shared/utility'; 
 
-const profileStats = (props) => {
+const ProfileStats = (props) => {
     const rarityStats = []; 
     if (props.stats.rarityStats) {
         if (props.stats.totalSpins === 0) {
@@ -48,4 +48,4 @@ const profileStats = (props) => {
     );
 };
 
-export default profileStats; 
+export default ProfileStats; 

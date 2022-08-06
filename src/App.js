@@ -17,7 +17,7 @@ class App extends Component {
     async componentDidMount() {
         await this.props.onTryAutoLogIn();
         const socket = io(process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'https://spin-socketio.jerryzheng5.repl.co');
-        console.log(process.env.NODE_ENV)
+
         socket.on('item unboxed', (itemName, rarity, unboxer) => {
             if (unboxer !== this.props.user) {
                 this.props.onItemUnboxed(itemName, rarity, unboxer); 
