@@ -14,7 +14,9 @@ class LogOut extends Component {
     componentDidMount() {
         if (!this.props.isAuthenticated) {
             this.props.history.push('/');
-        } else this.props.onLogOut(this.props.token); 
+        } else {
+            this.props.onLogOut(this.props.token);
+        } 
     }
     
     clickedHandler = () => {
@@ -34,7 +36,7 @@ class LogOut extends Component {
         
         if (this.props.isAuthenticated) {
             logOutResult = (
-                <Redirect to="/"/>
+                <Redirect to='/'/>
             );
         }
 

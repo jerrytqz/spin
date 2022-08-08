@@ -102,7 +102,7 @@ export const tryAutoLogIn = () => {
             const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(authSuccess(localStorage.getItem('token'), localStorage.getItem('user'), result['sp']));
-                dispatch(checkExpiration((result['expirationDate'] - new Date().getTime())/1000)); 
+                dispatch(checkExpiration((result['expirationDate'] - new Date().getTime())/1000), false); 
             } else {
                 dispatch(logOutSuccess()); 
             }

@@ -21,7 +21,6 @@
 }
 
 .SpinnerButton:hover,
-.SpinnerButton:focus,
 .SpinnerButton:active {
     background-color: #e14f4f; 
     cursor: pointer; 

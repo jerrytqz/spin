@@ -41,12 +41,12 @@ class App extends Component {
             this.props.autoAttemptFinished 
                 ? 
                     <Layout>
-                        <Route path="/" exact component={Spin}/>
-                        <Route path="/market" component={Market}/>
-                        <Route path="/inventory" exact component={Inventory}/>
+                        <Route path='/' exact component={Spin}/>
+                        <Route path='/market' component={Market}/>
+                        <Route path='/inventory' exact component={Inventory}/>
                         <Route path={['/profile/:username', '/profile']} component={Profile}/>
-                        <Route path="/authentication" component={Authentication}/> 
-                        <Route path="/logout" component={LogOut}/>
+                        <Route path='/authentication' component={Authentication}/> 
+                        <Route path='/log-out' component={LogOut}/>
                     </Layout> 
                 : <Spinner/>
         );

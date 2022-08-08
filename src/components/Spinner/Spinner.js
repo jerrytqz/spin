@@ -31,7 +31,7 @@ const Spinner = (props) => {
     if (props.spinInSession) {
         spinDegree = props.degree + INITIAL_SPIN_DEGREE;
         transition = 'transform 10s cubic-bezier(0, 1, 0, 1)';  
-        transitionEndFunc = !props.resetting ? () => props.onShowPrize() : () => props.onFinishResettingSpin();
+        transitionEndFunc = !props.resetting ? props.onShowPrize : props.onFinishResettingSpin;
     }
     if (props.resetting) {
         transition = 'transform 0.5s';
@@ -49,7 +49,7 @@ const Spinner = (props) => {
         <div className={classes.Spinner}>
             <button 
                 className={classes.SpinnerButton}
-                onClick={props.startSpinHandler} 
+                onClick={props.onStartSpin} 
                 disabled={disabled}
                 style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}
                 onTransitionEnd={transitionEndFunc}

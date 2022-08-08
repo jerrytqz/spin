@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './BuyForm.module.css'; 
 import Item from '../Item/Item';
 import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton';
-import { dhm, numberWithCommas } from '../../shared/utility'; 
+import { dhms, numberWithCommas } from '../../shared/utility'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
 import Modal from '../../shared/UI/Modal/Modal'; 
 
@@ -44,7 +44,7 @@ const BuyForm = (props) => {
                             <div>
                                 <div className={classes.Seller}>{props.seller}</div>
                                 <div style={{marginTop: '16px'}}>{numberWithCommas(props.price)} SP</div>
-                                <div className={classes.ListTime}>{dhm(new Date().getTime() - props.listTime)}</div>
+                                <div className={classes.ListTime}>{dhms(new Date().getTime() - props.listTime, true)}</div>
                                 {props.error ? <div className={classes.Error}>{props.error}</div> : null}
                             </div>
                             <YesNoButton 

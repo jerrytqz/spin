@@ -59,19 +59,19 @@ class Spin extends Component {
         return (
             <div>
                 {this.props.buySpinLoading || this.state.spinInSession ? <Backdrop show style={{opacity: '0'}}/> : null}
-                <Spinner 
-                    startSpinHandler={this.startSpinHandler}
+                <Spinner
+                    spinPrice={SPIN_PRICE}
+                    sp={this.props.sp}
+                    authenticated={this.props.isAuthenticated}
+                    buySpinLoading={this.props.buySpinLoading}
+                    buySpinError={this.props.buySpinError}
                     spinInSession={this.state.spinInSession}
                     degree={this.props.degree}
                     resetting={this.state.resetting}
-                    authenticated={this.props.isAuthenticated}
-                    buySpinError={this.props.buySpinError}
-                    buySpinLoading={this.props.buySpinLoading}
+                    onStartSpin={this.startSpinHandler}
                     onClickBackdrop={this.buySpinErrorClickedHandler}
-                    onShowPrize={() => this.showPrizeHandler()}
-                    onFinishResettingSpin={() => this.finishResettingSpinHandler()}
-                    spinPrice={SPIN_PRICE}
-                    sp={this.props.sp}
+                    onShowPrize={this.showPrizeHandler}
+                    onFinishResettingSpin={this.finishResettingSpinHandler}
                 />
                 {this.state.showPrize 
                     ? <Prize clicked={this.startResettingSpinHandler} item={this.props.item}/> 

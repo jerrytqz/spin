@@ -1,12 +1,12 @@
 import React from 'react';
 import classes from './SP.module.css';
 import Modal from '../../shared/UI/Modal/Modal'; 
-import { numberWithCommas, dhm } from '../../shared/utility'; 
+import { numberWithCommas, dhms } from '../../shared/utility'; 
  
 const SP = (props) => {
     let freeSPError = props.freeSPError; 
     if (typeof(freeSPError) === 'number') {
-        freeSPError = `Next free SP in ${dhm(freeSPError).substring(7, dhm(freeSPError).length)}`; 
+        freeSPError = `Next free SP in ${dhms(freeSPError, false)}`; 
     }
 
     return (

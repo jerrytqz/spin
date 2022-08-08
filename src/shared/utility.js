@@ -72,7 +72,7 @@ export const numberWithCommas = (num) => {
 
 export const capitalize = (string) => (`${string.charAt(0).toUpperCase()}${string.slice(1)}`); 
 
-export const dhm = (ms) => {
+export const dhms = (ms, includeDays) => {
     const days = Math.floor(ms/(24 * 60 * 60 * 1000));
     const daysMS = ms % (24 * 60 * 60 * 1000);
     const hours = Math.floor((daysMS)/(60 * 60 * 1000));
@@ -96,5 +96,9 @@ export const dhm = (ms) => {
         words[3] = words[3].substring(0, words[3].length - 1);
     }
 
-    return `${days} ${words[0]} ${hours} ${words[1]} ${minutes} ${words[2]} ${seconds} ${words[3]}`;
+    if (includeDays) {
+        return `${days} ${words[0]} ${hours} ${words[1]} ${minutes} ${words[2]} ${seconds} ${words[3]}`;
+    } else {
+        return `${hours} ${words[1]} ${minutes} ${words[2]} ${seconds} ${words[3]}`;
+    }
 };

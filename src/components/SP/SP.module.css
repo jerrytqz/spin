@@ -31,7 +31,6 @@
 }
 
 .FreeSPButton:hover,
-.FreeSPButton:focus,
 .FreeSPButton:active {
     background-color: #4fba4f; 
     cursor: pointer; 

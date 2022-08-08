@@ -12,7 +12,7 @@ class Market extends Component {
         showBuyForm: false,
         currentItemName: '',
         currentItemRarity: '',
-        currentListTime: '',
+        currentListTime: 0,
         currentSeller: '',
         currentItemPrice: 0,
         currentMarketID: 0
