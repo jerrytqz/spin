@@ -4,7 +4,7 @@ import Item from '../../components/Item/Item';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import { rarityInfo, numberWithCommas } from '../../shared/utility'; 
+import { RARITY_INFO, numberWithCommas } from '../../shared/utility'; 
 import BuyForm from '../../components/BuyForm/BuyForm'; 
 
 class Market extends Component {
@@ -34,7 +34,7 @@ class Market extends Component {
     backdropClickedHandler = () => {
         if (!this.props.buyItemLoading) {
             this.setState({showBuyForm: false});
-            this.props.onClearBuyError(); 
+            this.props.onResetBuyItemError(); 
         }
     }
 
@@ -50,9 +50,9 @@ class Market extends Component {
         }); 
     }
 
-    submitHandler = async() => {
+    submitHandler = async () => {
         await this.props.onBuyItem(this.props.token, this.state.currentMarketID); 
-        if (this.props.buyError === null) {
+        if (this.props.buyItemError === null) {
             this.backdropClickedHandler(); 
             this.props.onChangeSP(-this.state.currentItemPrice);
         }
@@ -80,8 +80,8 @@ class Market extends Component {
                 if (priceA > priceB) return -1;
                 if (priceA < priceB) return 1; 
 
-                if (rarityInfo[a.props.rarity][1] > rarityInfo[b.props.rarity][1]) return -1;
-                if (rarityInfo[a.props.rarity][1] < rarityInfo[b.props.rarity][1]) return 1;
+                if (RARITY_INFO[a.props.rarity][1] > RARITY_INFO[b.props.rarity][1]) return -1;
+                if (RARITY_INFO[a.props.rarity][1] < RARITY_INFO[b.props.rarity][1]) return 1;
 
                 else return -1;
             }); 
@@ -90,8 +90,8 @@ class Market extends Component {
         return (
             this.props.fetchMarketLoading 
                 ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
-                : this.props.fetchError 
-                    ? <div className={classes.FetchError}>{this.props.fetchError}</div> 
+                : this.props.fetchMarketError 
+                    ? <div className={classes.FetchError}>{this.props.fetchMarketError}</div> 
                     : market.length !== 0 
                         ? 
                             <div className={classes.Market}>
@@ -106,7 +106,7 @@ class Market extends Component {
                                     price={this.state.currentItemPrice}
                                     isAuthenticated={this.props.isAuthenticated}
                                     loading={this.props.buyItemLoading}
-                                    error={this.props.buyError}
+                                    error={this.props.buyItemError}
                                     submitHandler={this.submitHandler}
                                     user={this.props.user}
                                     sp={this.props.sp}
@@ -128,9 +128,9 @@ const mapStateToProps = state => {
         sp: state.authentication.sp,
         market: state.market.market,
         fetchMarketLoading: state.market.fetchMarketLoading,
-        fetchError: state.market.fetchError,
+        fetchMarketError: state.market.fetchMarketError,
         buyItemLoading: state.market.buyItemLoading,
-        buyError: state.market.buyError 
+        buyItemError: state.market.buyItemError 
     };
 };
 
@@ -138,7 +138,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchMarket: () => dispatch(actions.fetchMarket()),
         onBuyItem: (token, marketID) => dispatch(actions.buyItem(token, marketID)),
-        onClearBuyError: () => dispatch(actions.clearBuyError()),
+        onResetBuyItemError: () => dispatch(actions.resetBuyItemError()),
         onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount))
     };
 };

@@ -4,9 +4,9 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
     inventory: null,
     fetchInventoryLoading: false,
-    fetchError: null,
+    fetchInventoryError: null,
     listItemLoading: false, 
-    listError: null 
+    listItemError: null 
 };
 
 const fetchInventoryStart = (state) => {
@@ -19,13 +19,13 @@ const fetchInventorySuccess = (state, action) => {
     return updateObject(state, {
         inventory: action.inventory,
         fetchInventoryLoading: false,
-        fetchError: null  
+        fetchInventoryError: null  
     });
 };
 
 const fetchInventoryFail = (state, action) => {
     return updateObject(state, {
-        fetchError: action.fetchError, 
+        fetchInventoryError: action.fetchInventoryError, 
         fetchInventoryLoading: false,
         inventory: null 
     });
@@ -49,7 +49,7 @@ const listItemSuccess = (state, action) => {
     }
     return updateObject(state, {
         listItemLoading: false,
-        listError: null,
+        listItemError: null,
         inventory: newInventory
     }); 
 };
@@ -57,13 +57,13 @@ const listItemSuccess = (state, action) => {
 const listItemFail = (state, action) => {
     return updateObject(state, {
         listItemLoading: false,
-        listError: action.listError
+        listItemError: action.listItemError
     });
 };
 
-const clearListError = (state) => {
+const resetListItemError = (state) => {
     return updateObject(state, {
-        listError: null 
+        listItemError: null 
     });
 };
 
@@ -81,8 +81,8 @@ const reducer = (state = initialState, action) => {
             return listItemSuccess(state, action); 
         case actionTypes.LIST_ITEM_FAIL: 
             return listItemFail(state, action);
-        case actionTypes.CLEAR_LIST_ERROR: 
-            return clearListError(state); 
+        case actionTypes.RESET_LIST_ITEM_ERROR: 
+            return resetListItemError(state); 
         default:
             return state;
     }

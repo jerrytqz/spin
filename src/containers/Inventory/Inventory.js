@@ -4,7 +4,7 @@ import Item from '../../components/Item/Item';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
-import { rarityInfo, updateObject, checkValidity, numberWithCommas } from '../../shared/utility';
+import { MAX_LIST_PRICE, LIST_PRICE_PER_FEE, RARITY_INFO, updateObject, checkValidity, numberWithCommas } from '../../shared/utility';
 import ListForm from '../../components/ListForm/ListForm'; 
 import Input from '../../shared/UI/Input/Input'; 
 
@@ -21,7 +21,7 @@ class Inventory extends Component {
                 validation: {
                     required: true,
                     minValue: 1,
-                    maxValue: 10000000,
+                    maxValue: MAX_LIST_PRICE,
                     isNumber: true 
                 },
                 valid: false,
@@ -59,7 +59,7 @@ class Inventory extends Component {
                 formIsValid: false, 
                 showListForm: false,
             })); 
-            this.props.onClearListError(); 
+            this.props.onResetListItemError(); 
         }
     }
 
@@ -78,12 +78,12 @@ class Inventory extends Component {
         this.setState({controls: updatedControls, formIsValid: formIsValid});
     }
 
-    submitHandler = async() => {
+    submitHandler = async () => {
         const price = this.state.controls.price.value; 
         await this.props.onListItem(this.props.token, this.state.controls.price.value, this.state.currentInventoryID);
-        if (this.props.listError === null) {
+        if (this.props.listItemError === null) {
             this.backdropClickedHandler(); 
-            this.props.onChangeSP(-Math.floor(Number(price)/20));
+            this.props.onChangeSP(-Math.floor(Number(price)/LIST_PRICE_PER_FEE));
         }
     }
     
@@ -102,7 +102,7 @@ class Inventory extends Component {
                     />
                 );
             }
-            inventory.sort((a, b) => -(rarityInfo[a.props.rarity][1] - rarityInfo[b.props.rarity][1]));
+            inventory.sort((a, b) => -(RARITY_INFO[a.props.rarity][1] - RARITY_INFO[b.props.rarity][1]));
         }
 
         const formElementsArray = [];
@@ -127,7 +127,7 @@ class Inventory extends Component {
             />
         ));
 
-        const tax = Math.floor(Number(this.state.controls.price.value)/20); 
+        const tax = Math.floor(Number(this.state.controls.price.value)/LIST_PRICE_PER_FEE); 
         let buttonText = `List (-${numberWithCommas(tax)} SP)`;
         let disabled = false; 
 
@@ -144,8 +144,8 @@ class Inventory extends Component {
         return (
             this.props.fetchInventoryLoading 
                 ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
-                : this.props.fetchError 
-                    ? <div className={classes.FetchError}>{this.props.fetchError}</div> 
+                : this.props.fetchInventoryError 
+                    ? <div className={classes.FetchError}>{this.props.fetchInventoryError}</div> 
                     : inventory.length !== 0 
                         ? 
                             <div className={classes.Inventory}>
@@ -156,7 +156,7 @@ class Inventory extends Component {
                                     name={this.state.currentItemName}
                                     disabled={disabled}
                                     submitHandler={this.submitHandler}
-                                    error={this.props.listError}
+                                    error={this.props.listItemError}
                                     buttonText={buttonText}
                                     loading={this.props.listItemLoading}
                                 >
@@ -178,9 +178,9 @@ const mapStateToProps = state => {
         sp: state.authentication.sp, 
         inventory: state.inventory.inventory,
         fetchInventoryLoading: state.inventory.fetchInventoryLoading,
-        fetchError: state.inventory.fetchError,
+        fetchInventoryError: state.inventory.fetchInventoryError,
         listItemLoading: state.inventory.listItemLoading,
-        listError: state.inventory.listError
+        listItemError: state.inventory.listItemError
     };
 };
 
@@ -188,7 +188,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchInventory: (token) => dispatch(actions.fetchInventory(token)),
         onListItem: (token, price, inventoryID) => dispatch(actions.listItem(token, price, inventoryID)),
-        onClearListError: () => dispatch(actions.clearListError()),
+        onResetListItemError: () => dispatch(actions.resetListItemError()),
         onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount))
     };
 };

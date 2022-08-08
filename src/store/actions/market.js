@@ -10,9 +10,9 @@ export const buyItemSuccess = (marketID) => ({
     marketID: marketID
 });
 
-export const buyItemFail = (buyError) => ({
+export const buyItemFail = (buyItemError) => ({
     type: actionTypes.BUY_ITEM_FAIL,
-    buyError: buyError 
+    buyItemError: buyItemError 
 });
 
 export const fetchMarketStart = () => ({
@@ -24,13 +24,13 @@ export const fetchMarketSuccess = (market) => ({
     market: market 
 });
 
-export const fetchMarketFail = (fetchError) => ({
+export const fetchMarketFail = (fetchMarketError) => ({
     type: actionTypes.FETCH_MARKET_FAIL,
-    fetchError: fetchError 
+    fetchMarketError: fetchMarketError 
 });
 
-export const clearBuyError = () => ({
-    type: actionTypes.CLEAR_BUY_ERROR
+export const resetBuyItemError = () => ({
+    type: actionTypes.RESET_BUY_ITEM_ERROR
 });
 
 export const fetchMarket = (token) => {
@@ -45,7 +45,7 @@ export const fetchMarket = (token) => {
             if (response.status === 200) {
                 dispatch(fetchMarketSuccess(result)); 
             } else {
-                dispatch(fetchMarketFail(result['fetchError'])); 
+                dispatch(fetchMarketFail(result['fetchMarketError'])); 
             }
         } catch {
             dispatch(fetchMarketFail('Unexpected error')); 
@@ -69,7 +69,7 @@ export const buyItem = (token, marketID) => {
             if (response.status === 200) {
                 dispatch(buyItemSuccess(marketID)); 
             } else {
-                dispatch(buyItemFail(result['buyError'])); 
+                dispatch(buyItemFail(result['buyItemError'])); 
             }
         } catch {
             dispatch(buyItemFail('Unexpected error')); 

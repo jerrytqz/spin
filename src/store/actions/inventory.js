@@ -10,9 +10,9 @@ export const fetchInventorySuccess = (inventory) => ({
     inventory: inventory
 });
 
-export const fetchInventoryFail = (fetchError) => ({
+export const fetchInventoryFail = (fetchInventoryError) => ({
     type: actionTypes.FETCH_INVENTORY_FAIL,
-    fetchError: fetchError 
+    fetchInventoryError: fetchInventoryError 
 });
 
 export const listItemStart = () => ({
@@ -24,13 +24,13 @@ export const listItemSuccess = (inventoryID) => ({
     inventoryID: inventoryID
 });
 
-export const listItemFail = (listError) => ({
+export const listItemFail = (listItemError) => ({
     type: actionTypes.LIST_ITEM_FAIL,
-    listError: listError 
+    listItemError: listItemError 
 });
 
-export const clearListError = () => ({
-    type: actionTypes.CLEAR_LIST_ERROR
+export const resetListItemError = () => ({
+    type: actionTypes.RESET_LIST_ITEM_ERROR
 });
 
 export const fetchInventory = (token) => {
@@ -45,7 +45,7 @@ export const fetchInventory = (token) => {
             if (response.status === 200) {
                 dispatch(fetchInventorySuccess(result)); 
             } else {
-                dispatch(fetchInventoryFail(result['fetchError'])); 
+                dispatch(fetchInventoryFail(result['fetchInventoryError'])); 
             }
         } catch {
             dispatch(fetchInventoryFail('Unexpected error')); 
@@ -69,7 +69,7 @@ export const listItem = (token, price, inventoryID) => {
             if (response.status === 200) {
                 dispatch(listItemSuccess(inventoryID));
             } else {
-                dispatch(listItemFail(result['listError']));
+                dispatch(listItemFail(result['listItemError']));
             }
         } catch {
             dispatch(listItemFail('Unexpected error')); 

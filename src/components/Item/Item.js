@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Item.module.css';
-import { rarityInfo } from '../../shared/utility'; 
+import { RARITY_INFO } from '../../shared/utility'; 
 
 const Item = (props) => {
     // Item names are converted to their corresponding image path names by changing every
@@ -16,7 +16,7 @@ const Item = (props) => {
         }
     }
 
-    const color = !props.nullItem ? rarityInfo[props.rarity][0] : null; 
+    const color = !props.nullItem ? RARITY_INFO[props.rarity][0] : null; 
     const itemClasses = [classes.Item]; 
     const itemNameClasses = [classes.ItemName];  
 

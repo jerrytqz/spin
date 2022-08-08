@@ -1,14 +1,14 @@
 import React from 'react'; 
 import classes from './PieChart.module.css';
 import { Pie } from 'react-chartjs-2'; 
-import { rarityInfo } from '../../../shared/utility'; 
+import { RARITY_INFO } from '../../../shared/utility'; 
 
 const PieChart = (props) => {
     const labels = [];
     const backgroundColor = [];
-    for (const property in rarityInfo) {
+    for (const property in RARITY_INFO) {
         labels.push(property); 
-        backgroundColor.push(rarityInfo[property][0]); 
+        backgroundColor.push(RARITY_INFO[property][0]); 
     }
     backgroundColor[backgroundColor.length - 1] = 'black'; 
 

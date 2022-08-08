@@ -1,10 +1,16 @@
 export let BACKEND_BASE_DIR = 'https://spin-backend-production.herokuapp.com/';
 if (process.env.NODE_ENV === 'development') {
     BACKEND_BASE_DIR = 'http://127.0.0.1:8000/';
-} 
+}
 
-export const rarityInfo = {
-    'Common': ['brown', 1, 'a', '52%'], // NAME: [COLOR, VALUE, ARTICLE, CHANCE]
+// Important constants
+export const SPIN_PRICE = 500;
+export const MAX_LIST_PRICE = 10000000;
+export const LIST_PRICE_PER_FEE = 20;
+
+export const RARITY_INFO = {
+     // NAME: [COLOR, VALUE, ARTICLE, CHANCE]
+    'Common': ['brown', 1, 'a', '52%'],
     'Uncommon': ['cyan', 2, 'an', '20%'],
     'Rare': ['red', 3, 'a', '15%'],
     'Epic': ['purple', 4, 'an', '10%'],

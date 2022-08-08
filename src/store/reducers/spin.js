@@ -6,7 +6,7 @@ const initialState = {
     degree: 0, 
     item: null, 
     buySpinLoading: false,
-    buyError: null,
+    buySpinError: null,
     freeSPError: null,
     unboxings: [] 
 };
@@ -21,27 +21,21 @@ const buySpinSuccess = (state, action) => {
     return updateObject(state, {
         degree: action.degree,
         item: action.item, 
-        buyError: null,
+        buySpinError: null,
         buySpinLoading: false
     });
 };
 
 const buySpinFail = (state, action) => {
     return updateObject(state, {
-        buyError: action.buyError,
+        buySpinError: action.buySpinError,
         buySpinLoading: false 
     });
 };
 
-const resetBuyError = (state) => {
+const resetBuySpinError = (state) => {
     return updateObject(state, {
-        buyError: null 
-    });
-};
-
-const resetDegree = (state) => {
-    return updateObject(state, {
-        degree: 0
+        buySpinError: null 
     });
 };
 
@@ -81,15 +75,13 @@ const itemUnboxed = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.PURCHASE_SPIN_SUCCESS:
+        case actionTypes.BUY_SPIN_SUCCESS:
             return buySpinSuccess(state, action); 
-        case actionTypes.PURCHASE_SPIN_FAIL:
+        case actionTypes.BUY_SPIN_FAIL:
             return buySpinFail(state, action); 
-        case actionTypes.RESET_PURCHASE_ERROR:
-            return resetBuyError(state); 
-        case actionTypes.RESET_DEGREE: 
-            return resetDegree(state); 
-        case actionTypes.PURCHASE_SPIN_START: 
+        case actionTypes.RESET_BUY_SPIN_ERROR:
+            return resetBuySpinError(state); 
+        case actionTypes.BUY_SPIN_START: 
             return buySpinStart(state); 
         case actionTypes.GET_FREE_SP_SUCCESS: 
             return getFreeSPSuccess(state, action); 

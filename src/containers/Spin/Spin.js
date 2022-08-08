@@ -8,37 +8,45 @@ import Backdrop from '../../shared/UI/Backdrop/Backdrop';
 import SP from '../../components/SP/SP'; 
 import Unboxings from '../../components/Unboxings/Unboxings'; 
 import classes from './Spin.module.css'; 
+import { SPIN_PRICE } from '../../shared/utility';
 
 class Spin extends Component {
     state = {
-        startButtonPressed: false, 
+        // spinInSession persists until after the spinner has reset.
+        spinInSession: false, 
         resetting: false,
-        showPrize: false,
-        showSpinnerText: true
+        showPrize: false
     }
 
     startSpinHandler = async () => {
-        this.setState({startButtonPressed: true}); 
         await this.props.onBuySpin(this.props.token);  
-        if (this.props.degree !== 0) {
-            this.props.onChangeSP(-500); 
+        if (!this.props.buySpinError) {
+            this.setState({spinInSession: true}); 
+            this.props.onChangeSP(-SPIN_PRICE); 
         }
     }
 
-    resetSpinHandler = () => {
-        this.props.onResetDegree();  
-        this.setState({resetting: true, showPrize: false, showSpinnerText: false}); 
-        setTimeout(() => this.setState({startButtonPressed: false, resetting: false, showSpinnerText: true}), 700);
+    startResettingSpinHandler = () => {
+        this.setState({resetting: true, showPrize: false}); 
     }
 
-    buyErrorClickedHandler = () => {
-        this.setState({startButtonPressed: false}); 
-        this.props.onResetBuyError(); 
+    finishResettingSpinHandler = () => {
+        this.setState({spinInSession: false, resetting: false})
     }
 
-    clickFreeSPHandler = async() => {
+    showPrizeHandler = () => {
+        this.setState({showPrize: true}); 
+        // Add unboxing to global unboxings list
+        this.props.onItemUnboxed(this.props.item.name, this.props.item.rarity, this.props.user);
+    }
+
+    buySpinErrorClickedHandler = () => {
+        this.props.onResetBuySpinError(); 
+    }
+
+    clickFreeSPHandler = async () => {
         await this.props.onGetFreeSP(this.props.token); 
-        if (this.props.freeSPError === null) {
+        if (!this.props.freeSPError) {
             this.props.onChangeSP(this.props.freeSP);
         }
     }
@@ -47,31 +55,26 @@ class Spin extends Component {
         this.props.onResetFreeSPError(); 
     }
 
-    spinFinishedHandler = () => {
-        this.setState({showPrize: true}); 
-        // Add unboxing to global unboxings list
-        this.props.onItemUnboxed(this.props.item.name, this.props.item.rarity, this.props.user);
-    }
-
     render() {
         return (
             <div>
-                {this.state.startButtonPressed ? <Backdrop show style={{opacity: '0'}}/> : null}
+                {this.props.buySpinLoading || this.state.spinInSession ? <Backdrop show style={{opacity: '0'}}/> : null}
                 <Spinner 
                     startSpinHandler={this.startSpinHandler}
-                    startButtonPressed={this.state.startButtonPressed}
+                    spinInSession={this.state.spinInSession}
                     degree={this.props.degree}
                     resetting={this.state.resetting}
                     authenticated={this.props.isAuthenticated}
-                    buyError={this.props.buyError}
+                    buySpinError={this.props.buySpinError}
                     buySpinLoading={this.props.buySpinLoading}
-                    showSpinnerText={this.state.showSpinnerText}
-                    onClickBackdrop={this.buyErrorClickedHandler}
-                    onSpinFinish={() => this.spinFinishedHandler()}
+                    onClickBackdrop={this.buySpinErrorClickedHandler}
+                    onShowPrize={() => this.showPrizeHandler()}
+                    onFinishResettingSpin={() => this.finishResettingSpinHandler()}
+                    spinPrice={SPIN_PRICE}
                     sp={this.props.sp}
                 />
                 {this.state.showPrize 
-                    ? <Prize clicked={this.resetSpinHandler} item={this.props.item}/> 
+                    ? <Prize clicked={this.startResettingSpinHandler} item={this.props.item}/> 
                     : null
                 }
                 <div className={classes.Right}>
@@ -98,7 +101,7 @@ const mapStateToProps = state => {
         sp: state.authentication.sp,
         degree: state.spin.degree,
         item: state.spin.item, 
-        buyError: state.spin.buyError,
+        buySpinError: state.spin.buySpinError,
         buySpinLoading: state.spin.buySpinLoading,
         freeSPError: state.spin.freeSPError,
         unboxings: state.spin.unboxings,
@@ -109,8 +112,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onBuySpin: (token) => dispatch(actions.buySpin(token)),
-        onResetBuyError: () => dispatch(actions.resetBuyError()),
-        onResetDegree: () => dispatch(actions.resetDegree()),
+        onResetBuySpinError: () => dispatch(actions.resetBuySpinError()),
         onGetFreeSP: (token) => dispatch(actions.getFreeSP(token)),
         onResetFreeSPError: () => dispatch(actions.resetFreeSPError()),
         onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount)),

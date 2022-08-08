@@ -4,7 +4,7 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
     profile: null,
     fetchProfileLoading: false,
-    fetchError: null 
+    fetchProfileError: null 
 };
 
 const fetchProfileStart = (state) => {
@@ -17,13 +17,13 @@ const fetchProfileSuccess = (state, action) => {
     return updateObject(state, {
         profile: action.profile,
         fetchProfileLoading: false,
-        fetchError: null  
+        fetchProfileError: null  
     });
 };
 
 const fetchProfileFail = (state, action) => {
     return updateObject(state, {
-        fetchError: action.fetchError, 
+        fetchProfileError: action.fetchProfileError, 
         fetchProfileLoading: false,
         profile: null 
     });

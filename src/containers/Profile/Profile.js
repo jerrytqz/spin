@@ -32,8 +32,8 @@ class Profile extends Component {
         return (
             this.props.fetchProfileLoading 
                 ? <div className={classes.LoadingSpinner}><LoadingSpinner/></div> 
-                : this.props.fetchError 
-                    ? <div className={classes.FetchError}>{this.props.fetchError}</div> 
+                : this.props.fetchProfileError 
+                    ? <div className={classes.FetchError}>{this.props.fetchProfileError}</div> 
                     : profile
         );
     }
@@ -43,7 +43,7 @@ const mapStateToProps = state => {
     return {
         profile: state.profile.profile,
         fetchProfileLoading: state.profile.fetchProfileLoading,
-        fetchError: state.profile.fetchError,
+        fetchProfileError: state.profile.fetchProfileError,
     };
 };
 

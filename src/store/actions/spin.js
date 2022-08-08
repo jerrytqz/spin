@@ -2,26 +2,22 @@ import * as actionTypes from './actionTypes';
 import { BACKEND_BASE_DIR } from '../../shared/utility'; 
 
 export const buySpinStart = () => ({
-    type: actionTypes.PURCHASE_SPIN_START
+    type: actionTypes.BUY_SPIN_START
 });
 
 export const buySpinSuccess = (degree, item) => ({
-    type: actionTypes.PURCHASE_SPIN_SUCCESS,
+    type: actionTypes.BUY_SPIN_SUCCESS,
     degree: degree,
     item: item   
 });
 
-export const buySpinFail = (buyError) => ({
-    type: actionTypes.PURCHASE_SPIN_FAIL,
-    buyError: buyError
+export const buySpinFail = (buySpinError) => ({
+    type: actionTypes.BUY_SPIN_FAIL,
+    buySpinError: buySpinError
 });
 
-export const resetBuyError = () => ({
-    type: actionTypes.RESET_PURCHASE_ERROR
-});
-
-export const resetDegree = () => ({
-    type: actionTypes.RESET_DEGREE
+export const resetBuySpinError = () => ({
+    type: actionTypes.RESET_BUY_SPIN_ERROR
 });
 
 export const buySpin = (token) => {
@@ -36,7 +32,7 @@ export const buySpin = (token) => {
             if (response.status === 200) {
                 dispatch(buySpinSuccess(result['degree'], result['item'])); 
             } else {
-                dispatch(buySpinFail(result['buyError'])); 
+                dispatch(buySpinFail(result['buySpinError'])); 
             }
         } catch {
             dispatch(buySpinFail('Unexpected error')); 

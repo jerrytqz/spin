@@ -1,7 +1,6 @@
 export {
     buySpin,
-    resetBuyError,
-    resetDegree,
+    resetBuySpinError,
     getFreeSP,
     resetFreeSPError,
     itemUnboxed
@@ -10,7 +9,7 @@ export {
 export {
     fetchMarket,
     buyItem,
-    clearBuyError,
+    resetBuyItemError,
     buyItemSuccess,
     itemListed
 } from './market';
@@ -18,7 +17,7 @@ export {
 export {
     fetchInventory,
     listItem,
-    clearListError
+    resetListItemError
 } from './inventory';
 
 export {

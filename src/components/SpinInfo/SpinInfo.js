@@ -1,17 +1,17 @@
 import React from 'react';
 import Rarity from './Rarity/Rarity'; 
 import classes from './SpinInfo.module.css';
-import { rarityInfo } from '../../shared/utility'; 
+import { RARITY_INFO } from '../../shared/utility'; 
 
 const SpinInfo = () => {
     const rarities = [];
-    for (const property in rarityInfo) {
+    for (const property in RARITY_INFO) {
         rarities.push(
             <Rarity
-                key={rarityInfo[property][1]}
+                key={RARITY_INFO[property][1]}
                 rarityType={property}
-                rarityChance={rarityInfo[property][3]}
-                rarityColor={rarityInfo[property][0]}
+                rarityChance={RARITY_INFO[property][3]}
+                rarityColor={RARITY_INFO[property][0]}
             />
         )
     }

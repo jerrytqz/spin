@@ -109,7 +109,7 @@ class Authentication extends Component {
         this.setState({controls: updatedControls, formIsValid: updatedFormIsValid});
     }
 
-    submitHandler = async(event) => {
+    submitHandler = async (event) => {
         event.preventDefault();  
         await this.props.onAuth(this.state.controls.username.value, 
             this.state.controls.email.value, 

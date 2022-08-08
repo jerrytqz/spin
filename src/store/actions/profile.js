@@ -10,9 +10,9 @@ export const fetchProfileSuccess = (profile) => ({
     profile: profile 
 });
 
-export const fetchProfileFail = (fetchError) => ({
+export const fetchProfileFail = (fetchProfileError) => ({
     type: actionTypes.FETCH_PROFILE_FAIL,
-    fetchError: fetchError 
+    fetchProfileError: fetchProfileError 
 });
 
 export const fetchProfile = (username) => {
@@ -31,7 +31,7 @@ export const fetchProfile = (username) => {
             if (response.status === 200) {
                 dispatch(fetchProfileSuccess(result)); 
             } else {
-                dispatch(fetchProfileFail(result['fetchError'])); 
+                dispatch(fetchProfileFail(result['fetchProfileError'])); 
             }
         } catch {
             dispatch(fetchProfileFail('Unexpected error')); 

@@ -4,9 +4,9 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
     market: {},
     fetchMarketLoading: false,
-    fetchError: null,
+    fetchMarketError: null,
     buyItemLoading: false,
-    buyError: null 
+    buyItemError: null 
 };
 
 const buyItemStart = (state) => {
@@ -24,14 +24,14 @@ const buyItemSuccess = (state, action) => {
     }
     return updateObject(state, {
         buyItemLoading: false,
-        buyError: null,
+        buyItemError: null,
         market: newMarket
     });
 };
 
 const buyItemFail = (state, action) => {
     return updateObject(state, {
-        buyError: action.buyError, 
+        buyItemError: action.buyItemError, 
         buyItemLoading: false
     });
 };
@@ -46,21 +46,21 @@ const fetchMarketSuccess = (state, action) => {
     return updateObject(state, {
         market: action.market,
         fetchMarketLoading: false,
-        fetchError: null  
+        fetchMarketError: null  
     });
 };
 
 const fetchMarketFail = (state, action) => {
     return updateObject(state, {
-        fetchError: action.fetchError, 
+        fetchMarketError: action.fetchMarketError, 
         fetchMarketLoading: false,
         market: null 
     });
 };
 
-const clearBuyError = (state) => {
+const resetBuyItemError = (state) => {
     return updateObject(state, {
-        buyError: null 
+        buyItemError: null 
     });
 };
 
@@ -87,8 +87,8 @@ const reducer = (state = initialState, action) => {
             return buyItemSuccess(state, action); 
         case actionTypes.BUY_ITEM_FAIL:
             return buyItemFail(state, action);
-        case actionTypes.CLEAR_BUY_ERROR:
-            return clearBuyError(state);  
+        case actionTypes.RESET_BUY_ITEM_ERROR:
+            return resetBuyItemError(state);  
         case actionTypes.ITEM_LISTED:
             return itemListed(state, action);  
         default:
