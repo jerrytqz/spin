@@ -36,10 +36,7 @@ const Spinner = (props) => {
     if (props.resetting) {
         transition = 'transform 0.5s';
         spinDegree = INITIAL_SPIN_DEGREE;
-        // If props.degree === 0, spinDegree === INITIAL_SPIN_DEGREE, so there will be no resetting transition.
-        // To create a resetting transition, props.degree === 0 will be treated as props.degree === 360 (which
-        // will never happen because 0 <= props.degree < 360), in which case a full 360 degree CCW rotation will
-        // be the resetting transition.
+        // If props.degree === 0, a full 360-degree CCW rotation will be the resetting transition.
         if (props.degree === 0) {
             spinDegree = INITIAL_SPIN_DEGREE - 360;
         }

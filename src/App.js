@@ -15,7 +15,7 @@ import io from 'socket.io-client';
 
 class App extends Component {
     async componentDidMount() {
-        await this.props.onTryAutoLogIn();
+        await this.props.onAutoLogIn();
         const socket = io(process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'https://spin-socketio.jerryzheng5.repl.co');
 
         socket.on('item unboxed', (itemName, rarity, unboxer) => {
@@ -38,7 +38,7 @@ class App extends Component {
 
     render() {
         return (
-            this.props.autoAttemptFinished 
+            this.props.autoLogInAttemptFinished 
                 ? 
                     <Layout>
                         <Route path='/' exact component={Spin}/>
@@ -55,14 +55,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        autoAttemptFinished: state.authentication.autoAttemptFinished,
+        autoLogInAttemptFinished: state.authentication.autoLogInAttemptFinished,
         user: state.authentication.user 
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTryAutoLogIn: () => dispatch(actions.tryAutoLogIn()),
+        onAutoLogIn: () => dispatch(actions.autoLogIn()),
         onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount)),
         onBuyItemSuccess: (marketID) => dispatch(actions.buyItemSuccess(marketID)),
         onItemListed: (item) => dispatch(actions.itemListed(item)),

@@ -28,6 +28,8 @@ export {
     auth,
     resetAuthError,
     logOut,
-    tryAutoLogIn,
+    resetLogOutAttempt,
+    resetLogOutError,
+    autoLogIn,
     changeSP
 } from './authentication';

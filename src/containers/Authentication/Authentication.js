@@ -94,6 +94,10 @@ class Authentication extends Component {
         } else this.props.onResetAuthError(); 
     }
 
+    componentWillUnmount() {
+        this.props.onResetAuthError();
+    }
+
     inputChangedHandler = (event, controlName) => {
         const updatedControls = updateObject(this.state.controls, {
             [controlName]: updateObject(this.state.controls[controlName], {
@@ -222,7 +226,7 @@ class Authentication extends Component {
 
         return ( 
             <div className={authClasses.join(' ')}>
-                {this.props.loading ? <LoadingSpinner/> :
+                {this.props.authLoading ? <LoadingSpinner/> :
                     <div>
                         {errors}
                         <form onSubmit={this.submitHandler} style={{paddingTop: '5px'}}>
@@ -248,7 +252,7 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.authentication.isAuthenticated,
         authError: state.authentication.authError,
-        loading: state.authentication.loading
+        authLoading: state.authentication.authLoading
     };
 };
 

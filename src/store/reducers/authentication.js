@@ -7,15 +7,16 @@ const initialState = {
     sp: 0,
     token: null,
     authError: null,
+    logOutError: null,
     logOutAttemptFinished: false,
-    autoAttemptFinished: false, 
-    loading: false,
+    autoLogInAttemptFinished: false, 
+    authLoading: false,
 };
 
 const authStart = (state) => {
     return updateObject(state, {
         authError: null,
-        loading: true
+        authLoading: true
     });
 };
 
@@ -31,17 +32,16 @@ const authSuccess = (state, action) => {
         user: action.user, 
         sp: action.sp, 
         token: action.token,
-        loading: false,
-        authError: null,
-        logOutAttemptFinished: false,
-        autoAttemptFinished: true
+        authLoading: false,
+        // In case the user is auto logged out, resetLogOutAttempt will not be called. 
+        logOutAttemptFinished: false
     });
 };
 
 const authFail = (state, action) => {
     return updateObject(state, {
         authError: action.authError,
-        loading: false
+        authLoading: false
     });
 };
 
@@ -59,16 +59,44 @@ const logOutSuccess = (state) => {
         user: null, 
         sp: 0,
         token: null,
-        authError: null,
-        logOutAttemptFinished: true,
-        autoAttemptFinished: true
+        logOutAttemptFinished: true
     });
 };
 
 const logOutFail = (state, action) => {
     return updateObject(state, {
-        authError: action.authError,
+        logOutError: action.logOutError,
         logOutAttemptFinished: true
+    });
+};
+
+const resetLogOutAttempt = (state) => {
+    return updateObject(state, {
+        logOutAttemptFinished: false
+    });
+};
+
+const resetLogOutError = (state) => {
+    return updateObject(state, {
+        logOutError: null
+    });
+};
+
+const autoLogInSuccess = (state, action) => {
+    return updateObject(state, {
+        isAuthenticated: true, 
+        user: action.user, 
+        sp: action.sp, 
+        token: action.token,
+        autoLogInAttemptFinished: true
+    });
+};
+
+const autoLogInFail = (state) => {
+    localStorage.removeItem('token'); 
+    localStorage.removeItem('user'); 
+    return updateObject(state, {
+        autoLogInAttemptFinished: true
     });
 };
 
@@ -92,6 +120,14 @@ const reducer = (state = initialState, action) => {
             return logOutSuccess(state); 
         case actionTypes.LOG_OUT_FAIL:
             return logOutFail(state, action); 
+        case actionTypes.RESET_LOG_OUT_ATTEMPT:
+            return resetLogOutAttempt(state);
+        case actionTypes.RESET_LOG_OUT_ERROR:
+            return resetLogOutError(state);
+        case actionTypes.AUTO_LOG_IN_SUCCESS:
+            return autoLogInSuccess(state, action);
+        case actionTypes.AUTO_LOG_IN_FAIL:
+            return autoLogInFail(state);
         case actionTypes.CHANGE_SP:
             return changeSP(state, action); 
         default:

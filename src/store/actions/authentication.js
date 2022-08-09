@@ -35,10 +35,37 @@ export const logOutSuccess = () => {
     };
 };
 
-export const logOutFail = (authError) => {
+export const logOutFail = (logOutError) => {
     return {
         type: actionTypes.LOG_OUT_FAIL,
-        authError: authError 
+        logOutError: logOutError 
+    };
+};
+
+export const resetLogOutAttempt = () => {
+    return {
+        type: actionTypes.RESET_LOG_OUT_ATTEMPT
+    };
+};
+
+export const resetLogOutError = () => {
+    return {
+        type: actionTypes.RESET_LOG_OUT_ERROR
+    };
+};
+
+export const autoLogInSuccess = (token, user, sp) => {
+    return {
+        type: actionTypes.AUTO_LOG_IN_SUCCESS,
+        token: token,
+        user: user, 
+        sp: sp
+    };
+};
+
+export const autoLogInFail = () => {
+    return {
+        type: actionTypes.AUTO_LOG_IN_FAIL
     };
 };
 
@@ -52,9 +79,9 @@ export const logOut = (token) => {
             const result = await response.json(); 
             if (response.status === 200) {
                 dispatch(logOutSuccess()); 
-                dispatch(checkExpiration(result['expirationTime'], true));
+                dispatch(checkExpiration(0, true));
             } else {
-                dispatch(logOutFail(result['authError'])); 
+                dispatch(logOutFail(result['logOutError'])); 
             } 
         } catch {
             dispatch(logOutFail('Unexpected error')); 
@@ -92,7 +119,7 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
     };
 };
 
-export const tryAutoLogIn = () => {
+export const autoLogIn = () => {
     return async dispatch => {
         try {
             const response = await fetch(`${BACKEND_BASE_DIR}auto-log-in/`, {
@@ -101,10 +128,10 @@ export const tryAutoLogIn = () => {
             });
             const result = await response.json(); 
             if (response.status === 200) {
-                dispatch(authSuccess(localStorage.getItem('token'), localStorage.getItem('user'), result['sp']));
+                dispatch(autoLogInSuccess(localStorage.getItem('token'), localStorage.getItem('user'), result['sp']));
                 dispatch(checkExpiration((result['expirationDate'] - new Date().getTime())/1000), false); 
             } else {
-                dispatch(logOutSuccess()); 
+                dispatch(autoLogInFail()); 
             }
         } catch {
             console.log('Unexpected error logging in'); 
@@ -114,13 +141,13 @@ export const tryAutoLogIn = () => {
 
 let timeout = null; 
 export const checkExpiration = (expirationTime, clear) => {
-    if (!clear) {
-        return dispatch => {
-            timeout = setTimeout(() => {
-                dispatch(logOutSuccess()); 
-            }, expirationTime * 1000);
-        };
-    } else return clearTimeout(timeout)
+    return async dispatch => {
+        if (!clear) {
+            timeout = setTimeout(() => {dispatch(logOutSuccess());}, expirationTime * 1000);
+        } else if (timeout !== null) {
+            clearTimeout(timeout); 
+        }
+    };
 };
 
 export const changeSP = (changeAmount) => {
