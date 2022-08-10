@@ -1,7 +1,7 @@
 import React from 'react'; 
 import classes from './ProfileStats.module.css';
 import Stat from './Stat/Stat';  
-import { capitalize, RARITY_INFO, numberWithCommas } from '../../shared/utility'; 
+import { TQ, RARITY_INFO, capitalize, numberWithCommas } from '../../shared/utility'; 
 
 const ProfileStats = (props) => {
     const rarityStats = []; 
@@ -41,7 +41,7 @@ const ProfileStats = (props) => {
             <Stat statName="Net SP" statValue={numberWithCommas(props.stats.netSP)}/>
             <Stat statName="Total Spins" statValue={numberWithCommas(props.stats.totalSpins)}/>
             {/* <Stat statName="Items Found (Unboxings)" statValue={`${numberWithCommas(props.stats.itemsFound)}/${numberWithCommas(props.stats.totalSpinItems)}`}/> */}
-            <Stat statName="??? Unboxed" statValue={numberWithCommas(props.stats.rarityStats['???'])}/>
+            <Stat statName={`${TQ} Unboxed`} statValue={numberWithCommas(props.stats.rarityStats[TQ])}/>
             <hr className={classes.Separator}/>
             {rarityStats}
         </div>

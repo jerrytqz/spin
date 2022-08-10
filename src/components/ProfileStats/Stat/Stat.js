@@ -1,9 +1,10 @@
 import React from 'react'; 
-import classes from './Stat.module.css'; 
+import classes from './Stat.module.css';
+import {TQ, RARITY_INFO} from '../../../shared/utility'; 
 
 const Stat = (props) => {
     const rarityCircleClasses = [classes.RarityCircle];
-    if (props.rarityColor === 'rainbow') {
+    if (props.rarityColor === RARITY_INFO[TQ][0]) {
         rarityCircleClasses.push(classes.Rainbow); 
     }
 

@@ -1,7 +1,7 @@
 import React from 'react'; 
 import classes from './PieChart.module.css';
 import { Pie } from 'react-chartjs-2'; 
-import { RARITY_INFO } from '../../../shared/utility'; 
+import { TQ, RARITY_INFO } from '../../../shared/utility'; 
 
 const PieChart = (props) => {
     const labels = [];
@@ -16,7 +16,15 @@ const PieChart = (props) => {
         labels: labels,
         datasets: [{
             backgroundColor: backgroundColor,
-            data: [props.rarityStats.common, props.rarityStats.uncommon, props.rarityStats.rare, props.rarityStats.epic, props.rarityStats.holy, props.rarityStats.godly, props.rarityStats['???']]
+            data: [
+                props.rarityStats.common, 
+                props.rarityStats.uncommon, 
+                props.rarityStats.rare, 
+                props.rarityStats.epic, 
+                props.rarityStats.holy, 
+                props.rarityStats.godly, 
+                props.rarityStats[TQ]
+            ]
         }]
     };
 

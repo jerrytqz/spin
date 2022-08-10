@@ -69,35 +69,35 @@
 }
 
 .liCustom:first-child {
-    transform: rotate(0deg); /* common */
+    transform: rotate(0deg); /* Common */
     background: brown;   
 } 
 .liCustom:nth-child(2) {
-    transform: rotate(90deg); /* common */
+    transform: rotate(90deg); /* Common */
     background: brown; 
 }
 .liCustom:nth-child(3) {
-    transform: rotate(179deg); /* common 180 degrees (179 to cover up)*/
+    transform: rotate(179deg); /* Common 180 degrees (179 to cover up)*/
     background: brown;  
 }
 .liCustom:nth-child(4) {
-    transform: rotate(187.2deg); /* uncommon */
+    transform: rotate(187.2deg); /* Uncommon */
     background: cyan; 
 }
 .liCustom:nth-child(5) {
-    transform: rotate(259.2deg); /* rare */
+    transform: rotate(259.2deg); /* Rare */
     background: red;  
 }
 .liCustom:nth-child(6) {
-    transform: rotate(313.2deg); /* epic */
+    transform: rotate(313.2deg); /* Epic */
     background: purple;
 }
 .liCustom:nth-child(7) {
-    transform: rotate(349.2deg); /* holy */ 
+    transform: rotate(349.2deg); /* Holy */ 
     background: orange;
 }
 .liCustom:nth-child(8) {
-    transform: rotate(358.2deg); /* godly */ 
+    transform: rotate(358.2deg); /* Godly */ 
     background: yellow; 
 }
 
@@ -107,7 +107,7 @@
 }  
 
 .liCustom:nth-child(10) {
-    transform: rotate(360deg); /* common */
+    transform: rotate(360deg); /* Common */
     background: brown; 
 }
 

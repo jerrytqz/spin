@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Unboxings.module.css';
-import { RARITY_INFO } from '../../shared/utility'; 
+import { TQ, RARITY_INFO } from '../../shared/utility'; 
 
 const Unboxings = (props) => {
     const unboxings = [
@@ -13,7 +13,7 @@ const Unboxings = (props) => {
     for (let i = 0; i < props.unboxings.length; i++) {
         let colorClass = null;
         const color = RARITY_INFO[props.unboxings[i].rarity][0]; 
-        if (color === 'rainbow') {
+        if (props.unboxings[i].rarity === TQ) {
             colorClass = classes.Rainbow; 
         }
         unboxings.splice(i, 1, 

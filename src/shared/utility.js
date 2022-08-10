@@ -8,15 +8,23 @@ export const SPIN_PRICE = 500;
 export const MAX_LIST_PRICE = 10000000;
 export const LIST_PRICE_PER_FEE = 20;
 
+export const COMMON = 'Common';
+export const UNCOMMON = 'Uncommon';
+export const RARE = 'Rare';
+export const EPIC = 'Epic';
+export const HOLY = 'Holy';
+export const GODLY = 'Godly';
+export const TQ = '???';
+
 export const RARITY_INFO = {
      // NAME: [COLOR, VALUE, ARTICLE, CHANCE]
-    'Common': ['brown', 1, 'a', '52%'],
-    'Uncommon': ['cyan', 2, 'an', '20%'],
-    'Rare': ['red', 3, 'a', '15%'],
-    'Epic': ['purple', 4, 'an', '10%'],
-    'Holy': ['orange', 5, 'a', '2.5%'],
-    'Godly': ['yellow', 6, 'a', '0.49%'],
-    '???': ['rainbow', 7, 'a', '0.01%']
+    [COMMON]: ['brown', 1, 'a', '52%'],
+    [UNCOMMON]: ['cyan', 2, 'an', '20%'],
+    [RARE]: ['red', 3, 'a', '15%'],
+    [EPIC]: ['purple', 4, 'an', '10%'],
+    [HOLY]: ['orange', 5, 'a', '2.5%'],
+    [GODLY]: ['yellow', 6, 'a', '0.49%'],
+    [TQ]: ['rainbow', 7, 'a', '0.01%']
 };
 
 export const updateObject = (oldObject, updatedProperties) => {

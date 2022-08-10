@@ -39,7 +39,7 @@ class LogOut extends Component {
         )
         
         if (this.props.logOutAttemptFinished) {
-            logOutResult = !this.props.logOutError ? <Redirect to='/'/> : (
+            logOutResult = !this.props.logOutError ? <Redirect to="/"/> : (
                 <Modal show={this.state.showModal} clicked={this.clickedHandler}>
                     <div style={{color: 'red'}}>{this.props.logOutError}</div>
                 </Modal> 

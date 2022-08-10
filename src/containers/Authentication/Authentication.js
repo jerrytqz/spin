@@ -91,7 +91,7 @@ class Authentication extends Component {
     componentDidMount() {
         if (this.props.isAuthenticated) {
             this.props.history.push('/');
-        } else this.props.onResetAuthError(); 
+        } 
     }
 
     componentWillUnmount() {

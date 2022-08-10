@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Item.module.css';
-import { RARITY_INFO } from '../../shared/utility'; 
+import { TQ, RARITY_INFO } from '../../shared/utility'; 
 
 const Item = (props) => {
     // Item names are converted to their corresponding image path names by changing every
@@ -20,7 +20,7 @@ const Item = (props) => {
     const itemClasses = [classes.Item]; 
     const itemNameClasses = [classes.ItemName];  
 
-    if (color === 'rainbow') {
+    if (props.rarity === TQ) {
         itemClasses.push(classes.ItemRainbow); 
         itemNameClasses.push(classes.ItemNameRainbow); 
     }
@@ -37,7 +37,7 @@ const Item = (props) => {
         itemClasses.push(classes.DisableSpin);
     }
 
-    if (props.disableSpin && color === 'rainbow') {
+    if (props.disableSpin && props.rarity === TQ) {
         itemClasses.push(classes.DisableSpinRainbow);
         itemNameClasses.push(classes.DisableSpinRainbowName); 
     }
