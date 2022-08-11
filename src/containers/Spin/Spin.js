@@ -57,38 +57,43 @@ class Spin extends Component {
 
     render() {
         return (
-            <div>
-                {this.props.buySpinLoading || this.state.spinInSession ? <Backdrop show style={{opacity: '0'}}/> : null}
-                <Spinner
-                    spinPrice={SPIN_PRICE}
-                    sp={this.props.sp}
-                    authenticated={this.props.isAuthenticated}
-                    buySpinLoading={this.props.buySpinLoading}
-                    buySpinError={this.props.buySpinError}
-                    spinInSession={this.state.spinInSession}
-                    degree={this.props.degree}
-                    resetting={this.state.resetting}
-                    onStartSpin={this.startSpinHandler}
-                    onClickBackdrop={this.buySpinErrorClickedHandler}
-                    onShowPrize={this.showPrizeHandler}
-                    onFinishResettingSpin={this.finishResettingSpinHandler}
-                />
-                {this.state.showPrize 
-                    ? <Prize clicked={this.startResettingSpinHandler} item={this.props.item}/> 
+            <>
+                {this.props.buySpinLoading || (this.state.spinInSession && !this.state.showPrize)
+                    ? <Backdrop style={{opacity: '0'}}/> 
                     : null
                 }
-                <div className={classes.Right}>
-                    <SpinInfo/>
-                    <Unboxings unboxings={this.props.unboxings}/>
-                </div>
-                <SP 
-                    sp={this.props.sp} 
-                    onClickFreeSP={this.clickFreeSPHandler}
-                    onClickBackdrop={this.freeSPErrorClickedHandler}
-                    freeSPError={this.props.freeSPError}
-                    disabledFreeSP={!this.props.isAuthenticated}
-                />
-            </div>   
+                <div className={classes.Spin}>
+                    {this.state.showPrize 
+                        ? <Prize clicked={this.startResettingSpinHandler} item={this.props.item}/> 
+                        : null
+                    }
+                    <Spinner
+                        spinPrice={SPIN_PRICE}
+                        sp={this.props.sp}
+                        authenticated={this.props.isAuthenticated}
+                        buySpinLoading={this.props.buySpinLoading}
+                        buySpinError={this.props.buySpinError}
+                        spinInSession={this.state.spinInSession}
+                        degree={this.props.degree}
+                        resetting={this.state.resetting}
+                        onStartSpin={this.startSpinHandler}
+                        onClickBackdrop={this.buySpinErrorClickedHandler}
+                        onShowPrize={this.showPrizeHandler}
+                        onFinishResettingSpin={this.finishResettingSpinHandler}
+                    />
+                    <div className={classes.Right}>
+                        <SpinInfo/>
+                        <Unboxings unboxings={this.props.unboxings}/>
+                    </div>
+                    <SP 
+                        sp={this.props.sp} 
+                        onClickFreeSP={this.clickFreeSPHandler}
+                        onClickBackdrop={this.freeSPErrorClickedHandler}
+                        freeSPError={this.props.freeSPError}
+                        disabledFreeSP={!this.props.isAuthenticated}
+                    />
+                </div>   
+            </>
         ); 
     }
 }

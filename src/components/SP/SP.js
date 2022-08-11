@@ -23,11 +23,15 @@ const SP = (props) => {
                     +
                 </button>
             </div>
-            <Modal show={props.freeSPError} clicked={props.onClickBackdrop}>
-                <div className={classes.FreeSPError}>
-                    {freeSPError}
-                </div>
-            </Modal> 
+            {props.freeSPError 
+                ?
+                    <Modal clicked={props.onClickBackdrop}>
+                        <div className={classes.FreeSPError}>
+                            {freeSPError}
+                        </div>
+                    </Modal> 
+                : null
+            }
         </>
     );
 };

@@ -34,10 +34,6 @@
     animation: rainbow 0.5s linear infinite; 
 }
 
-.Confetti {
-    z-index: 10000;
-}
-
 @keyframes rainbow {
     0%, 100% {color: green;}
     20% {color: cyan;}

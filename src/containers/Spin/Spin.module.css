@@ -1,3 +1,9 @@
+@media (max-width: 1500px), (max-height: 1050px) {
+    .Spin {
+        transform: scale(0.7);
+    }
+}
+
 .Right {
     position: absolute;
     top: 200px; 

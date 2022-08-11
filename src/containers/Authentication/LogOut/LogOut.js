@@ -34,15 +34,17 @@ class LogOut extends Component {
         let logOutResult = (
             <>
                 <div className={classes.LoadingSpinner}><LoadingSpinner/></div>;
-                <Backdrop show style={{opacity: '0'}}/>
+                <Backdrop style={{opacity: '0'}}/>
             </>
         )
         
         if (this.props.logOutAttemptFinished) {
-            logOutResult = !this.props.logOutError ? <Redirect to="/"/> : (
-                <Modal show={this.state.showModal} clicked={this.clickedHandler}>
-                    <div style={{color: 'red'}}>{this.props.logOutError}</div>
-                </Modal> 
+            logOutResult = !this.props.logOutError ? <Redirect to="/"/> : (this.state.showModal 
+                ?
+                    <Modal clicked={this.clickedHandler}>
+                        <div style={{color: 'red'}}>{this.props.logOutError}</div>
+                    </Modal> 
+                : null
             );
         }
 

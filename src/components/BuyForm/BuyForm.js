@@ -20,46 +20,48 @@ const BuyForm = (props) => {
         }
     }
 
-    return (
-        <Modal 
-            show={props.show} 
-            clicked={props.clicked} 
-            style={{borderRadius: '0', display: 'flex'}}
-            backdropStyle={{opacity: '0.5'}}
-        >
-            {!props.loading 
-                ? 
-                    <>
-                        <div>
-                            <Item
-                                name={props.name}
-                                rarity={props.rarity}
-                                quantity={1}
-                                showcase
-                                disableHover
-                                disableSpin
-                            />
-                        </div>
-                        <div className={classes.Right}>
+    return (props.show 
+        ? 
+            <Modal 
+                show={props.show} 
+                clicked={props.clicked} 
+                style={{borderRadius: '0', display: 'flex'}}
+                backdropStyle={{opacity: '0.5'}}
+            >
+                {!props.loading 
+                    ? 
+                        <>
                             <div>
-                                <div className={classes.Seller}>{props.seller}</div>
-                                <div style={{marginTop: '16px'}}>{numberWithCommas(props.price)} SP</div>
-                                <div className={classes.ListTime}>{dhms(new Date().getTime() - props.listTime, true)}</div>
-                                {props.error ? <div className={classes.Error}>{props.error}</div> : null}
+                                <Item
+                                    name={props.name}
+                                    rarity={props.rarity}
+                                    quantity={1}
+                                    showcase
+                                    disableHover
+                                    disableSpin
+                                />
                             </div>
-                            <YesNoButton 
-                                btnType="Yes" 
-                                onClick={props.submitHandler} 
-                                disabled={disabled}
-                                style={{margin: '0'}}
-                            >
-                                {buttonText}
-                            </YesNoButton>            
-                        </div>
-                    </>
-                : <LoadingSpinner/>
-            }
-        </Modal> 
+                            <div className={classes.Right}>
+                                <div>
+                                    <div className={classes.Seller}>{props.seller}</div>
+                                    <div style={{marginTop: '16px'}}>{numberWithCommas(props.price)} SP</div>
+                                    <div className={classes.ListTime}>{dhms(new Date().getTime() - props.listTime, true)}</div>
+                                    {props.error ? <div className={classes.Error}>{props.error}</div> : null}
+                                </div>
+                                <YesNoButton 
+                                    btnType="Yes" 
+                                    onClick={props.submitHandler} 
+                                    disabled={disabled}
+                                    style={{margin: '0'}}
+                                >
+                                    {buttonText}
+                                </YesNoButton>            
+                            </div>
+                        </>
+                    : <LoadingSpinner/>
+                }
+            </Modal>
+        : null
     );
 };
 

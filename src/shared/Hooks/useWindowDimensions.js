@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 
 function getWindowDimensions() {
-    const {innerWidth: width, innerHeight: height} = window;
+    const windowWidth = window.innerWidth + window.scrollX;
+    const windowHeight = window.innerHeight + window.scrollY;
+
+    const windowScrollX = window.scrollX;
+    const windowScrollY = window.scrollY;
+
     return {
-        width,
-        height
+        width: windowWidth,
+        height: windowHeight,
+        scrollX: windowScrollX,
+        scrollY: windowScrollY
     };
 }
 
@@ -16,8 +23,16 @@ function useWindowDimensions() {
             setWindowDimensions(getWindowDimensions());
         }
 
+        function handleScroll() {
+            setWindowDimensions(getWindowDimensions());
+        }
+
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('scroll', handleScroll);
+        }
     }, []);
     
     return windowDimensions;

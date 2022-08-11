@@ -43,34 +43,40 @@ const Spinner = (props) => {
     } 
 
     return (
-        <div className={classes.Spinner}>
-            <button 
-                className={classes.SpinnerButton}
-                onClick={props.onStartSpin} 
-                disabled={disabled}
-                style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}
-                onTransitionEnd={transitionEndFunc}
-            > 
-                {(!props.spinInSession) ? spinnerText : null}
-                <div className={classes.Pointer}/>
-            </button>
-            <ul className={classes.RarityCircle}>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-                <li className={classes.liCustom}/>
-            </ul>
-            <Modal show={props.buySpinError} clicked={props.onClickBackdrop}>
-                <div style={{color: 'red'}}>{props.buySpinError}</div>
-            </Modal> 
-        </div>
+        <>
+            <div className={classes.Spinner}>
+                <button 
+                    className={classes.SpinnerButton}
+                    onClick={props.onStartSpin} 
+                    disabled={disabled}
+                    style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}
+                    onTransitionEnd={transitionEndFunc}
+                > 
+                    {(!props.spinInSession) ? spinnerText : null}
+                    <div className={classes.Pointer}/>
+                </button>
+                <ul className={classes.RarityCircle}>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                    <li className={classes.liCustom}/>
+                </ul>
+            </div>
+            {props.buySpinError 
+                ?
+                    <Modal clicked={props.onClickBackdrop}>
+                        <div style={{color: 'red'}}>{props.buySpinError}</div>
+                    </Modal> 
+                : null 
+            }
+        </>
     );
 };
 
