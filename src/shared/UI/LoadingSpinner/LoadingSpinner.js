@@ -1,8 +1,12 @@
 import React from 'react'; 
 import classes from './LoadingSpinner.module.css';
 
-const LoadingSpinner = () => (
-    <div className = {classes.LoadingSpinner}>Loading...</div>
-);
+const LoadingSpinner = (props) => {
+    return (
+        <div style={props.style} className={classes.LoadingSpinner}/>
+    );
+};
+
+
 
 export default LoadingSpinner; 

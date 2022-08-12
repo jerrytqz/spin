@@ -7,7 +7,8 @@ const initialState = {
     item: null, 
     buySpinLoading: false,
     buySpinError: null,
-    freeSPError: null,
+    getFreeSPLoading: false,
+    getFreeSPError: null,
     unboxings: [] 
 };
 
@@ -39,22 +40,30 @@ const resetBuySpinError = (state) => {
     });
 };
 
+const getFreeSPStart = (state) => {
+    return updateObject(state, {
+        getFreeSPLoading: true
+    });
+};
+
 const getFreeSPSuccess = (state, action) => {
     return updateObject(state, {
         freeSP: action.freeSP,
-        freeSPError: null 
+        getFreeSPError: null,
+        getFreeSPLoading: false
     });
 };
 
 const getFreeSPFail = (state, action) => {
     return updateObject(state, {
-        freeSPError: action.freeSPError
+        getFreeSPError: action.getFreeSPError,
+        getFreeSPLoading: false
     });
 };
 
-const resetFreeSPError = (state) => {
+const resetGetFreeSPError = (state) => {
     return updateObject(state, {
-        freeSPError: null 
+        getFreeSPError: null 
     });
 };
 
@@ -75,20 +84,22 @@ const itemUnboxed = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.BUY_SPIN_START: 
+            return buySpinStart(state); 
         case actionTypes.BUY_SPIN_SUCCESS:
             return buySpinSuccess(state, action); 
         case actionTypes.BUY_SPIN_FAIL:
             return buySpinFail(state, action); 
         case actionTypes.RESET_BUY_SPIN_ERROR:
             return resetBuySpinError(state); 
-        case actionTypes.BUY_SPIN_START: 
-            return buySpinStart(state); 
+        case actionTypes.GET_FREE_SP_START:
+            return getFreeSPStart(state);
         case actionTypes.GET_FREE_SP_SUCCESS: 
             return getFreeSPSuccess(state, action); 
         case actionTypes.GET_FREE_SP_FAIL: 
             return getFreeSPFail(state, action); 
-        case actionTypes.RESET_FREE_SP_ERROR: 
-            return resetFreeSPError(state);
+        case actionTypes.RESET_GET_FREE_SP_ERROR: 
+            return resetGetFreeSPError(state);
         case actionTypes.ITEM_UNBOXED: 
             return itemUnboxed(state, action); 
         default:

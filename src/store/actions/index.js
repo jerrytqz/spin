@@ -2,7 +2,7 @@ export {
     buySpin,
     resetBuySpinError,
     getFreeSP,
-    resetFreeSPError,
+    resetGetFreeSPError,
     itemUnboxed
 } from './spin';
 

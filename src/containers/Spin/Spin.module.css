@@ -14,3 +14,9 @@
     display: flex; 
     flex-direction: column;
 }
+
+@media (max-width: 1500px), (max-height: 1050px) {
+    .Right {
+        top: 100px; 
+    }
+}

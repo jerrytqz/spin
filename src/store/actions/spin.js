@@ -45,19 +45,24 @@ export const getFreeSPSuccess = (freeSP) => ({
     freeSP: freeSP
 });
 
-export const getFreeSPFail = (freeSPError) => ({
+export const getFreeSPFail = (getFreeSPError) => ({
     type: actionTypes.GET_FREE_SP_FAIL,
-    freeSPError: freeSPError
+    getFreeSPError: getFreeSPError
 });
 
-export const resetFreeSPError = () => ({
-    type: actionTypes.RESET_FREE_SP_ERROR
+export const resetGetFreeSPError = () => ({
+    type: actionTypes.RESET_GET_FREE_SP_ERROR
+});
+
+export const getFreeSPStart = () => ({
+    type: actionTypes.GET_FREE_SP_START
 });
 
 export const getFreeSP = (token) => {
     return async dispatch => {
+        dispatch(getFreeSPStart());
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}free-sp/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}get-free-sp/`, {
                 method: 'GET',
                 headers: new Headers({'Authorization': token})
             });
@@ -65,7 +70,7 @@ export const getFreeSP = (token) => {
             if (response.status === 200) {
                 dispatch(getFreeSPSuccess(result['freeSP'])); 
             } else {
-                dispatch(getFreeSPFail(result['freeSPError'])); 
+                dispatch(getFreeSPFail(result['getFreeSPError'])); 
             }
         } catch {
             dispatch(getFreeSPFail('Unexpected error')); 

@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Spinner.module.css'; 
+import Backdrop from '../../shared/UI/Backdrop/Backdrop';
 import Modal from '../../shared/UI/Modal/Modal'; 
 
 const Spinner = (props) => { 
@@ -69,6 +70,10 @@ const Spinner = (props) => {
                     <li className={classes.liCustom}/>
                 </ul>
             </div>
+            {props.buySpinLoading || (props.spinInSession && !props.showPrize)
+                ? <Backdrop portal style={{opacity: '0'}}/> 
+                : null
+            }
             {props.buySpinError 
                 ?
                     <Modal clicked={props.onClickBackdrop}>

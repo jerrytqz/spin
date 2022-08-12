@@ -5,6 +5,12 @@
     margin-left: -350px; 
 }
 
+@media (max-width: 1500px), (max-height: 1050px) {
+    .Spinner {
+        top: 100px;
+    }
+}
+
 .SpinnerButton {
     position: absolute; 
     top: 100px; 

@@ -9,7 +9,15 @@
     align-items: center; 
 }
 
-.SPNumber {
+@media (max-width: 1500px), (max-height: 1050px) {
+    .SP {
+        top: 850px;
+    }
+}
+
+.SPText {
+    height: 30px;
+    line-height: 30px;
     border: 1px solid black;
     color: #616161;  
     padding: 10px; 
@@ -19,7 +27,7 @@
 .FreeSPButton {
     height: 20px;
     width: 20px; 
-    margin-left: 5px;
+    margin-left: 7px;
     color: white;
     background: green;
     border: 0; 
@@ -27,10 +35,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.FreeSPError {
-    color: red; 
 }
 
 .FreeSPButton:hover,
@@ -43,4 +47,8 @@
 .FreeSPButton:disabled {
     background-color: #a2d2a2;
     cursor: not-allowed; 
+}
+
+.FreeSPError {
+    color: red; 
 }

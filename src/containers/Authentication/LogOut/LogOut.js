@@ -33,8 +33,8 @@ class LogOut extends Component {
     render() {
         let logOutResult = (
             <>
-                <div className={classes.LoadingSpinner}><LoadingSpinner/></div>;
-                <Backdrop style={{opacity: '0'}}/>
+                <div className={classes.LoadingSpinner}><LoadingSpinner/></div>
+                <Backdrop portal style={{opacity: '0'}}/>
             </>
         )
         

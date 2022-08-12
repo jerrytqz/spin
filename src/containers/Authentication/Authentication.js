@@ -5,6 +5,7 @@ import classes from './Authentication.module.css';
 import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton'; 
 import TextButton from '../../shared/UI/Buttons/TextButton/TextButton'; 
 import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
+import Backdrop from '../../shared/UI/Backdrop/Backdrop';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 
@@ -226,22 +227,28 @@ class Authentication extends Component {
 
         return ( 
             <div className={authClasses.join(' ')}>
-                {this.props.authLoading ? <LoadingSpinner/> :
-                    <div>
-                        {errors}
-                        <form onSubmit={this.submitHandler} style={{paddingTop: '5px'}}>
-                            {form}
-                            <YesNoButton 
-                                btnType="Yes" 
-                                disabled={!this.state.formIsValid}
-                            >
-                                {this.state.isLogIn ? 'Log In' : 'Register'}
-                            </YesNoButton>
-                        </form>
-                        <TextButton onClick={this.switchAuthModeHandler} style={{marginTop: '20px'}}>
-                            {this.state.isLogIn ? 'Register ' : 'Log in '} instead
-                        </TextButton>
-                    </div>
+                {this.props.authLoading 
+                    ?
+                        <>
+                            <LoadingSpinner/> 
+                            <Backdrop portal style={{opacity: '0'}}/>
+                        </>
+                    :
+                        <div>
+                            {errors}
+                            <form onSubmit={this.submitHandler} style={{paddingTop: '5px'}}>
+                                {form}
+                                <YesNoButton 
+                                    btnType="Yes" 
+                                    disabled={!this.state.formIsValid}
+                                >
+                                    {this.state.isLogIn ? 'Log In' : 'Register'}
+                                </YesNoButton>
+                            </form>
+                            <TextButton onClick={this.switchAuthModeHandler} style={{marginTop: '20px'}}>
+                                {this.state.isLogIn ? 'Register ' : 'Log in '} instead
+                            </TextButton>
+                        </div>
                 }
             </div> 
         );
