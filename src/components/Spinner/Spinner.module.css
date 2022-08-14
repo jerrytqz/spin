@@ -60,6 +60,7 @@
     border: none; 
     border-radius: 50%;
     z-index: -1;  
+    transform: translateZ(-11px);
     list-style: none;
     overflow: hidden; 
 }
