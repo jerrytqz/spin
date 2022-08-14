@@ -18,7 +18,7 @@ const Prize = (props) => {
 
     const VELOCITY_X = RARITY_INFO[props.item.rarity][1] * 2.5;
     const VELOCITY_Y = RARITY_INFO[props.item.rarity][1] * 5;
-    const NUM_PIECES = 275;
+    const NUM_PIECES = Math.floor(275 + (275 * RARITY_INFO[props.item.rarity][1])/5);
     const {height, width, scrollX} = useWindowDimensions();
 
     const confettiBackground = (props.item.rarity === COMMON 
@@ -58,7 +58,6 @@ const Prize = (props) => {
                         <Confetti 
                             width={width} 
                             height={height} 
-                            numberOfPieces={NUM_PIECES}
                             style={{zIndex: 125}}
                         /> 
                     : null
