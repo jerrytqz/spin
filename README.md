@@ -1,10 +1,10 @@
 &nbsp;
 <p align="center">
   <a href="https://spin.jerrytq.com">
-    <img alt="spin" src="https://drive.google.com/uc?export=view&id=1-84R697Urx_oiGMJl_e5kfe_kxeoExd8" width="700">
+    <img alt="spin" src="https://drive.google.com/uc?export=view&id=1cuP3A4YRuMOhffEu5_tI4-TXaT45Y0My" width=700>
   </a>
 </p>
-&nbsp;
+
 
 ## Introduction
 
