@@ -16,7 +16,7 @@ Try it out at [spin.jerrytq.com](https://spin.jerrytq.com)!
 
 ## Schematics
 Spin consists of 3 major components: 
-1. A frontend built using React.js and hosted on Vercel
+1. A frontend built using React and hosted on Vercel
 2. A backend built using Django and hosted on Heroku
 3. An independent Socket.IO server hosted on Replit
 
@@ -59,6 +59,7 @@ Spin consists of 3 major components:
   Buying an item off the market<br/>
   (The market and the seller's SP both update in real time with Socket.IO.)
 </p>
+&nbsp;
 
 ## Upcoming Features
 - Market info for each item (historical sale price, units sold, etc.)
