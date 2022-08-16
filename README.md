@@ -66,7 +66,8 @@ Spin consists of 3 major components:
 - Market and inventory filtering 
 - Profile customization 
 - Options menu
-- Leaderboard 
+- Leaderboard
+- More items 
 - More stats
 - Trading
 - Sound
