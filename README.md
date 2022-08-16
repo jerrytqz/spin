@@ -20,7 +20,7 @@ Spin consists of 3 major components:
 2. A backend built using Django and hosted on Heroku
 3. An independent Socket.IO server hosted on Replit
 
-## Demos
+## Demonstrations
 &nbsp;
 <p align="center">
   <kbd>
@@ -42,20 +42,22 @@ Spin consists of 3 major components:
 &nbsp;
 <p align="center">
   <kbd>
-    <img alt="Spinning a ??? item" src="docs/gifs/buying-item.gif" width="700"/>
-  </kbd>
-</p>
-<p align="center">
-  Buying an item off the market. The market and the seller's SP both update in real time with Socket.IO. 
-</p>
-&nbsp;
-<p align="center">
-  <kbd>
     <img alt="Spinning a ??? item" src="docs/gifs/listing-item.gif" width="700"/>
   </kbd>
 </p>
 <p align="center">
-  Listing an item onto the market for sale. The market updates in real time with Socket.IO. 
+  Listing an item onto the market for sale<br/>
+  (The market updates in real time with Socket.IO.)
+</p>
+&nbsp;
+<p align="center">
+  <kbd>
+    <img alt="Spinning a ??? item" src="docs/gifs/buying-item.gif" width="700"/>
+  </kbd>
+</p>
+<p align="center">
+  Buying an item off the market<br/>
+  (The market and the seller's SP both update in real time with Socket.IO.)
 </p>
 
 ## Upcoming Features
