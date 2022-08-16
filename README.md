@@ -1,18 +1,18 @@
 &nbsp;
 <p align="center">
-  <a href="https://spin.jerrytq.com" target="_blank">
+  <a href="https://spin.jerrytq.com">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://drive.google.com/uc?export=view&id=1j2Cl5JDx4t8eRxgTDqcZQ7kRSxF9L5VI">
-      <img alt="Logo" src="https://drive.google.com/uc?export=view&id=1cuP3A4YRuMOhffEu5_tI4-TXaT45Y0My">
+      <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo-darkmode.png">
+      <img alt="Logo" src="docs/images/logo-lightmode.png">
     </picture>
   </a>
 </p>
 &nbsp;
 
 ## Introduction
-Try it out at <a href="https://spin.jerrytq.com" target="_blank">spin.jerrytq.com</a>!
-
 Spin is a full stack web application built primarily with React and Django. It aims to emulate a basic online economy by allowing players to spin a wheel to obtain collectibles, which can later be sold on the market to other players using a fictional currency called *SP* (Spin Points).
+
+Try it out at [spin.jerrytq.com](https://spin.jerrytq.com)</a>!
 
 ## Schematics
 Spin consists of 3 major components: 
@@ -23,14 +23,18 @@ Spin consists of 3 major components:
 ## Demos
 &nbsp;
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1eVB-pPDEpXF8dUC36N167pHsExyRZp57" width=700/>
+  <kbd>
+    <img src="docs/gifs/unboxing-common.gif" width=700/>
+  </kbd>
 </p>
 <p align="center">
   Spinning a common item
 </p>
 &nbsp;
 <p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1eVB-pPDEpXF8dUC36N167pHsExyRZp57" width=700/>
+  <kbd>
+    <img src="docs/gifs/unboxing-uncommon.gif" width=700/>
+  </kbd>
 </p>
 <p align="center">
   Spinning a ??? item
