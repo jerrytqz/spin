@@ -7,11 +7,11 @@
 
 .Seller {
     font-weight: bold;
-    font-size: 1.25em; 
+    font-size: 20px; 
 }
 
 .ListTime {
-    font-size: 0.65em;
+    font-size: 10px;
     font-style: italic; 
     margin-top: 16px; 
     color: #616161; 

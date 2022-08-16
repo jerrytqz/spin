@@ -29,7 +29,7 @@
 }
 
 @keyframes sizeChange {
-    0% {font-size: 2.5em}
-    50% {font-size: 2.55em}
-    100% {font-size: 2.5em}
+    0% {font-size: 40px}
+    50% {font-size: 40.8px}
+    100% {font-size: 40px}
 }
