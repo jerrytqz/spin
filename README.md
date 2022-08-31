@@ -18,7 +18,7 @@ Try it out at [spin.jerrytq.com](https://spin.jerrytq.com)!
 Spin consists of 3 major components: 
 1. A frontend built using React and hosted on Vercel
 2. A backend built using Django and hosted on Heroku
-3. An independent Socket.IO server hosted on Replit
+3. A Socket.IO server hosted on Replit
 
 ## Demonstrations
 &nbsp;

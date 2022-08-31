@@ -45,7 +45,7 @@ const BuyForm = (props) => {
                                 <div>
                                     <div className={classes.Seller}>{props.seller}</div>
                                     <div style={{marginTop: '16px'}}>{numberWithCommas(props.price)} SP</div>
-                                    <div className={classes.ListTime}>{dhms(new Date().getTime() - props.listTime, true)}</div>
+                                    <div className={classes.ListTime}>{"Listed " + dhms(new Date().getTime() - props.listTime, true) + " ago"}</div>
                                     {props.error ? <div className={classes.Error}>{props.error}</div> : null}
                                 </div>
                                 <YesNoButton 
