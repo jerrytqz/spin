@@ -19,13 +19,11 @@ export const fetchProfile = (username) => {
     return async dispatch => {
         dispatch(fetchProfileStart()); 
 
-        const data = new FormData();
-        data.append('username', username); 
-
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}fetch-profile/`, {
-                method: 'POST',
-                body: data
+            let address = `${BACKEND_BASE_DIR}fetch-profile/${username}`;
+            if (username == null) address = `${BACKEND_BASE_DIR}fetch-profile/`;
+            const response = await fetch(address, {
+                method: 'GET'
             });
             const result = await response.json(); 
             if (response.status === 200) {
@@ -33,7 +31,8 @@ export const fetchProfile = (username) => {
             } else {
                 dispatch(fetchProfileFail(result['fetchProfileError'])); 
             }
-        } catch {
+        } catch (e) {
+            console.log(e)
             dispatch(fetchProfileFail('Unexpected error')); 
         }
     };

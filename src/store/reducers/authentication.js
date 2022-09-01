@@ -21,12 +21,8 @@ const authStart = (state) => {
 };
 
 const authSuccess = (state, action) => {
-    if (localStorage.getItem('token') === null) {
-        localStorage.setItem('token', action.token); 
-    }
-    if (localStorage.getItem('user') === null) {
-        localStorage.setItem('user', action.user); 
-    }
+    localStorage.setItem('token', action.token); 
+    localStorage.setItem('user', action.user); 
     return updateObject(state, {
         isAuthenticated: true, 
         user: action.user, 

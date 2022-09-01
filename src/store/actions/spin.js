@@ -63,7 +63,7 @@ export const getFreeSP = (token) => {
         dispatch(getFreeSPStart());
         try {
             const response = await fetch(`${BACKEND_BASE_DIR}get-free-sp/`, {
-                method: 'GET',
+                method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
             const result = await response.json(); 

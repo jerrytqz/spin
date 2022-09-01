@@ -38,7 +38,7 @@ export const fetchInventory = (token) => {
         dispatch(fetchInventoryStart()); 
         try {
             const response = await fetch(`${BACKEND_BASE_DIR}fetch-inventory/`, {
-                method: 'GET',
+                method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
             const result = await response.json(); 
