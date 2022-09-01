@@ -12,11 +12,12 @@ import LogOut from './containers/Authentication/LogOut/LogOut';
 import Authentication from './containers/Authentication/Authentication'; 
 import Spinner from './shared/UI/LoadingSpinner/LoadingSpinner';
 import io from 'socket.io-client'; 
+import { SOCKET_IO_BASE_DIR } from './shared/utility';
 
 class App extends Component {
     async componentDidMount() {
         await this.props.onAutoLogIn();
-        const socket = io(process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : 'https://spin-socketio.jerryzheng5.repl.co');
+        const socket = io(SOCKET_IO_BASE_DIR);
 
         socket.on('item unboxed', (itemName, rarity, unboxer) => {
             if (unboxer !== this.props.user) {

@@ -3,7 +3,11 @@ if (process.env.NODE_ENV === 'development') {
     BACKEND_BASE_DIR = 'http://127.0.0.1:8000/';
 }
 
-// Important constants
+export let SOCKET_IO_BASE_DIR = 'https://spin-socketio.jerrytq.com/';
+if (process.env.NODE_ENV === 'development') {
+    SOCKET_IO_BASE_DIR = 'http://localhost:3001/';
+}
+
 export const SPIN_PRICE = 500;
 export const MAX_LIST_PRICE = 10000000;
 export const LIST_PRICE_PER_FEE = 20;
