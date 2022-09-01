@@ -75,6 +75,10 @@ export const checkValidity = (value, rules) => {
         isValid = !isNaN(value) && isValid;
     }
 
+    if (rules.noWhiteSpace) {
+        isValid = !/\s/g.test(value) && isValid; 
+    }
+
     return isValid; 
 };
 

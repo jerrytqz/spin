@@ -13,7 +13,8 @@ import * as actions from '../../store/actions/index';
 const USERNAME_VALIDATION = {
     required: true,
     minLength: 1,
-    maxLength: 16 
+    maxLength: 16,
+    noWhiteSpace: true
 }
 
 const EMAIL_VALIDATION = {
