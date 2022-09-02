@@ -117,13 +117,19 @@ class Authentication extends Component {
 
     submitHandler = async (event) => {
         event.preventDefault();  
-        await this.props.onAuth(this.state.controls.username.value, 
+        await this.props.onAuth(
+            this.state.controls.username.value, 
             this.state.controls.email.value, 
             this.state.controls.password.value, 
             this.state.controls.confirmPassword.value, 
-            this.state.isLogIn); 
+            this.state.isLogIn
+        ); 
         if (this.props.isAuthenticated) {
-            this.props.history.push('/');
+            if (this.props.selectedItem) {
+                this.props.history.push('/market');
+            } else {
+                this.props.history.push('/');
+            }
         }
     }
 
@@ -260,7 +266,8 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.authentication.isAuthenticated,
         authError: state.authentication.authError,
-        authLoading: state.authentication.authLoading
+        authLoading: state.authentication.authLoading,
+        selectedItem: state.market.selectedItem
     };
 };
 

@@ -6,7 +6,8 @@ const initialState = {
     fetchMarketLoading: false,
     fetchMarketError: null,
     buyItemLoading: false,
-    buyItemError: null 
+    buyItemError: null,
+    selectedItem: null
 };
 
 const buyItemStart = (state) => {
@@ -64,6 +65,18 @@ const resetBuyItemError = (state) => {
     });
 };
 
+const setSelectedItem = (state, action) => {
+    return updateObject(state, {
+        selectedItem: action.selectedItem
+    });
+};
+
+const resetSelectedItem = (state) => {
+    return updateObject(state, {
+        selectedItem: null
+    });
+};
+
 const itemListed = (state, action) => {
     const marketID = Object.keys(action.item)[0];
     const newMarket = { ...state.market }; 
@@ -89,6 +102,10 @@ const reducer = (state = initialState, action) => {
             return buyItemFail(state, action);
         case actionTypes.RESET_BUY_ITEM_ERROR:
             return resetBuyItemError(state);  
+        case actionTypes.SET_SELECTED_ITEM:
+            return setSelectedItem(state, action);
+        case actionTypes.RESET_SELECTED_ITEM:
+            return resetSelectedItem(state); 
         case actionTypes.ITEM_LISTED:
             return itemListed(state, action);  
         default:

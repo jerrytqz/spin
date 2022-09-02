@@ -20,5 +20,6 @@
 .Error {
     color: red;
     text-align: center;
-    margin-top: 36px; 
+    position: relative;
+    top: 23px;
 }

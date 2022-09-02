@@ -8,7 +8,7 @@ import Modal from '../../shared/UI/Modal/Modal';
 
 const BuyForm = (props) => {
     let buttonText = 'Log in to buy';
-    let disabled = !props.isAuthenticated || props.user === props.seller || props.sp < props.price; 
+    let disabled = props.user === props.seller || (props.sp < props.price && props.isAuthenticated); 
 
     if (props.isAuthenticated) {
         buttonText = 'Buy';
@@ -24,7 +24,7 @@ const BuyForm = (props) => {
         ? 
             <Modal 
                 show={props.show} 
-                clicked={props.clicked} 
+                clicked={props.backdropClicked} 
                 style={{borderRadius: '0', display: 'flex'}}
                 backdropStyle={{opacity: '0.5'}}
             >
@@ -50,7 +50,7 @@ const BuyForm = (props) => {
                                 </div>
                                 <YesNoButton 
                                     btnType="Yes" 
-                                    onClick={props.submitHandler} 
+                                    onClick={props.isAuthenticated ? props.submitHandler : props.onClickUnauthorizedBuy} 
                                     disabled={disabled}
                                     style={{margin: '0'}}
                                 >

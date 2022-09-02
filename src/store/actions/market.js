@@ -77,6 +77,15 @@ export const buyItem = (token, marketID) => {
     };
 };
 
+export const setSelectedItem = (selectedItem) => ({
+    type: actionTypes.SET_SELECTED_ITEM,
+    selectedItem: selectedItem
+});
+
+export const resetSelectedItem = () => ({
+    type: actionTypes.RESET_SELECTED_ITEM
+});
+
 export const itemListed = (item) => ({
     type: actionTypes.ITEM_LISTED,
     item: item 

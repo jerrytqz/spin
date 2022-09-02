@@ -152,7 +152,7 @@ class Inventory extends Component {
                                 {inventory}
                                 <ListForm 
                                     show={this.state.showListForm} 
-                                    clicked={this.backdropClickedHandler}
+                                    backdropClicked={this.backdropClickedHandler}
                                     name={this.state.currentItemName}
                                     disabled={disabled}
                                     submitHandler={this.submitHandler}

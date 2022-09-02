@@ -15,11 +15,15 @@ class Market extends Component {
         currentListTime: 0,
         currentSeller: '',
         currentItemPrice: 0,
-        currentMarketID: 0
+        currentMarketID: null
     }
 
     componentDidMount() {
         this.props.onFetchMarket(); 
+        if (this.props.selectedItem) {
+            const selectedID = Object.keys(this.props.selectedItem)[0];
+            this.marketItemClickedHandler(selectedID, this.props.selectedItem[selectedID]);
+        } 
     }
 
     componentDidUpdate(prevProps) {
@@ -36,6 +40,11 @@ class Market extends Component {
             this.setState({showBuyForm: false});
             this.props.onResetBuyItemError(); 
         }
+        this.props.onResetSelectedItem();
+    }
+
+    clickUnauthorizedBuyHandler = () => {
+        this.props.history.push('/authentication');
     }
 
     marketItemClickedHandler = (itemID, info) => {
@@ -48,6 +57,9 @@ class Market extends Component {
             currentItemPrice: info.price,
             currentMarketID: Number(itemID)
         }); 
+        if (!this.props.isAuthenticated) {
+            this.props.onSetSelectedItem({[itemID]: info});
+        }
     }
 
     submitHandler = async () => {
@@ -98,7 +110,8 @@ class Market extends Component {
                                 {market}
                                 <BuyForm 
                                     show={this.state.showBuyForm} 
-                                    clicked={this.backdropClickedHandler}
+                                    backdropClicked={this.backdropClickedHandler}
+                                    onClickUnauthorizedBuy={this.clickUnauthorizedBuyHandler}
                                     name={this.state.currentItemName}
                                     rarity={this.state.currentItemRarity}
                                     listTime={this.state.currentListTime}
@@ -130,7 +143,8 @@ const mapStateToProps = state => {
         fetchMarketLoading: state.market.fetchMarketLoading,
         fetchMarketError: state.market.fetchMarketError,
         buyItemLoading: state.market.buyItemLoading,
-        buyItemError: state.market.buyItemError 
+        buyItemError: state.market.buyItemError,
+        selectedItem: state.market.selectedItem 
     };
 };
 
@@ -139,7 +153,9 @@ const mapDispatchToProps = dispatch => {
         onFetchMarket: () => dispatch(actions.fetchMarket()),
         onBuyItem: (token, marketID) => dispatch(actions.buyItem(token, marketID)),
         onResetBuyItemError: () => dispatch(actions.resetBuyItemError()),
-        onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount))
+        onChangeSP: (changeAmount) => dispatch(actions.changeSP(changeAmount)),
+        onSetSelectedItem: (item) => dispatch(actions.setSelectedItem(item)),
+        onResetSelectedItem: () => dispatch(actions.resetSelectedItem())
     };
 };
 

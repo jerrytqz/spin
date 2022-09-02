@@ -2,6 +2,9 @@
     padding: 10px; 
     height: 75%;
     display: flex; 
+    text-decoration: none;
+    user-select: none;
+    color: black;
 }
 
 .ProfileCard img {

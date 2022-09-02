@@ -11,6 +11,8 @@ export {
     buyItem,
     resetBuyItemError,
     buyItemSuccess,
+    setSelectedItem,
+    resetSelectedItem,
     itemListed
 } from './market';
 

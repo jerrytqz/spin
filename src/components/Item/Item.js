@@ -42,18 +42,20 @@ const Item = (props) => {
         itemNameClasses.push(classes.DisableSpinRainbowName); 
     }
 
-    return (!props.nullItem ? 
-        <div className={itemClasses.join(' ')} style={{borderColor: color}} onClick={props.onClick}>
-            <div className={itemNameClasses.join(' ')} style={{color: color}}>{props.name}</div>
-            <img src={imagePath} className={classes.ItemImage} alt={props.name}/>
-            {props.quantity ? <div className={classes.ItemBottomText}>x{props.quantity}</div> : null}
-            {props.price ? <div className={classes.ItemBottomText}>{props.price} SP</div> : null} 
-        </div> : 
-        <div className={itemClasses.join(' ')} style={{animation: 'none', pointerEvents: 'none'}}>
-            <div className={classes.ItemName}/>
-            <div className={classes.ItemNullText}>Nothing to show!</div>
-            <div className={classes.ItemQuantity}/>
-        </div>
+    return (!props.nullItem 
+        ? 
+            <div className={itemClasses.join(' ')} style={{borderColor: color}} onClick={props.onClick}>
+                <div className={itemNameClasses.join(' ')} style={{color: color}}>{props.name}</div>
+                <img src={imagePath} className={classes.ItemImage} alt={props.name} draggable={false}/>
+                {props.quantity ? <div className={classes.ItemBottomText}>x{props.quantity}</div> : null}
+                {props.price ? <div className={classes.ItemBottomText}>{props.price} SP</div> : null} 
+            </div> 
+        : 
+            <div className={itemClasses.join(' ')} style={{animation: 'none', pointerEvents: 'none'}}>
+                <div className={classes.ItemName}/>
+                <div className={classes.ItemNullText}>Nothing to show!</div>
+                <div className={classes.ItemQuantity}/>
+            </div>
     );
 };
 

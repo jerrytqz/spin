@@ -13,13 +13,14 @@ const Spinner = (props) => {
         </div>
     );
     let disabled = props.spinInSession; 
+    let needsAuthentication = false;
 
     if (props.buySpinLoading) {
         spinnerText = <div className={classes.SpinnerText4}>PURCHASING...</div>;
         disabled = true;
     } else if (!props.authenticated) {
         spinnerText = <div className={classes.SpinnerText3}>LOG IN TO SPIN</div>;
-        disabled = true; 
+        needsAuthentication = true; 
     } else if (props.sp < props.spinPrice) {
         spinnerText = <div className={classes.SpinnerText3}>NOT ENOUGH SP</div>;
         disabled = true; 
@@ -48,8 +49,8 @@ const Spinner = (props) => {
             <div className={classes.Spinner}>
                 <button 
                     className={classes.SpinnerButton}
-                    onClick={props.onStartSpin} 
-                    disabled={disabled}
+                    onClick={needsAuthentication ? props.onClickUnauthorizedSpin : props.onStartSpin}
+                    disabled={disabled} 
                     style={{transform: `rotate(${spinDegree}deg)`, transition: transition}}
                     onTransitionEnd={transitionEndFunc}
                 > 

@@ -8,7 +8,7 @@ const ListForm = (props) => (props.show
     ? 
         <Modal 
             style={{borderRadius: '0'}} 
-            clicked={props.clicked} 
+            clicked={props.backdropClicked} 
             backdropStyle={{opacity: '0.5'}}
         >
             {!props.loading

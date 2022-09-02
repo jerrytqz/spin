@@ -25,6 +25,10 @@ class Spin extends Component {
         }
     }
 
+    clickUnauthorizedSpinHandler = () => {
+        this.props.history.push("/authentication");
+    }
+
     startResettingSpinHandler = () => {
         this.setState({resetting: true, showPrize: false}); 
     }
@@ -71,6 +75,7 @@ class Spin extends Component {
                     showPrize={this.state.showPrize}
                     degree={this.props.degree}
                     resetting={this.state.resetting}
+                    onClickUnauthorizedSpin={this.clickUnauthorizedSpinHandler}
                     onStartSpin={this.startSpinHandler}
                     onClickBackdrop={this.buySpinErrorClickedHandler}
                     onShowPrize={this.showPrizeHandler}
