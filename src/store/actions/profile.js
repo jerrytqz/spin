@@ -20,7 +20,7 @@ export const fetchProfile = (username) => {
         dispatch(fetchProfileStart()); 
 
         try {
-            let address = `${BACKEND_BASE_DIR}fetch-profile/${username}`;
+            let address = `${BACKEND_BASE_DIR}fetch-profile/?username=${username}`;
             if (username == null) address = `${BACKEND_BASE_DIR}fetch-profile/`;
             const response = await fetch(address, {
                 method: 'GET'

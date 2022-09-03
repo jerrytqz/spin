@@ -40,7 +40,7 @@ class Market extends Component {
             this.setState({showBuyForm: false});
             this.props.onResetBuyItemError(); 
         }
-        this.props.onResetSelectedItem();
+        if (this.props.selectedItem) this.props.onResetSelectedItem();
     }
 
     clickUnauthorizedBuyHandler = () => {

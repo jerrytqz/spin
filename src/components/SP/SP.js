@@ -11,13 +11,16 @@ const SP = (props) => {
         freeSPError = `Next free SP in ${dhms(freeSPError, false)}`; 
     }
 
+    let freeSPClasses = [classes.FreeSPButton, classes.Plus];
+    if (props.disabledFreeSP) freeSPClasses.push(classes.FreeSPButtonDisabled);
+
     return (
         <>
             <div className={classes.SP}>
                 <strong className={classes.SPText}>{numberWithCommas(props.sp)} SP</strong>
                 {props.getFreeSPLoading 
                     ? <LoadingSpinner style={{margin: '0 0 0 7px', fontSize: '1.5px'}}/>
-                    : <button className={classes.FreeSPButton} onClick={props.onClickFreeSP} disabled={props.disabledFreeSP}>+</button>
+                    : <div className={freeSPClasses.join(' ')} onClick={props.onClickFreeSP}></div>
                 }
             </div>
             {props.getFreeSPLoading
