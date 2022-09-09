@@ -4,7 +4,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo-darkmode.png">
       <source media="(prefers-color-scheme: light)" srcset="docs/images/logo-lightmode.png">
-      <img alt="Logo" src="docs/images/logo-eithermode.png">
+      <img alt="Logo" src="docs/images/logo-darkmode.png">
     </picture>
   </a>
 </p>
