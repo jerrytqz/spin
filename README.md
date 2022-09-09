@@ -3,7 +3,8 @@
   <a href="https://spin.jerrytq.com">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo-darkmode.png">
-      <img alt="Logo" src="docs/images/logo-lightmode.png">
+      <source media="(prefers-color-scheme: light)" srcset="docs/images/logo-lightmode.png">
+      <img alt="Logo" src="docs/images/logo-eithermode.png">
     </picture>
   </a>
 </p>
@@ -23,27 +24,21 @@ Spin consists of 3 major components:
 ## Demonstrations
 &nbsp;
 <p align="center">
-  <kbd>
-    <img alt="Spinning a common item" src="docs/gifs/spinning-common.gif" width="700"/>
-  </kbd>
+  <img alt="Spinning a common item" src="docs/gifs/spinning-common.gif" width="700"/>
 </p>
 <p align="center">
   Spinning a common item
 </p>
 &nbsp;
 <p align="center">
-  <kbd>
-    <img alt="Spinning a ??? item" src="docs/gifs/spinning-tq.gif" width="700"/>
-  </kbd>
+  <img alt="Spinning a ??? item" src="docs/gifs/spinning-tq.gif" width="700"/>
 </p>
 <p align="center">
   Spinning a ??? item
 </p>
 &nbsp;
 <p align="center">
-  <kbd>
-    <img alt="Spinning a ??? item" src="docs/gifs/listing-item.gif" width="700"/>
-  </kbd>
+  <img alt="Spinning a ??? item" src="docs/gifs/listing-item.gif" width="700"/>
 </p>
 <p align="center">
   Listing an item onto the market for sale<br/>
@@ -51,9 +46,7 @@ Spin consists of 3 major components:
 </p>
 &nbsp;
 <p align="center">
-  <kbd>
-    <img alt="Spinning a ??? item" src="docs/gifs/buying-item.gif" width="700"/>
-  </kbd>
+  <img alt="Spinning a ??? item" src="docs/gifs/buying-item.gif" width="700"/>
 </p>
 <p align="center">
   Buying an item off the market<br/>
@@ -63,11 +56,7 @@ Spin consists of 3 major components:
 
 ## Upcoming Features
 - Market info for each item (historical sale price, units sold, etc.)
-- Market and inventory filtering 
-- Profile customization 
-- Options menu
 - Leaderboard
 - More items 
 - More stats
 - Trading
-- Sound

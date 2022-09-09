@@ -10,6 +10,12 @@ class Profile extends Component {
     componentDidMount() {
         this.props.onFetchProfile(this.props.match.params.username); 
     }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.username !== prevProps.match.params.username) {
+            this.props.onFetchProfile(this.props.match.params.username);
+        }
+    }
     
     render() {
         let profile = null; 
