@@ -11,7 +11,7 @@
 &nbsp;
 
 ## Introduction
-Spin is a full stack web application built primarily with React and Django. It aims to emulate a basic online economy by allowing players to spin a wheel to obtain collectibles, which can later be sold on the market to other players using a fictional currency called *SP* (Spin Points).
+Spin is a full-stack web application built primarily with React and Django. It aims to emulate a basic online economy by allowing players to spin a wheel to obtain collectibles, which can later be sold on the market to other players using a fictional currency called *SP* (Spin Points).
 
 Try it out at [spin.jerrytq.com](https://spin.jerrytq.com)!
 
