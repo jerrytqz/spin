@@ -13,7 +13,12 @@ const NavigationItems = (props) => {
             <NavigationItem link="/" exact>Spin</NavigationItem>
             <NavigationItem link="/market">Market</NavigationItem>
             <NavigationItem link="/inventory">Inventory</NavigationItem>
-            <NavigationItem link={profileLink}>Profile</NavigationItem>
+            <NavigationItem 
+                link={profileLink} 
+                isActive={(match, location) => location['pathname'].includes('/profile')}
+            >
+                Profile
+            </NavigationItem>
             {props.isAuthenticated 
                 ? <NavigationItem link="/log-out">Log Out</NavigationItem>
                 : <NavigationItem link="/authentication">Log In</NavigationItem>
