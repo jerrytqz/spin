@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom'; 
+import { Route, withRouter, Switch } from 'react-router-dom'; 
 import { connect } from 'react-redux'; 
 
 import * as actions from './store/actions/index'; 
@@ -10,7 +10,8 @@ import Inventory from './containers/Inventory/Inventory';
 import Profile from './containers/Profile/Profile'; 
 import LogOut from './containers/Authentication/LogOut/LogOut'; 
 import Authentication from './containers/Authentication/Authentication'; 
-import Spinner from './shared/UI/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from './shared/UI/LoadingSpinner/LoadingSpinner';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 import io from 'socket.io-client'; 
 import { SOCKET_IO_BASE_DIR } from './shared/utility';
 
@@ -42,14 +43,17 @@ class App extends Component {
             this.props.autoLogInAttemptFinished 
                 ? 
                     <Layout>
-                        <Route path="/" exact component={Spin}/>
-                        <Route path="/market" component={Market}/>
-                        <Route path="/inventory" exact component={Inventory}/>
-                        <Route path={["/profile/:username", "/profile"]} component={Profile}/>
-                        <Route path="/authentication" component={Authentication}/> 
-                        <Route path="/log-out" component={LogOut}/>
+                        <Switch>
+                            <Route path="/" exact component={Spin}/>
+                            <Route path="/market" exact component={Market}/>
+                            <Route path="/inventory" exact component={Inventory}/>
+                            <Route path={["/profile/:username", "/profile"]} exact component={Profile}/>
+                            <Route path="/authentication" exact component={Authentication}/> 
+                            <Route path="/log-out" exact component={LogOut}/>
+                            <Route path="/" component={ErrorPage}/>
+                        </Switch>
                     </Layout> 
-                : <Spinner/>
+                : <LoadingSpinner/>
         );
     }
 }

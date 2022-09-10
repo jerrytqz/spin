@@ -1,0 +1,26 @@
+.ErrorTitle {
+    text-align: center; 
+    font-weight: bold; 
+    color: black; 
+    margin-top: 100px; 
+    animation: sizeChangeTitle 1s ease-in-out infinite; 
+}
+
+.ErrorDescription {
+    text-align: center; 
+    font-weight: bold; 
+    color: #616161; 
+    animation: sizeChangeDescription 1s ease-in-out infinite; 
+}
+
+@keyframes sizeChangeTitle {
+    0% {font-size: 80px}
+    50% {font-size: 82px}
+    100% {font-size: 80px}
+}
+
+@keyframes sizeChangeDescription {
+    0% {font-size: 40px}
+    50% {font-size: 42px}
+    100% {font-size: 40px}
+}
