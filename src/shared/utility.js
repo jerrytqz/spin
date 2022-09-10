@@ -45,7 +45,7 @@ export const checkValidity = (value, rules) => {
         isValid = value.trim() !== '' && isValid; 
     }
 
-    if (rules.length) {
+    if (rules.length !== undefined) {
         isValid = value.length === rules.length && isValid; 
     }
 
@@ -55,31 +55,35 @@ export const checkValidity = (value, rules) => {
         isValid = pattern.test(value) && isValid;
     }
 
-    if (rules.minLength) {
-        isValid = value.length >= rules.minLength && isValid;
-    }
-
-    if (rules.maxLength) {
-        isValid = value.length <= rules.maxLength && isValid;
-    }
-
-    if (rules.minValue) {
-        isValid = Number(value) >= rules.minValue && isValid;
-    }
-
-    if (rules.maxValue) {
-        isValid = Number(value) <= rules.maxValue && isValid;
-    }
-
-    if (rules.isNumber) {
-        isValid = !isNaN(value) && isValid;
-    }
-
     if (rules.noWhiteSpace) {
         isValid = !/\s/g.test(value) && isValid; 
     }
 
+    if (rules.minLength !== undefined) {
+        isValid = value.length >= rules.minLength && isValid;
+    }
+
+    if (rules.maxLength !== undefined) {
+        isValid = value.length <= rules.maxLength && isValid;
+    }
+
+    if (rules.minValue !== undefined) {
+        isValid = isNumeric(value) && Number(value) >= rules.minValue && isValid;
+    }
+
+    if (rules.maxValue !== undefined) {
+        isValid = isNumeric(value) && Number(value) <= rules.maxValue && isValid;
+    }
+
+    if (rules.isNumber) {
+        isValid = isNumeric(value) && isValid;
+    }
+
     return isValid; 
+};
+
+export const isNumeric = (value) => {
+    return !isNaN(value) && !isNaN(parseFloat(value));
 };
 
 export const numberWithCommas = (num) => {

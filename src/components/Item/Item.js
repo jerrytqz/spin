@@ -4,14 +4,14 @@ import { TQ, RARITY_INFO } from '../../shared/utility';
 
 const Item = (props) => {
     // Item names are converted to their corresponding image path names by changing every
-    // letter to lowercase and replacing spaces with '-'
+    // letter to lowercase and replacing spaces with '-'.
     let imagePathName = ''; 
     let imagePath = '';
     if (props.name) {
         imagePathName = props.name.replace(/\s+/g, '-').toLowerCase(); 
         try {
             imagePath = require(`../../assets/images/items/${imagePathName}.jpeg`); 
-        } catch (e) {
+        } catch {
             console.log(props.name + "'s image is not currently available."); 
         }
     }

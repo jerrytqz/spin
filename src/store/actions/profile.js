@@ -31,8 +31,7 @@ export const fetchProfile = (username) => {
             } else {
                 dispatch(fetchProfileFail(result['fetchProfileError'])); 
             }
-        } catch (e) {
-            console.log(e)
+        } catch {
             dispatch(fetchProfileFail('Unexpected error')); 
         }
     };
