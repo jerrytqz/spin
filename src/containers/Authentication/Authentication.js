@@ -33,7 +33,7 @@ const CONFIRM_PASSWORD_VALIDATION = {
 }
 
 class Authentication extends Component {
-    // Initial state is for log in
+    // Initial state is for log in.
     state = {
         controls: {
             username: {

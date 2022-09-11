@@ -21,7 +21,7 @@ export const GODLY = 'Godly';
 export const TQ = '???';
 
 export const RARITY_INFO = {
-     // NAME: [COLOR, VALUE, ARTICLE, CHANCE]
+    // NAME: [COLOR, VALUE, ARTICLE, CHANCE]
     [COMMON]: ['brown', 1, 'a', '52%'],
     [UNCOMMON]: ['cyan', 2, 'an', '20%'],
     [RARE]: ['red', 3, 'a', '15%'],
@@ -30,6 +30,10 @@ export const RARITY_INFO = {
     [GODLY]: ['yellow', 6, 'a', '0.49%'],
     [TQ]: ['rainbow', 7, 'a', '0.01%']
 };
+
+// Item names are converted to their corresponding image names by changing every
+// letter to lowercase and replacing spaces with '-'.
+export const mapItemNameToImageName = (itemName) => (itemName.replace(/\s+/g, '-').toLowerCase());
 
 export const updateObject = (oldObject, updatedProperties) => {
     return {

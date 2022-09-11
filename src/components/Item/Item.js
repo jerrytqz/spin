@@ -1,16 +1,14 @@
 import React from 'react';
 import classes from './Item.module.css';
-import { TQ, RARITY_INFO } from '../../shared/utility'; 
+import { TQ, RARITY_INFO, mapItemNameToImageName } from '../../shared/utility'; 
 
 const Item = (props) => {
-    // Item names are converted to their corresponding image path names by changing every
-    // letter to lowercase and replacing spaces with '-'.
-    let imagePathName = ''; 
+    let imageName = ''; 
     let imagePath = '';
     if (props.name) {
-        imagePathName = props.name.replace(/\s+/g, '-').toLowerCase(); 
+        imageName = mapItemNameToImageName(props.name);
         try {
-            imagePath = require(`../../assets/images/items/${imagePathName}.jpeg`); 
+            imagePath = require(`../../assets/images/items/${imageName}.jpeg`); 
         } catch {
             console.log(props.name + "'s image is not currently available."); 
         }
