@@ -73,7 +73,8 @@
 .ItemBottomText {
     padding: 5px; 
     text-align: right; 
-    color: #616161; 
+    color: #616161;
+    line-height: 16px; 
 }
 
 @keyframes rainbowBorder {

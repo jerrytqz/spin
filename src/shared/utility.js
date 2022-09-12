@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'development') {
     SOCKET_IO_BASE_DIR = 'http://localhost:3001';
 }
 
-export const ASSETS_BASE_DIR = 'https://assets.jerrytq.com/spin';
+export const ASSETS_BASE_DIR = 'https://starship.jerrytq.com/spin';
 
 export const SPIN_PRICE = 500;
 export const MAX_LIST_PRICE = 10000000;
