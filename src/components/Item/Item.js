@@ -1,17 +1,13 @@
 import React from 'react';
 import classes from './Item.module.css';
-import { TQ, RARITY_INFO, mapItemNameToImageName } from '../../shared/utility'; 
+import { ASSETS_BASE_DIR, TQ, RARITY_INFO, mapItemNameToImageName } from '../../shared/utility'; 
 
 const Item = (props) => {
     let imageName = ''; 
     let imagePath = '';
     if (props.name) {
         imageName = mapItemNameToImageName(props.name);
-        try {
-            imagePath = require(`../../assets/images/items/${imageName}.jpeg`); 
-        } catch {
-            console.log(props.name + "'s image is not currently available."); 
-        }
+        imagePath = `${ASSETS_BASE_DIR}/items/${imageName}`; 
     }
 
     const color = !props.nullItem ? RARITY_INFO[props.rarity][0] : null; 

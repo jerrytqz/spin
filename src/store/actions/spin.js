@@ -24,7 +24,7 @@ export const buySpin = (token) => {
     return async dispatch => {
         dispatch(buySpinStart()); 
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}buy-spin/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}/buy-spin/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
@@ -62,7 +62,7 @@ export const getFreeSP = (token) => {
     return async dispatch => {
         dispatch(getFreeSPStart());
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}get-free-sp/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}/get-free-sp/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });

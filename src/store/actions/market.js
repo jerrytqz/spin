@@ -37,7 +37,7 @@ export const fetchMarket = (token) => {
     return async dispatch => {
         dispatch(fetchMarketStart()); 
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}fetch-market/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}/fetch-market/`, {
                 method: 'GET',
                 headers: new Headers({'Authorization': token})
             });
@@ -60,7 +60,7 @@ export const buyItem = (token, marketID) => {
         data.append('marketID', marketID); 
 
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}buy-item/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}/buy-item/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token}),
                 body: data 

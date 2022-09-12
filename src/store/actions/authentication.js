@@ -72,7 +72,7 @@ export const autoLogInFail = () => {
 export const logOut = (token) => {
     return async dispatch => {
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}log-out/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}/log-out/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
@@ -95,9 +95,9 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
         const data = new FormData();
         data.append('username', username);  
         data.append('password', password);  
-        let path = `${BACKEND_BASE_DIR}log-in/`;  
+        let path = `${BACKEND_BASE_DIR}/log-in/`;  
         if (!isLogIn) {
-            path = `${BACKEND_BASE_DIR}register/`;
+            path = `${BACKEND_BASE_DIR}/register/`;
             data.append('email', email);
             data.append('confirmPassword', confirmPassword);
         }
@@ -122,7 +122,7 @@ export const auth = (username, email, password, confirmPassword, isLogIn) => {
 export const autoLogIn = () => {
     return async dispatch => {
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}auto-log-in/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}/auto-log-in/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': localStorage.getItem('token')})
             });

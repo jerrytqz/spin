@@ -37,7 +37,7 @@ export const fetchInventory = (token) => {
     return async dispatch => {
         dispatch(fetchInventoryStart()); 
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}fetch-inventory/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}/fetch-inventory/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token})
             });
@@ -60,7 +60,7 @@ export const listItem = (token, price, inventoryID) => {
         data.append('price', price);  
         data.append('inventoryID', inventoryID);  
         try {
-            const response = await fetch(`${BACKEND_BASE_DIR}list-item/`, {
+            const response = await fetch(`${BACKEND_BASE_DIR}/list-item/`, {
                 method: 'POST',
                 headers: new Headers({'Authorization': token}),
                 body: data

@@ -1,12 +1,14 @@
-export let BACKEND_BASE_DIR = 'https://spin-backend-production.herokuapp.com/';
+export let BACKEND_BASE_DIR = 'https://spin-backend-production.herokuapp.com';
 if (process.env.NODE_ENV === 'development') {
-    BACKEND_BASE_DIR = 'http://127.0.0.1:8000/';
+    BACKEND_BASE_DIR = 'http://127.0.0.1:8000';
 }
 
-export let SOCKET_IO_BASE_DIR = 'https://spin-socketio.jerrytq.com/';
+export let SOCKET_IO_BASE_DIR = 'https://spin-socketio.jerrytq.com';
 if (process.env.NODE_ENV === 'development') {
-    SOCKET_IO_BASE_DIR = 'http://localhost:3001/';
+    SOCKET_IO_BASE_DIR = 'http://localhost:3001';
 }
+
+export const ASSETS_BASE_DIR = 'https://assets.jerrytq.com/spin';
 
 export const SPIN_PRICE = 500;
 export const MAX_LIST_PRICE = 10000000;
@@ -32,8 +34,8 @@ export const RARITY_INFO = {
 };
 
 // Item names are converted to their corresponding image names by changing every
-// letter to lowercase and replacing spaces with '-'.
-export const mapItemNameToImageName = (itemName) => (itemName.replace(/\s+/g, '-').toLowerCase());
+// letter to lowercase and replacing spaces with '-'. The extension is ".jpeg". 
+export const mapItemNameToImageName = (itemName) => (itemName.replace(/\s+/g, '-').toLowerCase() + '.jpeg');
 
 export const updateObject = (oldObject, updatedProperties) => {
     return {
