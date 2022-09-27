@@ -31,7 +31,7 @@ Spin consists of 3 major components:
 </p>
 &nbsp;
 <p align="center">
-  <img alt="Spinning a ??? item" src="https://starship.jerrytq.com/spin/docs/spinning-tq.gif" width="700"/>
+  <img alt="Spinning a ??? item" src="https://github.com/jerrytqz/public/blob/master/spin/spinning-tq.gif" width="700"/>
 </p>
 <p align="center">
   Spinning a ??? item
