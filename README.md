@@ -2,9 +2,9 @@
 <p align="center">
   <a href="https://spin.jerrytq.com">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/images/logo-darkmode.png">
-      <source media="(prefers-color-scheme: light)" srcset="docs/images/logo-lightmode.png">
-      <img alt="Logo" src="docs/images/logo-darkmode.png">
+      <source media="(prefers-color-scheme: dark)" srcset="https://starship.jerrytq.com/spin/docs/logo-darkmode.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://starship.jerrytq.com/spin/docs/logo-lightmode.png">
+      <img alt="Logo" src="https://starship.jerrytq.com/spin/docs/logo-darkmode.png">
     </picture>
   </a>
 </p>
@@ -24,21 +24,21 @@ Spin consists of 3 major components:
 ## Demonstrations
 &nbsp;
 <p align="center">
-  <img alt="Spinning a common item" src="docs/gifs/spinning-common.gif" width="700"/>
+  <img alt="Spinning a common item" src="https://starship.jerrytq.com/spin/docs/spinning-common.gif" width="700"/>
 </p>
 <p align="center">
   Spinning a common item
 </p>
 &nbsp;
 <p align="center">
-  <img alt="Spinning a ??? item" src="docs/gifs/spinning-tq.gif" width="700"/>
+  <img alt="Spinning a ??? item" src="https://starship.jerrytq.com/spin/docs/spinning-tq.gif" width="700"/>
 </p>
 <p align="center">
   Spinning a ??? item
 </p>
 &nbsp;
 <p align="center">
-  <img alt="Spinning a ??? item" src="docs/gifs/listing-item.gif" width="700"/>
+  <img alt="Spinning a ??? item" src="https://starship.jerrytq.com/spin/docs/listing-item.gif" width="700"/>
 </p>
 <p align="center">
   Listing an item onto the market for sale<br/>
@@ -46,7 +46,7 @@ Spin consists of 3 major components:
 </p>
 &nbsp;
 <p align="center">
-  <img alt="Spinning a ??? item" src="docs/gifs/buying-item.gif" width="700"/>
+  <img alt="Spinning a ??? item" src="https://starship.jerrytq.com/spin/docs/buying-item.gif" width="700"/>
 </p>
 <p align="center">
   Buying an item off the market<br/>
