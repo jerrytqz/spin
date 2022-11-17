@@ -38,7 +38,7 @@ Spin consists of 3 major components:
 </p>
 &nbsp;
 <p align="center">
-  <img alt="Spinning a ??? item" src="https://starship.jerrytq.com/spin/docs/listing-item.gif" width="700"/>
+  <img alt="Listing an item" src="https://starship.jerrytq.com/spin/docs/listing-item.gif" width="700"/>
 </p>
 <p align="center">
   Listing an item onto the market for sale<br/>
@@ -46,7 +46,7 @@ Spin consists of 3 major components:
 </p>
 &nbsp;
 <p align="center">
-  <img alt="Spinning a ??? item" src="https://starship.jerrytq.com/spin/docs/buying-item.gif" width="700"/>
+  <img alt="Buying an item" src="https://starship.jerrytq.com/spin/docs/buying-item.gif" width="700"/>
 </p>
 <p align="center">
   Buying an item off the market<br/>
