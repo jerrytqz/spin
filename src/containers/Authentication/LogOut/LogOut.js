@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import * as actions from '../../../store/actions/index'; 
 import { connect } from 'react-redux'; 
-import Modal from '../../../shared/UI/Modal/Modal'; 
-import Backdrop from '../../../shared/UI/Backdrop/Backdrop';
-import LoadingSpinner from '../../../shared/UI/LoadingSpinner/LoadingSpinner'; 
+import Modal from '../../../shared/userInterfaces/Modal/Modal'; 
+import Backdrop from '../../../shared/userInterfaces/Backdrop/Backdrop';
+import LoadingSpinner from '../../../shared/userInterfaces/LoadingSpinner/LoadingSpinner'; 
 import classes from './LogOut.module.css'; 
 import { Redirect } from 'react-router-dom';
 

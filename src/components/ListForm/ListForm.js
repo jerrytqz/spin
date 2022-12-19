@@ -1,8 +1,8 @@
 import React from 'react';
-import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton'; 
-import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
+import YesNoButton from '../../shared/userInterfaces/buttons/YesNoButton/YesNoButton'; 
+import LoadingSpinner from '../../shared/userInterfaces/LoadingSpinner/LoadingSpinner'; 
 import classes from './ListForm.module.css'; 
-import Modal from '../../shared/UI/Modal/Modal'; 
+import Modal from '../../shared/userInterfaces/Modal/Modal'; 
 
 const ListForm = (props) => (props.show 
     ? 

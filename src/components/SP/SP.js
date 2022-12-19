@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './SP.module.css';
-import Backdrop from '../../shared/UI/Backdrop/Backdrop';
-import Modal from '../../shared/UI/Modal/Modal'; 
-import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
+import Backdrop from '../../shared/userInterfaces/Backdrop/Backdrop';
+import Modal from '../../shared/userInterfaces/Modal/Modal'; 
+import LoadingSpinner from '../../shared/userInterfaces/LoadingSpinner/LoadingSpinner';
 import { numberWithCommas, dhms } from '../../shared/utility'; 
  
 const SP = (props) => {

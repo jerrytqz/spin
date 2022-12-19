@@ -3,10 +3,10 @@ import classes from './Inventory.module.css';
 import Item from '../../components/Item/Item'; 
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
-import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../shared/userInterfaces/LoadingSpinner/LoadingSpinner';
 import { MAX_LIST_PRICE, LIST_PRICE_PER_FEE, RARITY_INFO, updateObject, checkValidity, numberWithCommas } from '../../shared/utility';
 import ListForm from '../../components/ListForm/ListForm'; 
-import Input from '../../shared/UI/Input/Input'; 
+import Input from '../../shared/userInterfaces/Input/Input'; 
 
 class Inventory extends Component {
     state = {

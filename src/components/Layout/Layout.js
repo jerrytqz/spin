@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import classes from './Layout.module.css'; 
-import Toolbar from '../Navigation/Toolbar/Toolbar'; 
+import Toolbar from '../navigation/Toolbar/Toolbar'; 
 import { connect } from 'react-redux'; 
 
 class Layout extends Component {

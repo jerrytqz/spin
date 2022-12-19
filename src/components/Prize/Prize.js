@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './Prize.module.css'; 
-import Modal from '../../shared/UI/Modal/Modal'; 
+import Modal from '../../shared/userInterfaces/Modal/Modal'; 
 import { COMMON, TQ, RARITY_INFO } from '../../shared/utility'; 
 import Item from '../Item/Item'; 
 import Confetti from 'react-confetti';
-import useWindowDimensions from '../../shared/Hooks/useWindowDimensions';
+import useWindowDimensions from '../../shared/hooks/useWindowDimensions';
 
 const Prize = (props) => {
     const prizeClasses = []; 

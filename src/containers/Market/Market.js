@@ -3,7 +3,7 @@ import classes from './Market.module.css';
 import Item from '../../components/Item/Item'; 
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
-import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../shared/userInterfaces/LoadingSpinner/LoadingSpinner';
 import { RARITY_INFO, numberWithCommas } from '../../shared/utility'; 
 import BuyForm from '../../components/BuyForm/BuyForm'; 
 

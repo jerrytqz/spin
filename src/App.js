@@ -10,7 +10,7 @@ import Inventory from './containers/Inventory/Inventory';
 import Profile from './containers/Profile/Profile'; 
 import LogOut from './containers/Authentication/LogOut/LogOut'; 
 import Authentication from './containers/Authentication/Authentication'; 
-import LoadingSpinner from './shared/UI/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from './shared/userInterfaces/LoadingSpinner/LoadingSpinner';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import io from 'socket.io-client'; 
 import { SOCKET_IO_BASE_DIR } from './shared/utility';

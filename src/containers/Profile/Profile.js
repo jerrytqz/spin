@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classes from './Profile.module.css'; 
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
-import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner';
+import LoadingSpinner from '../../shared/userInterfaces/LoadingSpinner/LoadingSpinner';
 import ProfileStats from '../../components/ProfileStats/ProfileStats'; 
 import ProfileDisplay from '../../components/ProfileDisplay/ProfileDisplay'; 
 

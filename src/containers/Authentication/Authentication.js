@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { updateObject, checkValidity} from '../../shared/utility';
-import Input from '../../shared/UI/Input/Input';
+import Input from '../../shared/userInterfaces/Input/Input';
 import classes from './Authentication.module.css'; 
-import YesNoButton from '../../shared/UI/Buttons/YesNoButton/YesNoButton'; 
-import TextButton from '../../shared/UI/Buttons/TextButton/TextButton'; 
-import LoadingSpinner from '../../shared/UI/LoadingSpinner/LoadingSpinner'; 
-import Backdrop from '../../shared/UI/Backdrop/Backdrop';
+import YesNoButton from '../../shared/userInterfaces/buttons/YesNoButton/YesNoButton'; 
+import TextButton from '../../shared/userInterfaces/buttons/TextButton/TextButton'; 
+import LoadingSpinner from '../../shared/userInterfaces/LoadingSpinner/LoadingSpinner'; 
+import Backdrop from '../../shared/userInterfaces/Backdrop/Backdrop';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/actions/index'; 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Spinner.module.css'; 
-import Backdrop from '../../shared/UI/Backdrop/Backdrop';
-import Modal from '../../shared/UI/Modal/Modal'; 
+import Backdrop from '../../shared/userInterfaces/Backdrop/Backdrop';
+import Modal from '../../shared/userInterfaces/Modal/Modal'; 
 
 const Spinner = (props) => { 
     const INITIAL_SPIN_DEGREE = 360 * 35; // Degrees that spinner goes through before props.degree
