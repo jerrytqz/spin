@@ -47,10 +47,3 @@ Try it out at [spin.jerrytq.com](https://spin.jerrytq.com)!
   (The market and the seller's SP both update in real time with Socket.IO.)
 </p>
 &nbsp;
-
-## Upcoming Features
-- Market info for each item (historical sale price, units sold, etc.)
-- Leaderboard
-- More items 
-- More stats
-- Trading
