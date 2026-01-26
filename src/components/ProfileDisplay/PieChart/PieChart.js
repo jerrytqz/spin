@@ -31,14 +31,14 @@ const PieChart = (props) => {
     };
 
     const options = {
-    plugins: {
-        legend: { display: false }
-    },
-    animation: { duration: 500 },
-    maintainAspectRatio: false,
-    elements: {
-        arc: { borderWidth: 0 }
-    }
+        plugins: {
+            legend: { display: false }
+        },
+        animation: { duration: 500 },
+        maintainAspectRatio: false,
+        elements: {
+            arc: { borderWidth: 0 }
+        }
     };
 
     return (
