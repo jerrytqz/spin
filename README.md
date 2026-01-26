@@ -21,21 +21,21 @@ Try it out at [spin.jerrytq.com](https://spin.jerrytq.com)!
   <img alt="Spinning a common item" src="https://starship.jerrytq.com/spin/docs/spinning-common.gif" width="700"/>
 </p>
 <p align="center">
-  Spinning a common item
+  Spinning a common item.
 </p>
 &nbsp;
 <p align="center">
   <img alt="Spinning a ??? item" src="https://github.com/jerrytqz/public/blob/master/spin/spinning-tq.gif" width="700"/>
 </p>
 <p align="center">
-  Spinning a ??? item
+  Spinning a ??? item.
 </p>
 &nbsp;
 <p align="center">
   <img alt="Listing an item" src="https://starship.jerrytq.com/spin/docs/listing-item.gif" width="700"/>
 </p>
 <p align="center">
-  Listing an item onto the market for sale<br/>
+  Listing an item onto the market for sale.<br/>
   (The market updates in real time with Socket.IO.)
 </p>
 &nbsp;
@@ -43,7 +43,7 @@ Try it out at [spin.jerrytq.com](https://spin.jerrytq.com)!
   <img alt="Buying an item" src="https://starship.jerrytq.com/spin/docs/buying-item.gif" width="700"/>
 </p>
 <p align="center">
-  Buying an item off the market<br/>
+  Buying an item off the market.<br/>
   (The market and the seller's SP both update in real time with Socket.IO.)
 </p>
 &nbsp;
