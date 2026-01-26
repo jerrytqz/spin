@@ -2,6 +2,8 @@ import React from 'react';
 import classes from './PieChart.module.css';
 import { Pie } from 'react-chartjs-2'; 
 import { TQ, RARITY_INFO } from '../../../shared/utility'; 
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = (props) => {
     const labels = [];
@@ -29,18 +31,14 @@ const PieChart = (props) => {
     };
 
     const options = {
-        legend: {
-            display: false
-        },
-        animation: {
-            duration: 500
-        },
-        maintainAspectRatio: false,
-        elements: {
-            arc: {
-                borderWidth: 0 
-            }
-        }
+    plugins: {
+        legend: { display: false }
+    },
+    animation: { duration: 500 },
+    maintainAspectRatio: false,
+    elements: {
+        arc: { borderWidth: 0 }
+    }
     };
 
     return (
